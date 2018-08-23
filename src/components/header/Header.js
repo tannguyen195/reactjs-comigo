@@ -18,9 +18,11 @@ class Header extends Component {
         } = this.props
         return (
             <header className="header-container" >
-                <div className="header-logo">
-                    <img alt="logo-app" src={appLogo} />
-                </div>
+                <Link to="/">
+                    <a className="header-logo">
+                        <img alt="logo-app" src={appLogo} />
+                    </a>
+                </Link>
                 <div className="header-left">
                     <div className="header-routes">
                         <Link to="/">
