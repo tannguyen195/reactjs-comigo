@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
 import Performance from './Performance'
 
 import _performance from './_performance.less'
@@ -38,6 +39,7 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PerformanceContainer);

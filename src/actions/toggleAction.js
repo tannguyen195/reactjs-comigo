@@ -14,8 +14,3 @@ export function toggleSignUpModal() {
 }
 
 
-export function toggleForgotModal() {
-    return {
-        type: types.TOGGLE_FORGOT_MODAL
-    }
-}

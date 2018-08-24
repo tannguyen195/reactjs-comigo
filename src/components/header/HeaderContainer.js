@@ -10,7 +10,7 @@ import {
     toggleSignUpModal,
     toggleForgotModal,
 } from '../../actions/toggleAction'
-
+import SignInModalContainer from '../signIn/SignInModalContainer'
 import _header from './_header.less'
 
 class HeaderContainer extends Component {
@@ -32,22 +32,18 @@ class HeaderContainer extends Component {
                     {...this.props}
 
                 />
+                <SignInModalContainer />
             </div>
         )
     }
 }
 export function mapStateToProps(state) {
     return {
-
-        visibleSignIn: state.toggleReducer.visibleSignIn,
-        visibleSignUp: state.toggleReducer.visibleSignUp,
-        visibleForgot: state.toggleReducer.visibleForgot,
-
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-
+        toggleSignInModal
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

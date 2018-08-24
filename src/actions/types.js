@@ -1,0 +1,3 @@
+// Toggle action
+export const TOGGLE_SIGN_IN_MODAL = 'TOGGLE_SIGN_IN_MODAL';
+export const TOGGLE_SIGN_UP_MODAL = 'TOGGLE_SIGN_UP_MODAL';

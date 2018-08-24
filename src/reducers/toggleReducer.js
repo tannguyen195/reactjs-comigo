@@ -18,10 +18,7 @@ const toggleReducer = (state = initial, action) => {
             return {
                 visibleSignUp: !state.visibleSignUp
             };
-        case types.TOGGLE_FORGOT_MODAL:
-            return {
-                visibleForgot: !state.visibleForgot
-            };
+     
         default:
             return state;
     }

@@ -12,9 +12,8 @@ class Header extends Component {
     render() {
 
         const {
-            toggleSignInModal,
-            toggleSignUpModal,
 
+            toggleSignInModal
         } = this.props
         return (
             <header className="header-container" >
@@ -51,7 +50,7 @@ class Header extends Component {
                     </div>
                     <div className="header-auth">
                         <div className="sign-in-button">
-                            <Button className="ButtonSmallBlackCenter">SIGN IN</Button>
+                            <Button onClick={toggleSignInModal} className="ButtonSmallBlackCenter">SIGN IN</Button>
                         </div>
                         <div className="sign-up-button ">
                             <Button className="ButtonSmallWhiteCenter" type="primary">JOHN NOW</Button>
