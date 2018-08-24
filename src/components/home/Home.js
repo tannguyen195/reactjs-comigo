@@ -26,8 +26,7 @@ const protects = [
     },
     {
         image: mainImage,
-        content: `Full transparency gives clients a window 
-        into our office, so that they always stay 
+        content: `Full transparency gives clients a window into our office, so that they always stay 
         informed`,
 
     }
@@ -35,7 +34,7 @@ const protects = [
 class Home extends Component {
     renderProtectItem(protects) {
         return protects.map((item, index) => {
-            return <Col md={8} lg={8} className="item-option">
+            return <Col key={index} md={8} lg={8} className="item-option">
                 <div className="item-image">
                     <img alt="holder" src={item.image} />
                 </div>

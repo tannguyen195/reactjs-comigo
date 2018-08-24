@@ -19,7 +19,7 @@ module.exports = {
             options: {
               modifyVars: {
                 "@primary-color": "#1774e6",
-                "@font-family": "'Nunito Sans', sans-serif",
+                "@font-family": "AvenirNextLTPro",
               },
             }
           }],
