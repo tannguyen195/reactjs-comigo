@@ -5,3 +5,4 @@ routes
     .add('learn')
     .add('performance')
     .add('pricing')
+    .add('account')

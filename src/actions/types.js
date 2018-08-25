@@ -1,3 +1,9 @@
 // Toggle action
 export const TOGGLE_SIGN_IN_MODAL = 'TOGGLE_SIGN_IN_MODAL';
 export const TOGGLE_SIGN_UP_MODAL = 'TOGGLE_SIGN_UP_MODAL';
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export const TOGGLE_SIDEBAR_POSITION = 'TOGGLE_SIDEBAR_POSITION';
+
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
+
+export const LOG_OUT = 'LOG_OUT'

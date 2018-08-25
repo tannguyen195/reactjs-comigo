@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Tabs, Progress, Table, Divider, Tag } from 'antd';
-import { LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
-import { Link } from 'routes'
+import { Row, Col, Button, Tabs, Progress, Table,  } from 'antd';
+import { LineChart, Line, } from 'recharts'
+
 const askIcon = 'static/images/icon-ask.svg'
 const TabPane = Tabs.TabPane;
 
@@ -117,8 +117,7 @@ class Performance extends Component {
             title: 'Open Date',
             dataIndex: 'openDate',
             key: 'opendate',
-            render: (text, record) => {
-                console.log("recored", record)
+            render: (text, record) => { 
                 return (
                     <div className="date-list">
                         <div className="CaptionRegularDarkGreyRight">

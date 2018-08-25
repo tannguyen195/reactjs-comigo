@@ -13,4 +13,15 @@ export function toggleSignUpModal() {
     }
 }
 
+export function toggleSidebar() {
+    return {
+        type: types.TOGGLE_SIDEBAR
+    }
+}
 
+
+export function toggleSidebarPosition() {
+    return {
+        type: types.TOGGLE_SIDEBAR_POSITION
+    }
+}

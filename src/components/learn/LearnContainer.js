@@ -17,7 +17,7 @@ class LearnContainer extends Component {
     render() {
 
         return (
-            <div>
+            <div style={{ width: '100%' }}>
 
                 <style dangerouslySetInnerHTML={{
                     __html: _learn

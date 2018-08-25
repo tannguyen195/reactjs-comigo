@@ -9,6 +9,7 @@ const handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
   const server = express();
+
   server.use(cookieParser());
   server.use(handler).listen(port)
 })

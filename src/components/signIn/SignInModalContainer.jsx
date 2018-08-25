@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Form } from 'antd'
 import { toggleSignInModal } from '../../actions/toggleAction'
+import { signIn } from '../../api/authApi'
 import _signIn from './_signIn.less'
 class SignInModalContainer extends Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class SignInModalContainer extends Component {
 	}
 	handleSignIn(e) {
 		e.preventDefault()
+		this.props.signIn()
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				this.props.signIn({
@@ -22,7 +24,6 @@ class SignInModalContainer extends Component {
 				})
 			}
 		})
-
 	}
 	render() {
 		return (
@@ -49,7 +50,8 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
-		toggleSignInModal
+		toggleSignInModal,
+		signIn
 	}, dispatch)
 }
 

@@ -18,7 +18,7 @@ class PerformanceContainer extends Component {
     render() {
 
         return (
-            <div>
+            <div style={{ width: '100%' }}>
 
                 <style dangerouslySetInnerHTML={{
                     __html: _performance
@@ -39,7 +39,7 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        
+
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PerformanceContainer);

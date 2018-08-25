@@ -33,7 +33,7 @@ class SignInModal extends React.Component {
 
                         <div className="form-container">
 
-                            <Form onSubmit={this.handleSubmit} className="login-form">
+                            <Form onSubmit={handleSignIn} className="login-form">
                                 <FormItem>
                                     {getFieldDecorator('userName', {
                                         rules: [{ required: true, message: 'Please input your username!' }],

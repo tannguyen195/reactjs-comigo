@@ -5,9 +5,9 @@ import { Link } from 'routes'
 import { LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 const mainImage = 'static/images/image-main.png'
 const data = [
-    { name: 'Today', uv: -2000, pv: 0 },
-    { name: '30 years', uv: 2000, pv: 5000 },
-    { name: '50 years', uv: 0, pv: 10000 },
+    { name: 'Today', uv: 0, pv: 0 },
+    { name: '30 years', uv: 10000, pv: 20000 },
+    { name: '50 years', uv: 30000, pv: 60000 },
 ];
 const protects = [
     {
@@ -126,13 +126,14 @@ to Invest`}
                         <div className="section-desc Body2RegularDarkGreyCenter">{`Our future screen helps you understand what you need to invest 
                         now to have that plush retirement we are all working towards. `}</div>
                         <div className="chart-container">
-                            <AreaChart width={880} height={344} data={data} syncId="anyId"
+                            <AreaChart width={880} height={344} data={data}
                                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
 
                                 <XAxis dataKey="name" />
                                 <YAxis stroke="transparent" />
                                 <Tooltip />
-                                <Area type='monotone' dataKey='pv' stroke='#1774e6' fill='rgba(23, 116, 230, 0.1)' />
+                                <Area type="monotone" dataKey='uv' stroke='#9ba3ad' fill='rgba(23, 116, 230, 0.1)' />
+                                <Area type="monotone" dataKey='pv' stroke='#1774e6' fill='rgba(23, 116, 230, 0.1)' />
                             </AreaChart>
                         </div>
                     </div>
