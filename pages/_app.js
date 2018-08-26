@@ -49,7 +49,12 @@ class MyApp extends App {
               __html: stylesheet
             }} />
 
-            <Head />
+            <Head
+              ogImage="https://dev.gotruckster.com/storage/avatars/0Mv5ywY5QF0o3WwybN0hBvhasU88RM4uKnjpL3Xx.png"
+              url="https://gotruckster.com/"
+              title="Truckster – Find Food Trucks Near You"
+              description="When hunger strikes, rely on Truckster to help find food trucks & breweries near you. View schedules, pairings and events in your area. Download our App today!s"
+            />
 
 
             {
