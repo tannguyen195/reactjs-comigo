@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button } from 'antd';
 
 import { Link } from 'routes'
-import { LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import {  AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts'
 const mainImage = 'static/images/image-main.png'
 const data = [
     { name: 'Today', uv: 0, pv: 0 },

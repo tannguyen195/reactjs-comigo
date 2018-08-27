@@ -27,25 +27,67 @@ button {
     margin: 0 auto;
 }
 
-.divider {
-    p {
-        right: 250px;
-        position: absolute;
-        background: #fff;
-        width: 40px;
+.input-title {
+    padding-bottom: 8px;
+}
+
+.recharts-tooltip-wrapper {
+    border-radius: 4px;
+    .recharts-default-tooltip {
+        border-radius: 4px;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #f7f7f8;
+        background-color: #37475b !important;
+        border: 0 !important;
     }
-    border-color: #efefef;
-    border-style: solid;
-    border-width: 0 0 1px;
-    height: 10px;
-    line-height: 20px;
-    text-align: center;
-    overflow: visable;
-    span {
-        background-color: white;
-        display: inline-block;
-        min-height: 20px;
-        min-width: 10%;
+}
+
+.ant-select {
+    width: 100%;
+    .ant-select-selection__rendered {
+        margin: 0;
+    }
+}
+
+.ant-select-selection {
+    width: 100%;
+    padding: 0 !important;
+    border: none !important;
+    border-bottom: solid 1px #e6e8eb !important;
+    border-radius: 0 !important;
+    &:focus {
+        outline: none;
+        box-shadow: none !important;
+    }
+}
+
+.ant-input-number-focused {
+    box-shadow: none !important;
+}
+
+.ant-form-item-control {
+    text-align: left;
+}
+
+.ant-input-number-input {
+    padding: 0;
+}
+
+.ant-input,
+.ant-input-number {
+    width: 100%;
+    padding: 0 !important;
+    border: none !important;
+    border-bottom: solid 1px #e6e8eb !important;
+    border-radius: 0 !important;
+    &:focus {
+        outline: none;
+        box-shadow: none !important;
     }
 }
 
@@ -67,6 +109,7 @@ button {
 .ant-progress-bg {
     border-radius: 2px !important;
 }
+
 .ant-table-thead>tr>th {
     background: none;
     span {
@@ -79,11 +122,11 @@ button {
         color: #697584;
     }
 }
+
 .ant-progress-inner {
-
     background-color: transparent !important;
-
 }
+
 .ant-table-tbody>tr>td {
     border-bottom: none;
 }

@@ -8,38 +8,76 @@ const list = [
         ticker: "S&P 500",
         name: `Standard and Poor's`,
         share: 2762.59,
+        pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: true
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
         share: 2762.59,
+        pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: false
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: false
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: true
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: true
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: true
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: false
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: true
+        }
     }, {
         ticker: "S&P 500",
         name: `Standard and Poor's`,
-        share: 2762.59,
+        share: 2762.59, pl: {
+            value: -11.16,
+            rate: 0.40,
+            isInscrease: false
+        }
     },
 ]
 class PositionList extends Component {
@@ -52,6 +90,15 @@ class PositionList extends Component {
                 </div>
                 <div className="item-share">
                     {item.share}
+                </div>
+                <div className="item-pl">
+                    <div >
+                        {item.pl.value}
+                    </div>
+                    <div style={{ color: item.pl.isInscrease ? "#70cc33" : "#e6395c" }} className="rate">
+                        <Icon type={item.pl.isInscrease ? "caret-up" : "caret-down"} />{item.pl.rate}%
+                    </div>
+
                 </div>
             </div>
         })
@@ -82,6 +129,7 @@ class PositionList extends Component {
                         <div className="list-header">
                             <div className="LabelDarkGreyLeft ticker">TICKER</div>
                             <div className="LabelDarkGreyLeft shares">SHARES</div>
+                            <div className="LabelDarkGreyLeft ticker">P/L</div>
                         </div>
 
                         <div className="list-body">
