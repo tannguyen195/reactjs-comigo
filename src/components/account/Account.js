@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 import { Menu, Icon, Button } from 'antd';
-import Profile from './Profile'
-import AccountUser from './AccountUser'
-import Banking from './Banking'
-import Notification from './Notification'
-import Friend from './Friend'
-import CloseAccount from './CloseAccount'
+import Profile from './profile/Profile'
+import AccountUser from './accountUser/AccountUser'
+import Banking from './banking/Banking'
+import Notification from './notification/Notification'
+import Friend from './friend/Friend'
+import CloseAccount from './closeAccount/CloseAccount'
+
+
 class Account extends Component {
     renderMenuContent() {
         const { contentKey, logout } = this.props
@@ -26,7 +28,7 @@ class Account extends Component {
                 return;
             case 'close':
                 return <CloseAccount />
-            default: return
+            default: return <Profile />
         }
 
     }

@@ -50,6 +50,7 @@ class MyApp extends App {
             }} />
 
             <Head
+            
             />
 
             {

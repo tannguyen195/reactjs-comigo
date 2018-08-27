@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import SignInModal from './SignInModal.jsx'
+import SignInModal from './SignInModal.js'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Form } from 'antd'
 import { toggleSignInModal } from '../../actions/toggleAction'
 import { signIn } from '../../api/authApi'
 import _signIn from './_signIn.less'
+
 class SignInModalContainer extends Component {
 	constructor(props) {
 		super(props)
