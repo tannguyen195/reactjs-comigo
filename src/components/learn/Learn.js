@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button } from 'antd';
 import ArticleCard from '../common/articleCard/ArticleCard'
 import { Link } from 'routes'
-const cover = 'static/images/cover.jpg'
+const cover = '/static/images/cover.jpg'
 
 const highlightArticles = [
     {

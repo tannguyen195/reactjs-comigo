@@ -8,9 +8,9 @@ import {
 
 } from 'react-share';
 
-const facebookIcon = 'static/images/icon-facebook-color.svg'
-const twitterIcon = 'static/images/icon-twitter-color.svg'
-const googleIcon = 'static/images/icon-google-color.svg'
+const facebookIcon = '/static/images/icon-facebook-color.svg'
+const twitterIcon = '/static/images/icon-twitter-color.svg'
+const googleIcon = '/static/images/icon-google-color.svg'
 
 const RadioGroup = Radio.Group;
 class Friend extends Component {

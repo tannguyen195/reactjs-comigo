@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Input, Button, Modal, Icon } from 'antd';
 
 const FormItem = Form.Item
-const IconEgg = 'static/images/icon.svg'
+const IconEgg = '/static/images/icon.svg'
 class SignInModal extends React.Component {
 
     render() {

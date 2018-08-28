@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Input, Row, Col, Select, Icon, Table } from 'antd'
 import _banking from './_banking.less'
 
-const creditCard = 'static/images/credit-card.svg'
-const optionIcon = 'static/images/icon-option.svg'
-const nextIcon = 'static/images/icon-next.svg'
-const backIcon = 'static/images/icon-back.svg'
+const creditCard = '/static/images/credit-card.svg'
+const optionIcon = '/static/images/icon-option.svg'
+const nextIcon = '/static/images/icon-next.svg'
+const backIcon = '/static/images/icon-back.svg'
 const tradeData =
     [
         {

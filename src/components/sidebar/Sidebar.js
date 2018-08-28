@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Icon, Dropdown, Menu, Layout } from 'antd';
-const appLogo = 'static/images/logo-app.svg'
-const accountIcon = 'static/images/icon-account.svg'
-const chartIcon = 'static/images/icon-chart.svg'
-const homeIcon = 'static/images/icon-home.svg'
-const learnIcon = 'static/images/icon-learn.svg'
+import { Icon, Menu, Layout } from 'antd';
+const appLogo = '/static/images/logo-app.svg'
+const accountIcon = '/static/images/icon-account.svg'
+const chartIcon = '/static/images/icon-chart.svg'
+const homeIcon = '/static/images/icon-home.svg'
+const learnIcon = '/static/images/icon-learn.svg'
 
-const appIcon = 'static/images/icon.svg'
+const appIcon = '/static/images/icon.svg'
 const { Header, Sider, Content } = Layout;
 class Sidebar extends Component {
 

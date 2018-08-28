@@ -4,7 +4,7 @@ import _today from './_today.less'
 import { LineChart, Line, } from 'recharts'
 import CountUp from 'react-countup';
 import ArticleCardHorizontal from '../../common/articleCardHorizontal/ArticleCardHorizontal'
-const cover = 'static/images/cover.jpg'
+const cover = '/static/images/cover.jpg'
 
 const chartData =
     [

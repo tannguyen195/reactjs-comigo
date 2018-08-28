@@ -18,6 +18,7 @@ class SidebarContainer extends Component {
         else
             Router.pushRoute("/" + e.key)
     }
+
     render() {
         return (
             <div>
@@ -26,6 +27,7 @@ class SidebarContainer extends Component {
                     {...this.state}
                     {...this.props}
                     handleChangeRoute={(e) => this.handleChangeRoute(e)}
+                  
                 />
 
             </div>

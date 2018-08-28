@@ -19,23 +19,8 @@ class Footer extends Component {
         return (
 
             <footer className="footer-container" >
-                  <div className="subcribe-container">
-                    <div className="subcribe-content">
-                        <h4 className="subcribe-title H4WhiteCenter">Stay Up to Date with My Nest Egg</h4>
-                        <div className="subcribe-desc Body2RegularWhiteCenter">{`Be the first to hear about market updates, personal finance tips
-             and My Nest Egg news.`}</div>
-                        <div className="subcribe-button">
-                            <Button type="primary" className="ButtonNormalWhiteCenter">SUBCRIBE</Button>
-
-                        </div>
-                    </div>
-                    <div className="subcribe-image">
-                        <img alt="cover" src={footerCover} />
-                    </div>
 
 
-                </div>
-               
                 <section className="footer-section">
                     <Row>
                         <Col md={6} lg={6} className="footer-item-block">
@@ -137,7 +122,7 @@ class Footer extends Component {
                     </section>
                 </section>
 
-             
+
             </footer >
 
         )

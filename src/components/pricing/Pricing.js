@@ -122,7 +122,7 @@ class Pricing extends Component {
     }
     renderQuestions(questions) {
         return questions.map((item, index) => {
-            return <div key={index} className="question-item">
+            return <div key={index} className="radio-container">
                 <div className="question-title H6BlackLeft">{item.title}</div>
                 <div className="question-desc BodyRegularGreyLeft">{item.answer}</div>
 

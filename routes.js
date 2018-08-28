@@ -6,3 +6,6 @@ routes
     .add('performance')
     .add('pricing')
     .add('account')
+    .add('signUp')
+
+    .add('learnDetail','/learn/:id', 'learnDetail')

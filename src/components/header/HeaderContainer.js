@@ -4,14 +4,12 @@ import { bindActionCreators } from 'redux'
 import Header from './Header'
 
 import {
-    toggleShareModal,
-    toggleAnnounceModal,
     toggleSignInModal,
-    toggleSignUpModal,
-    toggleForgotModal,
 } from '../../actions/toggleAction'
+
 import SignInModalContainer from '../signIn/SignInModalContainer'
 import _header from './_header.less'
+import { withRouter } from "next/router"
 
 class HeaderContainer extends Component {
 
@@ -24,16 +22,22 @@ class HeaderContainer extends Component {
     }
 
     render() {
+        const {
+            router
+        } = this.props
         return (
-            <div>
-                <style dangerouslySetInnerHTML={{ __html: _header }} />
-                <Header
-                    {...this.state}
-                    {...this.props}
+            router.pathname.includes("/signUp")
+                ?
+                <div /> :
+                <div>
+                    <style dangerouslySetInnerHTML={{ __html: _header }} />
+                    <Header
+                        {...this.state}
+                        {...this.props}
 
-                />
-                <SignInModalContainer />
-            </div>
+                    />
+                    <SignInModalContainer />
+                </div>
         )
     }
 }
@@ -46,4 +50,4 @@ export function mapDispatchToProps(dispatch) {
         toggleSignInModal
     }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderContainer));

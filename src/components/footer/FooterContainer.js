@@ -15,7 +15,10 @@ class FooterContainer extends Component {
         const { router } = this.props
 
         return (
-
+            router.pathname.includes("/learn")
+                || router.pathname.includes("/signUp")
+                ?
+                <div /> :
                 <div>
                     <style dangerouslySetInnerHTML={{ __html: _footer }} />
                     <Footer {...this.state} {...this.props} >
@@ -33,7 +36,7 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        
+
     }, dispatch)
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FooterContainer));

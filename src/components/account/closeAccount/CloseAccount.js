@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import _closeAccount from './_closeAccount.less'
 import { Button, Input } from 'antd'
-const infoIcon = 'static/images/icon-info.svg'
+const infoIcon = '/static/images/icon-info.svg'
 class CloseAccount extends Component {
 
     render() {

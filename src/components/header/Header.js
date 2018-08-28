@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive'
 
 import moment from 'moment'
 
-import { Link } from 'routes'
+import { Link, Router } from 'routes'
 
 const appLogo = '/static/images/logo-app.svg'
 class Header extends Component {
@@ -53,7 +53,9 @@ class Header extends Component {
                             <Button onClick={toggleSignInModal} className="ButtonSmallBlackCenter">SIGN IN</Button>
                         </div>
                         <div className="sign-up-button ">
-                            <Button className="ButtonSmallWhiteCenter" type="primary">JOHN NOW</Button>
+                            <Button onClick={() => {
+                                Router.push('/signUp')
+                            }} className="ButtonSmallWhiteCenter" type="primary">JOIN NOW</Button>
                         </div>
 
 
