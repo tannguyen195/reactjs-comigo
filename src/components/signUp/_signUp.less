@@ -1,6 +1,10 @@
 .sign-up-container {
     padding: 16px 32px;
     .sign-up-header {
+        display: flex;
+        a {
+            position: absolute;
+        }
         img {
             width: 40px;
             height: 40px;
@@ -9,6 +13,25 @@
         .step-container {
             max-width: 720px;
             margin: 0 auto;
+        }
+        .signup-step-bar {
+            flex: 1;
+            .step-bar {
+                margin: 0 auto;
+                width: 720px;
+                height: 4px;
+                background-color: rgba(5, 26, 51, 0.1);
+            }
+            .active-step {
+                height: 4px;
+                background-color: #1774e6;
+                position: relative;
+                .step-stage {
+                    position: absolute;
+                    top: 8px;
+                    right: -17px;
+                }
+            }
         }
     }
     .sign-up-body {
@@ -79,6 +102,13 @@
             padding-top: 56px;
             padding-bottom: 80px;
             .citizen-button {
+                .ant-btn:focus {
+                    color: #3f96f2;
+                    border-width: 2px;
+                }
+                img {
+                    margin-bottom: 24px;
+                }
                 button {
                     width: 228px;
                     height: 200px;

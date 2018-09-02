@@ -12,3 +12,15 @@ export function logout() {
         type: types.LOG_OUT
     }
 }
+
+export function nextStep() {
+    return {
+        type: types.NEXT_STEP
+    }
+}
+
+export function previousStep() {
+    return {
+        type: types.PREVIOUS_STEP
+    }
+}

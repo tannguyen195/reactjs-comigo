@@ -50,6 +50,16 @@ class SignUp extends React.Component {
                             <img alt="egg" src={appIcon} />
                         </a>
                     </Link>
+                    <div className="signup-step-bar">
+                        <div className="step-bar">
+                            <div style={{ width: (step * 60).toString() + "px" }} className="active-step" >
+
+                                <div className="LabelBlackCenter step-stage">{step}/12</div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
                 <div className="sign-up-body">

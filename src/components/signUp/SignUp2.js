@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'routes'
-import { Row, Col, Input, Button } from 'antd'
-import SuccessCheck from '../common/successCheck/SuccessCheck'
+import { Row, Col, Input, Button, Checkbox } from 'antd'
 const backIcon = '/static/images/icon-back-grey.svg'
+const usCitizen = '/static/images/us-citizen.svg'
+const greenCard = 'static/images/green-card.svg'
 export default class extends React.Component {
     constructor(props) {
         super(props)
@@ -10,10 +11,9 @@ export default class extends React.Component {
             isUS: false
         }
     }
-
-    onCitizenChange() {
+    onCitizenChange(e) {
         this.setState({
-            isUS: !this.state.isUS
+            isUS: e
         })
     }
     render() {
@@ -33,20 +33,33 @@ export default class extends React.Component {
                     <Row gutter={24} className="citizen-button">
                         <Col lg={12} md={12}>
 
-                            <Button onClick={() => this.onCitizenChange()} >
+                            <Button onClick={() => this.onCitizenChange(true)} >
+                                <img src={usCitizen} alt="us" />
                                 <div className="H6BlackCenter">
 
                                     US Citizen
                                 </div>
                             </Button>
-                            <SuccessCheck checked={!isUS} />
+                            {
+                                isUS && <div className="checkbox">
+                                    <Checkbox checked={isUS} ></Checkbox>
+                                </div>
+                            }
+
                         </Col>
                         <Col lg={12} md={12}>
-                            <Button onClick={() => this.onCitizenChange()}>
+                            <Button onClick={() => this.onCitizenChange(false)}>
+                                <img src={greenCard} alt="green" />
                                 <div className="H6BlackCenter">
                                     Green Card Holder
                                 </div>
                             </Button>
+                            {
+                                !isUS && <div className="checkbox">
+                                    <Checkbox checked={!isUS} ></Checkbox>
+                                </div>
+                            }
+
                         </Col>
                     </Row>
 

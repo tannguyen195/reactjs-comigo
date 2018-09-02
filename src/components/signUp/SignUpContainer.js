@@ -3,14 +3,15 @@ import SignUp from './SignUp.js'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Form } from 'antd'
-
+import { toggleSignInModal } from '../../actions/toggleAction'
+import { nextStep, previousStep } from '../../actions/authAction'
+import SignInModalContainer from '../signIn/SignInModalContainer'
 import _signUp from './_signUp.less'
 
 class SignUpContainer extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			step: 1,
 			visibleConfirm: false,
 			visibleSignature: false,
 		}
@@ -26,15 +27,11 @@ class SignUpContainer extends Component {
 		})
 	}
 	onNextStep() {
-		this.setState({
-			step: this.state.step + 1
-		})
+		this.props.nextStep()
 	}
 
 	onPreviousStep() {
-		this.setState({
-			step: this.state.step - 1
-		})
+		this.props.previousStep()
 	}
 
 	render() {
@@ -51,6 +48,7 @@ class SignUpContainer extends Component {
 					toggleConfirmModal={() => { this.toggleConfirmModal() }}
 					toggleSignatureModal={() => { this.toggleSignatureModal() }}
 				/>
+				<SignInModalContainer />
 			</div>
 
 		)
@@ -60,12 +58,14 @@ class SignUpContainer extends Component {
 
 export function mapStateToProps(state) {
 	return {
-
+		step: state.authReducer.step
 	};
 }
 export function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
-
+		nextStep,
+		previousStep,
+		toggleSignInModal
 	}, dispatch)
 }
 

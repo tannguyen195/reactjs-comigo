@@ -2,7 +2,8 @@ import * as types from '../actions/types';
 
 
 const initial = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    step: 1
 }
 const authReducer = (state = initial, action) => {
     switch (action.type) {
@@ -10,6 +11,18 @@ const authReducer = (state = initial, action) => {
 
             return {
                 isLoggedIn: true
+            };
+
+        case types.NEXT_STEP:
+            return {
+                ...state,
+                step: state.step + 1
+            };
+
+        case types.PREVIOUS_STEP:
+            return {
+                ...state,
+                step: state.step - 1
             };
         default:
             return state;

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'routes'
-import { Row, Col, Input, Button } from 'antd'
+import { Row, Col, Input, Button } from 'antd'  
 
 export default class extends React.Component {
 
     render() {
         const {
             step,
-            onNextStep
+            onNextStep,
+            toggleSignInModal
         } = this.props
         return (
             <div className="sign-up-content">
@@ -36,7 +37,7 @@ export default class extends React.Component {
                     </div>
 
                     <div className="button-group">
-                        <Button className="sign-in ButtonNormalBlueCenter">SIGN IN</Button>
+                        <Button onClick={toggleSignInModal} className="sign-in ButtonNormalBlueCenter">SIGN IN</Button>
                         <Button onClick={onNextStep} type="primary" className="continue ButtonNormalWhiteCenter">CONTINUE</Button>
                     </div>
                 </div>

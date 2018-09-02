@@ -15,18 +15,23 @@ body {
 button {
     border-radius: 32px !important;
 }
+
 .paddingTop8 {
     padding-top: 8px !important;
 }
+
 .paddingTop16 {
     padding-top: 16px !important;
 }
+
 .paddingBottom16 {
     padding-bottom: 16px !important;
 }
+
 .paddingTop20 {
     padding-top: 20px !important;
 }
+
 .paddingBottom20 {
     padding-bottom: 20px !important;
 }
@@ -34,9 +39,11 @@ button {
 .paddingTop40 {
     padding-top: 40px !important;
 }
+
 .paddingTop24 {
     padding-top: 24px !important;
 }
+
 .paddingBottom24 {
     padding-bottom: 24px !important;
 }
@@ -44,12 +51,15 @@ button {
 .paddingBottom56 {
     padding-bottom: 56px !important;
 }
-.paddingRight12{
+
+.paddingRight12 {
     padding-right: 12px !important;
 }
-.paddingLeft12{
+
+.paddingLeft12 {
     padding-left: 12px !important;
 }
+
 .main-wrapper {
     background: #fff;
     width: 100%;
@@ -163,4 +173,23 @@ button {
 
 .ant-table-tbody>tr>td {
     border-bottom: none;
+}
+
+.checkbox {
+    .ant-checkbox-wrapper {
+        position: absolute;
+        right: 1px;
+        top: -11px;
+        .ant-checkbox-inner {
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            &:after {
+                left: 8px;
+                top: 4.142857px;
+                width: 6.714286px;
+                height: 10.142857px;
+            }
+        }
+    }
 }
