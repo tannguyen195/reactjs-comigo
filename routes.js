@@ -9,4 +9,4 @@ routes
     .add('signUp')
 
     .add('learnDetail', '/learn/:id', 'learnDetail')
-    .add('tickerDetail', '/ticker/:id', 'tickerDetail')
+    .add('tickerDetail', '/:id', 'tickerDetail')

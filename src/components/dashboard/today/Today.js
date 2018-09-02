@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Button, } from 'antd';
 import _today from './_today.less'
 import { LineChart, Line, } from 'recharts'
+import { Link } from 'routes'
 import CountUp from 'react-countup';
 import ArticleCardHorizontal from '../../common/articleCardHorizontal/ArticleCardHorizontal'
 const cover = '/static/images/cover.jpg'
@@ -92,10 +93,11 @@ class Today extends Component {
     renderBenchmark(indexs) {
         return indexs.map((item, index) => {
             return <div key={index} className="benchmark-item">
-                <div className="ticker ButtonNormalBlueLeft">
-                    {item.ticker}
-                </div>
-
+                <Link to="/ticker">
+                    <a className="ticker ButtonNormalBlueLeft">
+                        {item.ticker}
+                    </a>
+                </Link>
                 <div className="SubHeadingBlackLeft">
                     {item.value}
                 </div>

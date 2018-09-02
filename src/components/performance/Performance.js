@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Tabs, Progress, Table,  } from 'antd';
+import { Row, Col, Button, Tabs, Progress, Table, } from 'antd';
 import { LineChart, Line, } from 'recharts'
-
+import { Router } from 'routes'
 const askIcon = 'static/images/icon-ask.svg'
 const TabPane = Tabs.TabPane;
 
@@ -108,7 +108,9 @@ class Performance extends Component {
             title: 'Ticker',
             dataIndex: 'ticker',
             key: 'ticker',
-            render: text => <div className="ButtonNormalBlackLeft">{text}</div>,
+            render: text => <div onClick={() => {
+                Router.push('/ticker')
+            }} className="ButtonNormalBlackLeft">{text}</div>,
         }, {
             title: 'Company',
             dataIndex: 'company',
@@ -117,7 +119,7 @@ class Performance extends Component {
             title: 'Open Date',
             dataIndex: 'openDate',
             key: 'opendate',
-            render: (text, record) => { 
+            render: (text, record) => {
                 return (
                     <div className="date-list">
                         <div className="CaptionRegularDarkGreyRight">
