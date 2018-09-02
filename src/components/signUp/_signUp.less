@@ -12,9 +12,69 @@
         }
     }
     .sign-up-body {
-        max-width: 480px;
-        margin: 0 auto;
         padding-top: 80px;
+        .sign-up-content {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .signature-container {
+            padding-top: 56px;
+            .signature-button {
+                padding-top: 16px;
+                button {
+                    width: 280px;
+                    height: 56px;
+                }
+            }
+        }
+        .sign-up-11-container {
+            padding-bottom: 40px;
+            .sign-up-11-content {
+                max-width: 640px;
+                margin: 0 auto;
+            }
+            .plan-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding-top: 40px;
+                .plan-item-container {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 456px;
+                    .plan-price-num {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-end;
+                        padding-top: 24px;
+                        font-size: 40px;
+                        font-weight: normal;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: 1.2;
+                        letter-spacing: normal;
+                        text-align: center;
+                        color: #051a33;
+                        .symbol {
+                            margin-bottom: 20px;
+                        }
+                        .mo {
+                            margin-bottom: 4px;
+                        }
+                    }
+                    .options-container {
+                        padding-top: 40px;
+                        img {
+                            margin-right: 12px;
+                        }
+                        .option-item {
+                            display: flex;
+                            align-items: center;
+                            padding-bottom: 16px;
+                        }
+                    }
+                }
+            }
+        }
         .sign-up-wrapper {
             padding-top: 56px;
             padding-bottom: 80px;
@@ -43,7 +103,6 @@
                 flex-direction: column;
             }
         }
-        
         .question-desc {
             padding: 8px 0;
         }
@@ -75,5 +134,51 @@
                 height: 56px;
             }
         }
+    }
+}
+
+.confirm-container {
+    padding-top: 64px;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px;
+    .button-agree {
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-around;
+        button {
+            width: 160px;
+            height: 56px;
+        }
+    }
+}
+
+.signature-container {
+    padding-top: 64px;
+    max-width: 400px;
+    margin: 0 auto;
+    .ant-tabs-nav-wrap {
+        text-align: center;
+    }
+    .button-apply {
+        text-align: center;
+        padding-top: 40px;
+        button {
+            width: 196px;
+            height: 56px;
+        }
+    }
+    .draw-container {
+        padding-top: 56px;
+        .signature-pad {
+            margin-top: 24px;
+            border-radius: 4px;
+            background-color: #ffffff;
+            border: solid 1px #e6e8eb;
+            .sigCanvas {}
+        }
+    }
+    .upload-container {
+        padding-top: 56px;
     }
 }

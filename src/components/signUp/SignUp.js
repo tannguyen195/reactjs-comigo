@@ -32,7 +32,7 @@ class SignUp extends React.Component {
             case 10: return <SignUp10 {...this.props} />;
             case 11: return <SignUp11 {...this.props} />;
             case 12: return <SignUp12 {...this.props} />;
-            default: return <SignUp1 {...this.props} />
+            default: return <SignUp1 {...this.props} />;
         }
     }
     render() {

@@ -10,10 +10,21 @@ class SignUpContainer extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			step: 9
+			step: 1,
+			visibleConfirm: false,
+			visibleSignature: false,
 		}
 	}
-
+	toggleConfirmModal() {
+		this.setState({
+			visibleConfirm: !this.state.visibleConfirm
+		})
+	}
+	toggleSignatureModal() {
+		this.setState({
+			visibleSignature: !this.state.visibleSignature
+		})
+	}
 	onNextStep() {
 		this.setState({
 			step: this.state.step + 1
@@ -37,6 +48,8 @@ class SignUpContainer extends Component {
 					{...this.props}
 					onNextStep={() => { this.onNextStep() }}
 					onPreviousStep={() => { this.onPreviousStep() }}
+					toggleConfirmModal={() => { this.toggleConfirmModal() }}
+					toggleSignatureModal={() => { this.toggleSignatureModal() }}
 				/>
 			</div>
 
