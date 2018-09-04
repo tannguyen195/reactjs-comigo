@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Footer from './Footer'
-
 import { withRouter } from "next/router"
 import _footer from './_footer.less'
 class FooterContainer extends Component {
@@ -12,19 +11,15 @@ class FooterContainer extends Component {
 
     }
     render() {
-        const { router } = this.props
 
         return (
-            router.pathname.includes("/learn")
-                || router.pathname.includes("/signUp")
-                ?
-                <div /> :
-                <div>
-                    <style dangerouslySetInnerHTML={{ __html: _footer }} />
-                    <Footer {...this.state} {...this.props} >
 
-                    </Footer>
-                </div>
+            <div>
+                <style  dangerouslySetInnerHTML={{ __html: _footer }} />
+                <Footer {...this.state} {...this.props} >
+
+                </Footer>
+            </div>
 
         )
     }

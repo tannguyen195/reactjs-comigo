@@ -13,14 +13,3 @@ export function logout() {
     }
 }
 
-export function nextStep() {
-    return {
-        type: types.NEXT_STEP
-    }
-}
-
-export function previousStep() {
-    return {
-        type: types.PREVIOUS_STEP
-    }
-}

@@ -7,12 +7,9 @@ import Head from '../src/components/head'
 import HeaderContainer from '../src/components/header/HeaderContainer'
 import FooterContainer from '../src/components/footer/FooterContainer'
 
-import SidebarContainer from '../src/components/sidebar/SidebarContainer'
-
 import stylesheet from '../src/styles/index.less'
 import { Cookies } from 'react-cookie'
 import { signInSuccess } from '../src/actions/authAction'
-import ScreenLoading from '../src/components/common/screenLoading/ScreenLoading'
 const cookies = new Cookies()
 
 class MyApp extends App {
@@ -34,12 +31,10 @@ class MyApp extends App {
     this.setState({
       isLoggedIn
     })
-
   }
+
   render() {
     const { Component, pageProps, reduxStore } = this.props
-
-    const { isLoggedIn } = this.state
 
     return (
       <Container>
@@ -49,28 +44,15 @@ class MyApp extends App {
               __html: stylesheet
             }} />
 
-            <Head
-            
-            />
-
-            {
-              isLoggedIn === true &&
-              <div style={{ display: 'flex' }}>
-                <SidebarContainer />
-                <Component  {...pageProps} />
-              </div>
-            }
-            {
-              isLoggedIn === false &&
-              <div>
-                <HeaderContainer {...pageProps} />
+            <Head />
+            <div className="page-container">
+              <HeaderContainer {...pageProps} />
+              <div className="body-content">
                 <Component {...pageProps} />
-                <FooterContainer {...pageProps} />
               </div>
-            }
-            {
-              isLoggedIn === null && <ScreenLoading />
-            }
+
+              <FooterContainer {...pageProps} />
+            </div>
           </div>
         </Provider>
       </Container>
