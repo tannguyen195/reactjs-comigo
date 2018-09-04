@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'antd';
+import { Row, Col, Button, Slider, Switch } from 'antd';
 
 import { Link } from 'routes'
-import {  AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts'
+import { AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts'
+
 const mainImage = 'static/images/image-main.png'
+const benefitImage = 'static/images/image-benefit.png'
+const responsibilityImage = 'static/images/image-responsibility.png'
+const transparencyImage = 'static/images/image-transparency.png'
+const advisorImage = 'static/images/image-advisor.png'
 const data = [
     { name: 'Today', uv: 0, pv: 0 },
     { name: '30 years', uv: 10000, pv: 20000 },
@@ -11,21 +16,21 @@ const data = [
 ];
 const protects = [
     {
-        image: mainImage,
+        image: responsibilityImage,
         content: `Our team has a fiduciary
         responsibility to only act in the best 
         interest of its clients`,
 
     },
     {
-        image: mainImage,
+        image: benefitImage,
         content: `There are no hidden fees or shady ways 
         of making money, which means no 
         conflicts of interest`,
 
     },
     {
-        image: mainImage,
+        image: transparencyImage,
         content: `Full transparency gives clients a window into our office, so that they always stay 
         informed`,
 
@@ -76,26 +81,24 @@ to Invest`}
                 <div className="home-body">
                     <div className="home-section-1-container ">
                         <section className="home-section-1">
-                            <Row>
-                                <Col lg={10} md={10} className="section-image">
-                                    <img alt="holder" src={mainImage} />
+                            <Row gutter={100} type="flex" align="middle">
+                                <Col lg={12} md={12} className="section-image">
+                                    <img alt="holder" src={advisorImage} />
                                 </Col>
-                                <Col lg={14} md={14}>
+                                <Col lg={12} md={12}>
                                     <h3 className="H4BlackLeft title">
                                         {`Premium wealth management
                                 for everyone`}
                                     </h3>
                                     <div className="Body2RegularDarkGreyLeft desc">
-                                        {`Previously only available to the wealthy, we offer the service to those with a 
-                                substantial amount saved, but just not enough to qualify for private wealth 
-                                management.`}
+                                        {`Previously only available to the wealthy, we offer the service to those with a substantial amount saved, but just not enough to qualify for private wealth management.`}
                                     </div>
                                 </Col>
                             </Row>
                         </section>
 
                         <section className="home-section-1">
-                            <Row>
+                            <Row gutter={100} type="flex" align="middle">
                                 <Col lg={14} md={14}>
                                     <h3 className="H4BlackLeft title">
                                         {`Augmented Advisor`}
@@ -115,7 +118,7 @@ to Invest`}
                                     </div>
                                 </Col>
                                 <Col lg={10} md={10} className="section-image">
-                                    <img alt="holder" src={mainImage} />
+                                    <img alt="holder" src={advisorImage} />
 
                                 </Col>
                             </Row>
@@ -125,7 +128,23 @@ to Invest`}
                         <h3 className='section-title H4BlackLeft'>Plan ahead</h3>
                         <div className="section-desc Body2RegularDarkGreyCenter">{`Our future screen helps you understand what you need to invest 
                         now to have that plush retirement we are all working towards. `}</div>
+
                         <div className="chart-container">
+
+                            <div className="slider-container">
+                                <div className="slide-item">
+                                    <div className="LabelGreyLeft">Starting amount</div>
+                                    <div className="amount H6BlackLeft">$10,000</div>
+                                    <Slider defaultValue={30} />
+                                </div>
+                                <div className="slide-item">
+                                    <div className="LabelGreyLeft">Monthly deposit</div>
+                                    <div className="amount H6BlackLeft">$10,000</div>
+                                    <Slider defaultValue={30} />
+                                </div>
+
+                               
+                            </div>
                             <AreaChart width={880} height={344} data={data}
                                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
 

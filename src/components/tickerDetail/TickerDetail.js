@@ -28,6 +28,7 @@ const data = [
     { name: '17/8', uv: 2390, pv: 3800, amt: 2500 },
     { name: '18/8', uv: 3490, pv: 4300, amt: 2100 },
 ];
+
 const lastestArticles = [
     {
         image: cover,
@@ -45,6 +46,13 @@ const lastestArticles = [
     },
 
 ]
+
+const CustomizedDot = (props) => {
+
+    return <div className="last-dot">asdas</div>
+}
+
+
 class TickerDetail extends Component {
     renderLearn(lastestArticles) {
         return lastestArticles.map((item, index) => {
@@ -58,7 +66,8 @@ class TickerDetail extends Component {
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
 
             <Tooltip />
-            <Line dot={false} type="linear" dataKey="pv" stroke="#1774e6"
+            <Line dot={<CustomizedDot />}
+                type="linear" dataKey="pv" stroke="#1774e6"
                 strokeWidth={2} />
         </LineChart>
     }
