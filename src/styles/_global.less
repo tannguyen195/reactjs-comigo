@@ -13,11 +13,99 @@ body {
     padding: 0;
 }
 
+.max-width {
+    max-width: 730px;
+    margin: 0 auto;
+}
+
+.background {
+    background-color: #e6e6e6;
+}
+
 .page-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     .body-content {
         flex: 1;
+        background-color: #f5f5f5;
     }
+}
+
+.ant-btn-primary {
+    color: #2e3033
+}
+
+.ant-input {
+    height: 60px;
+}
+
+.marginBottom32 {
+    margin-bottom: 32px;
+}
+
+.marginBottom24 {
+    margin-bottom: 24px;
+}
+
+.marginBottom0 {
+    margin-bottom: 0;
+}
+
+.paddingBottom32 {
+    padding-bottom: 32px;
+}
+
+.paddingBottom16 {
+    padding-bottom: 16px;
+}
+
+.paddingBottom40 {
+    padding-bottom: 40px;
+}
+
+.label-form {
+    height: 28px;
+    position: absolute;
+    z-index: 2;
+    top: -42px;
+    left: 8px;
+    background: #fff;
+    padding: 0 4px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+textarea {
+    min-height: 80px !important;
+}
+
+input[type="text"] {
+    font-size: 18px;
+}
+
+.ant-card-bordered {
+    border: 1px solid #e6e6e6;
+}
+
+.ant-card {
+    border-radius: 8px;
+    .ant-card-body {
+        padding: 48px;
+    }
+}
+
+.ant-tag {
+    padding: 4px 8px;
+    font-size: 10px;
+    height: inherit;
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/profile</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,9 C5.8,9 4,7.2 4,5 L4,4 C4,1.8 5.8,0 8,0 C10.2,0 12,1.8 12,4 L12,5 C12,7.2 10.2,9 8,9 Z M10,11 C12.8,11 15,13.2 15,16 L1,16 C1,13.2 3.2,11 6,11 L10,11 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/profile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#e6e6e6" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#e6e6e6">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

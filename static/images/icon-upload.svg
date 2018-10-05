@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/upload</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7.5125,4.7625 C7.8625,4.4125 8.3875,4.4125 8.7375,4.7625 L13.1125,9.1375 C13.4507744,9.47577441 13.4507744,10.0242256 13.1125,10.3625 C12.7742256,10.7007744 12.2257744,10.7007744 11.8875,10.3625 L9,7.475 L9,14.125 C9,14.6082492 8.60824916,15 8.125,15 C7.64175084,15 7.25,14.6082492 7.25,14.125 L7.25,7.475 L4.3625,10.3625 C4.02422559,10.7007744 3.47577441,10.7007744 3.1375,10.3625 C2.79922559,10.0242256 2.79922559,9.47577441 3.1375,9.1375 L7.5125,4.7625 Z M2.875,1 L13.375,1 C13.8582492,1 14.25,1.39175084 14.25,1.875 C14.25,2.35824916 13.8582492,2.75 13.375,2.75 L2.875,2.75 C2.39175084,2.75 2,2.35824916 2,1.875 C2,1.39175084 2.39175084,1 2.875,1 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/upload" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

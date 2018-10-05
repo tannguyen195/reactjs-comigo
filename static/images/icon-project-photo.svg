@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/project-photo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M15,0 L1,0 C0.4,0 0,0.4 0,1 L0,15 C0,15.6 0.4,16 1,16 L15,16 C15.6,16 16,15.6 16,15 L16,1 C16,0.4 15.6,0 15,0 Z M6,4 C6.6,4 7,4.4 7,5 C7,5.6 6.6,6 6,6 C5.4,6 5,5.6 5,5 C5,4.4 5.4,4 6,4 Z M3,12 L5,8 L7,10 L10,6 L13,12 L3,12 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/project-photo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#edf0f2" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#edf0f2">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

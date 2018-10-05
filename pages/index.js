@@ -1,5 +1,5 @@
 
-import HomeContainer from '../src/components/home/HomeContainer'
+import FeatureContainer from '../src/components/feature/FeatureContainer'
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -10,7 +10,7 @@ class MainPage extends Component {
 
     render() {
         return (
-            <HomeContainer />
+            <FeatureContainer />
         )
     }
 }

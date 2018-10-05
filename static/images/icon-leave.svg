@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/leave</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,0 L16,0 L16,16 L12,16 L12,0 Z M6.4,4 L3.4,7 L10,7 L10,9 L3.4,9 L6.4,12 L5,13.4 L0.3,8.7 C-0.1,8.3 -0.1,7.7 0.3,7.3 L5,2.6 L6.4,4 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/leave" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

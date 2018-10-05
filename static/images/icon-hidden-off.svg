@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/hidden-off</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7.975,14 C11.575,14 14.375,10.9 15.575,9.1 C16.075,8.4 16.075,7.5 15.575,6.8 C14.375,5.1 11.575,2 7.975,2 C4.375,2 1.575,5.1 0.375,6.9 C-0.125,7.6 -0.125,8.5 0.375,9.1 C1.575,10.9 4.375,14 7.975,14 Z M7.975,5 C9.675,5 10.975,6.3 10.975,8 C10.975,9.7 9.675,11 7.975,11 C6.275,11 4.975,9.7 4.975,8 C4.975,6.3 6.275,5 7.975,5 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/hidden-off" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

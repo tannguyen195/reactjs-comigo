@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/star-off</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,12.7147343 L11.656112,14.0322065 L11.5329222,10.147916 L13.9157135,7.07786815 L10.183466,5.99471685 L8,2.77985068 L5.81653398,5.99471685 L2.08428646,7.07786815 L4.46707777,10.147916 L4.34388796,14.0322065 L8,12.7147343 Z M8,13.7776786 L3.29771798,15.472136 L3.45615766,10.4763839 L0.39154787,6.52786405 L5.191751,5.13477684 L8,1 L10.808249,5.13477684 L15.6084521,6.52786405 L12.5438423,10.4763839 L12.702282,15.472136 L8,13.7776786 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/star-off" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Star" fill="#979797" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

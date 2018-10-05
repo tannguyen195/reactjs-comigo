@@ -18,8 +18,9 @@ module.exports = {
             loader: 'less-loader',
             options: {
               modifyVars: {
-                "@primary-color": "#1774e6",
-                "@font-family": "AvenirNextLTPro",
+                "@primary-color": "#ffdf49",
+                "@font-family": "'Roboto', sans-serif",
+              
               },
             }
           }],
@@ -55,7 +56,7 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
           loader: 'file-loader',
-         
+
         }]
       }
 

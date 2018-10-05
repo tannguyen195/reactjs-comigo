@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/drop-down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8.61504916,11.67975 L13.8650492,5.17975 C14.0255492,4.951 14.0435492,4.65175 13.9160492,4.4035 C13.7862992,4.15525 13.5305492,4 13.2507992,4 L2.74929916,4 C2.46954916,4 2.21379916,4.15525 2.08404916,4.4035 C1.95654916,4.65175 1.97454916,4.951 2.13504916,5.17975 L7.38504916,11.67975 C7.52529916,11.88075 7.75479916,12 7.99929916,12 C8.24529916,12 8.47479916,11.88075 8.61504916,11.67975 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/drop-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

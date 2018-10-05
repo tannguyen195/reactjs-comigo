@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 
 import Head from '../src/components/head'
 import HeaderContainer from '../src/components/header/HeaderContainer'
-import FooterContainer from '../src/components/footer/FooterContainer'
 
 import stylesheet from '../src/styles/index.less'
 import { Cookies } from 'react-cookie'
@@ -48,10 +47,11 @@ class MyApp extends App {
             <div className="page-container">
               <HeaderContainer {...pageProps} />
               <div className="body-content">
-                <Component {...pageProps} />
-              </div>
+                <div className="max-width">
+                  <Component {...pageProps} />
+                </div>
 
-              <FooterContainer {...pageProps} />
+              </div>
             </div>
           </div>
         </Provider>

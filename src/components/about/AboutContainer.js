@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Head from '../head'
-import Home from './Home'
-import _home from './_home.less'
+import About from './About'
+import _about from './_about.less'
 
 
-class HomeContainer extends Component {
+class AboutContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -19,10 +19,10 @@ class HomeContainer extends Component {
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
-                    __html: _home
+                    __html: _about
                 }} />
-                <Head title="Home page"/>
-                <Home
+                <Head title="Home page" />
+                <About
                     {...this.state}
                     {...this.props}
 
@@ -40,4 +40,4 @@ export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
     }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AboutContainer);

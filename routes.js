@@ -1,4 +1,7 @@
 const routes = module.exports = require('next-routes')()
 
 routes
-    .add('home')
+    .add('features')
+    .add('about')
+    .add('login')
+    .add('signUp')

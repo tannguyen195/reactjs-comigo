@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/media/play</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M14,7.99906555 C14,7.67306555 13.841,7.36706555 13.573,7.18006555 L3.573,0.180065548 C3.269,-0.0339344525 2.869,-0.0579344525 2.538,0.112065548 C2.207,0.285065548 2,0.626065548 2,0.999065548 L2,15.0000655 C2,15.3730655 2.207,15.7150655 2.538,15.8870655 C2.869,16.0570655 3.268,16.0330655 3.573,15.8190655 L13.573,8.81906555 C13.841,8.63306555 14,8.32706555 14,8.00106555 C14,8.00006555 14,8.00006555 14,7.99906555 C14,8.00006555 14,8.00006555 14,7.99906555 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/media/play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

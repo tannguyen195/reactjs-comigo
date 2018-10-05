@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/check-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1.69497475,8.49497475 L1.69497475,8.49497475 C1.30560005,8.88434944 1.30560005,9.51565056 1.69497475,9.90502525 L5.6,13.8100505 L14.3050253,5.10502525 C14.6943999,4.71565056 14.6943999,4.08434944 14.3050253,3.69497475 L14.3050253,3.69497475 C13.9156506,3.30560005 13.2843494,3.30560005 12.8949747,3.69497475 L5.6,10.9899495 L3.10502525,8.49497475 C2.71565056,8.10560005 2.08434944,8.10560005 1.69497475,8.49497475 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/check-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#262626" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/add-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8,1 L8,1 C7.44771525,1 7,1.44771525 7,2 L7,7 L2,7 C1.44771525,7 1,7.44771525 1,8 L1,8 C1,8.55228475 1.44771525,9 2,9 L7,9 L7,14 C7,14.5522847 7.44771525,15 8,15 L8,15 C8.55228475,15 9,14.5522847 9,14 L9,9 L14,9 C14.5522847,9 15,8.55228475 15,8 L15,8 C15,7.44771525 14.5522847,7 14,7 L9,7 L9,2 C9,1.44771525 8.55228475,1 8,1 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/add-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#262626" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>
