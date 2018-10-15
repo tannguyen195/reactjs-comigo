@@ -5,16 +5,14 @@ export default class extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { handleSubmit } = this.props
+        const { handleSubmit, compareToFirstPassword, handleConfirmBlur, status, message } = this.props
         return (
             <div className="sign-up-container">
                 <div className="sign-up-title Headline-1CenterBlack-Style">
                     Create an Account
             </div>
                 <div className="sign-up-body">
-                    <Card>
-
-
+                    <Card bordered={false}>
                         <Form onSubmit={handleSubmit}>
                             <Row gutter={16}>
                                 <Col md={12} lg={12}>
@@ -26,7 +24,7 @@ export default class extends Component {
                                             <Input />
                                         )}
                                     </FormItem>
-                                </Col>
+                                </Col>  
                                 <Col md={12} lg={12}>
                                     <FormItem >
                                         <div className="label-form">Last Name</div>
@@ -38,7 +36,12 @@ export default class extends Component {
                                     </FormItem>
                                 </Col>
                             </Row>
-                            <FormItem className="marginBottom32" >
+                            <FormItem
+                                className="marginBottom32"
+                                hasFeedback
+                                validateStatus={status === "error" ? "error" : "" }
+                                help={status === "error" && message}
+                            >
                                 <div className="label-form">Email</div>
                                 {getFieldDecorator('email', {
                                     rules: [{
@@ -47,10 +50,10 @@ export default class extends Component {
                                         message: 'Please input your E-mail!',
                                     }],
                                 })(
-                                    <Input />
+                                    <Input id="error" />
                                 )}
                             </FormItem>
-                            <FormItem className="marginBottom24">
+                            <FormItem className="marginBottom32">
                                 <div className="label-form">Password</div>
                                 {getFieldDecorator('password', {
                                     rules: [{
@@ -60,9 +63,20 @@ export default class extends Component {
                                     <Input type="password" placeholder="Type your new password" />
                                 )}
                             </FormItem>
-
+                            <FormItem className="marginBottom32">
+                                <div className="label-form">Confirm Password</div>
+                                {getFieldDecorator('confirm', {
+                                    rules: [{
+                                        required: true, message: 'Please confirm your password!',
+                                    }, {
+                                        validator: compareToFirstPassword,
+                                    }],
+                                })(
+                                    <Input type="password" onBlur={handleConfirmBlur} placeholder="Confirm your password" />
+                                )}
+                            </FormItem>
                             <FormItem className="sign-up-button">
-                                <Button type="primary" htmlType="submit">SIGN UP</Button>
+                                <Button loading={status === "running"} type="primary" htmlType="submit">SIGN UP</Button>
                             </FormItem>
                         </Form>
                     </Card>

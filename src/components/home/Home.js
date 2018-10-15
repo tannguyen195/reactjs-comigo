@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 
-class Feature extends Component {
+class Home extends Component {
 
     render() {
 
         return (
             <div className="feature-container">
-                Feature
+                _home
             </div>
         )
     }
 }
 
-export default Feature
+export default Home

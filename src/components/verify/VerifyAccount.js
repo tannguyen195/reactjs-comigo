@@ -7,7 +7,7 @@ export default class extends Component {
         const { nextStep } = this.props
         return (
             <div className="verify-container">
-                <Card >
+                <Card bordered={false}>
 
                     <div className="verify-title Headline-2CenterBlack-Style">
                         Verify Your Email Address
@@ -16,7 +16,7 @@ export default class extends Component {
                         Welcom to Comigo! We've sent an email to <span className="Headline-4CenterBlack-Style">peter@uiowa.edu</span>  to verify your email address. Please click the link in that email to continue.
                     </div>
                     <div className="verify-button">
-                        <Button onClick={nextStep} type="primary">
+                        <Button  type="primary">
                             Continue
                         </Button>
                     </div>

@@ -5,10 +5,14 @@ import { Provider } from 'react-redux'
 
 import Head from '../src/components/head'
 import HeaderContainer from '../src/components/header/HeaderContainer'
-
+import { loginSuccess } from '../src/actions/user'
 import stylesheet from '../src/styles/index.less'
+import _postCard from '../src/components/common/postCard/_postCard.less'
 import { Cookies } from 'react-cookie'
-import { signInSuccess } from '../src/actions/authAction'
+
+import jwtDecode from 'jwt-decode'
+
+import VerifyAccountContainer from '../src/components/verify/VerifyAccountContainer'
 const cookies = new Cookies()
 
 class MyApp extends App {
@@ -16,41 +20,56 @@ class MyApp extends App {
   constructor(props) {
     super(props)
     this.state = {
-      isLoggedIn: null
+      isLoggedIn: null,
+      isVerify: false
     }
   }
 
 
-
   componentDidMount() {
     let isLoggedIn = cookies.get('token') ? true : false
-    if (isLoggedIn) {
-      this.props.reduxStore.dispatch(signInSuccess())
+      if (isLoggedIn) {
+      
+      this.setState({
+        isVerify: jwtDecode(cookies.get('token')).verified,
+        isLoggedIn
+      })
+      this.props.reduxStore.dispatch(loginSuccess())
     }
     this.setState({
       isLoggedIn
     })
   }
+  renderComponent(isLoggedIn, isVerify) {
+    const { Component, pageProps } = this.props
+    
+    if (isLoggedIn === null)
+      return <div />
+    else if (isLoggedIn === false && !isVerify)
+      return <Component {...pageProps} />
+    else if (isLoggedIn === true && !isVerify)
+      return <VerifyAccountContainer />
+    else if (isLoggedIn === true && isVerify)
+      return <Component {...pageProps} />
+  }
 
   render() {
-    const { Component, pageProps, reduxStore } = this.props
-
+    const { reduxStore, pageProps } = this.props
+    const { isLoggedIn, isVerify } = this.state
     return (
       <Container>
         <Provider store={reduxStore}>
           <div>
             <style dangerouslySetInnerHTML={{
-              __html: stylesheet
+              __html: stylesheet + _postCard
             }} />
-
             <Head />
             <div className="page-container">
               <HeaderContainer {...pageProps} />
               <div className="body-content">
-                <div className="max-width">
-                  <Component {...pageProps} />
-                </div>
-
+                {
+                  this.renderComponent(isLoggedIn, isVerify)
+                }
               </div>
             </div>
           </div>

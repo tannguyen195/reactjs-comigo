@@ -11,21 +11,28 @@ export default class extends Component {
             inputVisible, saveInputRef,
             inputValue, handleInputChange,
             handleInputConfirm, showInput,
-            toggleUploadModal
+            toggleUploadModal,
+            croppedImage
         } = this.props
         const { getFieldDecorator } = this.props.form;
         return (
             <div className="profile-update-container">
-                <Card>
+                <Card bordered={false}>
                     <Form>
-
-
                         <div className="basic-info-container">
                             <div>
-                                <div onClick={toggleUploadModal} className="photo-container">
-                                    <img alt="profile" src={profileIcon} />
-                                    <div className="add-photo">Add photo</div>
-                                </div>
+                                {
+                                    croppedImage ?
+                                        <div className="cropped-container">
+                                            <div className="wrapper"><div onClick={toggleUploadModal} className="edit-text">Edit Photo</div></div>
+                                            <img className="user-photo" alt="avatar" src={croppedImage} />
+                                        </div> :
+                                        <div onClick={toggleUploadModal} className="photo-container">
+                                            <img alt="profile" src={profileIcon} />
+                                            <div className="add-photo">Upload Cover</div>
+                                        </div>
+                                }
+
                             </div>
                             <div className="basic-info">
                                 <Row gutter={16}>
@@ -108,10 +115,11 @@ export default class extends Component {
                                 )}
                                 {!inputVisible && (
                                     <Tag
+                                        className="new-tag"
                                         onClick={showInput}
                                         style={{ background: '#fff', borderStyle: 'dashed' }}
                                     >
-                                        <Icon type="plus" /> New Tag</Tag>
+                                        <Icon type="plus" /> Add Skill</Tag>
                                 )}
 
                             </div>

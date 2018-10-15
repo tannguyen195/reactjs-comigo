@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import CreateAccount from './CreateAccount'
-import VerifyAccount from './VerifyAccount'
+import VerifyAccountContainer from '../verify/VerifyAccountContainer'
 import UpdateProfileContainer from '../updateProfile/UpdateProfileContainer'
 import Complete from './Complete'
 class SignUp extends Component {
     renderStageSignUp(step) {
         switch (step) {
             case 1: return <CreateAccount {...this.props} />
-            case 2: return <VerifyAccount {...this.props} />
+            case 2: return <VerifyAccountContainer {...this.props} />
             case 3: return <UpdateProfileContainer {...this.props} />
             case 4: return <Complete {...this.props} />
             default: return <CreateAccount {...this.props} />
@@ -21,7 +21,7 @@ class SignUp extends Component {
         for (let i = 0; i < 4; i++) {
             if (i < step)
                 table.push(<div key={i} className="active-step">
-                    <div className="LabelBlackCenter step-stage">{stepContent[i]}</div>
+                    <div className="active-text step-stage">{stepContent[i]}</div>
                 </div>)
             else
                 table.push(<div key={i} className="inactive-step">
@@ -36,22 +36,24 @@ class SignUp extends Component {
         return (
             <div>
                 {step !== 1 &&
-                    <div className="signup-step-bar">
-                        <div className="step-bar">
+                    <div className="step-bar-container">
+                        <div className="signup-step-bar max-width">
+                            <div className="step-bar">
 
-                            {
-                                this.renderStepBar(step)
-                            }
+                                {
+                                    this.renderStepBar(step)
+                                }
+
+                            </div>
 
                         </div>
-
                     </div>
                 }
-
-                {
-                    this.renderStageSignUp(step)
-                }
-
+                <div className="max-width">
+                    {
+                        this.renderStageSignUp(step)
+                    }
+                </div>
             </div>
         )
     }

@@ -25,10 +25,11 @@ body {
 .page-container {
     display: flex;
     flex-direction: column;
+    background-color: #edf0f2;
     min-height: 100vh;
     .body-content {
         flex: 1;
-        background-color: #f5f5f5;
+        background-color: #edf0f2;
     }
 }
 
@@ -53,7 +54,7 @@ body {
 }
 
 .paddingBottom32 {
-    padding-bottom: 32px;
+    padding-bottom: 32px !important;
 }
 
 .paddingBottom16 {
@@ -89,9 +90,11 @@ textarea {
     min-height: 80px !important;
 }
 
-input[type="text"] {
-    font-size: 18px;
+input,
+textarea {
+    border: solid 1px #c3ced9 !important;
 }
+
 
 .ant-card-bordered {
     border: 1px solid #e6e6e6;
@@ -100,12 +103,20 @@ input[type="text"] {
 .ant-card {
     border-radius: 8px;
     .ant-card-body {
-        padding: 48px;
+        padding: 40px;
     }
 }
 
 .ant-tag {
+    border: none;
     padding: 4px 8px;
     font-size: 10px;
     height: inherit;
+    margin-bottom: 8px;
+    background-color: #006cd9;
+    border: solid 1px #006cd9;
+    color: #fff;
+    i {
+        color: #fff !important;
+    }
 }

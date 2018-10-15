@@ -1,0 +1,151 @@
+.new-project-container {
+    padding: 40px 0;
+    .project-title {
+        padding-bottom: 40px
+    }
+    .label-form {
+        font-size: 12px;
+        top: -34px;
+    }
+    .basic-info-container {
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 40px;
+        .cropped-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 8px;
+            margin-right: 24px;
+            .user-photo {
+                border-radius: 8px;
+                width: 100%;
+            }
+            .wrapper {
+                visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                height: 160px;
+                position: absolute;
+                z-index: 10;
+                width: 160px;
+                border-radius: 8px;
+                background-image: linear-gradient(to bottom, rgba(38, 38, 38, 0.05), rgba(38, 38, 38, 0.32));
+                .edit-text {
+                    cursor: pointer;
+                    color: #fff;
+                    padding-bottom: 16px;
+                    font-weight: 500;
+                }
+            }
+            &:hover {
+                .wrapper {
+                    visibility: visible
+                }
+            }
+        }
+        .photo-container {
+            text-align: center;
+            min-width: 248px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: dashed 1px #c3ced9;
+            padding-top: 24px;
+            padding-bottom: 16px;
+            padding-left: 45px;
+            padding-right: 45px;
+            margin-right: 24px;
+            img {
+                width: 70px;
+                height: 80px;
+            }
+            .add-photo {
+                padding-top: 24px;
+                font-weight: 500;
+                line-height: 1.14;
+                ;
+                color: #c3ced9
+            }
+        }
+        .basic-info {
+            width: 100%;
+            .ant-input {
+                height: 48px;
+            }
+            input[type="text"] {
+                font-size: 12px;
+            }
+        }
+    }
+    .ability {
+        padding-bottom: 40px;
+        .bio-info {
+            position: relative;
+            .label-form {
+                top: -8px;
+                height: inherit;
+            }
+        }
+        .skill-info {
+            position: relative;
+            border: solid 1px #c3ced9;
+            padding: 16px 12px;
+            border-radius: 4px;
+            padding-bottom: 4px;
+            .label-form {
+                font-size: 12px;
+                height: 16px;
+                top: -10px;
+            }
+            .ant-input {
+                height: 28px;
+            }
+            input[type="text"] {
+                font-size: 12px;
+            }
+            .new-tag {
+                color: #45494d !important;
+                i {
+                    color: #45494d !important;
+                }
+            }
+        }
+        .looking {
+            .ant-tag {
+                
+                background-color: #ffdf49;
+                border: solid 1px #ffdf49;
+                color: #2e3033;
+                i {
+                    color: #2e3033 !important;
+                }
+            }
+        }
+    }
+    .links {
+        .link-button {
+            button {
+                border: solid 1px #a1aab3;
+                width: 85px;
+                height: 28px;
+                font-size: 10px;
+            }
+        }
+    }
+    .update-button {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .skip-button {
+            color: #999999;
+            padding-right: 32px;
+        }
+        .next-button {
+            button {
+                width: 120px;
+                height: 48px;
+            }
+        }
+    }
+}

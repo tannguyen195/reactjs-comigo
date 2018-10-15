@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Upload, Button } from 'antd'
-import ReactCrop, { makeAspectCrop } from 'react-image-crop'
-
+import Cropper from 'react-cropper';
 
 const projectPhotoIcon = '/static/images/icon-project-photo.svg'
 
@@ -15,10 +14,9 @@ export default class extends Component {
             handleChangePhoto,
             loadingUploadPhoto,
             imageUrl,
-            beforeUpload,
-            crop,
-            onImageLoaded, onCropChange, onCropComplete, onSaveButton
+            onCropChange, onSaveButton
         } = this.props
+
         return (
             <div >
                 <Modal
@@ -26,23 +24,28 @@ export default class extends Component {
                     title=""
                     footer={null}
                     visible={visibleUploadModal}
-
                     onCancel={toggleUploadModal}
                 >
                     <div className="upload-modal">
                         {
                             imageUrl ?
                                 <div>
-
-                                    <ReactCrop
-
-
+                                    <Cropper
+                                        ref='cropper'
+                                        src={imageUrl}
+                                        style={{ height: 320, width: 320 }}
+                                        // Cropper.js options
+                                        aspectRatio={1}
+                                        crop={() => onCropChange(this.refs.cropper.getCroppedCanvas().toDataURL())}
+                                    />
+                                    {/* <ReactCrop
                                         src={imageUrl}
                                         crop={crop}
                                         onImageLoaded={onImageLoaded}
                                         onComplete={onCropComplete}
                                         onChange={onCropChange}
-                                    />
+                                    /> */}
+
                                 </div> : <Upload
                                     name="avatar"
                                     listType="picture-card"

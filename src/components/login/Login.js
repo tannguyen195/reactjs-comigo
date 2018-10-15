@@ -1,74 +1,56 @@
 import React, { Component } from 'react';
-import { Card, Form, Input,  Select, Row, Col, Button, AutoComplete } from 'antd'
+import { Card, Form, Input, Select, Row, Col, Button, Alert } from 'antd'
 const FormItem = Form.Item;
+const appLogo = '/static/images/logo-app.png'
+const logoIcon = '/static/images/logo.svg'
+class Login extends Component { 
 
-class Login extends Component {
-  
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { handleSubmit } = this.props
+        const { handleSubmit, status, errMessage } = this.props
         return (
-            <div className="login-container">
-                <div className="signup-title Headline-1CenterBlack-Style">
-                    Create an Account
-                </div>
-                <div className="signup-body">
-                    <Card>
+            <div className="login-container max-width">
 
+                <Card className="sign-in-body" bordered={false}>
+                    <div className="app-logo">
+                        <img alt="logo" src={logoIcon} />
+                    </div>
+                    <div className="sign-in-title Headline-2CenterBlack-Style">
+                        Log In   </div>
+                    {
+                        status === "error" && <Alert className="errMessage" closable message={errMessage} type="error" />
+                    }
+                    <Form onSubmit={handleSubmit}>
+                        <FormItem className="marginBottom32" >
+                            <div className="label-form">Email</div>
+                            {getFieldDecorator('email', {
+                                rules: [{
+                                    required: true, type: 'email', message: 'The input is not valid E-mail!',
+                                }, {
+                                    message: 'Please input your E-mail!',
+                                }],
+                            })(
+                                <Input placeholder="Type your email" />
+                            )}
+                        </FormItem>
+                        <FormItem className="marginBottom24">
+                            <div className="label-form">Password</div>
+                            {getFieldDecorator('password', {
+                                rules: [{
+                                    required: true, message: 'Please input your password!',
+                                }],
+                            })(
+                                <Input type="password" placeholder="Type your password" />
+                            )}
+                        </FormItem>
 
-                        <Form onSubmit={handleSubmit}>
-                            <Row gutter={16}>
-                                <Col md={12} lg={12}>
-                                    <FormItem className="marginBottom32">
-                                        <div className="label-form">First Name</div>
-                                        {getFieldDecorator('firstname', {
-                                            rules: [{ required: true, message: 'Please input your first name!', whitespace: true }],
-                                        })(
-                                            <Input />
-                                        )}
-                                    </FormItem>
-                                </Col>
-                                <Col md={12} lg={12}>
-                                    <FormItem >
-                                        <div className="label-form">Last Name</div>
-                                        {getFieldDecorator('lastname', {
-                                            rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
-                                        })(
-                                            <Input />
-                                        )}
-                                    </FormItem>
-                                </Col>
-                            </Row>
-                            <FormItem className="marginBottom32" >
-                                <div className="label-form">Email</div>
-                                {getFieldDecorator('email', {
-                                    rules: [{
-                                        type: 'email', message: 'The input is not valid E-mail!',
-                                    }, {
-                                        message: 'Please input your E-mail!',
-                                    }],
-                                })(
-                                    <Input />
-                                )}
-                            </FormItem>
-                            <FormItem className="marginBottom24">
-                                <div className="label-form">Password</div>
-                                {getFieldDecorator('password', {
-                                    rules: [{
-                                        required: true, message: 'Please input your password!',
-                                    }],
-                                })(
-                                    <Input type="password" placeholder="Type your new password" />
-                                )}
-                            </FormItem>
-
-                            <FormItem className="signup-button">
-                                <Button type="primary" htmlType="submit">SIGN UP</Button>
-                            </FormItem>
-                        </Form>
-                    </Card>
-                </div>
+                        <FormItem className="signup-button">
+                            <Button loading={status === 'running'} type="primary" htmlType="submit">SIGN IN</Button>
+                        </FormItem>
+                    </Form>
+                </Card>
             </div>
+
         )
     }
 }

@@ -1,10 +1,12 @@
 
 import { combineReducers } from 'redux';
 
-import authReducer from './authReducer'
+import user from './user'
+import project from './project'
 
 const rootReducer = combineReducers({
-    authReducer,
+    ...user,
+    ...project
 });
 
 export default rootReducer;

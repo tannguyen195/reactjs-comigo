@@ -11,31 +11,6 @@ function getBase64(img, callback) {
     reader.addEventListener('load', () => callback(reader.result));
     reader.readAsDataURL(img);
 }
-function getCroppedImg(image, pixelCrop, fileName) {
-
-    const canvas = document.createElement('canvas');
-    canvas.width = pixelCrop.width;
-    canvas.height = pixelCrop.height;
-    const ctx = canvas.getContext('2d');
-
-    ctx.drawImage(
-        image,
-        pixelCrop.x,
-        pixelCrop.y,
-        pixelCrop.width,
-        pixelCrop.height,
-        0,
-        0,
-        pixelCrop.width,
-        pixelCrop.height
-    );
-
-    // As Base64 string
-    const base64Image = canvas.toDataURL('image/jpeg');
-
-    // As a blob
-    return base64Image
-}
 
 class UpdateProfileContainer extends Component {
     constructor(props) {
@@ -46,32 +21,20 @@ class UpdateProfileContainer extends Component {
             inputValue: '',
             visibleUploadModal: false,
             imageUrl: null,
-            imageFile: null,
-            crop: {
-
-                aspect: 1
-            },
+            cropData: null,
+            croppedImage: null
         }
     }
     onSaveButton = () => {
-        const { imageFile, crop } = this.state
-        console.log("this.state", this.state)
-        console.log("getCroppedImg(imageFile, crop,", getCroppedImg(imageFile, crop, "random"))
+        const { cropData } = this.state
+        this.toggleUploadModal()
         this.setState({
-            imageUrl: getCroppedImg(imageFile, crop, "random")
+            croppedImage: cropData
         })
     }
-    onImageLoaded = (image) => {
-        console.log(image)
-        this.setState({
-            imageFile: image
-        })
-    }
-    onCropComplete = (crop) => {
-        console.log(crop)
-    }
-    onCropChange = (crop) => {
-        this.setState({ crop })
+
+    onCropChange = (cropData) => {
+        this.setState({ cropData })
     }
     toggleUploadModal = () => {
         this.setState({
@@ -84,14 +47,14 @@ class UpdateProfileContainer extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+        
             }
         });
     }
 
     handleClose = (removedTag) => {
         const tags = this.state.tags.filter(tag => tag !== removedTag);
-        console.log(tags);
+      
         this.setState({ tags });
     }
 
@@ -110,7 +73,7 @@ class UpdateProfileContainer extends Component {
         if (inputValue && tags.indexOf(inputValue) === -1) {
             tags = [...tags, inputValue];
         }
-        console.log(tags);
+       
         this.setState({
             tags,
             inputVisible: false,
@@ -151,8 +114,7 @@ class UpdateProfileContainer extends Component {
                     onCropChange={this.onCropChange}
                     handleChangePhoto={this.handleChangePhoto}
                     toggleUploadModal={this.toggleUploadModal}
-                    onCropComplete={this.onCropComplete}
-                    onImageLoaded={this.onImageLoaded}
+
                     onSaveButton={this.onSaveButton}
                 />
             </div>

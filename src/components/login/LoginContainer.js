@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { nextStep, previousStep } from '../../actions/authAction'
+import { login } from '../../actions/user'
 import { Form } from 'antd'
 import Head from '../head'
 import Login from './Login'
 import _login from './_login.less'
-
+import { Cookies } from 'react-cookie'
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -16,15 +16,13 @@ class LoginContainer extends Component {
         }
     }
     handleSubmit(e) {
-        const { nextStep } = this.props
-        console.log("ASDAS")
-
-        nextStep()
+        const { login } = this.props
 
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+              
+                login(values)
             }
         });
     }
@@ -48,11 +46,14 @@ class LoginContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
+        status: state.user.status,
+        errMessage: state.user.errMessage
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        nextStep, previousStep
+        login
+
     }, dispatch)
 }
 const WrappedLoginContainer = Form.create()(LoginContainer);
