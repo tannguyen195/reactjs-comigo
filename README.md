@@ -1,5 +1,5 @@
-# MyNestEggWeb
-Staging server : https://mynestegg.herokuapp.com/
+# COMIGO FRONTEND
+Staging server : https://comigo.herokuapp.com/
 <br/>
 <br/>
 Reactjs + Redux + antd + next.js<br/>
