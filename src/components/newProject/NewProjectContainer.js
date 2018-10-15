@@ -11,8 +11,8 @@ class NewProjectContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tagsProject: ["Graphic Design", "Branding Design", "Web Design"],
-            tagsLooking: ["Graphic Design", "Branding Design", "Web Design"],
+            tagsProject: ["Graphic Design", "Brandindg Design", "Web Design"],
+            tagsLooking: ["Grasphic Design", "Branding Design", "Webf Design"],
             inputProjectVisible: false,
             inputLookingVisible: false,
             inputProjectValue: '',
@@ -60,54 +60,53 @@ class NewProjectContainer extends Component {
     }
 
     handleProjectClose = (removedTag) => {
-        const tags = this.state.tags.filter(tag => tag !== removedTag);
-        this.setState({ tags });
+        const tagsLooking = this.state.tagsProject.filter(tag => tag !== removedTag);
+        this.setState({ tagsLooking });
     }
 
     handleProjectInputChange = (e) => {
-        this.setState({ inputValue: e.target.value });
+        this.setState({ inputProjectValue: e.target.value });
     }
     showProjectInput = () => {
-        this.setState({ inputVisible: true }, () => this.input.focus());
+        this.setState({ inputProjectVisible: true }, () => this.input.focus());
     }
     handleProjectInputConfirm = () => {
         const state = this.state;
-        const inputValue = state.inputValue;
-        let tags = state.tags;
-        if (inputValue && tags.indexOf(inputValue) === -1) {
-            tags = [...tags, inputValue];
+        const inputProjectValue = state.inputProjectValue;
+        let tagsProject = state.tagsProject;
+        if (inputProjectValue && tagsProject.indexOf(inputProjectValue) === -1) {
+            tagsProject = [...tagsProject, inputProjectValue];
         }
-       
         this.setState({
-            tags,
-            inputVisible: false,
-            inputValue: '',
+            tagsProject,
+            inputProjectVisible: false,
+            inputProjectValue: '',
         });
     }
     saveProjectInputRef = input => this.input = input
 
     handleLookingClose = (removedTag) => {
-        const tags = this.state.tags.filter(tag => tag !== removedTag);
-        this.setState({ tags });
+        const tagsLooking = this.state.tagsLooking.filter(tag => tag !== removedTag);
+        this.setState({ tagsLooking });
     }
 
     handleLookingInputChange = (e) => {
-        this.setState({ inputValue: e.target.value });
+        this.setState({ inputLookingValue: e.target.value });
     }
     showLookingInput = () => {
-        this.setState({ inputVisible: true }, () => this.input.focus());
+        this.setState({ inputLookingVisible: true }, () => this.input.focus());
     }
     handleLookingInputConfirm = () => {
         const state = this.state;
-        const inputValue = state.inputValue;
-        let tags = state.tags;
-        if (inputValue && tags.indexOf(inputValue) === -1) {
-            tags = [...tags, inputValue];
+        const inputLookingValue = state.inputLookingValue;
+        let tagsLooking = state.tagsLooking;
+        if (inputLookingValue && tagsLooking.indexOf(inputLookingValue) === -1) {
+            tagsLooking = [...tagsLooking, inputLookingValue];
         }
         this.setState({
-            tags,
-            inputVisible: false,
-            inputValue: '',
+            tagsLooking,
+            inputLookingVisible: false,
+            inputLookingValue: '',
         });
     }
     saveLookingInputRef = input => this.input = input

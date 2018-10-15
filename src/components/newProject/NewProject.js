@@ -110,10 +110,10 @@ export default class extends Component {
                                         type="text"
                                         size="small"
                                         style={{ width: 78 }}
-                                        value={inputValue}
+                                        value={inputProjectValue}
                                         onChange={handleProjectInputChange}
                                         onBlur={handleProjectInputConfirm}
-                                        onPressEnter={handleProjectInputChange}
+                                        onPressEnter={handleProjectInputConfirm}
                                     />
                                 )}
                                 {!inputProjectVisible && (
@@ -144,10 +144,10 @@ export default class extends Component {
                                         type="text"
                                         size="small"
                                         style={{ width: 78 }}
-                                        value={inputValue}
+                                        value={inputLookingValue}
                                         onChange={handleLookingInputChange}
                                         onBlur={handleLookingInputConfirm}
-                                        onPressEnter={handleLookingInputChange}
+                                        onPressEnter={handleLookingInputConfirm}
                                     />
                                 )}
                                 {!inputLookingVisible && (
