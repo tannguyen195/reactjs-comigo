@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import Head from '../src/components/head'
 import HeaderContainer from '../src/components/header/HeaderContainer'
-import { loginSuccess } from '../src/actions/user'
+import { loginSuccess, getProfile, loginError } from '../src/actions/user'
 import stylesheet from '../src/styles/index.less'
 import _postCard from '../src/components/common/postCard/_postCard.less'
 import { Cookies } from 'react-cookie'
@@ -28,21 +28,23 @@ class MyApp extends App {
 
   componentDidMount() {
     let isLoggedIn = cookies.get('token') ? true : false
-      if (isLoggedIn) {
-      
+    if (isLoggedIn) {
+
       this.setState({
         isVerify: jwtDecode(cookies.get('token')).verified,
         isLoggedIn
       })
       this.props.reduxStore.dispatch(loginSuccess())
+      this.props.reduxStore.dispatch(getProfile())
     }
+     else this.props.reduxStore.dispatch(loginError())
     this.setState({
       isLoggedIn
     })
   }
   renderComponent(isLoggedIn, isVerify) {
     const { Component, pageProps } = this.props
-    
+
     if (isLoggedIn === null)
       return <div />
     else if (isLoggedIn === false && !isVerify)

@@ -61,6 +61,13 @@ export const ActionTypes = keyMirror({
     GET_DETAIL: undefined,
     GET_DETAIL_SUCCESS: undefined,
     GET_DETAIL_ERROR: undefined,
+
+    // FILE CONSTANT ACTION TYPE    
+    UPLOAD: undefined,
+    UPLOAD_SUCCESS: undefined,
+    UPLOAD_ERROR: undefined,
+    CHANGE_PHOTO: undefined,
+    GET_CROPPED_PHOTO: undefined
 });
 
 export const STATUS = {

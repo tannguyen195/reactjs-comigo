@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Head from '../head'
 
+import * as projectAction from '../../actions/project'
+
 import NewsFeed from './NewsFeed'
 import _newsFeed from './_newsFeed.less'
 
@@ -14,13 +16,31 @@ class HomeContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            visibleProject: false,
+            detail: null
         }
     }
+    componentDidMount() {
+        const { getList } = this.props
 
+        getList("")
+    }
+    handleCloseModalProject = () => {
+
+        this.setState({
+            visibleProject: false
+
+        })
+    }
+    handleOpenModalProject = (detail) => {
+        this.setState({
+            visibleProject: true,
+            detail
+        })
+    }
     render() {
-        const { isLoggedIn } = this.props
-       
+        const { isLoggedIn, list } = this.props
+
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -30,10 +50,11 @@ class HomeContainer extends Component {
 
                 {
                     isLoggedIn ?
-                        <NewsFeed
+                        list && <NewsFeed
                             {...this.state}
                             {...this.props}
-
+                            handleCloseModalProject={this.handleCloseModalProject}
+                            handleOpenModalProject={this.handleOpenModalProject}
                         /> :
                         <Home
                             {...this.state}
@@ -47,11 +68,13 @@ class HomeContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        list: state.project.list
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        ...projectAction
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

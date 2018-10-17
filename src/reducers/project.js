@@ -4,13 +4,11 @@ import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
     message: "",
+    list: [],
+    detail: null,
+    detailList: []
 }
-// create,
-// update,
-// remove,
-// createLink,
-// getList,
-// getDetail
+
 export default {
     project: handleActions({
 
@@ -85,6 +83,7 @@ export default {
         [ActionTypes.GET_LIST_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
+                list: { $set: response.data }
             })
         },
         [ActionTypes.GET_LIST_ERROR]: (state, { error }) => {
@@ -95,12 +94,15 @@ export default {
         },
 
         // GET_DETAIL PROJECT ACTION
-        [ActionTypes.GET_DETAIL]: (state) => update(state, {
+        [ActionTypes.GET_DETAIL]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },
+
         }),
         [ActionTypes.GET_DETAIL_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
+                detail: { $set: response.data },
+                detailList: { $push: [response.data] }
             })
         },
         [ActionTypes.GET_DETAIL_ERROR]: (state, { error }) => {

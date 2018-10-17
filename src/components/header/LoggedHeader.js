@@ -10,16 +10,17 @@ export default class extends Component {
     render() {
 
         const {
-            toggleSignInModal,
-            isLoggedIn
+            userData
         } = this.props
         return (
             <header className="header-container" >
                 <div className="header-max">
                     <div className="header-left">
-                        <div className="logo">
-                            <img src={logoIcon} alt="logo" />
-                        </div>
+                        <Link to="/">
+                            <a className="logo">
+                                <img src={logoIcon} alt="logo" />
+                            </a>
+                        </Link>
                         <div className="search-container">
                             <SearchBar />
                         </div>
@@ -33,11 +34,14 @@ export default class extends Component {
                         <Link to="/new-project">
                             <a className="add-project-button">Add project</a>
                         </Link>
-                        <div className="header-user">
 
-                            <img alt="avatar" src={profileIcon} />
-                            <div className="user-name">Tan</div>
-                        </div>
+                        <Link to="/profile">
+                            <a className="header-user">
+
+                                <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />
+                                <div className="user-name">{userData.firstName}</div>
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </header>

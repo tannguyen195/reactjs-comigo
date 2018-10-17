@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Form } from 'antd'
 import Head from '../head'
-import NewProject from './NewProject'
-import _newProject from './_newProject.less'
+import EditProject from './EditProject'
+import _editProject from './_editProject.less'
 import UploadPhotoContainer from '../common/uploadPhoto/UploadPhotoContainer'
 import * as fileAction from '../../actions/file'
 import * as projectAction from '../../actions/project'
-class NewProjectContainer extends Component {
+class EditProjectContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -69,11 +69,11 @@ class NewProjectContainer extends Component {
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
-                    __html: _newProject
+                    __html: _editProject
                 }} />
                 <Head title="Home page" />
                 {
-                    userData && <NewProject
+                    userData && <EditProject
                         {...this.state}
                         {...this.props}
                         handleSubmit={this.handleSubmit}
@@ -82,6 +82,7 @@ class NewProjectContainer extends Component {
                         onTagLookingChange={this.onTagLookingChange}
                         onTagLinkChange={this.onTagLinkChange}
                     />
+
                 }
 
                 <UploadPhotoContainer
@@ -111,4 +112,4 @@ export function mapDispatchToProps(dispatch) {
     }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(NewProjectContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(EditProjectContainer));

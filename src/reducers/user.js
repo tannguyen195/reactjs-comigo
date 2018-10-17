@@ -2,15 +2,11 @@ import { handleActions } from 'redux-actions';
 import { ActionTypes, STATUS, renderMessage } from 'constants/index';
 import update from 'immutability-helper'
 export const initial = {
-    isLoggedIn: false,
+    isLoggedIn: null,
     step: 1,
     status: STATUS.IDLE,
     message: "",
-    data: {
-        lastName: "",
-        firstName: "",
-        email: ""
-    },
+    data: null,
     token: ""
 }
 
@@ -32,10 +28,13 @@ export default {
         [ActionTypes.LOGIN_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
-                message: { $set: renderMessage(error.status) }
+                message: { $set: error && renderMessage(error.status || 0) },
+                isLoggedIn: { $set: false },
             })
         },
-
+        [ActionTypes.LOGOUT]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
         // SIGN UP ACTION
         [ActionTypes.NEXT_STEP]: (state) => update(state, {
             step: { $set: state.step + 1 },
@@ -64,12 +63,40 @@ export default {
         [ActionTypes.GET_PROFILE_SUCCESS]: (state, { response }) => update(state,
             {
                 status: { $set: STATUS.SUCCESS },
+                data: { $set: response.data }
             })
         ,
         [ActionTypes.GET_PROFILE_ERROR]: (state, { error }) => update(state, {
             status: { $set: STATUS.ERROR },
             message: { $set: renderMessage(error.status) }
         }),
+
+        // UPDATE PROFILE
+        [ActionTypes.UPDATE_PROFILE]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.UPDATE_PROFILE_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+                data: {
+                    $set: { ...response.data, projects: state.data.projects },
+
+                }
+            })
+        ,
+        [ActionTypes.UPDATE_PROFILE_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+            message: { $set: renderMessage(error.status) }
+        }),
+
+        [ActionTypes.UPLOAD_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                data: {
+                    $merge: { pictureURL: response.data }
+                }
+            })
+        },
     }, initial),
 };
 

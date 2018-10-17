@@ -1,32 +1,19 @@
 :root {
-    --black1: #2e3033;
-    --black2: #4d4d4d;
-    --grey1: #999999;
-    --grey2: #cccccc;
-    --grey3: #e6e6e6;
-    --white: #ffffff;
-}
-
-/* Text styles */
-
-.font-medium {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--black1)
-}
-
-.Headline-1LeftBlack-Style {
-    font-family: Roboto;
-    font-size: 48px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.17;
-    letter-spacing: normal;
-    color: #2e3033;
-}
-
-.ButtonLeftBlack-Style {
+    --mono1: #2e3033;
+    --accent: #006cd9;
+    --mono3: #a1aab3;
+    --mono5: #edf0f2;
+    --primary: #ffdf49;
+    --mono6: #ffffff;
+    --success: #13d900;
+    --mono4: #c3ced9;
+    --mono2: #45494d;
+    --sub-primary: #ffd24c;
+  }
+  
+  /* Text styles */
+  
+  .Label-Input-Medium {
     font-family: Roboto;
     font-size: 14px;
     font-weight: normal;
@@ -34,43 +21,10 @@
     font-stretch: normal;
     line-height: 1.14;
     letter-spacing: normal;
-    color: #2e3033;
-}
-
-.Headline-4LeftBlack-Style {
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    color: #2e3033;
-}
-
-.Navigation-BarLeftBlack-Style {
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.71;
-    letter-spacing: normal;
-    color: #2e3033;
-}
-
-.Headline-3LeftBlack-Style {
-    font-family: Roboto;
-    font-size: 24px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    color: #2e3033;
-}
-
-.Headline-5LeftBlack-Style {
+    color: var(--mono2);
+  }
+  
+  .Body-12 {
     font-family: Roboto;
     font-size: 12px;
     font-weight: normal;
@@ -78,56 +32,22 @@
     font-stretch: normal;
     line-height: 1.33;
     letter-spacing: normal;
-    color: #2e3033;
-}
-
-.Headline-2LeftBlack-Style {
+    color: var(--mono2);
+  }
+  
+  .Button-2 {
     font-family: Roboto;
-    font-size: 32px;
+    font-size: 16px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    color: #2e3033;
-}
-
-.InputLeftBlack-Style {
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    color: #2e3033;
-}
-
-.Headline-2CenterBlack-Style {
-    font-family: Roboto;
-    font-size: 32px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
+    line-height: 1;
     letter-spacing: normal;
     text-align: center;
-    color: #2e3033;
-}
-
-.Headline-1CenterBlack-Style {
-    font-family: Roboto;
-    font-size: 48px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.17;
-    letter-spacing: normal;
-    text-align: center;
-    color: #2e3033;
-}
-
-.Headline-4CenterBlack-Style {
+    color: var(--mono1);
+  }
+  
+  .Link-Button-2 {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 500;
@@ -136,70 +56,32 @@
     line-height: 1.5;
     letter-spacing: normal;
     text-align: center;
-    color: #2e3033;
-}
-
-.Headline-3CenterBlack-Style {
+    color: var(--mono3);
+  }
+  
+  .Input-Empty-Medium {
     font-family: Roboto;
-    font-size: 24px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: center;
-    color: #2e3033;
-}
-
-.Headline-5CenterBlack-Style {
-    font-family: Roboto;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    line-height: 1.33;
+    line-height: 1.11;
     letter-spacing: normal;
-    text-align: center;
-    color: #2e3033;
-}
-
-.Navigation-BarCenterBlack-Style {
+    color: var(--mono4);
+  }
+  
+  .Input-Filled-Medium {
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    line-height: 1.71;
+    line-height: 1.11;
     letter-spacing: normal;
-    text-align: center;
-    color: #2e3033;
-}
-
-.ButtonCenterBlack-Style {
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.14;
-    letter-spacing: normal;
-    text-align: center;
-    color: #2e3033;
-}
-
-.InputCenterBlack-Style {
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: center;
-    color: #2e3033;
-}
-
-.Headline-1RightBlack-Style {
+    color: var(--mono2);
+  }
+  
+  .Title-Large-Center {
     font-family: Roboto;
     font-size: 48px;
     font-weight: bold;
@@ -207,71 +89,11 @@
     font-stretch: normal;
     line-height: 1.17;
     letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.Headline-2RightBlack-Style {
-    font-family: Roboto;
-    font-size: 32px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.Headline-3RightBlack-Style {
-    font-family: Roboto;
-    font-size: 24px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.Headline-4RightBlack-Style {
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.ButtonRightBlack-Style {
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.14;
-    letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.Headline-5RightBlack-Style {
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.Navigation-BarRightBlack-Style {
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Button-1-Black {
     font-family: Roboto;
     font-size: 14px;
     font-weight: normal;
@@ -279,11 +101,11 @@
     font-stretch: normal;
     line-height: 1.71;
     letter-spacing: normal;
-    text-align: right;
-    color: #2e3033;
-}
-
-.InputRightBlack-Style {
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Input-Empty-Small {
     font-family: Roboto;
     font-size: 14px;
     font-weight: normal;
@@ -291,6 +113,576 @@
     font-stretch: normal;
     line-height: 1.43;
     letter-spacing: normal;
+    color: var(--mono4);
+  }
+  
+  .Title-Medium-Center {
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Menu-Button {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Input-Filled-Small {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    color: var(--mono2);
+  }
+  
+  .Input-Disable-Small {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Input-Search-Empty {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Body-16 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono2);
+  }
+  
+  .Link-Button-3 {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
     text-align: right;
-    color: #2e3033;
-}
+    color: var(--accent);
+  }
+  
+  .Input-Search-Filled {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Process-On {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Process-Off {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono3);
+  }
+  
+  .Button-Media-Uploaded {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono6);
+  }
+  
+  .Title-Section-Left {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Link-Button-1 {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Link-Button-4 {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Label-Input-Small {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono2);
+  }
+  
+  .Title-14-Left {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Button-Media-Empty {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono4);
+  }
+  
+  .Button-Tag-White {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: var(--mono6);
+  }
+  
+  .Sub-Title-Center {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono3);
+  }
+  
+  .Title-Small-Center {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Body-14 {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Title-Small-Off {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono4);
+  }
+  
+  .Title-12-Left {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Sub-Title-10-Left {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Body-10 {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Button-Tag-Black {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Button-Tag-Grey {
+    font-family: Roboto;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Button-1-White {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono6);
+  }
+  
+  .Button-1-Grey {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono3);
+  }
+  
+  .Title-12-Grey-Left {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Text-Style {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Title-Medium-Left-LandingPage {
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: var(--sub-primary);
+  }
+  
+  .Title-X-Large-Left-LandingPage {
+    font-family: Roboto;
+    font-size: 64px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: var(--sub-primary);
+  }
+  
+  .Title-Medium-Center-Black-LandingPage {
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Title-Small-Center-Black-LandingPage {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #262626;
+  }
+  
+  .Body-16-Left {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--mono2);
+  }
+  
+  .Title-Medium-Right-LandingPage {
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: right;
+    color: var(--sub-primary);
+  }
+  
+  .Sub-Title-Medium-Left {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Sub-Title-Medium-Right {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: right;
+    color: var(--mono3);
+  }
+  
+  .Title-Card {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    text-align: center;
+    color: var(--mono1);
+  }
+  
+  .Title-Small-Center-Grey-LandingPage {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono3);
+  }
+  
+  .Title-Large-Left-LandingPage {
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+    color: var(--sub-primary);
+  }
+  
+  .Sub-Title-Card {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--mono3);
+  }
+  
+  .Information {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+    color: var(--mono2);
+  }
+  
+  .Body-16-Grey-Left {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Title-16-Off {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--mono3);
+  }
+  
+  .Body-18-Left {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.78;
+    letter-spacing: normal;
+    color: #262626;
+  }
+  
+  .Title-X-Large-Center-LandingPage {
+    font-family: Roboto;
+    font-size: 64px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: var(--sub-primary);
+  }
+  
+  .Title-16-Left-Black {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--mono1);
+  }
+  
+  .Title-16-On {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--sub-primary);
+  }

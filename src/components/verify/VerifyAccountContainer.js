@@ -29,7 +29,7 @@ class VerifyAccountContainer extends Component {
                 }
             })
                 .then(function (response) {
-                    cookies.replace('token', response.data.data.token, { path: '/' })
+                    cookies.set('token', response.data.data.token, { path: '/' })
                     if (Router.pathname === '/signUp')
                         nextRoute()
                     else window.location.replace("/")

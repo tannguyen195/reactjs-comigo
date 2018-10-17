@@ -13,32 +13,36 @@ class HeaderContainer extends Component {
         this.state = {
         }
     }
-
+    renderHeader() {
+        const { isLoggedIn, userData } = this.props
+        if (isLoggedIn === null)
+            return <div />
+        else if (isLoggedIn === true) {
+            if (userData)
+                return <LoggedHeader
+                    {...this.state}
+                    {...this.props} />
+        }
+        else return <Header
+            {...this.state}
+            {...this.props}
+        />
+    }
     render() {
-        const { isLoggedIn } = this.props
         return (
             <div>
                 <style dangerouslySetInnerHTML={{ __html: _header }} />
                 {
-                    !isLoggedIn ?
-                        <Header
-                            {...this.state}
-                            {...this.props}
-                        /> :
-                        <LoggedHeader
-                            {...this.state}
-                            {...this.props}
-                        />
-
+                    this.renderHeader()
                 }
-
             </div>
         )
     }
 }
 export function mapStateToProps(state) {
     return {
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        userData: state.user.data
     };
 }
 export function mapDispatchToProps(dispatch) {

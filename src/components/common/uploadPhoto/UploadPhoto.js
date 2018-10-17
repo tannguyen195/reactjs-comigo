@@ -10,11 +10,11 @@ export default class extends Component {
         const {
             visibleUploadModal,
             toggleUploadModal,
-
             handleChangePhoto,
-            loadingUploadPhoto,
             imageUrl,
-            onCropChange, onSaveButton
+            onCropChange,
+            onSaveButton,
+            ratio
         } = this.props
 
         return (
@@ -35,24 +35,16 @@ export default class extends Component {
                                         src={imageUrl}
                                         style={{ height: 320, width: 320 }}
                                         // Cropper.js options
-                                        aspectRatio={1}
+                                        aspectRatio={ratio}
                                         crop={() => onCropChange(this.refs.cropper.getCroppedCanvas().toDataURL())}
                                     />
-                                    {/* <ReactCrop
-                                        src={imageUrl}
-                                        crop={crop}
-                                        onImageLoaded={onImageLoaded}
-                                        onComplete={onCropComplete}
-                                        onChange={onCropChange}
-                                    /> */}
+
 
                                 </div> : <Upload
                                     name="avatar"
                                     listType="picture-card"
                                     className="avatar-uploader"
                                     showUploadList={false}
-                                    // action="//jsonplaceholder.typicode.com/posts/"
-                                    // beforeUpload={beforeUpload}
                                     onChange={handleChangePhoto}
                                 >
 
@@ -78,7 +70,7 @@ export default class extends Component {
 
                         <div className="upload-footer">
                             {
-                                imageUrl ? <Button onClick={onSaveButton} type="primary">Save</Button> : "  You can upload your photo file size up to 2MB."
+                                imageUrl ? <Button onClick={onSaveButton} type="primary">Save</Button> : "You can upload your photo file size up to 2MB."
                             }
 
                         </div>
@@ -89,5 +81,3 @@ export default class extends Component {
         )
     }
 }
-
-

@@ -74,8 +74,50 @@ const auth = {
       }).then((response) => {
         return response.data
       })
-  }
+  },
+
+  getProfile() {
+
+    /**
+    * Verify user via token in the url
+    * @param  {string} data The token of the user
+    */
+
+    return axios(
+      {
+        url: endPoint + 'user',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+      }).then((response) => {
+        return response.data
+      })
+  },
+
+  /**
+ * Update user profile, returning a promise with `true` when done
+ * @param  {object} data New data
+ */
+  updateProfile(data) {
+    // Patch a update request
+    return axios(
+      {
+        url: endPoint + 'user',
+        method: 'PATCH',
+        data: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
 }
+
 /**
  * Signup
  */
@@ -116,6 +158,7 @@ export function* login(data) {
       type: ActionTypes.LOGIN_SUCCESS,
       response
     });
+
     window.location.replace("/")
   }
   catch (error) {
@@ -132,18 +175,12 @@ export function* login(data) {
  */
 export function* logout() {
   try {
-    yield call(delay, 200);
-
-    yield put({
-      type: ActionTypes.LOGOUT_SUCCESS,
-    });
+    cookies.remove('token', { path: '/' })
+    window.location.replace("/")
   }
   catch (error) {
     /* istanbul ignore next */
-    yield put({
-      type: ActionTypes.LOGOUT_ERROR,
-      payload: error,
-    });
+
   }
 }
 /**
@@ -165,6 +202,50 @@ export function* verify(data) {
     });
   }
 }
+
+/**
+ * Get user profile
+ */
+export function* getProfile() {
+  try {
+    const response = yield call(auth.getProfile);
+
+    yield put({
+      type: ActionTypes.GET_PROFILE_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.GET_PROFILE_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * Update user profile
+ */
+export function* updateProfile(data) {
+  try {
+    const response = yield call(auth.updateProfile, data.payload);
+
+    yield put({
+      type: ActionTypes.UPDATE_PROFILE_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.UPDATE_PROFILE_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+
 /**
  * User Sagas
  */
@@ -174,5 +255,7 @@ export default function* root() {
     takeLatest(ActionTypes.LOGOUT, logout),
     takeLatest(ActionTypes.SIGNUP, signup),
     takeLatest(ActionTypes.VERIFY, verify),
+    takeLatest(ActionTypes.GET_PROFILE, getProfile),
+    takeLatest(ActionTypes.UPDATE_PROFILE, updateProfile),
   ]);
 }

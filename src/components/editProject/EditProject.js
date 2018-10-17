@@ -23,8 +23,8 @@ export default class extends Component {
             userData
         } = this.props
         return (
-            <div className="new-project-container max-width">
-                <div className="project-title Title-Large-Center">Create New Project</div>
+            <div className="edit-project-container max-width">
+                <div className="project-title Headline-1CenterBlack-Style">Create Edit Project</div>
                 <Card bordered={false}>
                     <Form onSubmit={handleSubmit}>
                         <div className="basic-info-container">

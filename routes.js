@@ -6,3 +6,6 @@ routes
     .add('login')
     .add('signUp')
     .add('new-project')
+    .add('profile')
+    .add('/profile/edit', 'edit')
+    .add('/profile/:id', 'project')

@@ -1,40 +1,52 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { Form } from 'antd'
 import Head from '../head'
 import UpdateProfile from './UpdateProfile'
 import _updateProfile from './_updateProfile.less'
-import UploadPhoto from './UploadPhoto'
-
-function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
-
+import UploadPhotoContainer from '../common/uploadPhoto/UploadPhotoContainer'
+import * as fileAction from '../../actions/file'
+import * as userAction from '../../actions/user'
 class UpdateProfileContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tags: ['Graphic Design', 'Branding Design', 'Web Design'],
-            inputVisible: false,
-            inputValue: '',
+            links: [],
+            skills: [],
             visibleUploadModal: false,
-            imageUrl: null,
-            cropData: null,
-            croppedImage: null
         }
     }
-    onSaveButton = () => {
-        const { cropData } = this.state
-        this.toggleUploadModal()
+
+    componentWillReceiveProps(nextProps) {
+        const { userData } = nextProps
+        if (userData) {
+            this.setState({
+                skills: userData.skills || [],
+                links: userData.links || []
+            })
+
+        }
+    }
+    componentDidMount() {
+        const { userData } = this.props
+        if (userData) {
+            this.setState({
+                skills: userData.skills || [],
+                links: userData.links || []
+            })
+
+        }
+    }
+    onTagLinkChange = (links) => {
         this.setState({
-            croppedImage: cropData
+            links
         })
     }
-
-    onCropChange = (cropData) => {
-        this.setState({ cropData })
+    onTagSkillChange = (skills) => {
+        this.setState({
+            skills
+        })
     }
     toggleUploadModal = () => {
         this.setState({
@@ -42,55 +54,29 @@ class UpdateProfileContainer extends Component {
         })
     }
     handleSubmit = (e) => {
-        const { nextStep } = this.props
-        nextStep()
+        const { updateProfile, profilePhoto } = this.props
+        const { links, skills } = this.state
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
+
             if (!err) {
-        
+                updateProfile({
+                    links: links,
+                    skills: skills,
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    bio: values.bio,
+                    pictureURL: profilePhoto.cropData
+                })
             }
         });
     }
 
-    handleClose = (removedTag) => {
-        const tags = this.state.tags.filter(tag => tag !== removedTag);
-      
-        this.setState({ tags });
-    }
 
-    showInput = () => {
-        this.setState({ inputVisible: true }, () => this.input.focus());
-    }
 
-    handleInputChange = (e) => {
-        this.setState({ inputValue: e.target.value });
-    }
-
-    handleInputConfirm = () => {
-        const state = this.state;
-        const inputValue = state.inputValue;
-        let tags = state.tags;
-        if (inputValue && tags.indexOf(inputValue) === -1) {
-            tags = [...tags, inputValue];
-        }
-       
-        this.setState({
-            tags,
-            inputVisible: false,
-            inputValue: '',
-        });
-    }
-
-    saveInputRef = input => this.input = input
-    handleChangePhoto = (info) => {
-        getBase64(info.file.originFileObj, imageUrl =>
-            this.setState({
-
-                imageUrl,
-                loading: false,
-            }));
-    }
     render() {
+        const { visibleUploadModal } = this.state
+        const { profilePhoto, changePhoto, getCroppedPhoto, upload, userData } = this.props
 
         return (
             <div >
@@ -98,29 +84,51 @@ class UpdateProfileContainer extends Component {
                     __html: _updateProfile
                 }} />
                 <Head title="Home page" />
-                <UpdateProfile
-                    {...this.state}
-                    {...this.props}
-                    handleSubmit={this.handleSubmit}
-                    handleClose={this.handleClose}
-                    showInput={this.showInput}
-                    handleInputChange={this.handleInputChange}
-                    handleInputConfirm={this.handleInputConfirm}
-                    saveInputRef={this.saveInputRef}
-                    toggleUploadModal={this.toggleUploadModal}
-                />
-                <UploadPhoto
-                    {...this.state}
-                    onCropChange={this.onCropChange}
-                    handleChangePhoto={this.handleChangePhoto}
-                    toggleUploadModal={this.toggleUploadModal}
+                {
+                    userData && <UpdateProfile
+                        {...this.state}
+                        {...this.props}
+                        handleSubmit={this.handleSubmit}
+                        toggleUploadModal={this.toggleUploadModal}
+                        onTagSkillChange={this.onTagSkillChange}
+                        onTagLinkChange={this.onTagLinkChange}
+                    />
+                }
 
-                    onSaveButton={this.onSaveButton}
+                <UploadPhotoContainer
+                    toggleUploadModal={this.toggleUploadModal}
+                    visibleUploadModal={visibleUploadModal}
                 />
+
+                <UploadPhotoContainer
+                    upload={upload}
+                    getCroppedPhoto={getCroppedPhoto}
+                    changePhoto={changePhoto}
+
+                    ratio={1}
+                    imageUrl={profilePhoto.imageUrl}
+                    cropData={profilePhoto.cropData}
+
+                    toggleUploadModal={this.toggleUploadModal}
+                    visibleUploadModal={visibleUploadModal} />
             </div>
 
         )
     }
 }
+export function mapStateToProps(state) {
+    return {
+        userData: state.user.data,
+        profilePhoto: state.file.coverProject,
+        status: state.user.status
+    };
+}
+export function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        ...fileAction,
+        ...userAction
+    }, dispatch)
+}
 
-export default Form.create()(UpdateProfileContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(UpdateProfileContainer));
+

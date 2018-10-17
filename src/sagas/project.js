@@ -29,8 +29,7 @@ const project = {
         },
 
       }).then((response) => {
-        cookies.set('token', response.data.token, { path: '/' })
-        // window.location.replace("/")
+
         return response.data
       })
   },
@@ -51,8 +50,7 @@ const project = {
         },
 
       }).then((response) => {
-        cookies.set('token', response.data.token, { path: '/' })
-        // window.location.replace("/")
+
         return response.data
       })
   },
@@ -72,8 +70,6 @@ const project = {
           'x-auth-token': cookies.get('token')
         },
       }).then((response) => {
-        cookies.set('token', response.data.token, { path: '/' })
-        // window.location.replace("/")
         return response.data
       })
   },
@@ -93,7 +89,6 @@ const project = {
           'x-auth-token': cookies.get('token')
         },
       }).then((response) => {
-        cookies.set('token', response.data.token, { path: '/' })
         // window.location.replace("/")
         return response.data
       })
@@ -106,12 +101,10 @@ const project = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project?keyword=' + keyword,
-        method: 'POST',
-        data: JSON.stringify(data),
+        url: endPoint + 'projects?keyword=' + keyword,
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       }).then((response) => {
-        cookies.set('token', response.data.token, { path: '/' })
         // window.location.replace("/")
         return response.data
       })
@@ -120,16 +113,14 @@ const project = {
     * Get project detail of project, returning a project data when done
     * @param  {string} id The id of project which returned when done
     */
-  getList(id) {
+  getDetail(id) {
     // Post a sign in request
     return axios(
       {
         url: endPoint + 'project/' + id,
         method: 'GET',
-        data: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' },
       }).then((response) => {
-        cookies.set('token', response.data.token, { path: '/' })
         // window.location.replace("/")
         return response.data
       })
