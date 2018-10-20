@@ -8,7 +8,7 @@ export default class extends Component {
         const { handleSubmit, compareToFirstPassword, handleConfirmBlur, status, message } = this.props
         return (
             <div className="sign-up-container">
-                <div className="sign-up-title Headline-1CenterBlack-Style">
+                <div className="sign-up-title Title-Large-Center">
                     Create an Account
             </div>
                 <div className="sign-up-body">

@@ -19,21 +19,8 @@ export default class extends Component {
                 {
                     this.renderProject(list)
                 }
-                <Modal
-                    style={{ top: 64 }}
-                    width={540}
-                    wrapClassName="project-modal-container"
-                    visible={visibleProject}
-                    footer={null}
-                    onCancel={handleCloseModalProject}
-                >
-                    {
-                        detail && <ProjectDetail edit={false} detail={detail} />
-                    }
-
-                </Modal>
+              
             </div>
         )
     }
 }
-

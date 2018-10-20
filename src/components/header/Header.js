@@ -6,12 +6,12 @@ const logoIcon = '/static/images/logo.svg'
 
 const menuItem = [
     {
-        title: "Homes",
+        title: "Why Comigo?",
         link: "/"
     },
     {
-        title: "About us",
-        link: "/about"
+        title: "Contact us",
+        link: "/contact"
     },
     {
         title: "Log In",
@@ -45,7 +45,7 @@ class Header extends Component {
                                 {
                                     menuItem.map((item, index) => {
                                         return <Link key={index} to={item.link}>
-                                            <a className="header-item Navigation-BarRightBlack-Style">{item.title}</a>
+                                            <a className="header-item Menu-Button">{item.title}</a>
                                         </Link>
                                     })
                                 }

@@ -4,9 +4,12 @@ import { bindActionCreators } from 'redux'
 import Head from '../head'
 
 import * as projectAction from '../../actions/project'
+import * as peopleAction from '../../actions/people'
 
 import NewsFeed from './NewsFeed'
 import _newsFeed from './_newsFeed.less'
+
+import People from './People'
 
 import Home from './Home'
 import _home from './_home.less'
@@ -21,12 +24,12 @@ class HomeContainer extends Component {
         }
     }
     componentDidMount() {
-        const { getList } = this.props
+        const { getList, getPeopleList } = this.props
 
         getList("")
+        getPeopleList("")
     }
     handleCloseModalProject = () => {
-
         this.setState({
             visibleProject: false
 
@@ -37,6 +40,23 @@ class HomeContainer extends Component {
             visibleProject: true,
             detail
         })
+    }
+    renderNewsFeed() {
+        const { visibleProject, list, people } = this.props
+        if (!visibleProject === true && list) {
+            return <NewsFeed
+                {...this.state}
+                {...this.props}
+                handleCloseModalProject={this.handleCloseModalProject}
+                handleOpenModalProject={this.handleOpenModalProject}
+            />
+
+        }
+        else if (visibleProject === true && people)
+            return <People
+                {...this.state}
+                {...this.props}
+            />
     }
     render() {
         const { isLoggedIn, list } = this.props
@@ -50,17 +70,12 @@ class HomeContainer extends Component {
 
                 {
                     isLoggedIn ?
-                        list && <NewsFeed
-                            {...this.state}
-                            {...this.props}
-                            handleCloseModalProject={this.handleCloseModalProject}
-                            handleOpenModalProject={this.handleOpenModalProject}
-                        /> :
+
+                        this.renderNewsFeed() :
                         <Home
                             {...this.state}
-                            {...this.props}
-
-                        />}
+                            {...this.props} />
+                }
             </div>
 
         )
@@ -69,12 +84,15 @@ class HomeContainer extends Component {
 export function mapStateToProps(state) {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        list: state.project.list
+        list: state.project.list,
+        visibleProject: state.toggle.visibleProject,
+        people: state.people.people
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        ...projectAction
+        ...projectAction,
+        ...peopleAction,
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

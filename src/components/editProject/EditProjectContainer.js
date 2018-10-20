@@ -6,8 +6,10 @@ import Head from '../head'
 import EditProject from './EditProject'
 import _editProject from './_editProject.less'
 import UploadPhotoContainer from '../common/uploadPhoto/UploadPhotoContainer'
+import { Router } from 'routes'
 import * as fileAction from '../../actions/file'
 import * as projectAction from '../../actions/project'
+
 class EditProjectContainer extends Component {
     constructor(props) {
         super(props)
@@ -16,11 +18,29 @@ class EditProjectContainer extends Component {
             projectSkills: [],
             links: [],
             visibleUploadModal: false,
-            cropData: null,
-            croppedImage: null
+            preloadImage: null
         }
     }
+    componentDidMount = () => {
+        const { getDetail } = this.props
+        getDetail(Router.query.id)
+    }
 
+    componentWillReceiveProps(nextProps) {
+        const { detail, uploadStatus } = this.props
+        if (nextProps.detail !== detail) {
+            this.setState({
+                lookingSkills: nextProps.detail.lookingSkills,
+                projectSkills: nextProps.detail.projectSkills,
+                links: nextProps.detail.links,
+                preloadImage: nextProps.detail.coverURL,
+            })
+        }
+        if (nextProps.returnImage !== this.props.returnImage)
+            this.setState({
+                preloadImage: nextProps.returnImage
+            })
+    }
     toggleUploadModal = () => {
         this.setState({
             visibleUploadModal: !this.state.visibleUploadModal
@@ -29,18 +49,19 @@ class EditProjectContainer extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { form, create, coverProject } = this.props
+        const { form, update, image, detail } = this.props
         const { lookingSkills, projectSkills, links } = this.state
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
 
-                create({
+                update({
+                    projectID: detail._id,
                     lookingSkills: lookingSkills,
                     projectSkills: projectSkills,
                     links: links,
                     name: values.name,
                     description: values.description,
-                    coverURL: coverProject.cropData
+                    coverURL: image
                 })
             }
         });
@@ -64,8 +85,8 @@ class EditProjectContainer extends Component {
         })
     }
     render() {
-        const { visibleUploadModal } = this.state
-        const { coverProject, changePhoto, getCroppedPhoto, upload, userData } = this.props
+        const { visibleUploadModal, preloadImage } = this.state
+        const { image, userData, detail } = this.props
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -73,7 +94,7 @@ class EditProjectContainer extends Component {
                 }} />
                 <Head title="Home page" />
                 {
-                    userData && <EditProject
+                    userData && detail && <EditProject
                         {...this.state}
                         {...this.props}
                         handleSubmit={this.handleSubmit}
@@ -86,23 +107,22 @@ class EditProjectContainer extends Component {
                 }
 
                 <UploadPhotoContainer
-                    upload={upload}
+                    imageUrl={preloadImage}
                     ratio={1.55}
-                    getCroppedPhoto={getCroppedPhoto}
-                    changePhoto={changePhoto}
-                    imageUrl={coverProject.imageUrl}
-                    cropData={coverProject.cropData}
                     toggleUploadModal={this.toggleUploadModal}
                     visibleUploadModal={visibleUploadModal} />
             </div>
-
         )
     }
 }
 export function mapStateToProps(state) {
     return {
-        coverProject: state.file.coverProject,
-        userData: state.user.data
+        userData: state.user.data,
+        detail: state.project.detail,
+        image: state.file.image,
+        returnImage: state.file.returnImage,
+        status: state.project.status,
+        uploadStatus: state.file.status,
     };
 }
 export function mapDispatchToProps(dispatch) {

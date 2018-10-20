@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { AutoComplete, Input, Icon, Select } from 'antd'
-
-const Option = Select.Option;
 export default class extends Component {
 
     render() {
-
         const {
-            toggleSignInModal,
-            isLoggedIn
+            
+            visibleProject,
+            toggleHomeView
         } = this.props
         return (
             <AutoComplete
@@ -22,12 +20,15 @@ export default class extends Component {
                             <Icon type="search" className="certain-category-icon" />
                             <div className="devider">
                             </div>
-                            <Select defaultValue="lucy" style={{ minWidth: 60, fontSize: 12 }} >
-                                <Option value="jack">Jack</Option>
-                                <Option value="lucy">Lucy</Option>
-                                <Option value="disabled" disabled>Disabled</Option>
-                                <Option value="Yiminghe">yiminghe</Option>
-                            </Select>
+                            <div className="search-view">
+                                <a onClick={toggleHomeView} className="Body-12">
+                                    {
+                                        visibleProject === true ? "Project" : "People"
+                                    }
+                                </a>
+
+
+                            </div>
                         </div>} />
             </AutoComplete>
         )

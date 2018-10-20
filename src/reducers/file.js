@@ -4,16 +4,8 @@ import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
     message: "",
-    coverProject: {
-        imageUrl: null,
-        cropData: null,
-    },
-    profilePhoto: {
-        imageUrl: null,
-        cropData: null,
-      
-    }
-
+    loadImage: null,
+    returnImage: null,
 }
 export default {
     file: handleActions({
@@ -26,7 +18,8 @@ export default {
         [ActionTypes.UPLOAD_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                coverProject: { cropData: { $set: response.data } },
+                image: { $set: response.data },
+                returnImage: { $set: response.data },
             })
         },
         [ActionTypes.UPLOAD_ERROR]: (state, { error }) => {
@@ -37,13 +30,17 @@ export default {
         },
         [ActionTypes.CHANGE_PHOTO]: (state, { payload }) => {
             return update(state, {
-                coverProject: { imageUrl: { $set: payload } },
-                profilePhoto: { cropData: { $set: payload } },
+                loadImage: { $set: payload },
             })
         },
         [ActionTypes.GET_CROPPED_PHOTO]: (state, { payload }) => {
             return update(state, {
-                coverProject: { cropData: { $set: payload } },
+
+            })
+        },
+        [ActionTypes.GET_IMAGE_PAYLOAD]: (state, { payload }) => {
+            return update(state, {
+                image: { $set: payload },
             })
         }
     }, initial),

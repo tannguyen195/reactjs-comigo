@@ -20,6 +20,6 @@ export const {
   [ActionTypes.LOGIN_SUCCESS]: () => ({}),
   [ActionTypes.LOGIN_ERROR]: () => ({}),
   [ActionTypes.GET_PROFILE]: () => ({}),
-  [ActionTypes.VERIFY]: () => ({}),
+  [ActionTypes.VERIFY]: (data) => (data),
   [ActionTypes.UPDATE_PROFILE]: (data) => (data),
 });

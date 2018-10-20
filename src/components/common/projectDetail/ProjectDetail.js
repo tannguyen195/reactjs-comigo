@@ -23,7 +23,7 @@ export default class extends Component {
                         <div className="header-title">
                             <div className="Text-Style paddingBottom16">{detail.name}</div>
                             {
-                                edit ? <Link to="/project/edit">
+                                edit ? <Link to={`/profile/${detail._id}/edit`}>
                                     <a className="header-right">
                                         <img alt="edit" src={editIcon} />
                                     </a>

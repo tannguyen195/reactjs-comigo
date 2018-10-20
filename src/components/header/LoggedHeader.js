@@ -10,6 +10,7 @@ export default class extends Component {
     render() {
 
         const {
+            logout,
             userData
         } = this.props
         return (
@@ -22,7 +23,7 @@ export default class extends Component {
                             </a>
                         </Link>
                         <div className="search-container">
-                            <SearchBar />
+                            <SearchBar {...this.props} />
                         </div>
 
                         <div className="view-button">
@@ -31,10 +32,13 @@ export default class extends Component {
                     </div>
 
                     <div className="header-right">
-                        <Link to="/new-project">
-                            <a className="add-project-button">Add project</a>
-                        </Link>
 
+                        {
+                            userData.verified ? <Link to="/new-project">
+                                <a className="add-project-button">Add project</a>
+                            </Link> :
+                                <a onClick={logout} className="add-project-button">Log out</a>
+                        }
                         <Link to="/profile">
                             <a className="header-user">
 

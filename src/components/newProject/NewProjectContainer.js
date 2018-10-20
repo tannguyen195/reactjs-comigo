@@ -16,9 +16,14 @@ class NewProjectContainer extends Component {
             projectSkills: [],
             links: [],
             visibleUploadModal: false,
-            cropData: null,
-            croppedImage: null
+            preloadImage: null
         }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.returnImage != this.props.returnImage && nextProps.statusUpload === "success")
+            this.setState({
+                preloadImage: nextProps.returnImage
+            })
     }
 
     toggleUploadModal = () => {
@@ -26,21 +31,25 @@ class NewProjectContainer extends Component {
             visibleUploadModal: !this.state.visibleUploadModal
         })
     }
+    componentDidMount() {
+        this.setState({
+            preloadImage: null
+        })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { form, create, coverProject } = this.props
-        const { lookingSkills, projectSkills, links } = this.state
+        const { form, create } = this.props
+        const { lookingSkills, projectSkills, links, preloadImage } = this.state
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-
                 create({
                     lookingSkills: lookingSkills,
                     projectSkills: projectSkills,
                     links: links,
                     name: values.name,
                     description: values.description,
-                    coverURL: coverProject.cropData
+                    coverURL: preloadImage
                 })
             }
         });
@@ -64,8 +73,8 @@ class NewProjectContainer extends Component {
         })
     }
     render() {
-        const { visibleUploadModal } = this.state
-        const { coverProject, changePhoto, getCroppedPhoto, upload, userData } = this.props
+        const { visibleUploadModal, preloadImage } = this.state
+        const { userData } = this.props
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -85,12 +94,8 @@ class NewProjectContainer extends Component {
                 }
 
                 <UploadPhotoContainer
-                    upload={upload}
                     ratio={1.55}
-                    getCroppedPhoto={getCroppedPhoto}
-                    changePhoto={changePhoto}
-                    imageUrl={coverProject.imageUrl}
-                    cropData={coverProject.cropData}
+                    imageUrl={preloadImage}
                     toggleUploadModal={this.toggleUploadModal}
                     visibleUploadModal={visibleUploadModal} />
             </div>
@@ -101,7 +106,10 @@ class NewProjectContainer extends Component {
 export function mapStateToProps(state) {
     return {
         coverProject: state.file.coverProject,
-        userData: state.user.data
+        userData: state.user.data,
+        returnImage: state.file.returnImage,
+        statusUpload: state.file.status,
+        status:state.project.status
     };
 }
 export function mapDispatchToProps(dispatch) {

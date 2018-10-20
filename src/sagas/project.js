@@ -3,13 +3,12 @@
  * @desc User
  */
 
-import { delay } from 'redux-saga';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-
+import { notification } from 'antd';
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
 import { endPoint } from 'constants/index'
-import axios from 'axios' 
+import axios from 'axios'
 const cookies = new Cookies()
 const project = {
   /**
@@ -136,6 +135,11 @@ export function* create(data) {
       type: ActionTypes.CREATE_SUCCESS,
       response
     });
+
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
   }
   catch (error) {
 
@@ -143,6 +147,10 @@ export function* create(data) {
     yield put({
       type: ActionTypes.CREATE_ERROR,
       error: error.response,
+    });
+    notification['error']({
+      message: 'Something went wrong!',
+      description: "Fail to create project",
     });
   }
 }
@@ -154,7 +162,10 @@ export function* create(data) {
 export function* update(data) {
   try {
     const response = yield call(project.update, data.payload);
-
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
     yield put({
       type: ActionTypes.UPDATE_SUCCESS,
       response
@@ -162,7 +173,10 @@ export function* update(data) {
   }
   catch (error) {
 
-
+    notification['error']({
+      message: 'Something went wrong!',
+      description: "Fail to update project",
+    });
     yield put({
       type: ActionTypes.UPDATE_ERROR,
       error: error.response,

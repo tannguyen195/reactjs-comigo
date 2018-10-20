@@ -15,25 +15,33 @@ class UpdateProfileContainer extends Component {
             links: [],
             skills: [],
             visibleUploadModal: false,
+            preloadImage: null
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        const { userData } = nextProps
-        if (userData) {
+        const { userData, } = nextProps
+        if (userData !== this.props.userData) {
             this.setState({
                 skills: userData.skills || [],
-                links: userData.links || []
+                links: userData.links || [],
+                preloadImage: userData.pictureURL
             })
 
         }
+        if (nextProps.returnImage != this.props.returnImage)
+            this.setState({
+                preloadImage: nextProps.returnImage
+            })
     }
     componentDidMount() {
         const { userData } = this.props
+
         if (userData) {
             this.setState({
                 skills: userData.skills || [],
-                links: userData.links || []
+                links: userData.links || [],
+                preloadImage: userData.pictureURL
             })
 
         }
@@ -54,8 +62,8 @@ class UpdateProfileContainer extends Component {
         })
     }
     handleSubmit = (e) => {
-        const { updateProfile, profilePhoto } = this.props
-        const { links, skills } = this.state
+        const { updateProfile, } = this.props
+        const { links, skills, preloadImage } = this.state
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
 
@@ -66,7 +74,7 @@ class UpdateProfileContainer extends Component {
                     firstName: values.firstName,
                     lastName: values.lastName,
                     bio: values.bio,
-                    pictureURL: profilePhoto.cropData
+                    pictureURL: preloadImage
                 })
             }
         });
@@ -75,8 +83,8 @@ class UpdateProfileContainer extends Component {
 
 
     render() {
-        const { visibleUploadModal } = this.state
-        const { profilePhoto, changePhoto, getCroppedPhoto, upload, userData } = this.props
+        const { visibleUploadModal, preloadImage } = this.state
+        const { userData, } = this.props
 
         return (
             <div >
@@ -96,19 +104,9 @@ class UpdateProfileContainer extends Component {
                 }
 
                 <UploadPhotoContainer
-                    toggleUploadModal={this.toggleUploadModal}
-                    visibleUploadModal={visibleUploadModal}
-                />
-
-                <UploadPhotoContainer
-                    upload={upload}
-                    getCroppedPhoto={getCroppedPhoto}
-                    changePhoto={changePhoto}
 
                     ratio={1}
-                    imageUrl={profilePhoto.imageUrl}
-                    cropData={profilePhoto.cropData}
-
+                    imageUrl={preloadImage}
                     toggleUploadModal={this.toggleUploadModal}
                     visibleUploadModal={visibleUploadModal} />
             </div>
@@ -119,8 +117,9 @@ class UpdateProfileContainer extends Component {
 export function mapStateToProps(state) {
     return {
         userData: state.user.data,
-        profilePhoto: state.file.coverProject,
-        status: state.user.status
+        status: state.user.status,
+        image: state.file.image,
+        returnImage: state.file.returnImage
     };
 }
 export function mapDispatchToProps(dispatch) {

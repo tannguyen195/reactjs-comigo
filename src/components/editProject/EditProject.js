@@ -9,32 +9,33 @@ export default class extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const {
-            links,
             onTagLinkChange,
-            lookingSkills,
             onTagProjectChange,
-            projectSkills,
             onTagLookingChange,
 
             toggleUploadModal,
-            coverProject,
             handleSubmit,
+            userData,
+            detail,
+            preloadImage,
 
-            userData
+            projectSkills,
+            lookingSkills,
+            links,
+            status
         } = this.props
         return (
             <div className="edit-project-container max-width">
-                <div className="project-title Headline-1CenterBlack-Style">Create Edit Project</div>
                 <Card bordered={false}>
                     <Form onSubmit={handleSubmit}>
                         <div className="basic-info-container">
                             <div>
                                 {
-                                    coverProject.cropData ?
+                                    preloadImage ?
                                         <div className="cropped-container">
                                             <div className="wrapper">
                                                 <div onClick={toggleUploadModal} className="edit-text">Edit Photo</div></div>
-                                            <img className="user-photo" alt="avatar" src={coverProject.cropData} />
+                                            <img className="user-photo" alt="avatar" src={preloadImage} />
                                         </div> :
                                         <div onClick={toggleUploadModal} className="photo-container">
                                             <img alt="profile" src={profileIcon} />
@@ -63,6 +64,7 @@ export default class extends Component {
                                         rules: [{
                                             required: true, message: 'Please input project name!',
                                         }],
+                                        initialValue: detail.name
                                     })(
                                         <Input />
                                     )}
@@ -72,7 +74,7 @@ export default class extends Component {
                         </div>
 
                         <div className="ability">
-                            <div className="paddingBottom32 font-medium">
+                            <div className="paddingBottom32 Title-Section-Left">
                                 Information
                         </div>
                             <div className="bio-info paddingBottom32">
@@ -85,6 +87,7 @@ export default class extends Component {
                                             {
                                                 required: true, message: 'Please input project description!',
                                             }],
+                                        initialValue: detail.description
                                     })(
                                         <TextArea />
                                     )}
@@ -106,7 +109,7 @@ export default class extends Component {
                             </div>
                         </div>
                         <div className="links paddingBottom40">
-                            <div className="paddingBottom16 font-medium">
+                            <div className="paddingBottom16 Title-Section-Left">
                                 Links (optional)
                         </div>
                             <div className="links-tag-container">
@@ -117,11 +120,11 @@ export default class extends Component {
                             </div>
                         </div>
                         <div className="update-button">
-                            <div className="skip-button">Save as Draft</div>
+                            <a className="skip-button">Cancel</a>
                             <div className="next-button">
 
-                                <Button htmlType="submit" type="primary">
-                                    Create</Button></div>
+                                <Button loading={status === 'running'} htmlType="submit" type="primary">
+                                    SAVE</Button></div>
                         </div>
                     </Form>
 

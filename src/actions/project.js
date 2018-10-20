@@ -11,7 +11,7 @@ export const {
   getDetail
 } = createActions({
   [ActionTypes.CREATE]: (data) => (data),
-  [ActionTypes.UPDATE]: (data) => ({data}),
+  [ActionTypes.UPDATE]: (data) => (data),
   [ActionTypes.REMOVE]: (data) => (data),
   [ActionTypes.CREATE_LINK]: (data) => (data),
   [ActionTypes.GET_LIST]: (data) => (data), 

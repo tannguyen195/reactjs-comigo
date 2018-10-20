@@ -10,7 +10,6 @@ export const initial = {
     token: ""
 }
 
-
 export default {
     user: handleActions({
 
@@ -80,7 +79,7 @@ export default {
             {
                 status: { $set: STATUS.SUCCESS },
                 data: {
-                    $set: { ...response.data, projects: state.data.projects },
+                    $merge: { ...response.data},
 
                 }
             })
@@ -90,13 +89,23 @@ export default {
             message: { $set: renderMessage(error.status) }
         }),
 
-        [ActionTypes.UPLOAD_SUCCESS]: (state, { response }) => {
-            return update(state, {
+        // UPDATE PROFILE
+        [ActionTypes.VERIFY]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.VERIFY_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
                 data: {
-                    $merge: { pictureURL: response.data }
+                    $merge: { verified: true },
                 }
             })
-        },
+        ,
+        [ActionTypes.VERIFY_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+            message: { $set: renderMessage(error.status) }
+        }),
     }, initial),
 };
 

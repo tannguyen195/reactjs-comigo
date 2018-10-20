@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import _uploadPhoto from './_uploadPhoto.less'
 import UploadPhoto from './UploadPhoto'
-
+import * as fileAction from '../../../actions/file'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 function getBase64(img, callback) {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
@@ -15,11 +17,19 @@ class UploadPhotoContainer extends Component {
             cropData: null,
         }
     }
+    componentDidMount() {
+        this.props.changePhoto(this.props.imageUrl)
+    }
+    componentWillReceiveProps(nextProps) {
+        const { toggleUploadModal, } = this.props
+        if (nextProps.imageUrl !== this.props.imageUrl)
+            this.props.changePhoto(nextProps.imageUrl)
+        if (nextProps.status === "success" && nextProps.status !== this.props.status)
+            toggleUploadModal()
+    }
     onSaveButton = () => {
         const { cropData } = this.state
-        const { toggleUploadModal, getCroppedPhoto, upload } = this.props
-        toggleUploadModal()
-        getCroppedPhoto(cropData)
+        const { toggleUploadModal, upload } = this.props
         upload(cropData)
     }
 
@@ -35,7 +45,6 @@ class UploadPhotoContainer extends Component {
         );
     }
     render() {
-
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -54,5 +63,16 @@ class UploadPhotoContainer extends Component {
         )
     }
 }
+export function mapStateToProps(state) {
+    return {
+        loadImage: state.file.loadImage,
+        status: state.file.status
+    };
+}
+export function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        ...fileAction,
+    }, dispatch)
+}
 
-export default (UploadPhotoContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(UploadPhotoContainer);

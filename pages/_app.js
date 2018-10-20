@@ -8,6 +8,7 @@ import HeaderContainer from '../src/components/header/HeaderContainer'
 import { loginSuccess, getProfile, loginError } from '../src/actions/user'
 import stylesheet from '../src/styles/index.less'
 import _postCard from '../src/components/common/postCard/_postCard.less'
+import _peopleCard from '../src/components/common/peopleCard/_peopleCard.less'
 import { Cookies } from 'react-cookie'
 
 import jwtDecode from 'jwt-decode'
@@ -63,7 +64,7 @@ class MyApp extends App {
         <Provider store={reduxStore}>
           <div>
             <style dangerouslySetInnerHTML={{
-              __html: stylesheet + _postCard
+              __html: stylesheet + _postCard + _peopleCard
             }} />
             <Head />
             <div className="page-container">

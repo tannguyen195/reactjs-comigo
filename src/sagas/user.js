@@ -3,8 +3,8 @@
  * @desc User
  */
 
-import { delay } from 'redux-saga';
-import { all, call, put, takeLatest, takeEvery } from 'redux-saga/effects';
+import { notification } from 'antd';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
@@ -57,7 +57,6 @@ const auth = {
       })
   },
   verify(data) {
-
     /**
     * Verify user via token in the url
     * @param  {string} data The token of the user
@@ -133,9 +132,7 @@ export function* signup(data) {
     yield put({
       type: ActionTypes.LOGIN_SUCCESS,
     });
-    yield put({
-      type: ActionTypes.NEXT_STEP,
-    });
+    window.location.reload()
   }
   catch (error) {
 
@@ -189,7 +186,7 @@ export function* logout() {
 export function* verify(data) {
   try {
     const response = yield call(auth.verify, data.payload);
-
+    cookies.set('token', response.data.token)
     yield put({
       type: ActionTypes.VERIFY_SUCCESS,
     });
@@ -235,12 +232,21 @@ export function* updateProfile(data) {
       type: ActionTypes.UPDATE_PROFILE_SUCCESS,
       response
     });
+
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
   }
   catch (error) {
     /* istanbul ignore next */
     yield put({
       type: ActionTypes.UPDATE_PROFILE_ERROR,
       error: error.response,
+    });
+    notification['error']({
+      message: 'Something went wrong!',
+      description: "Fail to update profile",
     });
   }
 }

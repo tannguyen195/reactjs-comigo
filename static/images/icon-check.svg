@@ -10,8 +10,8 @@
         <mask id="mask-2" fill="white">
             <use xlink:href="#path-1"></use>
         </mask>
-        <use id="Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
-        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
+        <use id="Shape" fill="#13d900" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#13d900">
             <rect x="0" y="0" width="16" height="16"></rect>
         </g>
     </g>

@@ -11,10 +11,11 @@ export default class extends Component {
             visibleUploadModal,
             toggleUploadModal,
             handleChangePhoto,
-            imageUrl,
+            loadImage,
             onCropChange,
             onSaveButton,
-            ratio
+            ratio,
+            status
         } = this.props
 
         return (
@@ -28,11 +29,11 @@ export default class extends Component {
                 >
                     <div className="upload-modal">
                         {
-                            imageUrl ?
+                            loadImage ?
                                 <div>
                                     <Cropper
                                         ref='cropper'
-                                        src={imageUrl}
+                                        src={loadImage}
                                         style={{ height: 320, width: 320 }}
                                         // Cropper.js options
                                         aspectRatio={ratio}
@@ -41,6 +42,7 @@ export default class extends Component {
 
 
                                 </div> : <Upload
+
                                     name="avatar"
                                     listType="picture-card"
                                     className="avatar-uploader"
@@ -62,18 +64,29 @@ export default class extends Component {
                                             <div className="upload-button">
                                                 <Button type="primary">
                                                     Upload Your Photo
-                                            </Button></div>
+                                            </Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </Upload>
                         }
 
-                        <div className="upload-footer">
-                            {
-                                imageUrl ? <Button onClick={onSaveButton} type="primary">Save</Button> : "You can upload your photo file size up to 2MB."
-                            }
 
-                        </div>
+                        {
+                            loadImage ?
+                                <div className="upload-footer">
+                                    <Button onClick={onSaveButton} loading={status === "running"} type="primary">Save</Button>
+                                    <Upload showUploadList={false} onChange={handleChangePhoto}>
+                                        <div className="upload-new-button">
+                                            <a className="Link-Button-2">  Upload new photo</a>
+                                        </div>
+                                    </Upload>
+                                </div> : <div className="paddingTop24 Sub-Title-Center">
+                                    You can upload your photo file size up to 2MB.</div>
+
+                        }
+
+
                     </div>
 
                 </Modal>

@@ -15,9 +15,9 @@ export default class extends Component {
             onTagProjectChange,
             projectSkills,
             onTagLookingChange,
-
+            preloadImage,
             toggleUploadModal,
-            coverProject,
+            status,
             handleSubmit,
 
             userData
@@ -30,11 +30,11 @@ export default class extends Component {
                         <div className="basic-info-container">
                             <div>
                                 {
-                                    coverProject.cropData ?
+                                    preloadImage ?
                                         <div className="cropped-container">
                                             <div className="wrapper">
                                                 <div onClick={toggleUploadModal} className="edit-text">Edit Photo</div></div>
-                                            <img className="user-photo" alt="avatar" src={coverProject.cropData} />
+                                            <img className="user-photo" alt="avatar" src={preloadImage} />
                                         </div> :
                                         <div onClick={toggleUploadModal} className="photo-container">
                                             <img alt="profile" src={profileIcon} />
@@ -72,7 +72,7 @@ export default class extends Component {
                         </div>
 
                         <div className="ability">
-                            <div className="paddingBottom32 font-medium">
+                            <div className="paddingBottom32 Title-Section-Left">
                                 Information
                         </div>
                             <div className="bio-info paddingBottom32">
@@ -106,7 +106,7 @@ export default class extends Component {
                             </div>
                         </div>
                         <div className="links paddingBottom40">
-                            <div className="paddingBottom16 font-medium">
+                            <div className="paddingBottom16 Title-Section-Left">
                                 Links (optional)
                         </div>
                             <div className="links-tag-container">
@@ -120,11 +120,10 @@ export default class extends Component {
                             <div className="skip-button">Save as Draft</div>
                             <div className="next-button">
 
-                                <Button htmlType="submit" type="primary">
+                                <Button loading={status === "running"} htmlType="submit" type="primary">
                                     Create</Button></div>
                         </div>
                     </Form>
-
                 </Card>
             </div>
 

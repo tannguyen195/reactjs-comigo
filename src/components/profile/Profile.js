@@ -43,7 +43,7 @@ export default class extends Component {
                                 userData.projects && <div className="user-project">
                                     {
                                         userData.projects.map((item, index) => {
-                                            return <Link to={"/profile/" + item._id}>
+                                            return <Link to={"/profile/" + item._id} key={item._id}>
                                                 <a key={index} className="project-item">
                                                     <img alt="cover" src={item.coverURL} />
                                                     <div className="project-name">{item.name}</div>

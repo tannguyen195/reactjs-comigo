@@ -1,0 +1,37 @@
+.people-card-container {
+    margin: 8px auto;
+    max-width: 600px;
+    .ant-card-body {
+        padding: 24px !important;
+        .people-container {
+            display: flex;
+            .people-image-container {
+                margin-right: 24px;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+    .people-right {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        .people-info-container {
+            .people-mail {
+                padding-bottom: 12px;
+            }
+            .people-desc {
+                padding-bottom: 16px;
+            }
+        }
+        .people-invite {
+            img {
+                width: 24px;
+                height: 21px;
+            }
+        }
+    }
+}

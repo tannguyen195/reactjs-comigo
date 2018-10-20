@@ -13,6 +13,10 @@ import keyMirror from 'fbjs/lib/keyMirror';
 
 export const ActionTypes = keyMirror({
 
+    // TOGGLE CONSTANT ACTION TYPE
+    TOGGLE_HOME_VIEW: undefined,
+
+
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
     LOGIN_SUCCESS: undefined,
@@ -66,8 +70,15 @@ export const ActionTypes = keyMirror({
     UPLOAD: undefined,
     UPLOAD_SUCCESS: undefined,
     UPLOAD_ERROR: undefined,
+
     CHANGE_PHOTO: undefined,
-    GET_CROPPED_PHOTO: undefined
+    GET_CROPPED_PHOTO: undefined,
+    GET_IMAGE_PAYLOAD: undefined,
+
+    // PEOPLE CONSTANT ACTION TYPE
+    GET_PEOPLE_LIST: undefined,
+    GET_PEOPLE_LIST_SUCCESS: undefined,
+    GET_PEOPLE_LIST_ERROR: undefined,
 });
 
 export const STATUS = {

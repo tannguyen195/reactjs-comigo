@@ -15,11 +15,9 @@ class Login extends Component {
                     <div className="app-logo">
                         <img alt="logo" src={logoIcon} />
                     </div>
-                    <div className="sign-in-title Headline-2CenterBlack-Style">
+                    <div className="sign-in-title Title-Medium-Center">
                         Log In   </div>
-                    {
-                        status === "error" && <Alert className="errMessage" closable message={errMessage} type="error" />
-                    }
+                 
                     <Form onSubmit={handleSubmit}>
                         <FormItem className="marginBottom32" >
                             <div className="label-form">Email</div>
