@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Head from '../head'
-
 import * as projectAction from '../../actions/project'
 import * as peopleAction from '../../actions/people'
 
@@ -14,6 +13,7 @@ import People from './People'
 import Home from './Home'
 import _home from './_home.less'
 
+import { Form } from 'antd'
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -95,4 +95,4 @@ export function mapDispatchToProps(dispatch) {
         ...peopleAction,
     }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(HomeContainer));

@@ -7,7 +7,7 @@ const logoIcon = '/static/images/logo.svg'
 const menuItem = [
     {
         title: "Why Comigo?",
-        link: "/"
+        link: "/why"
     },
     {
         title: "Contact us",
@@ -34,10 +34,11 @@ class Header extends Component {
             <header className="header-container" >
                 <div className="header-max">
                     <div className="header-left">
-                        <div className="logo">
-                            <img src={logoIcon} alt="logo" />
-                        </div>
-
+                        <Link to="/">
+                            <a className="logo">
+                                <img src={logoIcon} alt="logo" />
+                            </a>
+                        </Link>
                     </div>
                     {
                         !isLoggedIn ?

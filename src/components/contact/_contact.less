@@ -1,0 +1,70 @@
+.contact-container {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    .contact-left {
+        height: 100%;
+        overflow: hidden;
+        padding: 80px 0;
+        background: #ffd24c;
+        .contact-left__container {
+            margin: 0 auto;
+            max-width: 540px;
+            ;
+        }
+        .get-in-touch {
+            font-size: 64px;
+            font-weight: bold;
+            line-height: 1.25;
+            color: #fff;
+        }
+        .contact-desc {
+            padding-top: 8px;
+            padding-bottom: 40px;
+        }
+        .ant-card {
+            width: 540px;
+            .ant-card-body {
+                padding: 48px;
+            }
+        }
+        .bio-info {
+            position: relative;
+            .label-form {
+                top: -8px;
+                height: inherit;
+            }
+            textarea {
+                min-height: 160px !important;
+            }
+        }
+        .send-button {
+            margin: 0;
+            button {
+                width: 100%;
+                height: 56px;
+            }
+        }
+    }
+    .contact-right {
+        background: #fff;
+        padding-left: 55px;
+        .contact-address {
+            white-space: pre;
+            padding-top: 24px;
+            padding-bottom: 40px
+        }
+        .social-icon {
+            padding-top: 24px;
+            padding-bottom: 100px;
+            display: flex;
+            img {
+                margin-right: 24px;
+            }
+        }
+    }
+}

@@ -18,9 +18,11 @@ class VerifyAccountContainer extends Component {
         if (Router.query && Router.query.token)
             this.props.verify(Router.query.token)
     }
+    
     handleContinue = () => {
         Router.push('/profile/edit')
     }
+
     render() {
         const { userData } = this.props
     

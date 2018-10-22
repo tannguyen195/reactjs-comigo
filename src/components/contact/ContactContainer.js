@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Form } from 'antd'
 import Head from '../head'
 import Contact from './Contact'
 import _contact from './_contact.less'
-
 
 class ContactContainer extends Component {
     constructor(props) {
@@ -13,15 +13,22 @@ class ContactContainer extends Component {
 
         }
     }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if (!err) {
 
+            }
+        });
+    }
     render() {
 
         return (
-            <div >
+            <div style={{ height: '100%' }}>
                 <style dangerouslySetInnerHTML={{
                     __html: _contact
                 }} />
-                <Head title="Home page" />
+                <Head title="Contact" />
                 <Contact
                     {...this.state}
                     {...this.props}
@@ -40,4 +47,4 @@ export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
     }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ContactContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(ContactContainer));
