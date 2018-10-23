@@ -34,9 +34,13 @@ class Home extends Component {
                     <div className="home-body">
                         <div className="home-body__1">
                             <div className="video-container">
-                                <ReactPlayer width='100%'
+                                <ReactPlayer
+                                    width='100%'
                                     height='100%'
-                                    url='https://www.youtube.com/embed/ysz5S6PUM-U' playing />
+                                    url='https://www.youtube.com/embed/A6Ovq52kaIw'
+                                    playing
+                                    youtubeConfig={{ playerVars: { showinfo: 1 } }}
+                                    controls />
                             </div>
                             <div className="intro">
                                 <div className="Body-16-Left desc">{`Comigo is a platform to find new collaborators on your very own campus. Connect with them to work on one-of-a-kind ideas.`}</div>
