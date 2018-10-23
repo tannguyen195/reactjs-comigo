@@ -90,13 +90,9 @@ team@comigo.org`}
                             <a>
                                 <img alt="icon" src={youtubeIcon} />
                             </a>
-
-
                             <a>
                                 <img alt="icon" src={facebookIcon} />
                             </a>
-
-
                         </div>
                     </div>
                 </Col>
