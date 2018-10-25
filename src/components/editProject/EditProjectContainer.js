@@ -9,7 +9,7 @@ import UploadPhotoContainer from '../common/uploadPhoto/UploadPhotoContainer'
 import { Router } from 'routes'
 import * as fileAction from '../../actions/file'
 import * as projectAction from '../../actions/project'
-
+import Loading from '../common/loading/Loading'
 class EditProjectContainer extends Component {
     constructor(props) {
         super(props)
@@ -46,7 +46,10 @@ class EditProjectContainer extends Component {
             visibleUploadModal: !this.state.visibleUploadModal
         })
     }
-
+    handleRemoveProject = (id) => {
+        const { remove } = this.props
+        remove(id)
+    }
     handleSubmit = (e) => {
         e.preventDefault();
         const { form, update, image, detail } = this.props
@@ -86,7 +89,7 @@ class EditProjectContainer extends Component {
     }
     render() {
         const { visibleUploadModal, preloadImage } = this.state
-        const { image, userData, detail } = this.props
+        const { userData, detail } = this.props
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -94,7 +97,7 @@ class EditProjectContainer extends Component {
                 }} />
                 <Head title="Home page" />
                 {
-                    userData && detail && <EditProject
+                    userData && detail ? <EditProject
                         {...this.state}
                         {...this.props}
                         handleSubmit={this.handleSubmit}
@@ -102,7 +105,9 @@ class EditProjectContainer extends Component {
                         onTagProjectChange={this.onTagProjectChange}
                         onTagLookingChange={this.onTagLookingChange}
                         onTagLinkChange={this.onTagLinkChange}
-                    />
+
+                        handleRemoveProject={this.handleRemoveProject}
+                    /> : <Loading />
 
                 }
 

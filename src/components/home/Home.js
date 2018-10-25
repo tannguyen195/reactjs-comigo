@@ -4,6 +4,8 @@ import { Button, Card, Row, Col, Form, Input } from 'antd'
 import Footer from '../common/footer/Footer'
 import posed from 'react-pose';
 
+const graphicImage1 = '/static/images/image-graphic-1.svg'
+const graphicImage2 = '/static/images/image-graphic-2.svg'
 const FormItem = Form.Item;
 const comigoIcon = '/static/images/logo.svg'
 const Header = posed.div({
@@ -39,7 +41,7 @@ class Home extends Component {
                                     height='100%'
                                     url='https://www.youtube.com/embed/A6Ovq52kaIw'
                                     playing
-                                    youtubeConfig={{ playerVars: { showinfo: 1 } }}
+                               
                                     controls />
                             </div>
                             <div className="intro">
@@ -47,20 +49,32 @@ class Home extends Component {
                                 <Button type="primary">Learn more</Button>
                             </div>
                         </div>
-                        <div className="home-body__2">
-                            <div className="Title-Medium-Left-LandingPage paddingBottom16 paddingTop40">
-                                Project starters
+                        <div className="home-body__2 mid">
+                            <div>
+                                <img src={graphicImage2} alt="graphic" />
                             </div>
-                            <div className="Sub-Title-Medium-Left body__2-desc">{`the movers, shakers,
+                            <div>
+                                <div className="Title-Medium-Left-LandingPage paddingBottom16 paddingTop40">
+                                    Project starters
+                            </div>
+                                <div className="Sub-Title-Medium-Left body__2-desc">{`the movers, shakers,
 and makers.`}</div>
+                            </div>
+
                         </div>
 
-                        <div className="home-body__3 paddingTop40">
-                            <div className="Title-Medium-Left-LandingPage paddingBottom16 paddingTop40">
-                                Collaborators
+                        <div className="home-body__3 paddingTop40 mid">
+                            <div>
+                                <div className="Title-Medium-Left-LandingPage paddingBottom16 paddingTop40">
+                                    Collaborators
                             </div>
-                            <div className="Sub-Title-Medium-Left body__2-desc">{`the supportive, skilled,
+                                <div className="Sub-Title-Medium-Left body__2-desc">{`the supportive, skilled,
 and curious.`}</div>
+                            </div>
+
+                            <div>
+                                <img src={graphicImage1} alt="graphic" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -156,9 +170,6 @@ and curious.`}</div>
 
                 <div className="home-notified">
                     <div className="Title-Small-Center-Black-LandingPage notified-desc">Get notified when we’re live on your campus.</div>
-
-
-
                     <Form >
                         <div className="form-subscribe">
                             <FormItem>

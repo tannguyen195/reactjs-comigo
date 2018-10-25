@@ -20,7 +20,6 @@ export default class extends Component {
                             BUILD PROFILE
                         </Button>
                     </div>
-
                 </Card>
             </div>
         )

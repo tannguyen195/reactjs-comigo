@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Button, Form, Input, } from 'antd'
+import { Card, Button, Form, Input, Modal } from 'antd'
 import CustomTagContainer from '../common/customTag/CustomTagContainer';
+
+const confirm = Modal.confirm;
 const FormItem = Form.Item;
 const profileIcon = '/static/images/icon-project-photo.svg'
 const { TextArea } = Input;
@@ -22,7 +24,8 @@ export default class extends Component {
             projectSkills,
             lookingSkills,
             links,
-            status
+            status,
+            handleRemoveProject
         } = this.props
         return (
             <div className="edit-project-container max-width">
@@ -120,16 +123,33 @@ export default class extends Component {
                             </div>
                         </div>
                         <div className="update-button">
-                            <a className="skip-button">Cancel</a>
-                            <div className="next-button">
+                            <div className="delete-button">
+                                <a onClick={() => confirm({
+                                    title: 'Are you sure?',
+                                    content: 'Do you really want to delete this project? This process cannot be undone.',
+                                    okText: 'Yes',
+                                    okType: 'danger',
+                                    cancelText: 'No',
+                                    onOk() {
+                                        handleRemoveProject(detail._id)
+                                    },
+                                    onCancel() {
+                                        console.log('Cancel');
+                                    },
+                                })}>DELETE</a>
+                            </div>
+                            <div className="left-button">
+                                <a className="skip-button">Cancel</a>
+                                <div className="next-button">
 
-                                <Button loading={status === 'running'} htmlType="submit" type="primary">
-                                    SAVE</Button></div>
+                                    <Button loading={status === 'running'} htmlType="submit" type="primary">
+                                        SAVE</Button></div>
+                            </div>
                         </div>
                     </Form>
 
                 </Card>
-            </div>
+            </div >
 
         )
     }

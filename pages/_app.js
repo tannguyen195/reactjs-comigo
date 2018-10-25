@@ -10,7 +10,7 @@ import stylesheet from '../src/styles/index.less'
 import _postCard from '../src/components/common/postCard/_postCard.less'
 import _peopleCard from '../src/components/common/peopleCard/_peopleCard.less'
 import { Cookies } from 'react-cookie'
-
+import Loading from '../src/components/common/loading/Loading'
 import jwtDecode from 'jwt-decode'
 
 import VerifyAccountContainer from '../src/components/verify/VerifyAccountContainer'
@@ -38,7 +38,7 @@ class MyApp extends App {
       this.props.reduxStore.dispatch(loginSuccess())
       this.props.reduxStore.dispatch(getProfile())
     }
-     else this.props.reduxStore.dispatch(loginError())
+    else this.props.reduxStore.dispatch(loginError())
     this.setState({
       isLoggedIn
     })
@@ -47,7 +47,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
 
     if (isLoggedIn === null)
-      return <div />
+      return <Loading />
     else if (isLoggedIn === false && !isVerify)
       return <Component {...pageProps} />
     else if (isLoggedIn === true && !isVerify)

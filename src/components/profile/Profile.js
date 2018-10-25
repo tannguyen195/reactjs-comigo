@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'antd'
+import { Card, Button, Row, Col } from 'antd'
 import { Link } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
 
@@ -11,8 +11,8 @@ export default class extends Component {
         const {
             userData,
             handleLogout,
-            
-            
+
+
         } = this.props
 
         return (
@@ -40,18 +40,21 @@ export default class extends Component {
                                 PROJECTS
                         </div>
                             {
-                                userData.projects && <div className="user-project">
+                                userData.projects &&
+                                <Row className="user-project">
                                     {
                                         userData.projects.map((item, index) => {
-                                            return <Link to={"/profile/" + item._id} key={item._id}>
-                                                <a key={index} className="project-item">
-                                                    <img alt="cover" src={item.coverURL} />
-                                                    <div className="project-name">{item.name}</div>
-                                                </a>
-                                            </Link>
+                                            return <Col lg={8} md={8}>
+                                                <Link to={"/" + item._id} key={item._id}>
+                                                    <a key={index} className="project-item">
+                                                        <img alt="cover" src={item.coverURL} />
+                                                        <div className="project-name">{item.name}</div>
+                                                    </a>
+                                                </Link>
+                                            </Col>
                                         })
                                     }
-                                </div>
+                                </Row>
                             }
 
                         </section>

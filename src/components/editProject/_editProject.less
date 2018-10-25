@@ -157,16 +157,25 @@
     }
     .update-button {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
-        .skip-button {
-            color: #999999;
-            padding-right: 32px;
+        .delete-button {
+            a {
+                color: #fa393d;
+            }
         }
-        .next-button {
-            button {
-                width: 120px;
-                height: 48px;
+        .left-button {
+            display: flex;
+            align-items: center;
+            .skip-button {
+                color: #999999;
+                padding-right: 32px;
+            }
+            .next-button {
+                button {
+                    width: 120px;
+                    height: 48px;
+                }
             }
         }
     }

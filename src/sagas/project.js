@@ -8,6 +8,7 @@ import { notification } from 'antd';
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
 import { endPoint } from 'constants/index'
+import { Router } from 'routes'
 import axios from 'axios'
 const cookies = new Cookies()
 const project = {
@@ -55,15 +56,14 @@ const project = {
   },
   /**
     * Remove a project, returning a {true} when done
-    * @param  {Object} data The data of the project which will be deleted
+    * @param  {string} id The id of the project which will be deleted
     */
-  remove(data) {
+  remove(id) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project',
+        url: endPoint + 'project/' + id,
         method: 'DELETE',
-        data: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': cookies.get('token')
@@ -135,15 +135,13 @@ export function* create(data) {
       type: ActionTypes.CREATE_SUCCESS,
       response
     });
-
+    Router.push('/profile')
     notification['success']({
       message: 'Comigo',
       description: response.message,
     });
   }
   catch (error) {
-
-
     yield put({
       type: ActionTypes.CREATE_ERROR,
       error: error.response,
@@ -191,12 +189,12 @@ export function* update(data) {
 export function* remove(data) {
   try {
     const response = yield call(project.remove, data.payload);
-
-
     yield put({
       type: ActionTypes.REMOVE_SUCCESS,
       response
     });
+
+    Router.push('/profile')
   }
   catch (error) {
 

@@ -96,7 +96,7 @@ export default {
         // GET_DETAIL PROJECT ACTION
         [ActionTypes.GET_DETAIL]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },
-
+            detail: { $set: null },
         }),
         [ActionTypes.GET_DETAIL_SUCCESS]: (state, { response }) => {
             return update(state, {

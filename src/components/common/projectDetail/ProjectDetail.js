@@ -23,7 +23,7 @@ export default class extends Component {
                         <div className="header-title">
                             <div className="Text-Style paddingBottom16">{detail.name}</div>
                             {
-                                edit ? <Link to={`/profile/${detail._id}/edit`}>
+                                edit ? <Link to={`/${detail._id}/edit`}>
                                     <a className="header-right">
                                         <img alt="edit" src={editIcon} />
                                     </a>
@@ -65,7 +65,7 @@ export default class extends Component {
                                 PROJECT SKILLS
                         </div>
                             {
-                                !detail.projectSkills ? <Link to="/project/edit">
+                                !detail.projectSkills ? <Link to="/edit">
                                     <a>
                                         <Button
                                             icon="plus"

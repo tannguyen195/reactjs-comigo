@@ -23,6 +23,7 @@
     "jwt-decode": "^2.2.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "lodash": "^4.17.11",
     "next": "^6.1.2",
     "next-redux-wrapper": "^2.0.0",
     "next-routes": "^1.4.2",
