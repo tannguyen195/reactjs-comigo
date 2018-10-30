@@ -135,11 +135,14 @@ export function* create(data) {
       type: ActionTypes.CREATE_SUCCESS,
       response
     });
-    Router.push('/profile')
+
+
     notification['success']({
       message: 'Comigo',
       description: response.message,
     });
+
+    window.location.replace('/profile')
   }
   catch (error) {
     yield put({
@@ -193,8 +196,8 @@ export function* remove(data) {
       type: ActionTypes.REMOVE_SUCCESS,
       response
     });
+    window.location.replace('/profile')
 
-    Router.push('/profile')
   }
   catch (error) {
 

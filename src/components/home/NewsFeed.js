@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PostCard from '../common/postCard/PostCard'
 import { Link } from 'routes'
-import ProjectDetail from '../common/projectDetail/ProjectDetail'
+
 
 export default class extends Component {
     renderProject = (list) => {

@@ -34,7 +34,7 @@ class Header extends Component {
             <header className="header-container" >
                 <div className="header-max">
                     <div className="header-left">
-                        <Link to="/">
+                        <Link prefetch to="/">
                             <a className="logo">
                                 <img src={logoIcon} alt="logo" />
                             </a>
@@ -45,7 +45,7 @@ class Header extends Component {
                             <div className="header-right">
                                 {
                                     menuItem.map((item, index) => {
-                                        return <Link key={index} to={item.link}>
+                                        return <Link prefetch key={index} to={item.link}>
                                             <a className="header-item Menu-Button">{item.title}</a>
                                         </Link>
                                     })

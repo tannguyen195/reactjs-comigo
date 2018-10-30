@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button, Row, Col, Form, Input, Tag, Icon, Tooltip, Checkbox } from 'antd'
 import CustomTagContainer from '../common/customTag/CustomTagContainer';
+import { Router } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -141,7 +142,7 @@ export default class extends Component {
                         <Checkbox className="paddingBottom40" onChange={onEmailReceiveChange}>Yes, send me updates.</Checkbox>
 
                         <div className="update-button">
-                            <div className="skip-button">Cancel</div>
+                            <a onClick={() => Router.push('/profile')} className="skip-button">Cancel</a>
                             <div className="next-button">
 
                                 <Button loading={status === 'running'} htmlType={"submit"} type="primary">

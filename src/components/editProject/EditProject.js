@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button, Form, Input, Modal } from 'antd'
 import CustomTagContainer from '../common/customTag/CustomTagContainer';
-
+import { Router } from 'routes'
 const confirm = Modal.confirm;
 const FormItem = Form.Item;
 const profileIcon = '/static/images/icon-project-photo.svg'
@@ -134,12 +134,12 @@ export default class extends Component {
                                         handleRemoveProject(detail._id)
                                     },
                                     onCancel() {
-                                        console.log('Cancel');
+                                      
                                     },
                                 })}>DELETE</a>
                             </div>
                             <div className="left-button">
-                                <a className="skip-button">Cancel</a>
+                                <a onClick={() => Router.push('/profile')} className="skip-button">Cancel</a>
                                 <div className="next-button">
 
                                     <Button loading={status === 'running'} htmlType="submit" type="primary">

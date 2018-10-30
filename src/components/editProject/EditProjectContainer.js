@@ -28,11 +28,11 @@ class EditProjectContainer extends Component {
 
     componentWillReceiveProps(nextProps) {
         const { detail, uploadStatus } = this.props
-        if (nextProps.detail !== detail) {
+        if (nextProps.detail && nextProps.detail !== detail) {
             this.setState({
-                lookingSkills: nextProps.detail.lookingSkills,
-                projectSkills: nextProps.detail.projectSkills,
-                links: nextProps.detail.links,
+                lookingSkills: nextProps.detail.lookingSkills || [],
+                projectSkills: nextProps.detail.projectSkills || [],
+                links: nextProps.detail.links || [],
                 preloadImage: nextProps.detail.coverURL,
             })
         }

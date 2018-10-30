@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Head from '../head'
-import Project from '../common/projectDetail/ProjectDetail'
+import Project from './Project'
 import * as projectAction from '../../actions/project'
 import { Router } from 'routes'
-
+import _project from './_project.less'
 import _ from 'lodash'
 
 import Loading from '../common/loading/Loading'
@@ -13,8 +13,15 @@ class ProjectContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            detail: null
         }
+    }
+    static async getInitialProps({ query }) {
+        if (query && query.detail)
+            return {
+                detail: query.detail
+            }
+        return {}
     }
     componentDidMount() {
         const { getDetail } = this.props
@@ -31,7 +38,9 @@ class ProjectContainer extends Component {
         const { userData, detail } = this.props
         return (
             <div >
-
+                <style dangerouslySetInnerHTML={{
+                    __html: _project
+                }} />
                 <Head title="Home page" />
                 {
                     userData && detail ?

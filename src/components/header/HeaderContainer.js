@@ -7,13 +7,24 @@ import _header from './_header.less'
 import { withRouter } from "next/router"
 import * as toggleAction from '../../actions/toggle'
 import * as userAction from '../../actions/user'
+import * as projectAction from '../../actions/project'
 class HeaderContainer extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-
+            searchValue: ""
         }
+    }
+    onSearchValueChange = (e) => {
+        this.setState({
+            searchValue: e
+        })
+    }
+    onPressEnter = () => {
+        const { getList } = this.props
+        
+        getList(this.state.searchValue)
     }
     renderHeader() {
         const { isLoggedIn, userData } = this.props
@@ -22,6 +33,8 @@ class HeaderContainer extends Component {
         else if (isLoggedIn === true) {
             if (userData)
                 return <LoggedHeader
+                    onSearchValueChange={this.onSearchValueChange}
+                    onPressEnter={this.onPressEnter}
                     {...this.state}
                     {...this.props}
 
@@ -53,7 +66,8 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...userAction,
-        ...toggleAction
+        ...toggleAction,
+        ...projectAction
     }, dispatch)
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderContainer));

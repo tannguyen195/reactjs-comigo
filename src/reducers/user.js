@@ -4,6 +4,8 @@ import update from 'immutability-helper'
 export const initial = {
     isLoggedIn: null,
     step: 1,
+    statusSignUp: STATUS.IDLE,
+    statusSignIn: STATUS.IDLE,
     status: STATUS.IDLE,
     message: "",
     data: null,
@@ -15,19 +17,19 @@ export default {
 
         // LOGIN ACTION
         [ActionTypes.LOGIN]: (state) => update(state, {
-            status: { $set: STATUS.RUNNING },
+            statusSignIn: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.LOGIN_SUCCESS]: (state, { response }) => {
             return update(state, {
-                status: { $set: STATUS.SUCCESS },
+                statusSignIn: { $set: STATUS.SUCCESS },
                 isLoggedIn: { $set: true },
 
             })
         },
         [ActionTypes.LOGIN_ERROR]: (state, { error }) => {
             return update(state, {
-                status: { $set: STATUS.ERROR },
-                message: { $set: error && renderMessage(error.status || 0) },
+                statusSignIn: { $set: STATUS.ERROR },
+                message: { $set: error && error.data.message},
                 isLoggedIn: { $set: false },
             })
         },
@@ -39,18 +41,18 @@ export default {
             step: { $set: state.step + 1 },
         }),
         [ActionTypes.SIGNUP]: (state) => update(state, {
-            status: { $set: STATUS.RUNNING },
+            statusSignUp: { $set: STATUS.RUNNING },
         }),
 
         [ActionTypes.SIGNUP_SUCCESS]: (state, { response }) => update(state,
             {
-                status: { $set: STATUS.SUCCESS },
+                statusSignUp: { $set: STATUS.SUCCESS },
                 data: { $set: response.data },
                 token: { $set: response.token }
             })
         ,
         [ActionTypes.SIGNUP_ERROR]: (state, { error }) => update(state, {
-            status: { $set: STATUS.ERROR },
+            statusSignUp: { $set: STATUS.ERROR },
             message: { $set: renderMessage(error.status) }
         }),
 
@@ -79,7 +81,7 @@ export default {
             {
                 status: { $set: STATUS.SUCCESS },
                 data: {
-                    $merge: { ...response.data},
+                    $merge: { ...response.data },
 
                 }
             })
@@ -106,6 +108,7 @@ export default {
             status: { $set: STATUS.ERROR },
             message: { $set: renderMessage(error.status) }
         }),
+
     }, initial),
 };
 

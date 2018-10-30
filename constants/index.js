@@ -89,7 +89,7 @@ export const STATUS = {
     ERROR: 'error',
 };
 
-export const endPoint = "https://comigo-backend.herokuapp.com/api/"
+export const endPoint = "http://comigobackend-production.us-west-1.elasticbeanstalk.com/api/"
 export const googleApi = "[Your google api]"
 export const googleClientID = "[Your google client ID]"
 export const facebookAppID = "[Your facebook app ID]"

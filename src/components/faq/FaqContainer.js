@@ -15,7 +15,6 @@ class FaqContainer extends Component {
         }
     }
     handleOpen = (e) => {
-        console.log("e", e)
         this.setState({
             visibleDrawer: !this.state.visibleDrawer,
             arrayVisible: e

@@ -4,17 +4,21 @@ export default class extends Component {
 
     render() {
         const {
-            
+            onPressEnter,
             visibleProject,
-            toggleHomeView
+            toggleHomeView,
+            onSearchValueChange
         } = this.props
         return (
             <AutoComplete
                 dataSource={[]}
                 style={{ width: 380 }}
-
+                onSearch={onSearchValueChange}
             >
-                <Input placeholder="Search for projects, skills etc."
+                <Input
+                    onPressEnter={onPressEnter}
+                    onChange={onSearchValueChange}
+                    placeholder="Search for projects, skills etc."
                     suffix={
                         <div className="siffix-container">
                             <Icon type="search" className="certain-category-icon" />

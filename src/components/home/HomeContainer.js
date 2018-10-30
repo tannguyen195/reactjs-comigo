@@ -15,7 +15,8 @@ import _home from './_home.less'
 
 import { Form } from 'antd'
 
-
+import Loading from '../common/loading/Loading'
+import NoResult from '../common/noResult/NoResult'
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -44,8 +45,12 @@ class HomeContainer extends Component {
         })
     }
     renderNewsFeed() {
-        const { visibleProject, list, people } = this.props
-        if (!visibleProject === true && list) {
+        const { visibleProject, list, people, status } = this.props
+        if (status === "running")
+            return <Loading />
+        else if (list.length === 0)
+            return <NoResult />
+        else if (!visibleProject === true && list) {
             return <NewsFeed
                 {...this.state}
                 {...this.props}
@@ -59,6 +64,7 @@ class HomeContainer extends Component {
                 {...this.state}
                 {...this.props}
             />
+        else return <Loading />
     }
     render() {
         const { isLoggedIn, list } = this.props
@@ -88,7 +94,8 @@ export function mapStateToProps(state) {
         isLoggedIn: state.user.isLoggedIn,
         list: state.project.list,
         visibleProject: state.toggle.visibleProject,
-        people: state.people.people
+        people: state.people.people,
+        status: state.project.status,
     };
 }
 export function mapDispatchToProps(dispatch) {

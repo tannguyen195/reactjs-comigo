@@ -63,9 +63,13 @@ class MyApp extends App {
       <Container>
         <Provider store={reduxStore}>
           <div>
-            <style dangerouslySetInnerHTML={{
-              __html: stylesheet + _postCard + _peopleCard
-            }} />
+            <style
+              dangerouslySetInnerHTML={{
+                __html:
+                  stylesheet +
+                  _postCard +
+                  _peopleCard
+              }} />
             <Head />
             <div className="page-container">
               <HeaderContainer {...pageProps} />

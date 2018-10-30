@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Row, Col } from 'antd'
+import { Card, Button, Row, Col, Tooltip } from 'antd'
 import { Link } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
 
@@ -28,11 +28,17 @@ export default class extends Component {
                                 <a onClick={handleLogout} className="sign-out-button">Sign Out</a>
                             </div>
                         </div>
+
                         <Link to="/profile/edit">
+
                             <a className="header-right">
-                                <img alt="edit" src={editIcon} />
+                                <Tooltip title="Edit Profile">
+                                    <img alt="edit" src={editIcon} />
+                                </Tooltip>
                             </a>
+
                         </Link>
+
                     </div>
                     <div className="profile-body">
                         <section className="paddingBottom40">
@@ -44,8 +50,8 @@ export default class extends Component {
                                 <Row className="user-project">
                                     {
                                         userData.projects.map((item, index) => {
-                                            return <Col lg={8} md={8}>
-                                                <Link to={"/" + item._id} key={item._id}>
+                                            return <Col lg={8} md={8} key={item._id}>
+                                                <Link to={"/" + item._id} >
                                                     <a key={index} className="project-item">
                                                         <img alt="cover" src={item.coverURL} />
                                                         <div className="project-name">{item.name}</div>

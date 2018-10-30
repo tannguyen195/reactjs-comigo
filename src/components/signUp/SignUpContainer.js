@@ -75,7 +75,7 @@ class SignUpContainer extends Component {
 export function mapStateToProps(state) {
     return {
         step: state.user.step,
-        status: state.user.status,
+        status: state.user.statusSignUp,
         message: state.user.message,
     };
 }

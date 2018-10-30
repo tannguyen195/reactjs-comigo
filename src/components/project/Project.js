@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'antd'
-import Image from '../../common/Image'
-import ImageProject from '../../common/ImageProject'
+import Image from '../common/Image'
+import ImageProject from '../common/ImageProject'
 import { Link } from 'routes'
-import _projectDetail from './_projectDetail.less'
+
 const mailIcon = '/static/images/icon-mail.svg'
 const editIcon = '/static/images/icon-edit.svg'
 export default class extends Component {
@@ -15,15 +15,12 @@ export default class extends Component {
         } = this.props
         return (
             <div className="project-detail-container">
-                <style dangerouslySetInnerHTML={{
-                    __html: _projectDetail
-                }} />
                 <Card bordered={false}>
                     <div className="project-detail-header">
                         <div className="header-title">
                             <div className="Text-Style paddingBottom16">{detail.name}</div>
                             {
-                                edit ? <Link to={`/${detail._id}/edit`}>
+                                edit ? <Link to={`/${detail._id}/edit`} params={{ detail: detail }}>
                                     <a className="header-right">
                                         <img alt="edit" src={editIcon} />
                                     </a>

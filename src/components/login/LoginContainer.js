@@ -46,8 +46,8 @@ class LoginContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
-        status: state.user.status,
-        errMessage: state.user.errMessage
+        status: state.user.statusSignIn,
+        message: state.user.message
     };
 }
 export function mapDispatchToProps(dispatch) {
