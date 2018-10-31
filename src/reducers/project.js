@@ -99,7 +99,6 @@ export default {
             detail: { $set: null },
         }),
         [ActionTypes.GET_DETAIL_SUCCESS]: (state, { response }) => {
-            console.log("response", response.data)
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
                 detail: { $set: response.data },

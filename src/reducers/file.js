@@ -25,7 +25,7 @@ export default {
         [ActionTypes.UPLOAD_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
-                message: { $set: renderMessage(error.status) }
+           
             })
         },
         [ActionTypes.CHANGE_PHOTO]: (state, { payload }) => {

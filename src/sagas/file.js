@@ -4,7 +4,7 @@
  */
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-
+import { notification } from 'antd';
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
 import { endPoint } from 'constants/index'
@@ -30,6 +30,20 @@ const file = {
     const sendData = new FormData()
     sendData.append('file', file)
 
+    /**
+      * Get image size before upload
+      */
+    var res = Array.from(sendData.entries(), ([key, prop]) => (
+      {
+        [key]: {
+          "ContentLength":
+            typeof prop === "string"
+              ? prop.length
+              : prop.size
+        }
+      }));
+
+    console.log(res);
     // Post a upload request
     return axios(
       {
@@ -42,7 +56,6 @@ const file = {
           'Accept': 'application/json'
         },
       }).then((response) => {
-
         return response.data
       })
   },
@@ -61,10 +74,13 @@ export function* upload(data) {
 
   }
   catch (error) {
-
+    notification['error']({
+      message: 'This photo is too large!',
+      description: "Please choose another one.",
+    });
     yield put({
       type: ActionTypes.UPLOAD_ERROR,
-      error: error.response,
+      error: error,
     });
   }
 }
