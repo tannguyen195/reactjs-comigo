@@ -7,7 +7,7 @@ export default class extends Component {
     renderProject = (list) => {
 
         return list.map((item, index) => {
-            return <Link to={"/" + item._id} key={item.id}>
+            return <Link prefetch to={"/" + item._id} key={item.id}>
                 <a>
                     <PostCard data={item} /></a>
             </Link >

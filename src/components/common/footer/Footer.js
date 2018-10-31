@@ -16,15 +16,15 @@ export default class extends Component {
 
                 <div className="footer-max-width">
                     <div>
-                        <Link to="/why">
+                        <Link prefetch to="/why">
                             <a className="Title-14-Left footer-item">Why Comigo?</a>
                         </Link>
 
-                        <Link to="/contact">
+                        <Link prefetch to="/contact">
                             <a className="Title-14-Left footer-item">Contact us</a>
                         </Link>
 
-                        <Link to="/faq">
+                        <Link prefetch to="/faq">
                             <a className="Title-14-Left footer-item">FAQ?</a>
                         </Link>
                     </div>

@@ -20,12 +20,12 @@ export default class extends Component {
                         <div className="header-title">
                             <div className="Text-Style paddingBottom16">{detail.name}</div>
                             {
-                                edit ? <Link to={`/${detail._id}/edit`} params={{ detail: detail }}>
+                                edit ? <Link prefetch to={`/${detail._id}/edit`} params={{ detail: detail }}>
                                     <a className="header-right">
                                         <img alt="edit" src={editIcon} />
                                     </a>
                                 </Link> :
-                                    <Link to="/project/edit">
+                                    <Link prefetch to="/project/edit">
                                         <a className="header-right">
                                             <img alt="mail" src={mailIcon} />
                                         </a>
@@ -62,7 +62,7 @@ export default class extends Component {
                                 PROJECT SKILLS
                         </div>
                             {
-                                !detail.projectSkills ? <Link to="/edit">
+                                !detail.projectSkills ? <Link prefetch to="/edit">
                                     <a>
                                         <Button
                                             icon="plus"
@@ -83,7 +83,7 @@ export default class extends Component {
                                 LOOKING FOR SKILLS
                         </div>
                             {
-                                !detail.lookingSkills ? <Link to="/project/edit">
+                                !detail.lookingSkills ? <Link prefetch to="/project/edit">
                                     <a>
                                         <Button
                                             icon="plus"
@@ -104,7 +104,7 @@ export default class extends Component {
                                 LINKS
                         </div>
                             {
-                                !detail.links ? <Link to="/project/edit">
+                                !detail.links ? <Link prefetch to="/project/edit">
                                     <a>
                                         <Button className="link-button" icon="plus" >Add Link</Button>
                                     </a>

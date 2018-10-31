@@ -18,14 +18,20 @@ class VerifyAccountContainer extends Component {
         if (Router.query && Router.query.token)
             this.props.verify(Router.query.token)
     }
-    
+    handleResendEmail = () => {
+        console.log("click", this.props)
+
+        const { resend } = this.props
+
+        resend()
+    }
     handleContinue = () => {
         Router.push('/profile/edit')
     }
 
     render() {
         const { userData } = this.props
-    
+
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -42,6 +48,7 @@ class VerifyAccountContainer extends Component {
                                     handleContinue={this.handleContinue} />
                                 :
                                 <VerifyAccount
+                                    handleResendEmail={this.handleResendEmail}
                                     {...this.state}
                                     {...this.props} />
                         }

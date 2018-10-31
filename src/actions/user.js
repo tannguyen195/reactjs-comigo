@@ -11,7 +11,8 @@ export const {
   loginError,
   getProfile,
   verify,
-  updateProfile 
+  updateProfile ,
+  resend
 } = createActions({
   [ActionTypes.LOGIN]: (data) => (data),
   [ActionTypes.LOGOUT]: () => ({}),
@@ -22,4 +23,5 @@ export const {
   [ActionTypes.GET_PROFILE]: () => ({}),
   [ActionTypes.VERIFY]: (data) => (data),
   [ActionTypes.UPDATE_PROFILE]: (data) => (data),
+  [ActionTypes.RESEND]: () => ({}),
 });

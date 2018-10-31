@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player'
 import { Button, Card, Row, Col, Form, Input } from 'antd'
 import Footer from '../common/footer/Footer'
 import posed from 'react-pose';
-
+import { videoURL } from '/constants'
 const graphicImage1 = '/static/images/image-graphic-1.svg'
 const graphicImage2 = '/static/images/image-graphic-2.svg'
 const FormItem = Form.Item;
@@ -39,10 +39,15 @@ class Home extends Component {
                                 <ReactPlayer
                                     width='100%'
                                     height='100%'
-                                    url='https://www.youtube.com/embed/A6Ovq52kaIw'
+                                    url={videoURL}
                                     playing
-                               
-                                    controls />
+                                    loop
+                                    config={{
+                                        youtube: {
+                                            playerVars: { showinfo: 0, rel: 0 }
+                                        }
+                                    }}
+                                />
                             </div>
                             <div className="intro">
                                 <div className="Body-16-Left desc">{`Comigo is a platform to find new collaborators on your very own campus. Connect with them to work on one-of-a-kind ideas.`}</div>
@@ -91,7 +96,7 @@ and curious.`}</div>
                             <Card bordered={false}>
                                 <Card.Grid className="feature-item" >
 
-                                    <img alt="avatar" src={"https://www.sketchappsources.com/resources/source-image/twitterlogo_1x.png"} />
+                                    <img alt="avatar" src={"https://a.slack-edge.com/ae7f/img/services/twitter_512.png"} />
                                     <div className="Title-Card">
                                         Twitter</div>
                                     <div className="Sub-Title-Card">

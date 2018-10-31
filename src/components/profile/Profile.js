@@ -29,7 +29,7 @@ export default class extends Component {
                             </div>
                         </div>
 
-                        <Link to="/profile/edit">
+                        <Link prefetch to="/profile/edit">
 
                             <a className="header-right">
                                 <Tooltip title="Edit Profile">
@@ -51,7 +51,7 @@ export default class extends Component {
                                     {
                                         userData.projects.map((item, index) => {
                                             return <Col lg={8} md={8} key={item._id}>
-                                                <Link to={"/" + item._id} >
+                                                <Link prefetch to={"/" + item._id} >
                                                     <a key={index} className="project-item">
                                                         <img alt="cover" src={item.coverURL} />
                                                         <div className="project-name">{item.name}</div>
@@ -79,7 +79,7 @@ export default class extends Component {
                                 SKILLS
                         </div>
                             {
-                                !userData.skills ? <Link to="/profile/edit">
+                                !userData.skills ? <Link prefetch to="/profile/edit">
                                     <a>
                                         <Button
                                             icon="plus"
@@ -100,7 +100,7 @@ export default class extends Component {
                                 LINKS
                         </div>
                             {
-                                !userData.links ? <Link to="/profile/edit">
+                                !userData.links ? <Link prefetch to="/profile/edit">
                                     <a>
                                         <Button className="link-button" icon="plus" >Add Link</Button>
                                     </a>

@@ -41,6 +41,9 @@ export const ActionTypes = keyMirror({
     UPDATE_PROFILE_SUCCESS: undefined,
     UPDATE_PROFILE_ERROR: undefined,
 
+    RESEND: undefined,
+    RESEND_SUCCESS: undefined,
+    RESEND_ERROR: undefined,
     // PROJECT CONSTANT ACTION TYPE
     CREATE: undefined,
     CREATE_SUCCESS: undefined,
@@ -89,10 +92,13 @@ export const STATUS = {
     ERROR: 'error',
 };
 
-export const endPoint = "http://comigobackend-production.us-west-1.elasticbeanstalk.com/api/"
+export const endPoint = "http://comigobackend-dev.us-west-1.elasticbeanstalk.com/api/"
+//export const endPoint = "http://comigobackend-production.us-west-1.elasticbeanstalk.com/api/"
 export const googleApi = "[Your google api]"
 export const googleClientID = "[Your google client ID]"
 export const facebookAppID = "[Your facebook app ID]"
+export const videoURL = "https://www.youtube.com/embed/peE-lxPxYOA"
+
 
 export const renderMessage = (err) => {
     switch (err) {

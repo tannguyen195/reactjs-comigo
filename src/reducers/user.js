@@ -29,7 +29,7 @@ export default {
         [ActionTypes.LOGIN_ERROR]: (state, { error }) => {
             return update(state, {
                 statusSignIn: { $set: STATUS.ERROR },
-                message: { $set: error && error.data.message},
+                message: { $set: error && error.data.message },
                 isLoggedIn: { $set: false },
             })
         },
@@ -107,6 +107,21 @@ export default {
         [ActionTypes.VERIFY_ERROR]: (state, { error }) => update(state, {
             status: { $set: STATUS.ERROR },
             message: { $set: renderMessage(error.status) }
+        }),
+
+        // RESEND EMAIL
+        [ActionTypes.RESEND]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.RESEND_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+
+            })
+        ,
+        [ActionTypes.RESEND_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
         }),
 
     }, initial),

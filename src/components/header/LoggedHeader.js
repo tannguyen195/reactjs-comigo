@@ -17,7 +17,7 @@ export default class extends Component {
             <header className="header-container" >
                 <div className="header-max">
                     <div className="header-left">
-                        <Link to="/">
+                        <Link prefetch to="/">
                             <a className="logo">
                                 <img src={logoIcon} alt="logo" />
                             </a>
@@ -26,9 +26,9 @@ export default class extends Component {
                             <SearchBar {...this.props} />
                         </div>
 
-                        <div className="view-button">
+                        {/* <div className="view-button">
                             <img src={multipleIcon} alt="multiple" />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="header-right">
@@ -39,7 +39,7 @@ export default class extends Component {
                             </Link> :
                                 <a onClick={logout} className="add-project-button">Log out</a>
                         }
-                        <Link to="/profile">
+                        <Link prefetch to="/profile">
                             <a className="header-user">
 
                                 <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Card, Row, Col, Form, Input } from 'antd'
 import Footer from '../common/footer/Footer'
 import ReactPlayer from 'react-player'
-
+import { videoURL } from '/constants'
 const graphicImage1 = '/static/images/image-graphic-1.svg'
 const graphicImage2 = '/static/images/image-graphic-2.svg'
 
@@ -19,10 +19,10 @@ class Why extends Component {
                         <ReactPlayer
                             width='100%'
                             height='100%'
-                            url='https://www.youtube.com/embed/A6Ovq52kaIw'
+                            url={videoURL}
                             playing
-
-                            controls />
+                            loop
+                        />
                     </div>
 
                     <div className="why__text-block">

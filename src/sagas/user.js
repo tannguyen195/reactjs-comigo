@@ -115,6 +115,26 @@ const auth = {
         return response.data
       })
   },
+
+  /**
+ * Resend email verification to user email
+ * @param  none
+ */
+  resend() {
+    console.log("asdasdasd")
+    return axios(
+      {
+        url: endPoint + 'user/resendVerification',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
 }
 
 /**
@@ -251,6 +271,28 @@ export function* updateProfile(data) {
   }
 }
 
+/**
+ * re-send email vẻification 
+ */
+export function* resend() {
+  console.log("Asdasasdasdasd ")
+  try {
+    const response = yield call(auth.resend, );
+    yield put({
+      type: ActionTypes.RESEND_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.RESEND_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+
 
 /**
  * User Sagas
@@ -263,5 +305,6 @@ export default function* root() {
     takeLatest(ActionTypes.VERIFY, verify),
     takeLatest(ActionTypes.GET_PROFILE, getProfile),
     takeLatest(ActionTypes.UPDATE_PROFILE, updateProfile),
+    takeLatest(ActionTypes.RESEND, resend),
   ]);
 }
