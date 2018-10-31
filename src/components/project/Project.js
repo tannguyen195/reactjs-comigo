@@ -111,7 +111,9 @@ export default class extends Component {
                                 </Link>
                                     :
                                     detail.links.map((item, index) => {
-                                        return <Button key={index} className="link-button">{item}</Button>
+                                        return <Button onClick={()=>{
+                                            window.open(item)
+                                        }} key={index} className="link-button">{item}</Button>
                                     })
                             }
                         </section>

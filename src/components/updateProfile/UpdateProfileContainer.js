@@ -91,7 +91,7 @@ class UpdateProfileContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _updateProfile
                 }} />
-                <Head title="Home page" />
+                <Head title="Update your profile" />
                 {
                     userData && <UpdateProfile
                         {...this.state}

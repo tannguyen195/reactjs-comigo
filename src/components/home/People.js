@@ -7,7 +7,7 @@ import PeopleCard from '../common/peopleCard/PeopleCard'
 export default class extends Component {
     renderPeople = (list) => {
         return list.map((item, index) => {
-            return <div >
+            return <div key={index}>
                 <PeopleCard data={item} />
             </div>
         })

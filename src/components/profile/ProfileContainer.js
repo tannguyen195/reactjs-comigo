@@ -26,7 +26,7 @@ class ProfileContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _profile
                 }} />
-                <Head title="Home page" />
+                <Head title="Your portfolio" />
                 {
                     userData &&
                     <Profile

@@ -58,7 +58,7 @@ class SignUpContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _signUp
                 }} />
-                <Head title="Home page" />
+                <Head title="Sign Up" />
                 <SignUp
                     {...this.state}
                     {...this.props}

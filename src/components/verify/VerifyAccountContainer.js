@@ -19,7 +19,6 @@ class VerifyAccountContainer extends Component {
             this.props.verify(Router.query.token)
     }
     handleResendEmail = () => {
-        console.log("click", this.props)
 
         const { resend } = this.props
 
@@ -37,7 +36,7 @@ class VerifyAccountContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _verify
                 }} />
-                <Head title="Home page" />
+                <Head title="Verify Account" />
                 {
                     userData && <div>
                         {

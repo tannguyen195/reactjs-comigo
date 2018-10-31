@@ -121,7 +121,6 @@ const auth = {
  * @param  none
  */
   resend() {
-    console.log("asdasdasd")
     return axios(
       {
         url: endPoint + 'user/resendVerification',
@@ -275,7 +274,7 @@ export function* updateProfile(data) {
  * re-send email vẻification 
  */
 export function* resend() {
-  console.log("Asdasasdasdasd ")
+  
   try {
     const response = yield call(auth.resend, );
     yield put({

@@ -80,7 +80,7 @@ class NewProjectContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _newProject
                 }} />
-                <Head title="Home page" />
+                <Head title="Create new project" />
                 {
                     userData && <NewProject
                         {...this.state}

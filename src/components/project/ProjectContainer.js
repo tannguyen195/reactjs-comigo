@@ -41,17 +41,14 @@ class ProjectContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _project
                 }} />
-                <Head title="Home page" />
+                <Head title="Comigo" />
                 {
                     userData && detail ?
                         <Project
                             {...this.state}
                             {...this.props}
                             edit={this.isUserProject()}
-                            detail={{
-                                ...detail,
-                                owner: { ...userData }
-                            }}
+                            
                         />
                         : <Loading />
                 }

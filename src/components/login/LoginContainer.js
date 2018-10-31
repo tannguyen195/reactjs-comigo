@@ -33,7 +33,7 @@ class LoginContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _login
                 }} />
-                <Head title="Home page" />
+                <Head title="Sign In" />
                 <Login
                     {...this.state}
                     {...this.props}

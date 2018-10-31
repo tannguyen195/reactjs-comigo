@@ -74,7 +74,10 @@ class HomeContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _home + _newsFeed
                 }} />
-                <Head title="Home page" />
+                <Head
+                    ogImage="https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.15752-9/45045111_1765319220262750_5618645889863122944_n.jpg?_nc_cat=111&_nc_ht=scontent.fsgn3-1.fna&oh=a58ca021533b7e75b90cd31500c21ab6&oe=5C47595E"
+                    title="Comigo - Find your future. Build your idea."
+                    description="Find your future. Build your idea." />
 
                 {
                     isLoggedIn ?

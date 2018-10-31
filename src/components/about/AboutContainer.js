@@ -21,7 +21,7 @@ class AboutContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _about
                 }} />
-                <Head title="Home page" />
+                <Head title="About Comigo" />
                 <About
                     {...this.state}
                     {...this.props}

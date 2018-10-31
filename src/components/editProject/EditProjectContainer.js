@@ -95,7 +95,7 @@ class EditProjectContainer extends Component {
                 <style dangerouslySetInnerHTML={{
                     __html: _editProject
                 }} />
-                <Head title="Home page" />
+                <Head title="Edit your project" />
                 {
                     userData && detail ? <EditProject
                         {...this.state}
