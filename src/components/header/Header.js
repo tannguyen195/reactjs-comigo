@@ -17,10 +17,6 @@ const menuItem = [
         title: "Log In",
         link: "/login"
     },
-    {
-        title: "Get Started",
-        link: "/signUp"
-    }
 ]
 class Header extends Component {
 
