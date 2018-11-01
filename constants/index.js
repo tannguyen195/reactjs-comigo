@@ -44,6 +44,7 @@ export const ActionTypes = keyMirror({
     RESEND: undefined,
     RESEND_SUCCESS: undefined,
     RESEND_ERROR: undefined,
+
     // PROJECT CONSTANT ACTION TYPE
     CREATE: undefined,
     CREATE_SUCCESS: undefined,
@@ -82,6 +83,10 @@ export const ActionTypes = keyMirror({
     GET_PEOPLE_LIST: undefined,
     GET_PEOPLE_LIST_SUCCESS: undefined,
     GET_PEOPLE_LIST_ERROR: undefined,
+
+    GET_PEOPLE_DETAIL: undefined,
+    GET_PEOPLE_DETAIL_SUCCESS: undefined,
+    GET_PEOPLE_DETAIL_ERROR: undefined,
 });
 
 export const STATUS = {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Row, Col, Tag } from 'antd'
 import Image from '../../common/Image'
+import { Link } from 'routes'
 const mailIcon = '/static/images/icon-mail.svg'
 
 export default class extends Component {
@@ -20,11 +21,14 @@ export default class extends Component {
                                 <div className="post-title">
                                     <div>{data.name}</div>
 
-                                    <img src={mailIcon} alt="mail" />
-                                </div>
+                                    <img onClick={() => {
+                                        window.location = `mailto:${data.owner.email}`;
+                                    }} src={mailIcon} alt="mail" />
 
+
+                                </div>
                                 <div className="post-author">
-                                    <Image imageURL={data.owner.pictureURL} />
+                                        <Image imageURL={data.owner.pictureURL} />
                                     <div className="author-detail">
                                         <div className="author-name">
                                             {data.owner.firstName + ` ` + data.owner.lastName}
@@ -34,7 +38,6 @@ export default class extends Component {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="post-desc">
                                     {data.description}
                                     {/* <span> view more</span> */}

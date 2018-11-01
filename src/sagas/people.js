@@ -26,12 +26,26 @@ const project = {
         return response.data
       })
   },
-
+  /**
+    * Get detail of specific person, returning a user data
+    */
+   getPeopleDetail(id) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'people/' + id,
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
 }
 
 
 /**
- * get project list
+ * get people list
  */
 export function* getPeopleList(data) {
   try {
@@ -52,10 +66,31 @@ export function* getPeopleList(data) {
 
 
 /**
+ * get people detail
+ */
+export function* getPeopleDetail(data) {
+  try {
+    const response = yield call(project.getPeopleDetail, data.payload);
+
+    yield put({
+      type: ActionTypes.GET_PEOPLE_DETAIL_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.GET_PEOPLE_DETAIL_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
  * People Sagas
  */
 export default function* root() {
   yield all([
     takeLatest(ActionTypes.GET_PEOPLE_LIST, getPeopleList),
+    takeLatest(ActionTypes.GET_PEOPLE_DETAIL, getPeopleDetail),
   ]);
 }

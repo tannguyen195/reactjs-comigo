@@ -7,9 +7,12 @@ routes
     .add('faq')
     .add('why')
 
+
+
     .add('login')
     .add('signUp')
     .add('new-project')
+    .add('/user/:id', 'user')
     .add('profile')
     .add('/profile/edit', 'edit')
     .add('/:id', 'project')

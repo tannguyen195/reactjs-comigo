@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { AutoComplete, Input, Icon, Select } from 'antd'
+import { AutoComplete, Input, Icon, } from 'antd'
+import { Link } from 'routes'
 export default class extends Component {
 
     render() {
@@ -25,13 +26,14 @@ export default class extends Component {
                             <div className="devider">
                             </div>
                             <div className="search-view">
-                                <a onClick={toggleHomeView} className="Body-12">
-                                    {
-                                        visibleProject === true ? "Project" : "People"
-                                    }
-                                </a>
+                                <Link to="/">
+                                    <a onClick={toggleHomeView} className="Body-12">
+                                        {
+                                            visibleProject === true ? "Project" : "People"
+                                        }
+                                    </a>
 
-
+                                </Link>
                             </div>
                         </div>} />
             </AutoComplete>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, Button } from 'antd'
 import Image from '../common/Image'
 import ImageProject from '../common/ImageProject'
-import { Link } from 'routes'
+import { Link , Router} from 'routes'
 
 const mailIcon = '/static/images/icon-mail.svg'
 const editIcon = '/static/images/icon-edit.svg'
@@ -20,20 +20,21 @@ export default class extends Component {
                         <div className="header-title">
                             <div className="Text-Style paddingBottom16">{detail.name}</div>
                             {
-                                edit ? <Link prefetch to={`/${detail._id}/edit`} params={{ detail: detail }}>
-                                    <a className="header-right">
-                                        <img alt="edit" src={editIcon} />
-                                    </a>
-                                </Link> :
-                                    <Link prefetch to="/project/edit">
+                                edit ?
+                                    <Link prefetch to={`/${detail._id}/edit`} params={{ detail: detail }}>
                                         <a className="header-right">
-                                            <img alt="mail" src={mailIcon} />
+                                            <img alt="edit" src={editIcon} />
                                         </a>
-                                    </Link>
+                                    </Link> :
+
+                                    <a href={`mailto:${detail.owner.email}`} className="header-right">
+                                        <img alt="mail" src={mailIcon} />
+                                    </a>
+
                             }
 
                         </div>
-                        <div className="header-left">
+                        <div onClick={() => Router.push('/user/' + detail.owner._id)} className="header-left">
                             <Image imageURL={detail.owner.pictureURL} />
                             <div className="header-info">
                                 <div className=" Title-12-Left">{detail.owner.firstName + ` ` + detail.owner.lastName}</div>
@@ -111,7 +112,7 @@ export default class extends Component {
                                 </Link>
                                     :
                                     detail.links.map((item, index) => {
-                                        return <Button onClick={()=>{
+                                        return <Button onClick={() => {
                                             window.open(item)
                                         }} key={index} className="link-button">{item}</Button>
                                     })
