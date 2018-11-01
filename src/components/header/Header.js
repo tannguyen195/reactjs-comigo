@@ -13,10 +13,10 @@ const menuItem = [
         title: "Contact us",
         link: "/contact"
     },
-    {
-        title: "Log In",
-        link: "/login"
-    },
+    // {
+    //     title: "Log In",
+    //     link: "/login"
+    // },
     // {
     //     title: "Get Started",
     //     link: "/signUp"
@@ -50,9 +50,9 @@ class Header extends Component {
                                         </Link>
                                     })
                                 }
-                                <Link prefetch to='/signUp'>
+                                {/* <Link prefetch to='/signUp'>
                                     <a className="header-item Menu-Button sign-up__button">Get Started</a>
-                                </Link>
+                                </Link> */}
                             </div> :
                             <div className="header-right">
                                 <div className="header-user">

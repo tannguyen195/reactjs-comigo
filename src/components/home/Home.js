@@ -16,7 +16,41 @@ const Header = posed.div({
         delay: 200
     }
 });
+const apps = [
+    {
+        image: "https://comigo-media.s3.amazonaws.com/images/1541061867321_cover",
+        name: "Northside Bags",
+        type: "Website"
+    },
+    {
+        image: "https://dl.airtable.com/UDRSJWP1SVeNPHs6ss1I_full_Animated%20Series.png",
+        name: "Animated Series",
+        type: "Website"
+    },
+    {
+        image: "https://static.wixstatic.com/media/cd3c79_3348c5ab13234cfeb581e19f45b39791~mv2.jpg/v1/fill/w_316,h_375,al_c,lg_1,q_80/cd3c79_3348c5ab13234cfeb581e19f45b39791~mv2.webp",
+        name: "Hype Tribe",
+        type: "Website"
+    }
+]
 
+const collaborators = [
+    {
+        image: "https://comigo-media.s3.amazonaws.com/images/1541061611075_cover",
+        name: "Isabel Reed",
+        type: "Animated Series"
+    },
+    {
+        image: "https://comigo-media.s3.amazonaws.com/images/1541061677664_cover",
+        name: "Garik Himebaugh",
+        type: "Eco-Stylist"
+    },
+    {
+        image: "https://comigo-media.s3.amazonaws.com/images/1541061760809_cover",
+        name: "Storm Shearer",
+        type: "Tart Design"
+    }
+]
 class Home extends Component {
 
     render() {
@@ -94,30 +128,18 @@ and curious.`}</div>
 
                         <div className="block-left">
                             <Card bordered={false}>
-                                <Card.Grid className="feature-item" >
+                                {
+                                    apps.map((item, index) => {
+                                        return <Card.Grid key={index} className="feature-item" >
 
-                                    <img alt="avatar" src={"https://a.slack-edge.com/ae7f/img/services/twitter_512.png"} />
-                                    <div className="Title-Card">
-                                        Twitter</div>
-                                    <div className="Sub-Title-Card">
-                                        Mobile App</div>
-                                </Card.Grid>
-                                <Card.Grid className="feature-item" >
-
-                                    <img alt="avatar" src={"https://www.sketchapp.com/images/pages/press/sketch-press-kit/app-icons/sketch-mac-icon@2x.png"} />
-                                    <div className="Title-Card">
-                                        Sketch</div>
-                                    <div className="Sub-Title-Card">
-                                        Window App</div>
-                                </Card.Grid>
-                                <Card.Grid className="feature-item" >
-
-                                    <img alt="avatar" src={"https://www.parmapress24.it/wp-content/uploads/2018/09/instagram-1581266_960_720.jpg"} />
-                                    <div className="Title-Card">
-                                        Instagram</div>
-                                    <div className="Sub-Title-Card">
-                                        Mobile App</div>
-                                </Card.Grid>
+                                            <img alt="avatar" src={item.image} />
+                                            <div className="Title-Card">
+                                                {item.name}</div>
+                                            <div className="Sub-Title-Card">
+                                                {item.type}</div>
+                                        </Card.Grid>
+                                    })
+                                }
                                 <Card.Grid className="feature-item number-item" >
                                     <div className="feature-number">158</div>
                                     <div className="Title-Card">
@@ -129,34 +151,19 @@ and curious.`}</div>
 
                         <div className="block-right">
                             <Card bordered={false}>
-                                <Card.Grid className="feature-item" >
+                                {
+                                    collaborators.map((item, index) => {
+                                        return <Card.Grid key={index} className="feature-item" >
 
-                                    <img alt="avatar" src={"https://comigo-media.s3.amazonaws.com/images/1540195950547_cover"} />
-                                    <div className="Title-Card">
-                                        Tan Nguyen
-                                    </div>
-                                    <div className="Sub-Title-Card">
-                                        Front-end Developer
-                                    </div>
-                                </Card.Grid>
-                                <Card.Grid className="feature-item" >
-
-                                    <img alt="avatar" src={"https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.0-9/44197859_1879537722160787_6430537181462265856_o.jpg?_nc_cat=104&_nc_ht=scontent.fsgn5-4.fna&oh=60e3ce2fee8db2c652ec69e3ef4c3190&oe=5C46E98C"} />
-                                    <div className="Title-Card">
-                                        Bin Tran
-                                    </div>
-                                    <div className="Sub-Title-Card">
-                                        UI/UX Designer
-                                    </div>
-                                </Card.Grid>
-                                <Card.Grid className="feature-item" >
-
-                                    <img alt="avatar" src={"https://comigo-media.s3.amazonaws.com/images/1540197236628_cover"} />
-                                    <div className="Title-Card">
-                                        Phat Pham</div>
-                                    <div className="Sub-Title-Card">
-                                        Back-end Developer </div>
-                                </Card.Grid>
+                                            <img alt="avatar" src={item.image} />
+                                            <div className="Title-Card">
+                                                {item.name}</div>
+                                            <div className="Sub-Title-Card">
+                                                {item.type}</div>
+                                        </Card.Grid>
+                                    })
+                                }
+                                
                                 <Card.Grid className="feature-item number-item" >
                                     <div className="feature-number">242</div>
                                     <div className="Title-Card">
