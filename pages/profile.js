@@ -1,3 +1,3 @@
 
-// import ProfileContainer from '../src/components/profile/ProfileContainer'
-// export default ProfileContainer 
+import ProfileContainer from '../src/components/profile/ProfileContainer'
+export default ProfileContainer 
