@@ -15,7 +15,9 @@ export const ActionTypes = keyMirror({
 
     // TOGGLE CONSTANT ACTION TYPE
     TOGGLE_HOME_VIEW: undefined,
-
+    TOGGLE_PREVIEW_IMAGE: undefined,
+    TOGGLE_REQUEST_COLLABORATOR: undefined,
+    TOGGLE_REMOVE_COLLABORATOR: undefined,
 
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
@@ -87,6 +89,31 @@ export const ActionTypes = keyMirror({
     GET_PEOPLE_DETAIL: undefined,
     GET_PEOPLE_DETAIL_SUCCESS: undefined,
     GET_PEOPLE_DETAIL_ERROR: undefined,
+
+    SUBCRIBE: undefined,
+    SUBCRIBE_SUCCESS: undefined,
+    SUBCRIBE_ERROR: undefined,
+
+    // PROJECT UPDATE CONSTANT ACTION TYPE
+    POST_PROJECT_UPDATE: undefined,
+    POST_PROJECT_UPDATE_SUCCESS: undefined,
+    POST_PROJECT_UPDATE_ERROR: undefined,
+
+    EDIT_PROJECT_UPDATE: undefined,
+    EDIT_PROJECT_UPDATE_SUCCESS: undefined,
+    EDIT_PROJECT_UPDATE_ERROR: undefined,
+
+    REMOVE_PROJECT_UPDATE: undefined,
+    REMOVE_PROJECT_UPDATE_SUCCESS: undefined,
+    REMOVE_PROJECT_UPDATE_ERROR: undefined,
+
+    ACCEPT_SHARE_LINK: undefined,
+    ACCEPT_SHARE_LINK_SUCCESS: undefined,
+    ACCEPT_SHARE_LINK_ERROR: undefined,
+
+    EDIT_PROJECT_UPDATE: undefined,
+    EDIT_PROJECT_UPDATE_SUCCESS: undefined,
+    EDIT_PROJECT_UPDATE_ERROR: undefined,
 });
 
 export const STATUS = {

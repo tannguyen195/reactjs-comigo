@@ -4,9 +4,9 @@ const projectIcon = '/static/images/icon-project.svg'
 export default class extends Component {
 
     render() {
-        const { imageURL } = this.props
+        const { image } = this.props
         return (
-            <img src="project" src={imageURL ? imageURL : projectIcon} />
+            <img src="project" src={image ? image : projectIcon} />
         )
     }
 }

@@ -55,6 +55,7 @@ class Home extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
+        const { handleSubcribe } = this.props;
         return (
             <div className="home-container">
                 <div className="home">
@@ -163,7 +164,7 @@ and curious.`}</div>
                                         </Card.Grid>
                                     })
                                 }
-                                
+
                                 <Card.Grid className="feature-item number-item" >
                                     <div className="feature-number">242</div>
                                     <div className="Title-Card">
@@ -182,7 +183,7 @@ and curious.`}</div>
 
                 <div className="home-notified">
                     <div className="Title-Small-Center-Black-LandingPage notified-desc">Get notified when we’re live on your campus.</div>
-                    <Form >
+                    <Form onSubmit={handleSubcribe}>
                         <div className="form-subscribe">
                             <FormItem>
                                 {getFieldDecorator('email', {

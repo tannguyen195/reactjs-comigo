@@ -24,11 +24,9 @@ export default class extends Component {
                                     <img onClick={() => {
                                         window.location = `mailto:${data.owner.email}`;
                                     }} src={mailIcon} alt="mail" />
-
-
                                 </div>
                                 <div className="post-author">
-                                        <Image imageURL={data.owner.pictureURL} />
+                                        <Image image={data.owner.pictureURL} />
                                     <div className="author-detail">
                                         <div className="author-name">
                                             {data.owner.firstName + ` ` + data.owner.lastName}

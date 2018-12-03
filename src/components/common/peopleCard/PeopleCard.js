@@ -13,7 +13,7 @@ export default class extends Component {
                 <Card hoverable bordered={false} className="people-card-container">
                     <div className="people-container">
                         <div className="people-image-container">
-                            <Image imageURL={data.pictureURL} />
+                            <Image image={data.pictureURL} />
                         </div>
                         <div className="people-right" >
                             <div className="people-info-container">

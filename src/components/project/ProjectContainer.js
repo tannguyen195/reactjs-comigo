@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import PreviewImage from '../common/previewImage/PreviewImage'
 import Head from '../head'
 import Project from './Project'
 import * as projectAction from '../../actions/project'
+import * as toggleAction from '../../actions/toggle'
 import { Router } from 'routes'
 import _project from './_project.less'
 import _ from 'lodash'
@@ -35,20 +37,25 @@ class ProjectContainer extends Component {
         return false
     }
     render() {
-        const { userData, detail } = this.props
+        const { userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
                     __html: _project
                 }} />
                 <Head title="Comigo" />
+                <PreviewImage
+                    visiblePreview={visiblePreview}
+                    previewImage={previewImage}
+                    togglePreviewImage={togglePreviewImage}
+                />
                 {
                     userData && detail ?
                         <Project
                             {...this.state}
                             {...this.props}
                             edit={this.isUserProject()}
-                            
+
                         />
                         : <Loading />
                 }
@@ -60,13 +67,17 @@ class ProjectContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
+
         userData: state.user.data,
-        detail: state.project.detail
+        detail: state.project.detail,
+        visiblePreview: state.toggle.visiblePreview,
+        previewImage: state.toggle.previewImage
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        ...projectAction
+        ...projectAction,
+        ...toggleAction
     }, dispatch)
 }
 

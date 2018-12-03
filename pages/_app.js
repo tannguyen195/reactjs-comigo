@@ -9,6 +9,9 @@ import { loginSuccess, getProfile, loginError } from '../src/actions/user'
 import stylesheet from '../src/styles/index.less'
 import _postCard from '../src/components/common/postCard/_postCard.less'
 import _peopleCard from '../src/components/common/peopleCard/_peopleCard.less'
+import _updateCard from '../src/components/common/updateCard/_updateCard.less'
+import _postUpdate from '../src/components/common/postUpdate/_postUpdate.less'
+import _editCollaborator from '../src/components/common/editCollaborator/_editCollaborator.less'
 import { Cookies } from 'react-cookie'
 import Loading from '../src/components/common/loading/Loading'
 import jwtDecode from 'jwt-decode'
@@ -70,7 +73,10 @@ class MyApp extends App {
                 __html:
                   stylesheet +
                   _postCard +
-                  _peopleCard
+                  _peopleCard +
+                  _postUpdate +
+                  _updateCard + 
+                  _editCollaborator
               }} />
             <Head />
             <div className="page-container">

@@ -82,11 +82,7 @@ class EditProjectContainer extends Component {
         })
     }
 
-    onTagLinkChange = (links) => {
-        this.setState({
-            links
-        })
-    }
+   
     render() {
         const { visibleUploadModal, preloadImage } = this.state
         const { userData, detail } = this.props

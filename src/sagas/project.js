@@ -124,6 +124,92 @@ const project = {
         return response.data
       })
   },
+
+
+  /**
+   * Post a new update to a project provied
+   * @param  {string} id The id of project
+   */
+  postProjectUpdate(id) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/' + id,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
+
+  /**
+   * edit a new update to a project provied
+   * @param  {string} id The id of project
+   */
+  editProjectUpdate(id) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/' + id,
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
+
+  /**
+ * remove a new update to a project provied
+ * @param  {string} id The id of project
+ */
+  removeProjectUpdate(id) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/' + id,
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
+
+  /**
+* accept a link shred by owner of a project
+* @param  {string} id The id of project
+*/
+  acceptShareLink(id) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/' + id,
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
+
+  /**
+  *remove a ollaborator from a project by project owner
+  * @param  {string} id The id of collaborator
+  */
+  removeSharedUser(id) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/' + id,
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
 }
 /**
  * create a new project
@@ -278,6 +364,102 @@ export function* getDetail(data) {
 }
 
 /**
+ * post project update
+ */
+export function* postProjectUpdate(data) {
+  try {
+    const response = yield call(project.postProjectUpdate, data.payload);
+    yield put({
+      type: ActionTypes.POST_PROJECT_UPDATE_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.POST_PROJECT_UPDATE_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * edit project update
+ */
+export function* editProjectUpdate(data) {
+  try {
+    const response = yield call(project.editProjectUpdate, data.payload);
+    yield put({
+      type: ActionTypes.EDIT_PROJECT_UPDATE_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.EDIT_PROJECT_UPDATE_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * remove project update
+ */
+export function* removeProjectUpdate(data) {
+  try {
+    const response = yield call(project.removeProjectUpdate, data.payload);
+    yield put({
+      type: ActionTypes.REMOVE_PROJECT_UPDATE_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.REMOVE_PROJECT_UPDATE_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * user accept share link to a new project
+ */
+export function* acceptShareLink(data) {
+  try {
+    const response = yield call(project.acceptShareLink, data.payload);
+    yield put({
+      type: ActionTypes.ACCEPT_SHARE_LINK_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.ACCEPT_SHARE_LINK_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ *remove user from a project
+ */
+export function* removeSharedUser(data) {
+  try {
+    const response = yield call(project.removeSharedUser, data.payload);
+    yield put({
+      type: ActionTypes.REMOVE_SHARED_USER_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.REMOVE_SHARED_USER_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+
+/**
  * Project Sagas
  */
 export default function* root() {
@@ -288,5 +470,10 @@ export default function* root() {
     takeLatest(ActionTypes.CREATE_LINK, createLink),
     takeLatest(ActionTypes.GET_LIST, getList),
     takeLatest(ActionTypes.GET_DETAIL, getDetail),
+    takeLatest(ActionTypes.POST_PROJECT_UPDATE, postProjectUpdate),
+    takeLatest(ActionTypes.EDIT_PROJECT_UPDATE, editProjectUpdate),
+    takeLatest(ActionTypes.REMOVE_PROJECT_UPDATE, removeProjectUpdate),
+    takeLatest(ActionTypes.ACCEPT_SHARE_LINK, acceptShareLink),
+    takeLatest(ActionTypes.REMOVE_SHARED_USER, removeSharedUser),
   ]);
 }

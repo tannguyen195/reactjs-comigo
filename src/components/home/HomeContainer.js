@@ -32,6 +32,16 @@ class HomeContainer extends Component {
         getList("")
         getPeopleList("")
     }
+    handleSubcribe = (e) => {
+        const { subcribe } = this.props
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+                subcribe(values.email)
+            }
+        });
+    }
     handleCloseModalProject = () => {
         this.setState({
             visibleProject: false
@@ -84,6 +94,7 @@ class HomeContainer extends Component {
 
                         this.renderNewsFeed() :
                         <Home
+                            handleSubcribe={this.handleSubcribe}
                             {...this.state}
                             {...this.props} />
                 }

@@ -45,7 +45,21 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
-
+        // SUBCRIBEACTION
+        [ActionTypes.SUBCRIBE]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.SUBCRIBE_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+            })
+        },
+        [ActionTypes.SUBCRIBE_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
     }, initial),
 };
 

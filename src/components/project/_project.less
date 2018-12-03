@@ -1,6 +1,88 @@
-.project-detail-container {
-    max-width: 540px;
+.project-container {
+    .project-tab-container {
+        .ant-tabs-bar {
+            background: #fff;
+            margin: 0;
+            .ant-tabs-nav-container {
+                margin: 0 auto;
+                max-width: 940px;
+                .ant-tabs-nav .ant-tabs-tab-active {
+                    color: #006cd9;
+                    font-size: 10px;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1.6;
+                    letter-spacing: normal;
+                }
+                .ant-tabs-nav {
+                    font-size: 10px !important;
+                }
+                .ant-tabs-ink-bar {
+                    background: #006cd9;
+                }
+            }
+        }
+    }
+}
+
+.sub-card-container {
+    .ant-card {
+        .ant-card-body {
+            padding: 24px !important;
+        }
+    }
+    .sub-tab-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .sub-tab-collaborator {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .sub-tab-body {
+        display: flex;
+        justify-content: space-between;
+        img {
+            cursor: pointer;
+            margin-top: 16px;
+            border-radius: 4px;
+            width: 102px;
+            height: 102px;
+            object-fit: cover;
+        }
+    }
+    .link-button {
+        margin: 8px 0;
+        border: solid 1px #a1aab3 !important;
+        background: #fff;
+        color: #a1aab3;
+        padding: 0 8px;
+    }
+}
+
+.header-left {
+    cursor: pointer;
+    display: flex;
+    min-width: 152px;
+    img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+}
+
+.project__update-container {
     margin: 0 auto;
+    max-width: 730px;
+    padding: 8px 0;
+}
+
+.project-detail-container {
+    margin: 0 auto;
+    max-width: 940px;
     .title-section {
         font-size: 12px;
         font-weight: 500;
@@ -18,16 +100,6 @@
                 height: 21px;
             }
         }
-        .header-left {
-            cursor: pointer;
-            display: flex;
-            img {
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-                margin-right: 12px;
-            }
-        }
     }
     .project-body {
         padding-top: 24px;
@@ -39,7 +111,6 @@
             }
         }
         button {
-     
             height: 28px;
             font-size: 10px;
             line-height: 1.2;
@@ -54,12 +125,6 @@
         .looking-skill-button {
             background: #ffdf49;
             color: #2e3033
-        }
-        .link-button {
-            margin-bottom: 8px;
-            border: solid 1px #a1aab3 !important;
-            background: #fff;
-            color: #a1aab3;
         }
     }
 }
