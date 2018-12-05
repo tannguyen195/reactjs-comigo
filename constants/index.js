@@ -18,7 +18,8 @@ export const ActionTypes = keyMirror({
     TOGGLE_PREVIEW_IMAGE: undefined,
     TOGGLE_REQUEST_COLLABORATOR: undefined,
     TOGGLE_REMOVE_COLLABORATOR: undefined,
-
+    TOGGLE_EDIT_UPDATE: undefined,
+    
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
     LOGIN_SUCCESS: undefined,
@@ -107,6 +108,10 @@ export const ActionTypes = keyMirror({
     REMOVE_PROJECT_UPDATE_SUCCESS: undefined,
     REMOVE_PROJECT_UPDATE_ERROR: undefined,
 
+    CREATE_SHARE_LINK: undefined,
+    CREATE_SHARE_LINK_SUCCESS: undefined,
+    CREATE_SHARE_LINK_ERROR: undefined,
+
     ACCEPT_SHARE_LINK: undefined,
     ACCEPT_SHARE_LINK_SUCCESS: undefined,
     ACCEPT_SHARE_LINK_ERROR: undefined,
@@ -114,6 +119,10 @@ export const ActionTypes = keyMirror({
     EDIT_PROJECT_UPDATE: undefined,
     EDIT_PROJECT_UPDATE_SUCCESS: undefined,
     EDIT_PROJECT_UPDATE_ERROR: undefined,
+
+    REMOVE_SHARED_USER: undefined,
+    REMOVE_SHARED_USER_SUCCESS: undefined,
+    REMOVE_SHARED_USER_ERROR: undefined,
 });
 
 export const STATUS = {

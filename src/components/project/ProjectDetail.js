@@ -203,7 +203,6 @@ export default class extends Component {
 
                                     {
                                         imageMedia.map((item, index) => {
-                                            console.log("item", item)
                                             return <img key={index} src={item} onClick={() => togglePreviewImage(item)} />
                                         })
                                     }

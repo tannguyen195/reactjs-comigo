@@ -8,7 +8,7 @@ const trashIcon = '/static/images/icon-trash.svg'
 export default class extends Component {
 
     render() {
-        console.log("Asd", this.props)
+        
         const {
             data,
             toggleRemoveCollaborator

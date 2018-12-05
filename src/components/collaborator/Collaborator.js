@@ -40,7 +40,7 @@ const collaborators = [
 
 export default class extends Component {
     render() {
-        console.log("SAd", this.props)
+
         const { toggleRequestCollaborator, toggleRemoveCollaborator } = this.props;
         return (
             <div className="collaborator__edit-container">

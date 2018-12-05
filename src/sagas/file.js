@@ -43,7 +43,6 @@ const file = {
         }
       }));
 
-    console.log(res);
     // Post a upload request
     return axios(
       {

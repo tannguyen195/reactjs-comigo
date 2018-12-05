@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { ActionTypes, STATUS, renderMessage } from 'constants/index';
 import update from 'immutability-helper'
+import { merge } from 'popmotion';
 export const initial = {
     status: STATUS.IDLE,
     message: "",
@@ -112,6 +113,56 @@ export default {
             })
         },
 
+
+        // POST UPDATE PROJECT ACTION
+        [ActionTypes.POST_PROJECT_UPDATE]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.POST_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { updates: { $push: [response.data] } }
+            })
+        },
+        [ActionTypes.POST_PROJECT_UPDATE_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+        // EDIT UPDATE PROJECT ACTION
+        [ActionTypes.EDIT_PROJECT_UPDATE]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.EDIT_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.data._id)]: { $set: response.data } } }
+            })
+        },
+        [ActionTypes.EDIT_PROJECT_UPDATE_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+        // REMOVE UPDATE PROJECT ACTION
+        [ActionTypes.REMOVE_PROJECT_UPDATE]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.REMOVE_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { updates: { $set: response.data.updates } }
+            })
+        },
+        [ActionTypes.REMOVE_PROJECT_UPDATE_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
 
     }, initial),
 };

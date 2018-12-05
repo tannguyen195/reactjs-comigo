@@ -15,7 +15,9 @@ class ProjectContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            detail: null
+            detail: null,
+            updateContent: '',
+            editUpdateContent: ''
         }
     }
     static async getInitialProps({ query }) {
@@ -24,6 +26,13 @@ class ProjectContainer extends Component {
                 detail: query.detail
             }
         return {}
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.updateData && nextProps.updateData !== this.props.updateData) {
+            this.setState({
+                editUpdateContent: nextProps.updateData.content
+            })
+        }
     }
     componentDidMount() {
         const { getDetail } = this.props
@@ -35,6 +44,41 @@ class ProjectContainer extends Component {
         if (_.map(userData.projects, '_id').includes(detail._id))
             return true
         return false
+    }
+    onUpdateChange = (e) => {
+        this.setState({
+            updateContent: e.target.value
+        })
+    }
+
+    handlePostUpdate = (e) => {
+        const { postProjectUpdate, detail } = this.props
+        postProjectUpdate({
+            "projectID": detail._id,
+            "content": this.state.updateContent
+        })
+    }
+    handleDeletePost = (e) => {
+        const { removeProjectUpdate, detail } = this.props
+        removeProjectUpdate({
+            "updateID": e._id,
+            "projectID": detail._id,
+        })
+    }
+    handleSaveEditUpdate = (e) => {
+
+
+        const { editProjectUpdate, detail, updateData } = this.props
+        editProjectUpdate({
+            "updateID": updateData._id,
+            "projectID": detail._id,
+            "content": this.state.editUpdateContent
+        })
+    }
+    onEditUpdateChange = (e) => {
+        this.setState({
+            editUpdateContent: e.target.value
+        })
     }
     render() {
         const { userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
@@ -55,6 +99,12 @@ class ProjectContainer extends Component {
                             {...this.state}
                             {...this.props}
                             edit={this.isUserProject()}
+                            onUpdateChange={this.onUpdateChange}
+                            handlePostUpdate={this.handlePostUpdate}
+                            handleDeletePost={this.handleDeletePost}
+
+                            onEditUpdateChange={this.onEditUpdateChange}
+                            handleSaveEditUpdate={this.handleSaveEditUpdate}
 
                         />
                         : <Loading />
@@ -67,11 +117,13 @@ class ProjectContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
-
+        visibleEditUpdate: state.toggle.visibleEditUpdate,
         userData: state.user.data,
         detail: state.project.detail,
         visiblePreview: state.toggle.visiblePreview,
-        previewImage: state.toggle.previewImage
+        previewImage: state.toggle.previewImage,
+        status: state.project.status,
+        updateData: state.toggle.updateData,
     };
 }
 export function mapDispatchToProps(dispatch) {

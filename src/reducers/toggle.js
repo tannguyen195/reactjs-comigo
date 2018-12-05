@@ -7,6 +7,8 @@ export const initial = {
     visiblePreview: false,
     visibleRequestCollaborator: false,
     visibleRemoveCollaborator: false,
+    visibleEditUpdate: false,
+    updateData: null,
     collaboratorData: null
 }
 export default {
@@ -36,6 +38,19 @@ export default {
                 collaboratorData: !state.visibleRemoveCollaborator ? { $set: payload } : { $set: null },
             })
         ,
+        [ActionTypes.TOGGLE_EDIT_UPDATE]: (state, { payload }) =>
+            update(state, {
+                visibleEditUpdate: { $set: !state.visibleEditUpdate },
+                updateData: !state.visibleEditUpdate ? { $set: payload } : { $set: null },
+            })
+        ,
+        [ActionTypes.EDIT_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+
+            return update(state, {
+                visibleEditUpdate: { $set: false },
+              
+            })
+        },
     }, initial),
 };
 

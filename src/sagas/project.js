@@ -118,7 +118,10 @@ const project = {
       {
         url: endPoint + 'project/' + id,
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -129,14 +132,19 @@ const project = {
   /**
    * Post a new update to a project provied
    * @param  {string} id The id of project
+   * @param  {string} content The content of project update
    */
-  postProjectUpdate(id) {
+  postProjectUpdate(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/' + id,
+        url: endPoint + 'project/update',
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -146,14 +154,19 @@ const project = {
   /**
    * edit a new update to a project provied
    * @param  {string} id The id of project
+   * @param  {string} content The content of project update
    */
-  editProjectUpdate(id) {
+  editProjectUpdate(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/' + id,
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        url: endPoint + 'project/update',
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -164,13 +177,38 @@ const project = {
  * remove a new update to a project provied
  * @param  {string} id The id of project
  */
-  removeProjectUpdate(id) {
+  removeProjectUpdate(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/' + id,
+        url: endPoint + 'project/update',
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
+
+  /**
+* create a link shred by owner of a project
+* @param  {string} id The id of project
+*/
+  createShareLink(data) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/shareCode',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -181,13 +219,17 @@ const project = {
 * accept a link shred by owner of a project
 * @param  {string} id The id of project
 */
-  acceptShareLink(id) {
+  acceptShareLink(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/' + id,
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        url: endPoint + 'project/acceptShareLink',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -209,7 +251,8 @@ const project = {
         // window.location.replace("/")
         return response.data
       })
-  },
+  }
+
 }
 /**
  * create a new project
@@ -369,6 +412,7 @@ export function* getDetail(data) {
 export function* postProjectUpdate(data) {
   try {
     const response = yield call(project.postProjectUpdate, data.payload);
+
     yield put({
       type: ActionTypes.POST_PROJECT_UPDATE_SUCCESS,
       response
@@ -421,6 +465,24 @@ export function* removeProjectUpdate(data) {
 }
 
 /**
+ * user create share link to a new project
+ */
+export function* createShareLink(data) {
+  try {
+    const response = yield call(project.createShareLink, data.payload);
+    yield put({
+      type: ActionTypes.CREATE_SHARE_LINK_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.CREATE_SHARE_LINK_ERROR,
+      error: error.response,
+    });
+  }
+}
+/**
  * user accept share link to a new project
  */
 export function* acceptShareLink(data) {
@@ -458,7 +520,6 @@ export function* removeSharedUser(data) {
   }
 }
 
-
 /**
  * Project Sagas
  */
@@ -473,6 +534,7 @@ export default function* root() {
     takeLatest(ActionTypes.POST_PROJECT_UPDATE, postProjectUpdate),
     takeLatest(ActionTypes.EDIT_PROJECT_UPDATE, editProjectUpdate),
     takeLatest(ActionTypes.REMOVE_PROJECT_UPDATE, removeProjectUpdate),
+    takeLatest(ActionTypes.CREATE_SHARE_LINK, createShareLink),
     takeLatest(ActionTypes.ACCEPT_SHARE_LINK, acceptShareLink),
     takeLatest(ActionTypes.REMOVE_SHARED_USER, removeSharedUser),
   ]);

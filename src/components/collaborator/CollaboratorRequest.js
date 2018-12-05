@@ -3,7 +3,7 @@ import { Modal, Col, Card, Form, Input, Button } from 'antd'
 const FormItem = Form.Item
 export default class extends Component {
     render() {
-        console.log("asd", this.props)
+  
         const { visibleRequestCollaborator, toggleRequestCollaborator, handleSubmitRequest, } = this.props;
         const { getFieldDecorator } = this.props.form
         return (
