@@ -240,13 +240,17 @@ const project = {
   *remove a ollaborator from a project by project owner
   * @param  {string} id The id of collaborator
   */
-  removeSharedUser(id) {
+  removeSharedUser(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/' + id,
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        url: endPoint + 'project/removeCollaborator',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
       }).then((response) => {
         // window.location.replace("/")
         return response.data

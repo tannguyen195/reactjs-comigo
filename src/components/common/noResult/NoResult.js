@@ -6,9 +6,9 @@ import _noResult from './_noResult.less'
 export default class extends Component {
 
     render() {
-
+        const { height } = this.props
         return (
-            <div className="no-result__container">
+            <div className="no-result__container" style={{ height: height }}>
                 <style dangerouslySetInnerHTML={{ __html: _noResult }} />
                 <img src={logoIcon} alt="logo" />
 

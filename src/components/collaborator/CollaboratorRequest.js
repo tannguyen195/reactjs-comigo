@@ -3,8 +3,12 @@ import { Modal, Col, Card, Form, Input, Button } from 'antd'
 const FormItem = Form.Item
 export default class extends Component {
     render() {
-  
-        const { visibleRequestCollaborator, toggleRequestCollaborator, handleSubmitRequest, } = this.props;
+
+        const {
+            visibleRequestCollaborator,
+            toggleRequestCollaborator,
+            handleSubmitRequest,
+            status } = this.props;
         const { getFieldDecorator } = this.props.form
         return (
 
@@ -38,18 +42,24 @@ export default class extends Component {
 
                             <FormItem >
                                 <div className="label-form">Role</div>
-                                {getFieldDecorator('email', {
+                                {getFieldDecorator('role', {
                                     rules: [{
-                                        type: 'email',
                                         required: true,
-                                        message: `Please input collaborator's name!`,
+                                        message: `Please input collaborator's role!`,
                                         whitespace: true
                                     }],
                                 })(
                                     <Input className="role__input" />
                                 )}
                             </FormItem>
-                            <Button className="send__button Button-2" type="primary">SEND REQUEST</Button>
+                            <Button
+                                loading={status === "running"}
+                                htmlType="submit"
+                                className="send__button Button-2"
+                                type="primary">
+                                SEND REQUEST
+                                </Button>
+
                         </Form>
                     </div>
 

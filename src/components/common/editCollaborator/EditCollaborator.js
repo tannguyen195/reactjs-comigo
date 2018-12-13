@@ -8,16 +8,16 @@ const trashIcon = '/static/images/icon-trash.svg'
 export default class extends Component {
 
     render() {
-        
+
         const {
             data,
             toggleRemoveCollaborator
         } = this.props
         return (
             <div className="edit__collaborator-container">
-                <Image image={data.image} />
-                <Input value={data.name} disabled className="collaborator__name" />
-                <Input value={data.role} className="collaborator__role" />
+                <Image image={data.pictureURL} />
+                <Input value={data.firstName + ` ` + data.lastName} disabled className="collaborator__name" />
+                <Input disabled={true} value={data.role} className="collaborator__role" />
                 <img onClick={() => toggleRemoveCollaborator(data)} src={cancelIcon} alt="cancel" />
             </div>
         )

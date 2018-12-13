@@ -48,7 +48,13 @@ export default {
 
             return update(state, {
                 visibleEditUpdate: { $set: false },
-              
+
+            })
+        },
+        [ActionTypes.REMOVE_SHARED_USER_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                visibleRemoveCollaborator: { $set: false },
+
             })
         },
     }, initial),

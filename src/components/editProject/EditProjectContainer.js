@@ -10,6 +10,8 @@ import { Router } from 'routes'
 import * as fileAction from '../../actions/file'
 import * as projectAction from '../../actions/project'
 import Loading from '../common/loading/Loading'
+import _ from 'lodash'
+
 class EditProjectContainer extends Component {
     constructor(props) {
         super(props)
@@ -18,7 +20,8 @@ class EditProjectContainer extends Component {
             projectSkills: [],
             links: [],
             visibleUploadModal: false,
-            preloadImage: null
+            preloadImage: null,
+            media: []
         }
     }
     componentDidMount = () => {
@@ -27,19 +30,29 @@ class EditProjectContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { detail, uploadStatus } = this.props
+        const { detail } = this.props
         if (nextProps.detail && nextProps.detail !== detail) {
+
             this.setState({
                 lookingSkills: nextProps.detail.lookingSkills || [],
                 projectSkills: nextProps.detail.projectSkills || [],
                 links: nextProps.detail.links || [],
                 preloadImage: nextProps.detail.coverURL,
+                media: nextProps.detail.media
             })
         }
         if (nextProps.returnImage !== this.props.returnImage)
             this.setState({
                 preloadImage: nextProps.returnImage
             })
+    }
+    onMediaChange = (data) => {
+        const { uploadImage } = this.props
+        if (data.event)
+            uploadImage(data)
+        // this.setState({
+        //     media: media.splice(e.index, 1, { item: e.e })
+        // })
     }
     toggleUploadModal = () => {
         this.setState({
@@ -53,7 +66,7 @@ class EditProjectContainer extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { form, update, image, detail } = this.props
-        const { lookingSkills, projectSkills, links } = this.state
+        const { lookingSkills, projectSkills, links, media } = this.state
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
 
@@ -64,7 +77,8 @@ class EditProjectContainer extends Component {
                     links: links,
                     name: values.name,
                     description: values.description,
-                    coverURL: image
+                    coverURL: image,
+                    media: media
                 })
             }
         });
@@ -82,7 +96,13 @@ class EditProjectContainer extends Component {
         })
     }
 
-   
+    onTagLinkChange = (links) => {
+        this.setState({
+            links
+        })
+    }
+
+
     render() {
         const { visibleUploadModal, preloadImage } = this.state
         const { userData, detail } = this.props
@@ -101,7 +121,7 @@ class EditProjectContainer extends Component {
                         onTagProjectChange={this.onTagProjectChange}
                         onTagLookingChange={this.onTagLookingChange}
                         onTagLinkChange={this.onTagLinkChange}
-
+                        onMediaChange={this.onMediaChange}
                         handleRemoveProject={this.handleRemoveProject}
                     /> : <Loading />
 
@@ -123,6 +143,7 @@ export function mapStateToProps(state) {
         image: state.file.image,
         returnImage: state.file.returnImage,
         status: state.project.status,
+        statusUploadImage: state.file.statusUploadImage,
         uploadStatus: state.file.status,
     };
 }

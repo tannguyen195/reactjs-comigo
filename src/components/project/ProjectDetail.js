@@ -165,15 +165,15 @@ export default class extends Component {
 
                                 <div className="sub-tab-collaborator marginTop24">
                                     {
-                                        collaborators.map((item, index) => {
+                                        detail.shares.map((item, index) => {
                                             return <div
                                                 key={index}
-                                                onClick={() => Router.push('/user/' + "detail.owner._id")}
+                                                onClick={() => Router.push('/user/' + item._id)}
                                                 className="header-left marginBottom16">
-                                                <Image image={item.image} />
+                                                <Image image={item.pictureURL} />
                                                 <div className="header-info">
-                                                    <div className=" Title-12-Left">{item.name}</div>
-                                                    <div className="Sub-Title-10-Left">{item.role}</div>
+                                                    <div className=" Title-12-Left">   {item.firstName + ` ` + item.lastName}</div>
+                                                    <div className="Sub-Title-10-Left">{item.email}</div>
                                                 </div>
                                             </div>
                                         })
@@ -202,7 +202,7 @@ export default class extends Component {
                                 <div className="sub-tab-body">
 
                                     {
-                                        imageMedia.map((item, index) => {
+                                        detail.media.map((item, index) => {
                                             return <img key={index} src={item} onClick={() => togglePreviewImage(item)} />
                                         })
                                     }

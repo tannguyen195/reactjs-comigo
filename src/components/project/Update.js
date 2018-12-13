@@ -9,13 +9,17 @@ export default class extends Component {
 
     render() {
         const {
-            detail
+            detail,
+            edit
         } = this.props
-   
+
         return (
             <div className="project__update-container">
                 <EditUpdateModal {...this.props} />
-                <PostUpdate {...this.props} />
+                {
+                    edit && <PostUpdate {...this.props} />
+                }
+
                 {
                     detail.updates.map((item, index) => {
                         return <UpdateCard {...this.props} updateData={item} key={index} />

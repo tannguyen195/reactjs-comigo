@@ -19,7 +19,7 @@ export default class extends Component {
                 <div className="header-max">
                     <div className="header-left">
                         <Link prefetch to="/">
-                            <a onClick={toggleHomeView} className="logo">
+                            <a className="logo">
                                 <img src={logoIcon} alt="logo" />
                             </a>
                         </Link>

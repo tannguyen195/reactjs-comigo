@@ -18,6 +18,7 @@ import jwtDecode from 'jwt-decode'
 
 import VerifyAccountContainer from '../src/components/verify/VerifyAccountContainer'
 import { Router } from 'routes'
+import { acceptShareLink } from '../src/actions/project';
 const cookies = new Cookies()
 
 class MyApp extends App {
@@ -31,7 +32,12 @@ class MyApp extends App {
   }
 
   componentDidMount() {
+    let inviteCode = ""
+    //Check login 
     let isLoggedIn = cookies.get('token') ? true : false
+    inviteCode = Router.router.query.inviteCode && Router.router.query.inviteCode
+    if (inviteCode)
+      cookies.set('inviteCode', inviteCode)
     if (isLoggedIn) {
 
       this.setState({
@@ -40,11 +46,14 @@ class MyApp extends App {
       })
       this.props.reduxStore.dispatch(loginSuccess())
       this.props.reduxStore.dispatch(getProfile())
+
+      this.props.reduxStore.dispatch(acceptShareLink({ inviteCode: cookies.get('inviteCode') }))
     }
     else this.props.reduxStore.dispatch(loginError())
     this.setState({
       isLoggedIn
     })
+
   }
   renderComponent(isLoggedIn, isVerify) {
     const { Component, pageProps } = this.props
@@ -75,7 +84,7 @@ class MyApp extends App {
                   _postCard +
                   _peopleCard +
                   _postUpdate +
-                  _updateCard + 
+                  _updateCard +
                   _editCollaborator
               }} />
             <Head />

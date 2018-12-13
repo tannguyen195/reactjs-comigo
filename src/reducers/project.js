@@ -7,7 +7,8 @@ export const initial = {
     message: "",
     list: [],
     detail: null,
-    detailList: []
+    detailList: [],
+    requestData: null
 }
 
 export default {
@@ -102,7 +103,10 @@ export default {
         [ActionTypes.GET_DETAIL_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                detail: { $set: response.data },
+                detail: {
+                    $set: response.data
+                },
+
                 detailList: { $push: [response.data] }
             })
         },
@@ -113,7 +117,6 @@ export default {
             })
         },
 
-
         // POST UPDATE PROJECT ACTION
         [ActionTypes.POST_PROJECT_UPDATE]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },
@@ -121,7 +124,7 @@ export default {
         [ActionTypes.POST_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                detail: { updates: { $push: [response.data] } }
+                detail: { updates: { $unshift: [response.data] } }
             })
         },
         [ActionTypes.POST_PROJECT_UPDATE_ERROR]: (state, { error }) => {
@@ -146,6 +149,7 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
+
         // REMOVE UPDATE PROJECT ACTION
         [ActionTypes.REMOVE_PROJECT_UPDATE]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },
@@ -163,6 +167,54 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
+
+        // CREATE_SHARE_LINK ACTION
+        [ActionTypes.CREATE_SHARE_LINK]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                requestData: { $set: response.data },
+            })
+        },
+        [ActionTypes.CREATE_SHARE_LINK_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+
+        [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
+            
+            if (response.payload.index !== 3) return update(state, {
+                detail: { media: { [response.payload.index]: { $set: response.data } } }
+            })
+            else {
+                return update(state, {
+                    detail: { media: { $push: [response.data] } }
+                })
+            }
+        },
+
+
+        // REMOVE SHARED COLLABORATOR ACTION
+        [ActionTypes.REMOVE_SHARED_USER]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.REMOVE_SHARED_USER_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { shares: { $set: response.data } }
+            })
+        },
+        [ActionTypes.CREMOVE_SHARED_USER_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+
 
     }, initial),
 };

@@ -6,6 +6,7 @@ import Head from '../head'
 import Collaborator from './Collaborator'
 import _collaborator from './_collaborator.less'
 import * as toggleAction from '../../actions/toggle'
+import * as projectAction from '../../actions/project'
 import CollaboratorRequest from './CollaboratorRequest'
 import CollaboratorRemove from './CollaboratorRemove'
 class CollaboratorContainer extends Component {
@@ -15,12 +16,27 @@ class CollaboratorContainer extends Component {
 
         }
     }
-    handleSubmit = (e) => {
+
+    handleSubmitRequest = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
+                const { createShareLink, detail } = this.props
+                createShareLink({
+                    "projectID": detail._id,
+                    "sharedEmail": values.email,
+                    "sharedRole": values.role,
+                    "sendEmail": true
+                })
             }
         });
+    }
+    handleRemoveCollaborator = (e) => {
+        const { detail, collaboratorData, removeSharedUser } = this.props
+        removeSharedUser({
+            "removeUserID": collaboratorData._id,
+            "projectID": detail._id
+        })
     }
     render() {
 
@@ -35,8 +51,13 @@ class CollaboratorContainer extends Component {
                     {...this.props}
 
                 />
-                <CollaboratorRequest {...this.props} />
-                <CollaboratorRemove {...this.props} />
+                <CollaboratorRequest
+                    {...this.props}
+                    handleSubmitRequest={this.handleSubmitRequest}
+                />
+                <CollaboratorRemove
+                    {...this.props}
+                    handleRemoveCollaborator={this.handleRemoveCollaborator} />
             </div>
 
         )
@@ -47,11 +68,14 @@ export function mapStateToProps(state) {
         visibleRequestCollaborator: state.toggle.visibleRequestCollaborator,
         visibleRemoveCollaborator: state.toggle.visibleRemoveCollaborator,
         collaboratorData: state.toggle.collaboratorData,
+        detail: state.project.detail,
+        status: state.project.status,
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        ...toggleAction
+        ...toggleAction,
+        ...projectAction
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(CollaboratorContainer));

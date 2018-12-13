@@ -28,7 +28,8 @@ class ProjectContainer extends Component {
         return {}
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.updateData && nextProps.updateData !== this.props.updateData) {
+        if (nextProps.updateData && nextProps.updateData
+            !== this.props.updateData) {
             this.setState({
                 editUpdateContent: nextProps.updateData.content
             })
@@ -41,8 +42,10 @@ class ProjectContainer extends Component {
     }
     isUserProject() {
         const { userData, detail } = this.props
-        if (_.map(userData.projects, '_id').includes(detail._id))
+        if (detail.owner.email === userData.email) {
             return true
+        }
+
         return false
     }
     onUpdateChange = (e) => {

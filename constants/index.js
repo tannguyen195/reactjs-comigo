@@ -75,6 +75,9 @@ export const ActionTypes = keyMirror({
 
     // FILE CONSTANT ACTION TYPE    
     UPLOAD: undefined,
+    UPLOAD_IMAGE: undefined,
+    UPLOAD_IMAGE_SUCCESS: undefined,
+    UPLOAD_IMAGE_ERROR: undefined,
     UPLOAD_SUCCESS: undefined,
     UPLOAD_ERROR: undefined,
 

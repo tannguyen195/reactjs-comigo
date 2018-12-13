@@ -11,8 +11,6 @@ export default class extends Component {
         const {
             userData,
             handleLogout,
-
-
         } = this.props
 
         return (

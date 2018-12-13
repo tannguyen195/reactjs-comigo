@@ -3,6 +3,7 @@ import { ActionTypes, STATUS, renderMessage } from 'constants/index';
 import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
+    statusUploadImage: STATUS.IDLE,
     message: "",
     loadImage: null,
     returnImage: null,
@@ -25,7 +26,24 @@ export default {
         [ActionTypes.UPLOAD_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
-           
+
+            })
+        },
+
+        [ActionTypes.UPLOAD_IMAGE]: (state) => update(state, {
+            statusUploadImage: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                statusUploadImage: { $set: STATUS.SUCCESS },
+                
+            })
+        },
+        [ActionTypes.UPLOAD_IMAGE_ERROR]: (state, { error }) => {
+            return update(state, {
+                statusUploadImage: { $set: STATUS.ERROR },
+
             })
         },
         [ActionTypes.CHANGE_PHOTO]: (state, { payload }) => {

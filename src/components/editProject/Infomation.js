@@ -13,7 +13,7 @@ export default class extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const {
-            onTagLinkChange,
+     
             onTagProjectChange,
             onTagLookingChange,
 
@@ -25,7 +25,7 @@ export default class extends Component {
 
             projectSkills,
             lookingSkills,
-            links,
+      
             status,
             handleRemoveProject
         } = this.props

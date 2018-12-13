@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Form, Input, Modal } from 'antd'
-import LinkMediaContainer from '../linkMedia/LinkMediaContainer'
+import LinkMedia from './LinkMedia'
 import Information from './Infomation'
 import CollaboratorContainer from '../collaborator/CollaboratorContainer'
 const TabPane = Tabs.TabPane;
@@ -18,7 +18,7 @@ export default class extends Component {
                         <CollaboratorContainer />
                     </TabPane>
                     <TabPane tab="Links & Media" key="3">
-                        <LinkMediaContainer />
+                        <LinkMedia {...this.props} />
                     </TabPane>
                 </Tabs>
             </div >

@@ -29,7 +29,7 @@ class UploadPhotoContainer extends Component {
     }
     onSaveButton = () => {
         const { cropData } = this.state
-        const { toggleUploadModal, upload } = this.props
+        const { upload } = this.props
         upload(cropData)
     }
 

@@ -58,6 +58,32 @@ const file = {
         return response.data
       })
   },
+
+
+  /**
+* Upload file to s3 amazon, returning a file url when done
+* @param  {object} data The file data
+*/
+  uploadImage(data) {
+
+    const sendData = new FormData()
+    sendData.append('file', data.file.originFileObj)
+
+    // Post a upload request
+    return axios(
+      {
+        url: endPoint + 'file/upload',
+        method: 'POST',
+        data: sendData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'x-auth-token': cookies.get('token'),
+          'Accept': 'application/json'
+        },
+      }).then((response) => {
+        return response.data
+      })
+  },
 }
 /**
  * Upload
@@ -84,11 +110,39 @@ export function* upload(data) {
   }
 }
 
+
+/**
+ * Upload
+ */
+export function* uploadImage(data) {
+  try {
+    const response = yield call(file.uploadImage, data.payload);
+    yield put({
+      type: ActionTypes.UPLOAD_IMAGE_SUCCESS,
+      response: {
+        ...response,
+        payload: data.payload
+      }
+    });
+
+  }
+  catch (error) {
+    notification['error']({
+      message: 'This photo is too large!',
+      description: "Please choose another one.",
+    });
+    yield put({
+      type: ActionTypes.UPLOAD_IMAGE_ERROR,
+      error: error,
+    });
+  }
+}
 /**
  * File Sagas
  */
 export default function* root() {
   yield all([
     takeLatest(ActionTypes.UPLOAD, upload),
+    takeLatest(ActionTypes.UPLOAD_IMAGE, uploadImage),
   ]);
 }
