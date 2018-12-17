@@ -205,7 +205,7 @@ export default {
         [ActionTypes.REMOVE_SHARED_USER_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                detail: { shares: { $set: response.data } }
+                detail: { shares: { $set: response.data.shares } }
             })
         },
         [ActionTypes.CREMOVE_SHARED_USER_ERROR]: (state, { error }) => {

@@ -12,7 +12,7 @@ const confirm = Modal.confirm;
 export default class extends Component {
 
     render() {
-        const { detail, updateData, handleDeletePost, status, toggleEditUpdate } = this.props
+        const { detail, updateData, handleDeletePost, status, toggleEditUpdate, edit } = this.props
 
         return (
             <Card bordered={false} className="update__card-container marginTop8">
@@ -34,41 +34,44 @@ export default class extends Component {
                             <div className="Sub-Title-10-Left">{moment.unix(updateData.updatedAt).fromNow()}</div>
                         </div>
                     </div>
-                    <div className="update__right">
+                    {
+                        edit && <div className="update__right">
 
-                        <Dropdown className="option__post" placement="bottomRight" overlay={<Menu>
-                            <Menu.Item key="0">
-                                <div onClick={() => toggleEditUpdate(updateData)} className="Body-12 item">
-                                    <img src={editIcon} alt="edit" />
-                                    Edit post
+                            <Dropdown className="option__post" placement="bottomRight" overlay={<Menu>
+                                <Menu.Item key="0">
+                                    <div onClick={() => toggleEditUpdate(updateData)} className="Body-12 item">
+                                        <img src={editIcon} alt="edit" />
+                                        Edit post
                         </div>
-                            </Menu.Item>
-                            <Menu.Item key="1">
+                                </Menu.Item>
+                                <Menu.Item key="1">
 
-                                <div onClick={() => confirm({
-                                    title: 'Are you sure to remove this post?',
+                                    <div onClick={() => confirm({
+                                        title: 'Are you sure to remove this post?',
 
-                                    onOk() {
-                                        return new Promise((resolve, reject) => {
-                                            handleDeletePost(updateData)
-                                            setTimeout(status !== "running" ? resolve : reject, 1000);
-                                        }).catch(() => console.log('Oops errors!'));
+                                        onOk() {
+                                            return new Promise((resolve, reject) => {
+                                                handleDeletePost(updateData)
+                                                setTimeout(status !== "running" ? resolve : reject, 1000);
+                                            }).catch(() => console.log('Oops errors!'));
 
 
-                                    },
-                                    onCancel() { },
-                                })} className="Body-12 item">
-                                    <img src={trashIcon} alt="trash" />
-                                    Delete
+                                        },
+                                        onCancel() { },
+                                    })} className="Body-12 item">
+                                        <img src={trashIcon} alt="trash" />
+                                        Delete
                         </div>
-                            </Menu.Item>
+                                </Menu.Item>
 
-                        </Menu>
-                        } trigger={['click']}>
-                            <img alt="option" src={optionIcon} />
-                        </Dropdown>
+                            </Menu>
+                            } trigger={['click']}>
+                                <img alt="option" src={optionIcon} />
+                            </Dropdown>
 
-                    </div>
+                        </div>
+                    }
+
                 </div>
 
                 <div className="update__body-container Paragraph-12">

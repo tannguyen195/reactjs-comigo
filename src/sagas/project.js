@@ -478,8 +478,16 @@ export function* createShareLink(data) {
       type: ActionTypes.CREATE_SHARE_LINK_SUCCESS,
       response
     });
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
   }
   catch (error) {
+    notification['error']({
+      message: 'Something went wrong!',
+      description: "Fail to remove collaborator",
+    });
     yield put({
       type: ActionTypes.CREATE_SHARE_LINK_ERROR,
       error: error.response,
@@ -515,11 +523,19 @@ export function* removeSharedUser(data) {
       type: ActionTypes.REMOVE_SHARED_USER_SUCCESS,
       response
     });
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
   }
   catch (error) {
     yield put({
       type: ActionTypes.REMOVE_SHARED_USER_ERROR,
       error: error.response,
+    });
+    notification['error']({
+      message: 'Something went wrong!',
+      description: "Fail to remove collaborator",
     });
   }
 }
