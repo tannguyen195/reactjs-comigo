@@ -186,7 +186,7 @@ export default {
         },
 
         [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
-            
+
             if (response.payload.index !== 3) return update(state, {
                 detail: { media: { [response.payload.index]: { $set: response.data } } }
             })
@@ -209,6 +209,24 @@ export default {
             })
         },
         [ActionTypes.CREMOVE_SHARED_USER_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+
+
+        // REMOVE SHARED COLLABORATOR ACTION
+        [ActionTypes.EDIT_USER_ROLE]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.EDIT_USER_ROLE_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { shares: { [state.detail.shares.findIndex((e) => e.email === response.data.email)]: { $set: response.data } } }
+            })
+        },
+        [ActionTypes.CEDIT_USER_ROLE_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }

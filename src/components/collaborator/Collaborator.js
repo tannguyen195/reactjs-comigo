@@ -6,14 +6,14 @@ import NoResult from '../common/noResult/NoResult'
 export default class extends Component {
     render() {
 
-        const { toggleRequestCollaborator, detail } = this.props;
+        const { toggleRequestCollaborator, collaborators } = this.props;
         return (
             <div className="collaborator__edit-container">
                 <Card className="collaborator__edit marginTop8" bordered={false} >
 
                     {
-                        detail.shares.length > 0 ?
-                            detail.shares.map((item, index) => {
+                        collaborators.length > 0 ?
+                            collaborators.map((item, index) => {
                                 return <EditCollaborator {...this.props} key={index} data={item} />
                             }) : <NoResult height="initial" />
                     }

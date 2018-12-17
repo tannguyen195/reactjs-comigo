@@ -15,7 +15,8 @@ export const {
   removeProjectUpdate,
   createShareLink,
   acceptShareLink,
-  removeSharedUser
+  removeSharedUser,
+  editUserRole
 } = createActions({
   [ActionTypes.CREATE]: (data) => (data),
   [ActionTypes.UPDATE]: (data) => (data),
@@ -30,5 +31,6 @@ export const {
   [ActionTypes.CREATE_SHARE_LINK]: (data) => (data),
   [ActionTypes.ACCEPT_SHARE_LINK]: (data) => (data),
   [ActionTypes.REMOVE_SHARED_USER]: (data) => (data),
+  [ActionTypes.EDIT_USER_ROLE]: (data) => (data),
 
 });

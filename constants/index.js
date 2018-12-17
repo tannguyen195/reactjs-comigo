@@ -126,6 +126,10 @@ export const ActionTypes = keyMirror({
     REMOVE_SHARED_USER: undefined,
     REMOVE_SHARED_USER_SUCCESS: undefined,
     REMOVE_SHARED_USER_ERROR: undefined,
+
+    EDIT_USER_ROLE: undefined,
+    EDIT_USER_ROLE_SUCCESS: undefined,
+    EDIT_USER_ROLE_ERROR: undefined,
 });
 
 export const STATUS = {

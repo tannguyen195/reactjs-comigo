@@ -256,6 +256,27 @@ const project = {
         return response.data
       })
   }
+  ,
+  /**
+  *remove a ollaborator from a project by project owner
+  * @param  {string} id The id of collaborator
+  */
+  editUserRole(data) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/collaboratorRole',
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  }
 
 }
 /**
@@ -539,6 +560,32 @@ export function* removeSharedUser(data) {
     });
   }
 }
+/**
+ *edit user role of a project
+ */
+export function* editUserRole(data) {
+  try {
+    const response = yield call(project.editUserRole, data.payload);
+    yield put({
+      type: ActionTypes.EDIT_USER_ROLE_SUCCESS,
+      response
+    });
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.EDIT_USER_ROLE_ERROR,
+      error: error.response,
+    });
+    notification['error']({
+      message: 'Something went wrong!',
+      description: "Fail to change collaborator's role",
+    });
+  }
+}
 
 /**
  * Project Sagas
@@ -557,5 +604,6 @@ export default function* root() {
     takeLatest(ActionTypes.CREATE_SHARE_LINK, createShareLink),
     takeLatest(ActionTypes.ACCEPT_SHARE_LINK, acceptShareLink),
     takeLatest(ActionTypes.REMOVE_SHARED_USER, removeSharedUser),
+    takeLatest(ActionTypes.EDIT_USER_ROLE, editUserRole),
   ]);
 }

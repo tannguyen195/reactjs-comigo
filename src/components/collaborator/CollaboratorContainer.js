@@ -9,14 +9,81 @@ import * as toggleAction from '../../actions/toggle'
 import * as projectAction from '../../actions/project'
 import CollaboratorRequest from './CollaboratorRequest'
 import CollaboratorRemove from './CollaboratorRemove'
+import update from 'immutability-helper';
 class CollaboratorContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            collaborators: []
         }
     }
+    componentWillReceiveProps(nextProps) {
+        let tempCollaborators = []
+        const { detail } = nextProps
+        if (detail.shares !== this.props.detail.shares) {
 
+            detail.shares.forEach((item) => {
+                tempCollaborators.push({
+                    ...item,
+                    isChanged: false
+                })
+
+            })
+            this.setState({
+                collaborators: tempCollaborators
+            })
+        }
+
+    }
+    componentDidMount() {
+
+        const { detail } = this.props
+        let tempCollaborators = []
+        if (detail) {
+            detail.shares.forEach((item) => {
+                tempCollaborators.push({
+                    ...item,
+                    isChanged: false
+                })
+            })
+            this.setState({
+                collaborators: tempCollaborators
+            })
+        }
+
+    }
+    onCollaboratorRoleClick = (value) => {
+        const { collaborators } = this.state
+
+        !collaborators[collaborators.findIndex((e) => e._id === value._id)].isChanged ?
+            this.setState({
+                collaborators: update(collaborators, {
+                    [collaborators.findIndex((e) => e._id === value._id)]:
+                        { isChanged: { $set: !collaborators[collaborators.findIndex((e) => e._id === value._id)].isChanged } }
+                })
+            }) :
+            this.setState({
+                collaborators: this.props.detail.shares
+            })
+    }
+    onCollaboratorRoleChange = ({ e, data }) => {
+        const { collaborators } = this.state
+        this.setState({
+            collaborators: update(collaborators, {
+                [collaborators.findIndex((value) => value._id === data._id)]:
+                    { role: { $set: e.target.value } }
+            })
+        })
+
+    }
+    handleChangeRole = (e) => {
+        const { editUserRole, detail } = this.props
+        editUserRole({
+            projectID: detail._id,
+            newRole: e.role,
+            collaboratorEmail: e.email
+        })
+    }
     handleSubmitRequest = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
@@ -49,7 +116,9 @@ class CollaboratorContainer extends Component {
                 <Collaborator
                     {...this.state}
                     {...this.props}
-
+                    onCollaboratorRoleChange={this.onCollaboratorRoleChange}
+                    onCollaboratorRoleClick={this.onCollaboratorRoleClick}
+                    handleChangeRole={this.handleChangeRole}
                 />
                 <CollaboratorRequest
                     {...this.props}
