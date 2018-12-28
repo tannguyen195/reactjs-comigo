@@ -10,6 +10,7 @@ import * as projectAction from '../../actions/project'
 import CollaboratorRequest from './CollaboratorRequest'
 import CollaboratorRemove from './CollaboratorRemove'
 import update from 'immutability-helper';
+
 class CollaboratorContainer extends Component {
     constructor(props) {
         super(props)
@@ -86,7 +87,12 @@ class CollaboratorContainer extends Component {
     }
     handleSubmitRequest = (e) => {
         e.preventDefault();
-        this.props.form.validateFieldsAndScroll((err, values) => {
+        const { form } = this.props
+        form.setFieldsValue({
+            "sharedEmail": "",
+            "sharedRole": "",
+        })
+        form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 const { createShareLink, detail } = this.props
                 createShareLink({

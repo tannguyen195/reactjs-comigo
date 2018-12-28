@@ -1,5 +1,44 @@
 .collaborator__edit-container {
-    .collaborator__edit {}
+    .collaborator__edit {
+        .pending__collaborator-container {
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 16px;
+            &:last-child {
+                padding-bottom: 0;
+            }
+            .collaborator__pending {
+                width: 100%;
+                margin-left: 16px;
+                margin-right: 16px;
+                .text {
+                    font-family: Roboto;
+                    font-size: 11px;
+                    padding-top: 4px;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1.09;
+                    letter-spacing: normal;
+                    color: #ffaa4b
+                }
+            }
+            .collaborator__picture {
+                img {
+                    cursor: pointer;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                }
+            }
+            input {
+                height: 48px;
+                border-radius: 4px;
+            }
+            .collaborator__role {
+                margin-right: 24px;
+            }
+        }
+    }
     .button__send {
         button {
             width: 100%;
@@ -30,7 +69,6 @@
         }
         .remove {
             background: #ff604c;
-      
         }
     }
 }

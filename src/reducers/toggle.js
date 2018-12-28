@@ -57,6 +57,11 @@ export default {
 
             })
         },
+        [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                visibleRequestCollaborator: { $set: false },
+            })
+        },
     }, initial),
 };
 

@@ -19,7 +19,9 @@ export default class extends Component {
         } = this.props
         return (
             <div className="edit__collaborator-container">
-                <Image image={data.pictureURL} />
+                <div className="collaborator__picture">
+                    <Image image={data.pictureURL} />
+                </div>
                 <Input value={data.firstName + ` ` + data.lastName} disabled className="collaborator__name" />
                 <Input
                     onChange={(e) => onCollaboratorRoleChange({ e, data })}

@@ -175,7 +175,8 @@ export default {
         [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                requestData: { $set: response.data },
+                requestData: { $set: response.data },   
+                detail: { pendingShares: { $set: response.data.pendingShares } }
             })
         },
         [ActionTypes.CREATE_SHARE_LINK_ERROR]: (state, { error }) => {
@@ -208,7 +209,7 @@ export default {
                 detail: { shares: { $set: response.data.shares } }
             })
         },
-        [ActionTypes.CREMOVE_SHARED_USER_ERROR]: (state, { error }) => {
+        [ActionTypes.REMOVE_SHARED_USER_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
@@ -226,7 +227,7 @@ export default {
                 detail: { shares: { [state.detail.shares.findIndex((e) => e.email === response.data.email)]: { $set: response.data } } }
             })
         },
-        [ActionTypes.CEDIT_USER_ROLE_ERROR]: (state, { error }) => {
+        [ActionTypes.EDIT_USER_ROLE_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
