@@ -200,9 +200,8 @@ export default class extends Component {
 
                                 </div>
                                 <div className="sub-tab-body">
-
                                     {
-                                        detail.media.map((item, index) => {
+                                        detail.media && detail.media.map((item, index) => {
                                             return <img key={index} src={item} onClick={() => togglePreviewImage(item)} />
                                         })
                                     }

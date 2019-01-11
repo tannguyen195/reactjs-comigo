@@ -41,7 +41,7 @@ export default class extends Component {
                         <div className="upload__holder-container">
 
                             {
-                                media.map((item, index) => {
+                                media && media.map((item, index) => {
                                     return <Upload
                                         key={index}
                                         onChange={(e) => onMediaChange({ ...e, index })}
@@ -54,7 +54,7 @@ export default class extends Component {
                                 })
                             }
                             {
-                                media.length < 3 && <Upload
+                                media ? media.length < 3 && <Upload
                                     onChange={(e) => onMediaChange({ ...e, index: 3 })}
                                     showUploadList={false}
                                 >
@@ -65,7 +65,18 @@ export default class extends Component {
 
                                         <div className="Link-Button-4">+ Add Photos</div>
                                     </div>
-                                </Upload>
+                                </Upload> : <Upload
+                                    onChange={(e) => onMediaChange({ ...e, index: 3 })}
+                                    showUploadList={false}
+                                >
+                                        <div className="upload__holder">
+                                            {
+                                                statusUploadImage === "running" ? <Icon type="loading" ></Icon> : <img src={projectIcon} alt="project" />
+                                            }
+
+                                            <div className="Link-Button-4">+ Add Photos</div>
+                                        </div>
+                                    </Upload>
                             }
 
 
