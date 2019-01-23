@@ -19,7 +19,7 @@ export const ActionTypes = keyMirror({
     TOGGLE_REQUEST_COLLABORATOR: undefined,
     TOGGLE_REMOVE_COLLABORATOR: undefined,
     TOGGLE_EDIT_UPDATE: undefined,
-    
+
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
     LOGIN_SUCCESS: undefined,
@@ -130,6 +130,18 @@ export const ActionTypes = keyMirror({
     EDIT_USER_ROLE: undefined,
     EDIT_USER_ROLE_SUCCESS: undefined,
     EDIT_USER_ROLE_ERROR: undefined,
+
+    GET_MAJOR_LIST: undefined,
+    GET_MAJOR_LIST_SUCCESS: undefined,
+    GET_MAJOR_LIST_ERROR: undefined,
+
+    GET_BADGE_LIST: undefined,
+    GET_BADGE_LIST_SUCCESS: undefined,
+    GET_BADGE_LIST_ERROR: undefined,
+
+    GIVE_BADGE: undefined,
+    GIVE_BADGE_SUCCESS: undefined,
+    GIVE_BADGE_ERROR: undefined,
 });
 
 export const STATUS = {
@@ -141,6 +153,7 @@ export const STATUS = {
 };
 
 export const endPoint = "https://comigo-backend.herokuapp.com/api/"
+//export const endPoint = "http://192.168.86.20:5000/api/"
 //export const endPoint = "http://comigobackend-dev.us-west-1.elasticbeanstalk.com/api/"
 //export const endPoint = "http://comigobackend-production.us-west-1.elasticbeanstalk.com/api/"
 

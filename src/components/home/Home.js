@@ -86,7 +86,12 @@ class Home extends Component {
                             </div>
                             <div className="intro">
                                 <div className="Body-16-Left desc">{`Comigo is a platform to find new collaborators on your very own campus. Connect with them to work on one-of-a-kind ideas.`}</div>
-                                <Button type="primary">Learn more</Button>
+
+                                <Link prefetch to="/why">
+                                    <a>
+                                        <Button type="primary">Learn more</Button>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="home-body__2 mid">

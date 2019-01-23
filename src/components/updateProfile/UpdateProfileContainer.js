@@ -14,6 +14,9 @@ class UpdateProfileContainer extends Component {
         this.state = {
             links: [],
             skills: [],
+            interests: [],
+            majors: [],
+            graduationYear: "",
             visibleUploadModal: false,
             preloadImage: null
         }
@@ -23,8 +26,11 @@ class UpdateProfileContainer extends Component {
         const { userData, } = nextProps
         if (userData !== this.props.userData) {
             this.setState({
+                interests: userData.interests || [],
                 skills: userData.skills || [],
                 links: userData.links || [],
+                majors: userData.majors || [],
+                graduationYear: userData.graduationYear || "",
                 preloadImage: userData.pictureURL
             })
 
@@ -39,12 +45,20 @@ class UpdateProfileContainer extends Component {
 
         if (userData) {
             this.setState({
+                interests: userData.interests || [],
                 skills: userData.skills || [],
                 links: userData.links || [],
+                majors: userData.majors || [],
+                graduationYear: userData.graduationYear || "",
                 preloadImage: userData.pictureURL
             })
 
         }
+    }
+    onMajorChange = (majors) => {
+        this.setState({
+            majors
+        })
     }
     onTagLinkChange = (links) => {
         this.setState({
@@ -56,6 +70,11 @@ class UpdateProfileContainer extends Component {
             skills
         })
     }
+    onTagInterestChange = (interests) => {
+        this.setState({
+            interests
+        })
+    }
     toggleUploadModal = () => {
         this.setState({
             visibleUploadModal: !this.state.visibleUploadModal
@@ -63,12 +82,15 @@ class UpdateProfileContainer extends Component {
     }
     handleSubmit = (e) => {
         const { updateProfile, } = this.props
-        const { links, skills, preloadImage } = this.state
+        const { links, skills, preloadImage, majors, interests } = this.state
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
 
             if (!err) {
                 updateProfile({
+                    majors: majors,
+                    interests: interests,
+                    graduationYear: values.graduationYear,
                     links: links,
                     skills: skills,
                     firstName: values.firstName,
@@ -96,10 +118,12 @@ class UpdateProfileContainer extends Component {
                     userData && <UpdateProfile
                         {...this.state}
                         {...this.props}
+                        onMajorChange={this.onMajorChange}
                         handleSubmit={this.handleSubmit}
                         toggleUploadModal={this.toggleUploadModal}
                         onTagSkillChange={this.onTagSkillChange}
                         onTagLinkChange={this.onTagLinkChange}
+                        onTagInterestChange={this.onTagInterestChange}
                     />
                 }
 

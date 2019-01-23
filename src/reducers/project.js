@@ -8,6 +8,7 @@ export const initial = {
     list: [],
     detail: null,
     detailList: [],
+    majorList: [],
     requestData: null
 }
 
@@ -175,7 +176,7 @@ export default {
         [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                requestData: { $set: response.data },   
+                requestData: { $set: response.data },
                 detail: { pendingShares: { $set: response.data.pendingShares } }
             })
         },
@@ -235,6 +236,22 @@ export default {
         },
 
 
+        // GET_MAJOR_LIST PROJECT ACTION
+        [ActionTypes.GET_MAJOR_LIST]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.GET_MAJOR_LIST_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                majorList: { $set: response.data }
+            })
+        },
+        [ActionTypes.GET_MAJOR_LIST_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
     }, initial),
 };
 

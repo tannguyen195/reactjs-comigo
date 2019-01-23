@@ -9,6 +9,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
 import { endPoint } from 'constants/index'
+import * as peopleAction from '../actions/people'
 import axios from 'axios'
 const cookies = new Cookies()
 const auth = {
@@ -134,6 +135,36 @@ const auth = {
         return response.data
       })
   },
+
+  getBadgeList() {
+    return axios(
+      {
+        url: endPoint + 'badge/list',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+      }).then((response) => {
+        return response.data
+      })
+  },
+
+  giveBadge(data) {
+
+    return axios(
+      {
+        url: endPoint + 'badge/giveNod?userID=' + data.userID + "&badgeID=" + data.badgeID,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+
+      }).then((response) => {
+        return response.data
+      })
+  }
 }
 
 /**
@@ -274,9 +305,9 @@ export function* updateProfile(data) {
  * re-send email vẻification 
  */
 export function* resend() {
-  
+
   try {
-    const response = yield call(auth.resend, );
+    const response = yield call(auth.resend);
     yield put({
       type: ActionTypes.RESEND_SUCCESS,
       response
@@ -291,6 +322,47 @@ export function* resend() {
   }
 }
 
+/**
+ * get badge list
+ */
+export function* getBadgeList() {
+
+  try {
+    const response = yield call(auth.getBadgeList);
+    yield put({
+      type: ActionTypes.GET_BADGE_LIST_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.GET_BADGE_LIST_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * give badge 
+ */
+export function* giveBadge(data) {
+
+  try {
+    const response = yield call(auth.giveBadge, data.payload);
+    yield put({
+      type: ActionTypes.GIVE_BADGE_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.GIVE_BADGE_ERROR,
+      error: error.response,
+    });
+  }
+}
 
 
 /**
@@ -305,5 +377,7 @@ export default function* root() {
     takeLatest(ActionTypes.GET_PROFILE, getProfile),
     takeLatest(ActionTypes.UPDATE_PROFILE, updateProfile),
     takeLatest(ActionTypes.RESEND, resend),
+    takeLatest(ActionTypes.GET_BADGE_LIST, getBadgeList),
+    takeLatest(ActionTypes.GIVE_BADGE, giveBadge)
   ]);
 }

@@ -9,7 +9,8 @@ export const initial = {
     status: STATUS.IDLE,
     message: "",
     data: null,
-    token: ""
+    token: "",
+    badgeList: null,
 }
 
 export default {
@@ -121,6 +122,37 @@ export default {
             })
         ,
         [ActionTypes.RESEND_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+        }),
+
+        // GET_BADGE EMAIL
+        [ActionTypes.GET_BADGE_LIST]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.GET_BADGE_LIST_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+                badgeList: { $set: response.data},
+            })
+
+        ,
+        [ActionTypes.GET_BADGE_LIST_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+        }),
+
+        // GIVE_BADGE EMAIL
+        [ActionTypes.GIVE_BADGE]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.GIVE_BADGE_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+
+            })
+        ,
+        [ActionTypes.GIVE_BADGE_ERROR]: (state, { error }) => update(state, {
             status: { $set: STATUS.ERROR },
         }),
 

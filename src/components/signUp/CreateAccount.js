@@ -8,11 +8,13 @@ export default class extends Component {
         const { handleSubmit, compareToFirstPassword, handleConfirmBlur, status, message } = this.props
         return (
             <div className="sign-up-container">
-                <div className="sign-up-title Title-Large-Center">
-                    Create an Account
-            </div>
+
                 <div className="sign-up-body">
-                    <Card bordered={false}>
+                    <Card className="marginTop8" bordered={false}>
+                        <div className="sign-up-title Title-Medium-Center">
+                            Create an Account
+            </div>
+                        <div className="Body-16 marginBottom48">Now we just support for students in Iowa, United States with @uiowa.edu email suffix.</div>
                         <Form onSubmit={handleSubmit}>
                             <Row gutter={16}>
                                 <Col md={12} lg={12}>
@@ -24,7 +26,7 @@ export default class extends Component {
                                             <Input />
                                         )}
                                     </FormItem>
-                                </Col>  
+                                </Col>
                                 <Col md={12} lg={12}>
                                     <FormItem >
                                         <div className="label-form">Last Name</div>
@@ -36,21 +38,17 @@ export default class extends Component {
                                     </FormItem>
                                 </Col>
                             </Row>
-                            <FormItem
-                                className="marginBottom32"
-                                hasFeedback
-                                validateStatus={status === "error" ? "error" : "" }
-                                help={status === "error" && message}
-                            >
+                            <FormItem className="marginBottom32" >
                                 <div className="label-form">Email</div>
                                 {getFieldDecorator('email', {
                                     rules: [{
                                         type: 'email', message: 'The input is not valid E-mail!',
                                     }, {
+                                        required: true,
                                         message: 'Please input your E-mail!',
                                     }],
                                 })(
-                                    <Input id="error" />
+                                    <Input  />
                                 )}
                             </FormItem>
                             <FormItem className="marginBottom32">

@@ -277,7 +277,26 @@ const project = {
         return response.data
       })
   }
+  ,
+  /**
+   get major list 
+  */
+  getMajorList(data) {
 
+    return axios(
+      {
+        url: endPoint + 'major/list',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  }
 }
 /**
  * create a new project
@@ -588,6 +607,27 @@ export function* editUserRole(data) {
 }
 
 /**
+ *get major list
+ */
+export function* getMajorList(data) {
+  try {
+    const response = yield call(project.getMajorList, data.payload);
+    yield put({
+      type: ActionTypes.GET_MAJOR_LIST_SUCCESS,
+      response
+    });
+
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.GET_MAJOR_LIST_ERROR,
+      error: error.response,
+    });
+
+  }
+}
+
+/**
  * Project Sagas
  */
 export default function* root() {
@@ -605,5 +645,6 @@ export default function* root() {
     takeLatest(ActionTypes.ACCEPT_SHARE_LINK, acceptShareLink),
     takeLatest(ActionTypes.REMOVE_SHARED_USER, removeSharedUser),
     takeLatest(ActionTypes.EDIT_USER_ROLE, editUserRole),
+    takeLatest(ActionTypes.GET_MAJOR_LIST, getMajorList),
   ]);
 }

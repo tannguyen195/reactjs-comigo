@@ -11,8 +11,10 @@ export const {
   loginError,
   getProfile,
   verify,
-  updateProfile ,
-  resend
+  updateProfile,
+  resend,
+  getBadgeList,
+  giveBadge
 } = createActions({
   [ActionTypes.LOGIN]: (data) => (data),
   [ActionTypes.LOGOUT]: () => ({}),
@@ -24,4 +26,6 @@ export const {
   [ActionTypes.VERIFY]: (data) => (data),
   [ActionTypes.UPDATE_PROFILE]: (data) => (data),
   [ActionTypes.RESEND]: () => ({}),
+  [ActionTypes.GET_BADGE_LIST]: () => ({}),
+  [ActionTypes.GIVE_BADGE]: (data) => (data),
 });

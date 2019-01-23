@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
-import { Card, Button, Row, Col, Form, Input, Tag, Icon, Tooltip, Checkbox } from 'antd'
+import { Card, Button, Row, Col, Form, Input, Tag, Icon, Select, Checkbox } from 'antd'
 import CustomTagContainer from '../common/customTag/CustomTagContainer';
+import MajorTagContainer from '../common/majorTag/MajorTagContainer';
 import { Router } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
 const FormItem = Form.Item;
+const Option = Select.Option
 const { TextArea } = Input;
 export default class extends Component {
+    renderYear() {
+        var options = []
+        for (let i = 2017; i < 2032; i++) {
+            options.push(<Option key={i} value={i}>{i}</Option>)
+        }
+        return options
+    }
+
 
     render() {
         const {
-            onEmailReceiveChange,
+            graduationYear,
+            majors,
+            onMajorChange,
             onTagLinkChange,
             onTagSkillChange,
+            onEmailReceiveChange,
+            onTagInterestChange,
+            interests,
             links,
             skills,
             toggleUploadModal,
@@ -20,6 +35,7 @@ export default class extends Component {
             handleSubmit,
             status
         } = this.props
+
         const { getFieldDecorator } = this.props.form;
         return (
             <div className="profile-update-container max-width">
@@ -74,32 +90,52 @@ export default class extends Component {
                                         </FormItem>
                                     </Col>
                                 </Row>
-                                <FormItem
-                                    hasFeedback
-                                    validateStatus="success"
-                                    className="marginBottom0">
-                                    <div className="label-form ">Email</div>
-                                    {getFieldDecorator('email', {
-                                        rules: [{
-                                            type: 'email',
-                                            message: 'The input is not valid E-mail!',
-                                        }, {
-                                            message: 'Please input your E-mail!',
-                                        }],
-                                        initialValue: userData.email
-                                    })(
-                                        <Input disabled id="success" />
-                                    )}
-                                </FormItem>
+
+                                <Row gutter={16}>
+                                    <Col md={12} lg={12}>
+                                        <FormItem
+                                            className="marginBottom0">
+                                            <div className="label-form ">Email</div>
+                                            {getFieldDecorator('email', {
+                                                rules: [{
+                                                    type: 'email',
+                                                    message: 'The input is not valid E-mail!',
+                                                }, {
+                                                    message: 'Please input your E-mail!',
+                                                }],
+                                                initialValue: userData.email
+                                            })(
+                                                <Input disabled id="success" />
+                                            )}
+                                        </FormItem>
+                                    </Col>
+                                    <Col md={12} lg={12}>
+                                        <FormItem
+                                            className="marginBottom0 graduation__year">
+                                            <div className="label-form ">Graduation Year</div>
+                                            {getFieldDecorator('graduationYear', {
+                                                initialValue: userData.graduationYear
+                                            })(
+                                                <Select  >
+                                                    {
+                                                        this.renderYear()
+                                                    }
+                                                </Select>
+                                            )}
+                                        </FormItem>
+                                    </Col>
+                                </Row>
+
+
 
                             </div>
                         </div>
 
-                        <div className="ability">
+                        <div className="ability paddingBottom24">
                             <div className="paddingBottom32 Title-Section-Left">
                                 Information & Abilities
                         </div>
-                            <div className="bio-info paddingBottom32">
+                            <div className="bio-info ">
                                 <div className="label-form">Bio</div>
                                 <FormItem >
 
@@ -107,34 +143,60 @@ export default class extends Component {
                                         rules: [{ whitespace: true }],
                                         initialValue: userData.bio
                                     })(
-                                        <TextArea />
+                                        <TextArea placeholder="Type something about yourself..." />
                                     )}
                                 </FormItem>
                             </div>
 
-                            <div className="skill-info">
+                            <div className="skill-info marginBottom24">
                                 <div className="label-form">Skills</div>
 
                                 <CustomTagContainer
+                                    text={"Add your strength of skills..."}
                                     onTagsChange={onTagSkillChange}
                                     tags={skills}
                                 />
 
                             </div>
+
+                            <div className="skill-info marginBottom24">
+                                <div className="label-form">Interests</div>
+
+                                <CustomTagContainer
+                                    text={"Add your most interests..."}
+                                    onTagsChange={onTagInterestChange}
+                                    tags={interests}
+                                />
+
+                            </div>
+
+                            <div className="skill-info ">
+                                <div className="label-form">Majors</div>
+
+                                <MajorTagContainer
+                                    value={majors}
+                                    text={"Add majors"}
+                                    onMajorChange={onMajorChange}
+                                    tags={interests}
+                                />
+
+                            </div>
+                        </div>
+                        <div className="ability paddingBottom24">
+
                         </div>
                         <div className="links paddingBottom40">
                             <div className="paddingBottom16 Title-Section-Left">
-                                Links (optional)
-                        </div>
+                                Links (optional)  </div>
                             <div className="links-tag-container">
                                 <CustomTagContainer
+                                    text={"Add link"}
                                     type="link"
                                     onTagsChange={onTagLinkChange}
                                     tags={links} />
                             </div>
 
                         </div>
-
                         <div className="paddingBottom16 InputLeftBlack-Style">
                             Receive emails for new projects that match your skills!
                         </div>

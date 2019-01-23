@@ -14,11 +14,11 @@ export default class extends Component {
             saveInputRef,
             showInput,
             inputValue,
-
+            text,
             type,
         } = this.props
         return (
-            <div>
+            <div className="custom-tag__container">
                 {tags.map((tag, index) => {
                     const isLongTag = tag.length > 20;
                     const tagElem = (
@@ -28,25 +28,18 @@ export default class extends Component {
                     );
                     return isLongTag ? <Tooltip title={tag} key={tag}>{tagElem}</Tooltip> : tagElem;
                 })}
-                {inputVisible && (
+                {!inputVisible && (
                     <Input
+                        placeholder={text}
                         ref={saveInputRef}
                         type="text"
                         size="small"
-                        style={{ width: type === "link" ? 200 : 80}}
+                        style={{ width: type === "link" ? 200 : 80 }}
                         value={inputValue}
                         onChange={handleInputChange}
                         onBlur={handleInputConfirm}
                         onPressEnter={handleInputConfirm}
                     />
-                )}
-                {!inputVisible && (
-                    <Tag
-                        className="new-tag"
-                        onClick={showInput}
-                        style={{ background: '#fff', borderStyle: type === "link" ? 'solid' : 'dashed' }}
-                    >
-                        <Icon type="plus" /> {type === "link" ? "Add Link" : "Add Skill"}</Tag>
                 )}
 
             </div>

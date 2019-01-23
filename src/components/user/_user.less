@@ -1,6 +1,6 @@
 .user-detail-container {
-    max-width: 540px;
     margin: 0 auto;
+    max-width: 940px;
     padding-top: 8px;
     .title-section {
         font-size: 12px;
@@ -8,17 +8,65 @@
         line-height: 1.33;
         color: #2e3033
     }
+    .user__link-container {
+        .ant-card-body {
+            padding: 24px !important;
+            .link-button {
+                margin-bottom: 8px;
+                margin-right: 8px;
+                height: 28px;
+                border: solid 1px #a1aab3;
+                background: #fff;
+                font-size: 10px;
+                line-height: 1.2;
+                color: #a1aab3;
+            }
+        }
+        .badge__container {
+            .badge__item {
+                margin-top: 16px;
+                text-align: center;
+                img {
+                    width: 64px;
+                    height: 64px;
+                }
+                .unhover {
+                    -webkit-filter: grayscale(100%);
+                    /* Safari 6.0 - 9.0 */
+                    filter: grayscale(100%);
+                }
+                &:hover {
+                    .unhover {
+                        -webkit-filter: initial;
+                        /* Safari 6.0 - 9.0 */
+                        filter: initial;
+                    }
+                }
+                .badge__count {
+                    height: 20px;
+                    margin-top: 12px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1;
+                    letter-spacing: normal;
+                    text-align: center;
+                    color: #006cd9
+                }
+            }
+        }
+    }
     .user-header {
-        box-shadow: inset 0 -0.5px 0 0 #edf0f2;
         display: flex;
         justify-content: space-between;
-        padding-bottom: 24px;
+        padding-bottom: 16px;
         .header-left {
             display: flex;
             img {
                 object-fit: cover;
-                width: 80px;
-                height: 80px;
+                width: 48px;
+                height: 48px;
                 border-radius: 50%;
                 margin-right: 24px;
             }
@@ -31,9 +79,12 @@
                 }
                 .user-email {
                     font-size: 12px;
-                    font-weight: 500;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-stretch: normal;
                     line-height: 1.33;
-                    color: #2e3033;
+                    letter-spacing: normal;
+                    color: #a1aab3;
                 }
                 .sign-out-button {
                     font-size: 12px;
@@ -51,12 +102,31 @@
             }
         }
     }
+    .user-majors {
+        box-shadow: inset 0 -0.5px 0 0 #edf0f2;
+        padding-bottom: 16px;
+        button {
+            margin-right: 8px;
+            border: none;
+            font-size: 10px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.2;
+            letter-spacing: normal;
+            text-align: center;
+            color: #2e3033;
+            border-radius: 4px;
+            background-color: #edf0f2;
+        }
+    }
     .user-body {
         padding-top: 24px;
         .user-project {
             .project-item {
                 cursor: pointer;
-                margin-right: 17px;
+                border-radius: 8px;
+                border: solid 1px #edf0f2;
                 img {
                     width: 142px;
                     height: 92px;
@@ -67,7 +137,17 @@
                 font-size: 12px;
                 line-height: 1.33;
                 padding-top: 12px;
-                color: #45494d
+                color: #45494d;
+                margin-left: 8px;
+            }
+            .project-collaborators {
+                margin: 8px;
+                img {
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    object-fit: contain;
+                }
             }
         }
         .skill-button {
@@ -79,16 +159,6 @@
             line-height: 1.2;
             color: #fff;
             border: none;
-        }
-        .link-button {
-            margin-bottom: 8px;
-            margin-right: 8px;
-            height: 28px;
-            border: solid 1px #a1aab3;
-            background: #fff;
-            font-size: 10px;
-            line-height: 1.2;
-            color: #a1aab3;
         }
     }
 }

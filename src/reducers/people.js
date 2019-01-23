@@ -60,6 +60,11 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
+        [ActionTypes.GIVE_BADGE_SUCCESS]: (state, { response }) => update(state,
+            {
+                peopleDetail: { $set: response.data.givenUserInfo }
+            })
+        ,
     }, initial),
 };
 

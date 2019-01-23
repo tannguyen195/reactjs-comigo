@@ -63,7 +63,6 @@ export default class extends Component {
         return (
             <div className="project-detail-container">
                 <Row gutter={8}>
-
                     <Col lg={14}>
                         <Card bordered={false}>
                             <div className="project-detail-header">
