@@ -152,17 +152,13 @@ export default class extends Component {
                                     <div className="paddingBottom16 title-section ">
                                         LINKS</div>
                                     {
-                                        !peopleDetail.links ? <Link prefetch to="/user/edit">
-                                            <a>
-                                                <Button className="link-button" icon="plus" >Add Link</Button>
+                                        peopleDetail.links &&
+                                        peopleDetail.links.map((item, index) => {
+                                            return <a href={item.includes("http") ?
+                                                item : "http://" + item} key={index} target="_blank">
+                                                <Button key={index} className="link-button">{item}</Button>
                                             </a>
-                                        </Link>
-                                            :
-                                            peopleDetail.links.map((item, index) => {
-                                                return <a href={item} key={index} target="_blank">
-                                                    <Button key={index} className="link-button">{item}</Button>
-                                                </a>
-                                            })
+                                        })
                                     }
 
                                 </Card>

@@ -131,7 +131,7 @@ export default class extends Component {
                         <Card bordered={false}>
                             <section>
                                 <div className="paddingBottom16 title-section ">
-                                    MY BAGDES
+                                    MY BADGES
                         </div>
                                 {
                                     userBadge && <Row gutter={16} className="badge__container">
@@ -155,7 +155,8 @@ export default class extends Component {
                                     </Link>
                                         :
                                         userData.links.map((item, index) => {
-                                            return <Button key={index} className="link-button">{item}</Button>
+                                            return <Button onClick={() => window.open(item.includes("http") ?
+                                                item : "http://" + item)} key={index} className="link-button">{item}</Button>
                                         })
                                 }
                             </section>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player'
 import { Button, Card, Row, Col, Form, Input } from 'antd'
+import { Link } from 'routes'
 import Footer from '../common/footer/Footer'
 import posed from 'react-pose';
 import { videoURL } from '/constants'

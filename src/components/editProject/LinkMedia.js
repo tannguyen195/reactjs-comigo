@@ -3,7 +3,7 @@ import { Row, Col, Card, Upload, Modal, Button, Icon } from 'antd'
 import CustomTagContainer from '../common/customTag/CustomTagContainer';
 import { endPoint } from '../../../constants/index';
 import { Cookies } from 'react-cookie'
-
+import { Router } from 'routes'
 const cookies = new Cookies()
 const confirm = Modal.confirm;
 const projectIcon = '/static/images/icon-project-photo.svg'

@@ -172,7 +172,7 @@ export default class extends Component {
                                                 <Image image={item.pictureURL} />
                                                 <div className="header-info">
                                                     <div className=" Title-12-Left">   {item.firstName + ` ` + item.lastName}</div>
-                                                    <div className="Sub-Title-10-Left">{item.email}</div>
+                                                    <div className="Sub-Title-10-Left">{item.role}</div>
                                                 </div>
                                             </div>
                                         })
@@ -226,17 +226,13 @@ export default class extends Component {
                                 </div>
 
                                 {
-                                    detail.links.length === 0 ? <Link prefetch to={`/${detail._id}/edit`}>
-                                        <a>
-                                            <Button className="link-button Link-Button-4" icon="plus" >Add Link</Button>
-                                        </a>
-                                    </Link>
-                                        :
-                                        detail.links.map((item, index) => {
-                                            return <Button onClick={() => {
-                                                window.open(item)
-                                            }} key={index} className="link-button">{item}</Button>
-                                        })
+                                    detail.links.length === 0 &&
+                                    detail.links.map((item, index) => {
+                                        return <Button onClick={() => {
+                                            window.open(item.includes("http") ?
+                                                item : "http://" + item)
+                                        }} key={index} className="link-button">{item}</Button>
+                                    })
                                 }
                             </Card>
                         </div>

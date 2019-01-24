@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Tabs, Form, Input, Modal } from 'antd'
 import LinkMedia from './LinkMedia'
-import Information from './Infomation'
+import Information from './Information'
 import CollaboratorContainer from '../collaborator/CollaboratorContainer'
 const TabPane = Tabs.TabPane;
 export default class extends Component {
