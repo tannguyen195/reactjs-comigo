@@ -151,22 +151,35 @@ export default class extends Component {
                             <div className="skill-info marginBottom24">
                                 <div className="label-form">Skills</div>
 
-                                <CustomTagContainer
+                                <MajorTagContainer
+                                    value={skills}
+                                    text={"Add your strength of skills..."}
+                                    onMajorChange={onTagSkillChange}
+                                    color="#006cd9"
+                                />
+                                {/* <CustomTagContainer
                                     text={"Add your strength of skills..."}
                                     onTagsChange={onTagSkillChange}
                                     tags={skills}
-                                />
+                                /> */}
 
                             </div>
 
                             <div className="skill-info marginBottom24">
                                 <div className="label-form">Interests</div>
 
-                                <CustomTagContainer
+                                <MajorTagContainer
+                                    color="#12ca00"
+                                    value={interests}
+                                    text={"Add your most interests..."}
+                                    onMajorChange={onTagInterestChange}
+                                />
+
+                                {/* <CustomTagContainer
                                     text={"Add your most interests..."}
                                     onTagsChange={onTagInterestChange}
                                     tags={interests}
-                                />
+                                /> */}
 
                             </div>
 
@@ -174,10 +187,10 @@ export default class extends Component {
                                 <div className="label-form">Majors</div>
 
                                 <MajorTagContainer
+                                    color="#edf0f2"
                                     value={majors}
                                     text={"Add majors"}
                                     onMajorChange={onMajorChange}
-                                    tags={interests}
                                 />
 
                             </div>

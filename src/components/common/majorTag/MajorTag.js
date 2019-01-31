@@ -16,7 +16,7 @@ export default class extends Component {
         return children
     }
     render() {
-      
+
         const {
             value,
             handleChange,
@@ -28,7 +28,7 @@ export default class extends Component {
                     majorList && <Select
                         value={value}
                         mode="multiple"
-                        style={{ width: '100%' }}
+                        style={{ width: '100%'}}
                         placeholder="Please select"
                         onChange={handleChange}
                     >
