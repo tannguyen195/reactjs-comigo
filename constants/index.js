@@ -19,7 +19,7 @@ export const ActionTypes = keyMirror({
     TOGGLE_REQUEST_COLLABORATOR: undefined,
     TOGGLE_REMOVE_COLLABORATOR: undefined,
     TOGGLE_EDIT_UPDATE: undefined,
-
+    TOGGLE_EDIT_COMMENT: undefined,
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
     LOGIN_SUCCESS: undefined,
@@ -110,6 +110,18 @@ export const ActionTypes = keyMirror({
     REMOVE_PROJECT_UPDATE: undefined,
     REMOVE_PROJECT_UPDATE_SUCCESS: undefined,
     REMOVE_PROJECT_UPDATE_ERROR: undefined,
+
+    POST_COMMENT: undefined,
+    POST_COMMENT_SUCCESS: undefined,
+    POST_COMMENT_ERROR: undefined,
+
+    EDIT_COMMENT: undefined,
+    EDIT_COMMENT_SUCCESS: undefined,
+    EDIT_COMMENT_ERROR: undefined,
+
+    REMOVE_COMMENT: undefined,
+    REMOVE_COMMENT_SUCCESS: undefined,
+    REMOVE_COMMENT_ERROR: undefined,
 
     CREATE_SHARE_LINK: undefined,
     CREATE_SHARE_LINK_SUCCESS: undefined,

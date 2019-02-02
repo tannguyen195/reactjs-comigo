@@ -9,7 +9,8 @@ export const initial = {
     visibleRemoveCollaborator: false,
     visibleEditUpdate: false,
     updateData: null,
-    collaboratorData: null
+    collaboratorData: null,
+    commentData:null
 }
 export default {
     toggle: handleActions({
@@ -42,6 +43,13 @@ export default {
             update(state, {
                 visibleEditUpdate: { $set: !state.visibleEditUpdate },
                 updateData: !state.visibleEditUpdate ? { $set: payload } : { $set: null },
+            })
+        ,
+        
+        [ActionTypes.TOGGLE_EDIT_COMMENT]: (state, { payload }) =>
+            update(state, {
+                visibleEditComment: { $set: !state.visibleEditComment },
+                commentData: !state.visibleEditComment ? { $set: payload } : { $set: null },
             })
         ,
         [ActionTypes.EDIT_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {

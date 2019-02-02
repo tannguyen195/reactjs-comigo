@@ -14,10 +14,10 @@ export default class extends Component {
         })
     }
     render() {
-        const { list } = this.props
+        const { list, userData } = this.props
         return (
             <div className="newsfeed-container max-width">
-                {
+                {userData &&
                     this.renderProject(list)
                 }
 

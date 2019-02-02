@@ -7,11 +7,13 @@ export const {
   togglePreviewImage,
   toggleRequestCollaborator,
   toggleRemoveCollaborator,
-  toggleEditUpdate
+  toggleEditUpdate,
+  toggleEditComment
 } = createActions({
   [ActionTypes.TOGGLE_HOME_VIEW]: () => ({}),
   [ActionTypes.TOGGLE_PREVIEW_IMAGE]: (data) => (data),
   [ActionTypes.TOGGLE_REQUEST_COLLABORATOR]: () => ({}),
   [ActionTypes.TOGGLE_REMOVE_COLLABORATOR]: (data) => (data),
   [ActionTypes.TOGGLE_EDIT_UPDATE]: (data) => (data),
+  [ActionTypes.TOGGLE_EDIT_COMMENT]: (data) => (data),
 });

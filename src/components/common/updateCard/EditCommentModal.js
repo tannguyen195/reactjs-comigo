@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { Modal, Button, Input } from 'antd'
-import Image from '../common/Image'
+import Image from '../../common/Image'
 const TextArea = Input.TextArea
 export default class extends Component {
     render() {
-        const { visibleEditUpdate, toggleEditUpdate, detail, onEditUpdateChange, handleSaveEditUpdate, editUpdateContent, status } = this.props;
+        const {
+            visibleEditComment,
+            toggleEditComment,
+            detail,
+            onEditCommentChange,
+            handleSaveEditComment,
+            editCommentContent,
+            status } = this.props;
         return (
 
             <Modal
                 title=""
-                visible={visibleEditUpdate}
-                onOk={handleSaveEditUpdate}
-                onCancel={toggleEditUpdate}
+                visible={visibleEditComment}
+                onOk={handleSaveEditComment}
+                onCancel={toggleEditComment}
                 okText="Save"
                 okButtonProps={{ loading: status === 'running' }}
             >
@@ -19,10 +26,10 @@ export default class extends Component {
                 <div className="post__content-container">
                     <Image image={detail.owner.pictureURL} />
                     <TextArea
-                        onChange={onEditUpdateChange}
-                        value={editUpdateContent}
+                        onChange={onEditCommentChange}
+                        value={editCommentContent}
                         className="Paragraph-12"
-                        placeholder="Post something about project update here..."
+
                         autosize />
                 </div>
             </Modal>

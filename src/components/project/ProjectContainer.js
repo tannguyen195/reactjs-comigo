@@ -27,14 +27,7 @@ class ProjectContainer extends Component {
             }
         return {}
     }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.updateData && nextProps.updateData
-            !== this.props.updateData) {
-            this.setState({
-                editUpdateContent: nextProps.updateData.content
-            })
-        }
-    }
+
     componentDidMount() {
         const { getDetail } = this.props
 
@@ -45,7 +38,6 @@ class ProjectContainer extends Component {
         if (detail.owner.email === userData.email) {
             return true
         }
-
         return false
     }
     onUpdateChange = (e) => {
@@ -61,28 +53,8 @@ class ProjectContainer extends Component {
             "content": this.state.updateContent
         })
     }
-    handleDeletePost = (e) => {
-        const { removeProjectUpdate, detail } = this.props
-        removeProjectUpdate({
-            "updateID": e._id,
-            "projectID": detail._id,
-        })
-    }
-    handleSaveEditUpdate = (e) => {
 
-
-        const { editProjectUpdate, detail, updateData } = this.props
-        editProjectUpdate({
-            "updateID": updateData._id,
-            "projectID": detail._id,
-            "content": this.state.editUpdateContent
-        })
-    }
-    onEditUpdateChange = (e) => {
-        this.setState({
-            editUpdateContent: e.target.value
-        })
-    }
+    
     render() {
         const { userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
         return (
@@ -104,10 +76,7 @@ class ProjectContainer extends Component {
                             edit={this.isUserProject()}
                             onUpdateChange={this.onUpdateChange}
                             handlePostUpdate={this.handlePostUpdate}
-                            handleDeletePost={this.handleDeletePost}
-
-                            onEditUpdateChange={this.onEditUpdateChange}
-                            handleSaveEditUpdate={this.handleSaveEditUpdate}
+                            
 
                         />
                         : <Loading />
@@ -126,7 +95,7 @@ export function mapStateToProps(state) {
         visiblePreview: state.toggle.visiblePreview,
         previewImage: state.toggle.previewImage,
         status: state.project.status,
-        updateData: state.toggle.updateData,
+  
     };
 }
 export function mapDispatchToProps(dispatch) {

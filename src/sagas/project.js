@@ -193,7 +193,67 @@ const project = {
         return response.data
       })
   },
+  /**
+     * Post a new update to a project provied
+     */
+  postComment(data) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/comment',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
 
+  /**
+   * edit a new update to a project provied
+   */
+  editComment(data) {
+  
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/comment',
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
+
+  /**
+ * remove a new update to a project provied
+ * @param  {string} id The id of project
+ */
+  removeComment(data) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/comment',
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
   /**
 * create a link shred by owner of a project
 * @param  {string} id The id of project
@@ -508,6 +568,66 @@ export function* removeProjectUpdate(data) {
   }
 }
 
+
+
+/**
+ * post project update
+ */
+export function* postComment(data) {
+  try {
+    const response = yield call(project.postComment, data.payload);
+
+    yield put({
+      type: ActionTypes.POST_COMMENT_SUCCESS,
+      response: { ...response.data, updateID: data.payload.updateID }
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.POST_COMMENT_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * edit project update
+ */
+export function* editComment(data) {
+  try {
+    const response = yield call(project.editComment, data.payload);
+    yield put({
+      type: ActionTypes.EDIT_COMMENT_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.EDIT_COMMENT_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+/**
+ * remove project update
+ */
+export function* removeComment(data) {
+  try {
+    const response = yield call(project.removeComment, data.payload);
+    yield put({
+      type: ActionTypes.REMOVE_COMMENT_SUCCESS,
+      response: { data: response.data, updateID: data.payload.updateID }
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.REMOVE_COMMENT_ERROR,
+      error: error.response,
+    });
+  }
+}
+
 /**
  * user create share link to a new project
  */
@@ -641,6 +761,9 @@ export default function* root() {
     takeLatest(ActionTypes.POST_PROJECT_UPDATE, postProjectUpdate),
     takeLatest(ActionTypes.EDIT_PROJECT_UPDATE, editProjectUpdate),
     takeLatest(ActionTypes.REMOVE_PROJECT_UPDATE, removeProjectUpdate),
+    takeLatest(ActionTypes.POST_COMMENT, postComment),
+    takeLatest(ActionTypes.EDIT_COMMENT, editComment),
+    takeLatest(ActionTypes.REMOVE_COMMENT, removeComment),
     takeLatest(ActionTypes.CREATE_SHARE_LINK, createShareLink),
     takeLatest(ActionTypes.ACCEPT_SHARE_LINK, acceptShareLink),
     takeLatest(ActionTypes.REMOVE_SHARED_USER, removeSharedUser),

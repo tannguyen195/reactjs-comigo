@@ -236,10 +236,8 @@ export default class extends Component {
                                 }
                             </Card>
                         </div>
-
                     </Col>
                 </Row>
-
             </div>
         )
     }

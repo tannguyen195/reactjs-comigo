@@ -13,6 +13,11 @@ export const {
   postProjectUpdate,
   editProjectUpdate,
   removeProjectUpdate,
+
+  postComment,
+  editComment,
+  removeComment,
+
   createShareLink,
   acceptShareLink,
   removeSharedUser,
@@ -32,6 +37,11 @@ export const {
   [ActionTypes.POST_PROJECT_UPDATE]: (data) => (data),
   [ActionTypes.EDIT_PROJECT_UPDATE]: (data) => (data),
   [ActionTypes.REMOVE_PROJECT_UPDATE]: (data) => (data),
+
+  [ActionTypes.POST_COMMENT]: (data) => (data),
+  [ActionTypes.EDIT_COMMENT]: (data) => (data),
+  [ActionTypes.REMOVE_COMMENT]: (data) => (data),
+
   [ActionTypes.CREATE_SHARE_LINK]: (data) => (data),
   [ActionTypes.ACCEPT_SHARE_LINK]: (data) => (data),
   [ActionTypes.REMOVE_SHARED_USER]: (data) => (data),

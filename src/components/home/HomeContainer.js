@@ -109,6 +109,7 @@ export function mapStateToProps(state) {
         visibleProject: state.toggle.visibleProject,
         people: state.people.people,
         status: state.project.status,
+        userData: state.user.data
     };
 }
 export function mapDispatchToProps(dispatch) {

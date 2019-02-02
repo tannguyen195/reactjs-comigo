@@ -119,16 +119,16 @@ export default {
         },
 
         // POST UPDATE PROJECT ACTION
-        [ActionTypes.POST_PROJECT_UPDATE]: (state, { response }) => update(state, {
+        [ActionTypes.POST_COMMENT]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },
         }),
-        [ActionTypes.POST_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+        [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                detail: { updates: { $unshift: [response.data] } }
+                // detail: { updates: { $unshift: [response.data] } }
             })
         },
-        [ActionTypes.POST_PROJECT_UPDATE_ERROR]: (state, { error }) => {
+        [ActionTypes.POST_COMMENT_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
@@ -247,6 +247,82 @@ export default {
             })
         },
         [ActionTypes.GET_MAJOR_LIST_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+
+
+        // POST UPDATE PROJECT ACTION
+        [ActionTypes.POST_COMMENT]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
+            
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.updateID)]: { comments: { $push: [response] } } } }
+            })
+        },
+        [ActionTypes.POST_COMMENT_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+        // EDIT UPDATE PROJECT ACTION
+        [ActionTypes.EDIT_COMMENT]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.EDIT_COMMENT_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: {
+                    updates: {
+                        [state.detail.updates.findIndex((e) => e._id === response.data.updateID)]: {
+                            comments: {
+                                [state.detail.updates[
+                                    state.detail.updates.findIndex((e) => e._id === response.data.updateID)
+                                ].comments.findIndex((e) => e._id === response.data._id)]:
+                                    { $set: response.data }
+                            }
+                        }
+                    }
+                }
+            })
+        },
+        [ActionTypes.EDIT_COMMENT_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+
+        // REMOVE UPDATE PROJECT ACTION
+        [ActionTypes.REMOVE_COMMENT]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.REMOVE_COMMENT_SUCCESS]: (state, { response }) => {
+    
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: {
+                    updates: {
+                        [state.detail.updates.findIndex((e) => e._id === response.updateID)]: {
+                            comments: {
+                                $splice: [
+                                    [state.detail.updates[
+                                        state.detail.updates.findIndex((e) => e._id === response.updateID)
+                                    ].comments.findIndex((e) => e._id === response.data._id), 1]
+                                ]
+                            }
+                        }
+                    }
+                }
+            })
+        },
+        [ActionTypes.REMOVE_COMMENT_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
