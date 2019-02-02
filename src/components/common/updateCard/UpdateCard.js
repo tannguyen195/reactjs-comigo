@@ -97,8 +97,8 @@ export default class extends Component {
                     !isNewFeed && <div> {data.comments && data.comments.length > 0 && data.comments.map((item, index) => {
                         return <div key={index} className="update__comment-container Paragraph-12">
                             <div className="update__comment-header">
-                                <Image image={item.pictureURL} />
-                                <div className="People-Comment name">Sallie Robertson</div>
+                                <Image image={item.postedUserData.pictureURL} />
+                                <div className="People-Comment name">{item.postedUserData.firstName} {item.postedUserData.lastName}</div>
                                 <div className="Sub-Time-Date">{moment.unix(item.updatedAt).fromNow()}</div>
                             </div>
                             <div className="update__comment-body">
