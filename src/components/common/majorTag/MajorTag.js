@@ -4,14 +4,11 @@ import { Input, Tag, Tooltip, Select } from 'antd'
 const Option = Select.Option;
 
 
-function handleChange(value) {
-    console.log(`selected ${value}`);
-}
 export default class extends Component {
-    renderMajor(majorList) {
+    renderMajor(listData) {
         let children = [];
-        for (let i = 0; i < majorList.length; i++) {
-            children.push(<Option key={majorList[i]}>{majorList[i]}</Option>);
+        for (let i = 0; i < listData.length; i++) {
+            children.push(<Option key={listData[i]}>{listData[i]}</Option>);
         }
         return children
     }
@@ -20,12 +17,12 @@ export default class extends Component {
         const {
             value,
             handleChange,
-            majorList
+            listData
         } = this.props
         return (
             <div className="major__container">
                 {
-                    majorList && <Select
+                    listData && <Select
                         value={value}
                         mode="multiple"
                         style={{ width: '100%'}}
@@ -33,7 +30,7 @@ export default class extends Component {
                         onChange={handleChange}
                     >
                         {
-                            this.renderMajor(majorList)
+                            this.renderMajor(listData)
                         }
 
                     </Select>

@@ -9,7 +9,7 @@ export default class extends Component {
 
     render() {
         const { data, edit } = this.props
-      
+
         return (
             <div>
                 <Card hoverable bordered={false} className="post-card-container">
@@ -85,7 +85,15 @@ export default class extends Component {
                 </Card>
 
                 {
-                    data.latestUpdate && <UpdateCardContainer isNewFeed={true} detail={data} edit={edit} data={data.latestUpdate} />
+                    data.latestUpdate &&
+                    <UpdateCardContainer
+                        isNewFeed={true}
+                        detail={data}
+                        edit={edit}
+                        data={{
+                            ...data.latestUpdate,
+                            comments: [data.latestUpdate.comment]
+                        }} />
                 }
 
             </div>

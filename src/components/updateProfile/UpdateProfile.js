@@ -16,10 +16,9 @@ export default class extends Component {
         return options
     }
 
-
     render() {
         const {
-            graduationYear,
+            listData,
             majors,
             onMajorChange,
             onTagLinkChange,
@@ -150,13 +149,16 @@ export default class extends Component {
 
                             <div className="skill-info marginBottom24">
                                 <div className="label-form">Skills</div>
+                                {
+                                    listData && <MajorTagContainer
+                                        listData={listData.skillData}
+                                        value={skills}
+                                        text={"Add your strength of skills..."}
+                                        onMajorChange={onTagSkillChange}
+                                        color="#006cd9"
+                                    />
+                                }
 
-                                <MajorTagContainer
-                                    value={skills}
-                                    text={"Add your strength of skills..."}
-                                    onMajorChange={onTagSkillChange}
-                                    color="#006cd9"
-                                />
                                 {/* <CustomTagContainer
                                     text={"Add your strength of skills..."}
                                     onTagsChange={onTagSkillChange}
@@ -167,13 +169,15 @@ export default class extends Component {
 
                             <div className="skill-info marginBottom24">
                                 <div className="label-form">Interests</div>
+                                {
+                                    listData && <MajorTagContainer
+                                        listData={listData.skillData}
+                                        color="#12ca00"
+                                        value={interests}
+                                        text={"Add your most interests..."}
+                                        onMajorChange={onTagInterestChange}
+                                    />}
 
-                                <MajorTagContainer
-                                    color="#12ca00"
-                                    value={interests}
-                                    text={"Add your most interests..."}
-                                    onMajorChange={onTagInterestChange}
-                                />
 
                                 {/* <CustomTagContainer
                                     text={"Add your most interests..."}
@@ -185,13 +189,16 @@ export default class extends Component {
 
                             <div className="skill-info ">
                                 <div className="label-form">Majors</div>
+                                {
+                                    listData && <MajorTagContainer
+                                        listData={listData.majorData}
+                                        color="#edf0f2"
+                                        value={majors}
+                                        text={"Add majors"}
+                                        onMajorChange={onMajorChange}
+                                    />
+                                }
 
-                                <MajorTagContainer
-                                    color="#edf0f2"
-                                    value={majors}
-                                    text={"Add majors"}
-                                    onMajorChange={onMajorChange}
-                                />
 
                             </div>
                         </div>

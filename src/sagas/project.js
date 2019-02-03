@@ -345,7 +345,7 @@ const project = {
 
     return axios(
       {
-        url: endPoint + 'major/list',
+        url: endPoint + 'skill/listSkillAndMajor',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

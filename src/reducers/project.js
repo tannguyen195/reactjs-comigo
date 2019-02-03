@@ -8,7 +8,7 @@ export const initial = {
     list: [],
     detail: null,
     detailList: [],
-    majorList: [],
+    listData: null,
     requestData: null
 }
 
@@ -243,7 +243,7 @@ export default {
         [ActionTypes.GET_MAJOR_LIST_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                majorList: { $set: response.data }
+                listData: { $set: response.data }
             })
         },
         [ActionTypes.GET_MAJOR_LIST_ERROR]: (state, { error }) => {
@@ -259,7 +259,7 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
-            
+
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
                 detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.updateID)]: { comments: { $push: [response] } } } }
@@ -304,7 +304,7 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.REMOVE_COMMENT_SUCCESS]: (state, { response }) => {
-    
+
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
                 detail: {

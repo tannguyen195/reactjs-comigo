@@ -143,7 +143,8 @@ export function mapStateToProps(state) {
         userData: state.user.data,
         status: state.user.status,
         image: state.file.image,
-        returnImage: state.file.returnImage
+        returnImage: state.file.returnImage,
+        listData:state.project.listData
     };
 }
 export function mapDispatchToProps(dispatch) {

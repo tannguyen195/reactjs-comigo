@@ -15,9 +15,6 @@ class MajorTagContainer extends Component {
     }
 
 
-    componentDidMount() {
-        this.props.getMajorList()
-    }
     handleChange = (e) => {
         this.props.onMajorChange(e)
     }

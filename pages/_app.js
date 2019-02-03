@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import Head from '../src/components/head'
 import HeaderContainer from '../src/components/header/HeaderContainer'
 import { loginSuccess, getProfile, loginError, getBadgeList } from '../src/actions/user'
+import { getMajorList } from '../src/actions/project'
 import stylesheet from '../src/styles/index.less'
 import _postCard from '../src/components/common/postCard/_postCard.less'
 import _peopleCard from '../src/components/common/peopleCard/_peopleCard.less'
@@ -48,6 +49,8 @@ class MyApp extends App {
       this.props.reduxStore.dispatch(getProfile())
       this.props.reduxStore.dispatch(getBadgeList())
       this.props.reduxStore.dispatch(acceptShareLink({ inviteCode: cookies.get('inviteCode') }))
+      this.props.reduxStore.dispatch(getMajorList())
+
     }
     else this.props.reduxStore.dispatch(loginError())
     this.setState({
