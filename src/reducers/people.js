@@ -57,7 +57,7 @@ export default {
         [ActionTypes.SUBCRIBE_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
-                message: { $set: renderMessage(error.status) }
+                message: { $set: "You are already a member!" }
             })
         },
         [ActionTypes.GIVE_BADGE_SUCCESS]: (state, { response }) => update(state,

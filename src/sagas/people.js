@@ -4,7 +4,7 @@
  */
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-
+import { notification } from 'antd';
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
 import { endPoint } from 'constants/index'
@@ -51,15 +51,10 @@ const people = {
 
     return axios(
       {
-        url: 'https://us17.api.mailchimp.com/3.0/lists/1d8b810a50/members/',
+        url: endPoint + 'subscribe?email=' + email,
         method: 'POST',
-        data: JSON.stringify({
-          "email_address": email,
-        }),
-        httpsAgent: new https.Agent({ rejectUnauthorized: false }),
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'apikey 234460a8604e8d96ac1cd9c9bb53e730-us17'
+          'Content-Type': 'application/json'
         },
 
       }).then((response) => {
@@ -115,15 +110,22 @@ export function* getPeopleDetail(data) {
 /**
  * User subcribe 
  */
-export function* subcribe(payload) {
+export function* subcribe(data) {
 
   try {
-    const response = yield call(people.subcribe, payload);
+    const response = yield call(people.subcribe, data.payload);
 
     yield put({
       type: ActionTypes.SUBCRIBE_SUCCESS,
       response
     });
+
+
+    notification['success']({
+      message: 'Comigo',
+      description: "Thanks for connecting with us!",
+    });
+
   }
   catch (error) {
     yield put({

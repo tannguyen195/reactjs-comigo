@@ -93,7 +93,6 @@ export default class extends Component {
                 </div>
 
                 {data.comments && data.comments[0] && data.comments.length > 0 && data.comments.map((item, index) => {
-                    console.log("in")
                     return <div key={index} className="update__comment-container Paragraph-12">
                         <div className="update__comment-header">
                             <Image image={item.postedUserData.pictureURL} />

@@ -56,7 +56,7 @@ class Home extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { handleSubcribe } = this.props;
+        const { handleSubcribe, peopleStatus, message } = this.props;
         return (
             <div className="home-container">
                 <div className="home">
@@ -191,7 +191,9 @@ and curious.`}</div>
                     <div className="Title-Small-Center-Black-LandingPage notified-desc">Get notified when we’re live on your campus.</div>
                     <Form onSubmit={handleSubcribe}>
                         <div className="form-subscribe">
-                            <FormItem>
+                            <FormItem
+                                hasFeedback help={peopleStatus === "error" && message}
+                                validateStatus={peopleStatus === "error" ? "error" : ""}>
                                 {getFieldDecorator('email', {
                                     rules: [{
                                         type: 'email', message: 'The input is not valid E-mail!',
@@ -199,7 +201,7 @@ and curious.`}</div>
                                         message: 'Please input your E-mail!',
                                     }],
                                 })(
-                                    <Input placeholder="Type your email here" />
+                                    <Input id="error" placeholder="Type your email here" />
                                 )}
                             </FormItem>
 
