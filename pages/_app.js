@@ -32,7 +32,7 @@ class MyApp extends App {
     }
   }
 
-  componentDidMount() {
+  componentDidMount() { 
     let inviteCode = ""
     //Check login 
     let isLoggedIn = cookies.get('token') ? true : false

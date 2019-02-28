@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, Row, Col, Form, Input } from 'antd'
+import { Link } from 'routes'
 import Footer from '../common/footer/Footer'
 import ReactPlayer from 'react-player'
 import { videoURL } from '/constants'
@@ -89,11 +90,14 @@ and curious.`}</div>
                     <div className="Title-Small-Center-Black-LandingPage coming-desc">
                         Crowdsourced peer support & team-building, campus by campus.
                             </div>
-                    <div className="start-button">
-                        <Button type="primary">
-                            Get Started
+                    <Link prefetch to="/signUp" className="start-button">
+                        <a>
+                            <Button type="primary">
+                                Get Started
                         </Button>
-                    </div>
+                        </a>
+
+                    </Link>
                 </div>
                 <Footer />
             </div >

@@ -14,7 +14,7 @@ export default class extends Component {
                         <div className="sign-up-title Title-Medium-Center">
                             Create an Account
             </div>
-                        <div className="Body-16 marginBottom48">Now we just support for students in Iowa, United States with @uiowa.edu email suffix.</div>
+                        <div className="Body-16 marginBottom48">We are only live at the University of Iowa. Only @uiowa.edu emails will be accepted. Click here to be notified when we're available at your school.</div>
                         <Form onSubmit={handleSubmit}>
                             <Row gutter={16}>
                                 <Col md={12} lg={12}>

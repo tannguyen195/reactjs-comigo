@@ -38,7 +38,7 @@ class SignUpContainer extends Component {
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (value && value !== form.getFieldValue('password')) {
-            callback('Two passwords that you enter is inconsistent!');
+            callback('Your passwords did not match. Please try again!');
         } else {
             callback();
         }

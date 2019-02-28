@@ -37,7 +37,10 @@ export default class extends Component {
 
                                     <div className="header-info">
                                         <div className="user-name">{userData.firstName + ` ` + userData.lastName}</div>
-                                        <div className="user-email">{userData.graduationYear && `${"Graduated in " + userData.graduationYear + " | "}`}{userData.email}</div>
+                                        {
+                                            userData.graduationYear && <div className="user-email">{userData.graduationYear > 2019 ? "Graduating in " : "Graduated in "} {userData.graduationYear + " | "}{userData.email}</div>
+                                        }
+
                                         <a onClick={handleLogout} className="sign-out-button">Sign Out</a>
                                     </div>
                                 </div>

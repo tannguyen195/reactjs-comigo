@@ -35,8 +35,8 @@ export default class extends Component {
                                     <div className="header-info">
                                         <div className="user-name">{peopleDetail.firstName + ` ` + peopleDetail.lastName}</div>
                                         <div className="Input-Search-Empty">{
-                                            peopleDetail.graduationYear && `${"Graduated in " + peopleDetail.graduationYear + " | "}`
-                                        }{peopleDetail.email}</div>
+                                            peopleDetail.graduationYear > 2019 ? "Graduating in " : "Graduated in "} {peopleDetail.graduationYear}
+                                            {` | ${peopleDetail.email}`}</div>
                                     </div>
                                 </div>
 

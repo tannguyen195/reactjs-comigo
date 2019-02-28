@@ -72,11 +72,11 @@ export default class extends Component {
                     <div className="contact-right">
                         <div className="Text-Style">Contact Information</div>
                         <div className="contact-address">
-                            {`105 Iowa Avenue #231
-Iowa City Iowa, 52240
+                            {`322 N. Clinton St.
+Iowa City, IA 52245
 
-319-400-9929
-team@comigo.org`}
+(641) 451-1736
+info@comigo.co`}
                         </div>
 
                         <div className="Text-Style">Follow Us</div>
