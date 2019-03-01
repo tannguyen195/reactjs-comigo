@@ -23,7 +23,7 @@ class Header extends Component {
     render() {
 
         const {
-            toggleSignInModal,
+         
             isLoggedIn
         } = this.props
         return (
@@ -31,7 +31,7 @@ class Header extends Component {
                 <div className="header-max">
                     <div className="header-left">
                         <Link prefetch to="/">
-                            <a className="logo">
+                            <a  className="logo">
                                 <img src={logoIcon} alt="logo" />
                             </a>
                         </Link>

@@ -134,6 +134,23 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
+
+        // POST UPDATE PROJECT ACTION
+        [ActionTypes.POST_PROJECT_UPDATE]: (state, { response }) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.POST_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                detail: { updates: { $push: [response.data] } }
+            })
+        },
+        [ActionTypes.POST_PROJECT_UPDATE_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
         // EDIT UPDATE PROJECT ACTION
         [ActionTypes.EDIT_PROJECT_UPDATE]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },

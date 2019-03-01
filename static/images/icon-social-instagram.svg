@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.1 (72631) - https://sketchapp.com -->
+    <title>icon/social/instagram</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.145,4.852 C11.6148066,4.852 11.185,4.42219336 11.185,3.892 C11.185,3.36180664 11.6148066,2.932 12.145,2.932 C12.6751934,2.932 13.105,3.36180664 13.105,3.892 C13.105,4.42219336 12.6751934,4.852 12.145,4.852 Z M8,12 C5.794,12 4,10.206 4,8 C4,5.794 5.794,4 8,4 C10.206,4 12,5.794 12,8 C12,10.206 10.206,12 8,12 Z M8,6 C6.897,6 6,6.897 6,8 C6,9.103 6.897,10 8,10 C9.103,10 10,9.103 10,8 C10,6.897 9.103,6 8,6 Z M12,16 L4,16 C1.944,16 0,14.056 0,12 L0,4 C0,1.944 1.944,0 4,0 L12,0 C14.056,0 16,1.944 16,4 L16,12 C16,14.056 14.056,16 12,16 Z M4,2 C3.065,2 2,3.065 2,4 L2,12 C2,12.953 3.047,14 4,14 L12,14 C12.935,14 14,12.935 14,12 L14,4 C14,3.065 12.935,2 12,2 L4,2 Z" id="path-1"></path>
+    </defs>
+    <g id="icon/social/instagram" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#2E3033">
+            <rect x="0" y="0" width="16" height="16"></rect>
+        </g>
+    </g>
+</svg>

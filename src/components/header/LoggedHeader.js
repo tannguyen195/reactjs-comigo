@@ -12,14 +12,14 @@ export default class extends Component {
         const {
             logout,
             userData,
-            toggleHomeView
+            onLogoClick
         } = this.props
         return (
             <header className="header-container" >
                 <div className="header-max">
                     <div className="header-left">
                         <Link prefetch to="/">
-                            <a className="logo">
+                            <a onClick={onLogoClick}  className="logo">
                                 <img src={logoIcon} alt="logo" />
                             </a>
                         </Link>

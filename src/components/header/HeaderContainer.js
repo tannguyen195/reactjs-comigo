@@ -16,6 +16,10 @@ class HeaderContainer extends Component {
             searchValue: ""
         }
     }
+    onLogoClick = (e) => {
+        const { getList } = this.props
+        getList("")
+    }
     onSearchValueChange = (e) => {
         this.setState({
             searchValue: e
@@ -23,7 +27,7 @@ class HeaderContainer extends Component {
     }
     onPressEnter = () => {
         const { getList } = this.props
-        
+
         getList(this.state.searchValue)
     }
     renderHeader() {
@@ -35,6 +39,7 @@ class HeaderContainer extends Component {
                 return <LoggedHeader
                     onSearchValueChange={this.onSearchValueChange}
                     onPressEnter={this.onPressEnter}
+                    onLogoClick={this.onLogoClick}
                     {...this.state}
                     {...this.props}
 

@@ -9,6 +9,7 @@ export default class extends Component {
 
     render() {
         const {
+       
             detail,
             edit
         } = this.props

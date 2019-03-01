@@ -3,13 +3,13 @@ import { Row, Col, Card, Form, Input, Button } from 'antd'
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
-const twitterIcon = '/static/images/icon-social-twitter.svg'
 const linkedInIcon = '/static/images/icon-social-linkedin.svg'
 const facebookIcon = '/static/images/icon-social-facebook.svg'
-const youtubeIcon = '/static/images/icon-social-youtube.svg'
+const instagramIcon = '/static/images/icon-social-instagram.svg'
 export default class extends Component {
     render() {
-        const { getFieldDecorator, handleSubmit } = this.props.form;
+        const { getFieldDecorator, } = this.props.form;
+        const { handleSubmit } = this.props
         return (
             <div className="contact-container">
 
@@ -40,6 +40,7 @@ export default class extends Component {
                                         rules: [{
                                             type: 'email', message: 'The input is not valid E-mail!',
                                         }, {
+                                            required: true,
                                             message: 'Please input your E-mail!',
                                         }],
                                     })(
@@ -51,9 +52,11 @@ export default class extends Component {
                                     <div className="label-form">Your Message</div>
                                     <FormItem >
 
-                                        {getFieldDecorator('message', {
-                                            rules: [{ whitespace: true }],
-
+                                        {getFieldDecorator('body', {
+                                            rules: [{ whitespace: true }, {
+                                                required: true,
+                                                message: 'Please input email content',
+                                            }],
                                         })(
                                             <TextArea placeholder="Enter Your Message" />
                                         )}
@@ -81,18 +84,18 @@ info@comigo.co`}
 
                         <div className="Text-Style">Follow Us</div>
                         <div className="social-icon">
-                            <a>
-                                <img alt="icon" src={twitterIcon} />
-                            </a>
-                            <a>
+                            <a href="https://www.linkedin.com/company/comigoco/" target="_blank">
                                 <img alt="icon" src={linkedInIcon} />
                             </a>
-                            <a>
-                                <img alt="icon" src={youtubeIcon} />
+                            <a href="https://www.instagram.com/comigo.co/" target="_blank">
+                                <img alt="icon" src={instagramIcon} />
                             </a>
-                            <a>
+
+
+                            <a href="https://www.facebook.com/comigo.co/" target="_blank">
                                 <img alt="icon" src={facebookIcon} />
                             </a>
+
                         </div>
                     </div>
                 </Col>

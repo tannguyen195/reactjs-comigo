@@ -646,7 +646,7 @@ export function* createShareLink(data) {
   catch (error) {
     notification['error']({
       message: 'Something went wrong!',
-      description: "Fail to remove collaborator",
+      description: "Fail to invite collaborator",
     });
     yield put({
       type: ActionTypes.CREATE_SHARE_LINK_ERROR,

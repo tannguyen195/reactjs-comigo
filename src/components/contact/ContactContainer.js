@@ -17,7 +17,7 @@ class ContactContainer extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-
+                window.location = `mailto:${values.email}?subject=[${values.name}]%20-%20Contact&body=${values.body}`
             }
         });
     }
@@ -30,6 +30,7 @@ class ContactContainer extends Component {
                 }} />
                 <Head title="Contact" />
                 <Contact
+                    handleSubmit={this.handleSubmit}
                     {...this.state}
                     {...this.props}
 

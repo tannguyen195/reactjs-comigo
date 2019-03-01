@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import _footer from './_footer.less'
+import _footer from './_footer.less'    
 import { Link } from 'routes'
 
-const twitterIcon = '/static/images/icon-social-twitter.svg'
+
 const linkedInIcon = '/static/images/icon-social-linkedin.svg'
 const facebookIcon = '/static/images/icon-social-facebook.svg'
-const youtubeIcon = '/static/images/icon-social-youtube.svg'
+const instagramIcon = '/static/images/icon-social-instagram.svg'
 
 export default class extends Component {
 
@@ -31,18 +31,16 @@ export default class extends Component {
 
                     <div>
                         <div className="social-icon">
-                            <a>
-                                <img alt="icon" src={twitterIcon} />
-                            </a>
-                            <a>
+
+                            <a href="https://www.linkedin.com/company/comigoco/" target="_blank">
                                 <img alt="icon" src={linkedInIcon} />
                             </a>
-                            <a>
-                                <img alt="icon" src={youtubeIcon} />
+                            <a href="https://www.instagram.com/comigo.co/" target="_blank">
+                                <img alt="icon" src={instagramIcon} />
                             </a>
 
 
-                            <a>
+                            <a href="https://www.facebook.com/comigo.co/" target="_blank">
                                 <img alt="icon" src={facebookIcon} />
                             </a>
 

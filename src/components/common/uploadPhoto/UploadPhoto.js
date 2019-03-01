@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Upload, Button } from 'antd'
+import { Modal, Upload, Button,  } from 'antd'
 import Cropper from 'react-cropper';
 
 const projectPhotoIcon = '/static/images/icon-project-photo.svg'
@@ -8,6 +8,7 @@ export default class extends Component {
 
     render() {
         const {
+            handleBeforeUpload,
             visibleUploadModal,
             toggleUploadModal,
             handleChangePhoto,
@@ -42,7 +43,7 @@ export default class extends Component {
 
 
                                 </div> : <Upload
-
+                                    beforeUpload={handleBeforeUpload}
                                     name="avatar"
                                     listType="picture-card"
                                     className="avatar-uploader"

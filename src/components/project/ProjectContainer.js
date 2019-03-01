@@ -48,13 +48,16 @@ class ProjectContainer extends Component {
 
     handlePostUpdate = (e) => {
         const { postProjectUpdate, detail } = this.props
+        this.setState({
+            updateContent: ""
+        })
         postProjectUpdate({
             "projectID": detail._id,
             "content": this.state.updateContent
         })
     }
 
-    
+
     render() {
         const { userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
         return (
@@ -76,7 +79,7 @@ class ProjectContainer extends Component {
                             edit={this.isUserProject()}
                             onUpdateChange={this.onUpdateChange}
                             handlePostUpdate={this.handlePostUpdate}
-                            
+
 
                         />
                         : <Loading />
@@ -95,7 +98,6 @@ export function mapStateToProps(state) {
         visiblePreview: state.toggle.visiblePreview,
         previewImage: state.toggle.previewImage,
         status: state.project.status,
-  
     };
 }
 export function mapDispatchToProps(dispatch) {

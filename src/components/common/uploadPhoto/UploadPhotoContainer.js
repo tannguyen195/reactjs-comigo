@@ -4,6 +4,8 @@ import UploadPhoto from './UploadPhoto'
 import * as fileAction from '../../../actions/file'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { message } from 'antd'
+
 function getBase64(img, callback) {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
@@ -16,6 +18,10 @@ class UploadPhotoContainer extends Component {
         this.state = {
             cropData: null,
         }
+    }
+
+    handleBeforeUpload = (file) => {
+
     }
     componentDidMount() {
         this.props.changePhoto(this.props.imageUrl)
@@ -39,10 +45,25 @@ class UploadPhotoContainer extends Component {
 
 
     handleChangePhoto = (info) => {
-        getBase64(info.file.originFileObj, imageUrl => {
-            this.props.changePhoto(imageUrl)
+        let isJPG = false     
+        switch (info.file.type) {
+            case 'image/jpeg': isJPG = true; break;
+            case 'image/png': isJPG = true; break;
+            case 'image/jpg': isJPG = true; break;
+            default: isJPG = false
         }
-        );
+
+        if (!isJPG) {
+            message.error('You can only upload JPG file!');
+        }
+        const isLt2M = info.file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        if (isJPG && isLt2M)
+            getBase64(info.file.originFileObj, imageUrl => {
+                this.props.changePhoto(imageUrl)
+            });
     }
     render() {
         return (
@@ -54,6 +75,7 @@ class UploadPhotoContainer extends Component {
                 <UploadPhoto
                     {...this.state}
                     {...this.props}
+                    handleBeforeUpload={this.handleBeforeUpload}
                     onCropChange={this.onCropChange}
                     handleChangePhoto={this.handleChangePhoto}
                     onSaveButton={this.onSaveButton}
