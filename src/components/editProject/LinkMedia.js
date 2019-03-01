@@ -21,6 +21,7 @@ export default class extends Component {
                         </div>
                         <div className="links-tag-container">
                             <CustomTagContainer
+                                text="Add Link"
                                 type="link"
                                 onTagsChange={onTagLinkChange}
                                 tags={links} />

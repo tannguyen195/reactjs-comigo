@@ -40,7 +40,6 @@ class MyApp extends App {
     if (inviteCode)
       cookies.set('inviteCode', inviteCode)
     if (isLoggedIn) {
-
       this.setState({
         isVerify: jwtDecode(cookies.get('token')).verified,
         isLoggedIn

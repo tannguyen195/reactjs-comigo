@@ -90,8 +90,8 @@ and curious.`}</div>
                     <div className="Title-Small-Center-Black-LandingPage coming-desc">
                         Crowdsourced peer support & team-building, campus by campus.
                             </div>
-                    <Link prefetch to="/signUp" className="start-button">
-                        <a>
+                    <Link prefetch to="/signUp">
+                        <a  className="start-button">
                             <Button type="primary">
                                 Get Started
                         </Button>

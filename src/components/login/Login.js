@@ -34,7 +34,7 @@ class Login extends Component {
                         </FormItem>
                         <FormItem
                             hasFeedback
-                            validateStatus={status === "error" ? "error" : ""}
+                        
                             className="marginBottom24"
 
                             help={status === "error" && message}>
@@ -45,7 +45,6 @@ class Login extends Component {
                                 }],
                             })(
                                 <Input
-                                    id="error"
                                     type="password"
                                     placeholder="Type your password" />
                             )}
