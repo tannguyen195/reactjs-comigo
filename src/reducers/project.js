@@ -1,7 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { ActionTypes, STATUS, renderMessage } from 'constants/index';
 import update from 'immutability-helper'
-import { merge } from 'popmotion';
 export const initial = {
     status: STATUS.IDLE,
     message: "",

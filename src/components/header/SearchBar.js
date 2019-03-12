@@ -7,7 +7,7 @@ export default class extends Component {
         const {
             onPressEnter,
             visibleProject,
-            toggleHomeView,
+            onTabChange,
             onSearchValueChange
         } = this.props
         return (
@@ -27,7 +27,7 @@ export default class extends Component {
                             </div>
                             <div className="search-view">
                                 <Link to="/">
-                                    <a onClick={toggleHomeView} className="Body-12">
+                                    <a onClick={onTabChange} className="Body-12">
                                         {
                                             visibleProject === true ? "Project" : "People"
                                         }

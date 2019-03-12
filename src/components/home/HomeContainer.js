@@ -57,7 +57,7 @@ class HomeContainer extends Component {
         const { visibleProject, list, people, status } = this.props
         if (status === "running")
             return <Loading />
-        else if (list.length === 0)
+        else if (list.length === 0 || people.length === 0)
             return <NoResult />
         else if (!visibleProject === true && list) {
             return <NewsFeed
@@ -68,7 +68,7 @@ class HomeContainer extends Component {
             />
 
         }
-        else if (visibleProject === true && people)
+        else if (visibleProject === true)
             return <People
                 {...this.state}
                 {...this.props}

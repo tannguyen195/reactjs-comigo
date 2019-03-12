@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import {Router} from 'routes'
 import Header from './Header'
 import LoggedHeader from './LoggedHeader'
 import _header from './_header.less'
@@ -8,6 +9,7 @@ import { withRouter } from "next/router"
 import * as toggleAction from '../../actions/toggle'
 import * as userAction from '../../actions/user'
 import * as projectAction from '../../actions/project'
+import * as peopleAction from '../../actions/people'
 class HeaderContainer extends Component {
 
     constructor(props) {
@@ -26,9 +28,21 @@ class HeaderContainer extends Component {
         })
     }
     onPressEnter = () => {
-        const { getList } = this.props
+        const { getList, visibleProject, getPeopleList } = this.props
+        Router.pushRoute("/")
+        if (!visibleProject)
+            getList(this.state.searchValue)
+        else
+            getPeopleList(this.state.searchValue)
+    }
+    onTabChange = () => {
+        const { toggleHomeView, visibleProject, getList, getPeopleList } = this.props
 
-        getList(this.state.searchValue)
+        if (!visibleProject)
+            getList('')
+        else
+            getPeopleList('')
+        toggleHomeView()
     }
     renderHeader() {
         const { isLoggedIn, userData } = this.props
@@ -40,6 +54,7 @@ class HeaderContainer extends Component {
                     onSearchValueChange={this.onSearchValueChange}
                     onPressEnter={this.onPressEnter}
                     onLogoClick={this.onLogoClick}
+                    onTabChange={this.onTabChange}
                     {...this.state}
                     {...this.props}
 
@@ -72,7 +87,8 @@ export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...userAction,
         ...toggleAction,
-        ...projectAction
+        ...projectAction,
+        ...peopleAction
     }, dispatch)
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderContainer));
