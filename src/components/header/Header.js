@@ -33,7 +33,9 @@ class Header extends Component {
                         <Link prefetch to="/">
                             <a  className="logo">
                                 <img src={logoIcon} alt="logo" />
+                                <div className="Title-Card">Comigo</div>
                             </a>
+                           
                         </Link>
                     </div>
                     {

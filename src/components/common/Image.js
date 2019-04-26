@@ -4,10 +4,10 @@ const profileIcon = '/static/images/icon-profile.svg'
 export default class extends Component {
 
     render() {
-        const { image } = this.props
+        const { image, height, width } = this.props
 
         return (
-            <img src="avatar" src={image ? image : profileIcon} />
+            <img height={height} width={width} src="avatar" src={image ? image : profileIcon} />
         )
     }
 }

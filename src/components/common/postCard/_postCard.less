@@ -1,50 +1,118 @@
 .post-card-container {
     margin: 8px 0;
+   width: 600px;
+
     .ant-card-body {
         padding: 24px !important;
     }
+
+    .post-card__header {
+      
+        padding-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+
+        .header__left {
+            display: flex;
+
+            img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+
+            .text-blue {
+                color: #006cd9;
+            }
+
+            .title {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
     .post-card-upper {
         display: flex;
-        padding-bottom: 24px;
-        box-shadow: inset 0 -0.5px 0 0 #edf0f2;
+
         .cover-container {
             margin-right: 24px;
+
             img {
                 width: 208px;
                 height: 120px;
                 border-radius: 4px;
             }
         }
+
         .post-info-container {
             flex: 1;
+
             .post-title {
-                font-size: 26px;
+                font-size: 20px;
                 font-weight: bold;
                 color: #2e3033;
-                padding-bottom: 8px;
+
                 line-height: 1.33;
                 display: flex;
                 justify-content: space-between;
+
                 img {
                     width: 24px;
                     height: 24px;
                 }
             }
+
             .post-author {
                 padding-bottom: 16px;
                 display: flex;
-                img {
-                    width: 32px;
-                    height: 32px;
-                    border-radius: 50%;
+                justify-content: space-between;
+
+                .left {
+                    display: flex;
+                    flex-direction: column;
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        object-fit: contain;
+                        border-radius: 50%;
+                        margin-top: 8px;
+                    }
                 }
+
+
+                .right {
+                    display: flex;
+                    flex-direction: column;
+
+                    .status {
+                        display: flex;
+margin-top: 8px;
+                        .Tag {
+                            border-radius: 4px;
+                            border: solid 1px #aaa084;
+                            padding: 4px 16px;
+                            margin-right: 8px;
+                        }
+
+                        .active {
+                            border: solid 1px #ffaa4b !important;
+                            color: #ffaa4b !important
+                        }
+                    }
+                }
+
                 .author-detail {
                     margin-left: 12px;
+
                     .author-name {
                         font-size: 14px;
                         font-weight: 500;
                         color: #2e3033;
                     }
+
                     .author-email {
                         font-size: 12px;
                         line-height: 1.6;
@@ -52,6 +120,7 @@
                     }
                 }
             }
+
             .post-desc {
                 line-height: 1.33;
                 font-size: 14px;
@@ -64,13 +133,17 @@
             }
         }
     }
+
     .post-card-footer {
         padding-top: 24px;
     }
+
     .post-card-footer {
         display: flex;
+
         .tag-container {
             width: 50%;
+
             .tag-title {
                 font-size: 12px;
                 font-weight: 500;
@@ -78,6 +151,7 @@
                 color: #2e3033;
                 padding-bottom: 10px;
             }
+
             .tag-plus {
                 color: #a1aab3;
                 margin: 0;
@@ -85,6 +159,7 @@
                 border: solid 1px #a1aab3;
                 background-color: white;
             }
+
             .tag-skill {
                 background: #ffdf49 !important;
                 border: solid 1px #ffdf49;

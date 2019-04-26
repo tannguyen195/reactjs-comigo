@@ -13,6 +13,7 @@
             padding: 24px !important;
         }
         .link-button {
+            max-width: 100%;
             margin-bottom: 8px;
             margin-right: 8px;
             height: 28px;
@@ -22,6 +23,13 @@
             line-height: 1.2;
             color: #a1aab3;
             overflow: hidden;
+            span {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
     .user-majors {

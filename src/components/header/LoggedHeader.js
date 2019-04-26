@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar'
+import { Button } from 'antd'
 const profileIcon = '/static/images/icon-profile.svg'
 const multipleIcon = '/static/images/icon-multiple.svg'
 const logoIcon = '/static/images/logo.svg'
@@ -19,9 +20,11 @@ export default class extends Component {
                 <div className="header-max">
                     <div className="header-left">
                         <Link prefetch to="/">
-                            <a onClick={onLogoClick}  className="logo">
+                            <a onClick={onLogoClick} className="logo">
                                 <img src={logoIcon} alt="logo" />
+                                <div className="Title-Card">Comigo</div>
                             </a>
+
                         </Link>
                         <div className="search-container">
                             <SearchBar {...this.props} />
@@ -34,12 +37,7 @@ export default class extends Component {
 
                     <div className="header-right">
 
-                        {
-                            userData.verified ? <Link to="/new-project">
-                                <a className="add-project-button">Add project</a>
-                            </Link> :
-                                <a onClick={logout} className="add-project-button">Log out</a>
-                        }
+
                         <Link prefetch to="/profile">
                             <a className="header-user">
 
@@ -47,6 +45,14 @@ export default class extends Component {
                                 <div className="user-name">{userData.firstName}</div>
                             </a>
                         </Link>
+                        {
+                            userData.verified ? <Link to="/new-project">
+                                <a ><Button type="primary" className="add-project-button" icon="plus">
+                                    PROJECT
+                                    </Button></a>
+                            </Link> :
+                                <a onClick={logout} className="add-project-button">Log out</a>
+                        }
                     </div>
                 </div>
             </header>

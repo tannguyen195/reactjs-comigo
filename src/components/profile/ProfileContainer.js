@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import Head from '../head'
 import Profile from './Profile'
 import _profile from './_profile.less'
-
+import _ from 'lodash'
 import * as userAction from '../../actions/user'
 class ProfileContainer extends Component {
     constructor(props) {
@@ -19,54 +19,40 @@ class ProfileContainer extends Component {
 
         logout()
     }
-
     componentWillReceiveProps(nextProps) {
 
         const { badgeList, userData } = nextProps
-        if (userData && userData.nods.length === 0 && badgeList) {
-            let temp = []
-            nextProps.badgeList.map(item => {
-                temp.push({ ...item, count: 0 })
+        if (userData && badgeList) {
+          
+            let temp = badgeList
+            badgeList.map((item, index) => {
+                if (_.find(userData.nods, ['badgeID', item._id])) {
+                    temp[index] = {
+                        ...temp[index],
+                        count: _.find(userData.nods, ['badgeID', item._id]).count
+                    }
+                }
+
             })
             this.setState({
                 userBadge: temp
             })
         }
+    }
+    componentDidMount() {
 
-        else if (userData && userData.nods && badgeList) {
-
+        const { badgeList, userData } = this.props
+        if (userData && badgeList) {
+           
             let temp = badgeList
-            let choseBadge = []
-
-            temp.map((item, index) => {
-                temp[index] = {
-                    ...item,
-                    isChoose: false
-                }
-            })
-
-            userData.nods.map(item => {
-                item.nodUserIDs.map(id => {
-                    if (id === nextProps.userData._id) {
-                        choseBadge.push({ badgeID: item.badgeID, count: item.count })
+            badgeList.map((item, index) => {
+                if (_.find(userData.nods, ['badgeID', item._id])) {
+                    temp[index] = {
+                        ...temp[index],
+                        count: _.find(userData.nods, ['badgeID', item._id]).count
                     }
-                })
-            })
-
-            temp.map((item, index) => {
-                temp[index] = {
-                    ...item,
-                    count: 0
                 }
-                choseBadge.map(badge => {
-                    if (badge.badgeID === item._id) {
-                        temp[index] = {
-                            ...item,
-                            isChoose: true,
-                            count: badge.count
-                        }
-                    }
-                })
+
             })
             this.setState({
                 userBadge: temp
@@ -75,7 +61,7 @@ class ProfileContainer extends Component {
     }
     render() {
         const { userData } = this.props
-        
+       
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -99,7 +85,7 @@ class ProfileContainer extends Component {
 export function mapStateToProps(state) {
     return {
         userData: state.user.data,
-        badgeList:state.user.badgeList
+        badgeList: state.user.badgeList
     };
 }
 export function mapDispatchToProps(dispatch) {

@@ -9,14 +9,15 @@ export default class extends Component {
         const { userBadge } = this.props
 
         return userBadge.map((item, index) => {
-            if (item.count !== 0)
-                return <Col md={12} lg={12} key={index} >
-                    <Card className="badge__item ">
-                        <img src={item.imageURL} alt="url" />
-                        <div className="badge__count">{item.count}</div>
-                        <div className="Process-On paddingTop2"> {item.name}</div>
-                    </Card>
-                </Col>
+
+            return <Col md={12} lg={12} key={index} >
+                <Card className="badge__item ">
+                    <img src={item.imageURL} alt="url" />
+                    <div className="badge__count">{item.count || "0"}</div>
+                    <div className="Process-On paddingTop2"> {item.name}</div>
+                </Card>
+            </Col>
+
         })
     }
     render() {

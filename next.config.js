@@ -18,7 +18,7 @@ module.exports = {
             loader: 'less-loader',
             options: {
               modifyVars: {
-                "@primary-color": "#ffdf49",
+                "@primary-color": "#ffd250",
                 "@font-family": "'Roboto', sans-serif",
               
               },

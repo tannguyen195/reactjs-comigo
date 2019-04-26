@@ -217,11 +217,11 @@ export default class extends Component {
                             </div>
 
                         </div>
-                        <div className="paddingBottom16 InputLeftBlack-Style">
+                        {/* <div className="paddingBottom16 InputLeftBlack-Style">
                             Receive emails for new projects that match your skills!
                         </div>
 
-                        <Checkbox className="paddingBottom40" onChange={onEmailReceiveChange}>Yes, send me updates.</Checkbox>
+                        <Checkbox className="paddingBottom40" onChange={onEmailReceiveChange}>Yes, send me updates.</Checkbox> */}
 
                         <div className="update-button">
                             <a onClick={() => Router.push('/profile')} className="skip-button">Cancel</a>

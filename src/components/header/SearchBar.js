@@ -6,8 +6,7 @@ export default class extends Component {
     render() {
         const {
             onPressEnter,
-            visibleProject,
-            onTabChange,
+
             onSearchValueChange
         } = this.props
         return (
@@ -23,18 +22,6 @@ export default class extends Component {
                     suffix={
                         <div className="siffix-container">
                             <Icon type="search" className="certain-category-icon" />
-                            <div className="devider">
-                            </div>
-                            <div className="search-view">
-                                <Link to="/">
-                                    <a onClick={onTabChange} className="Body-12">
-                                        {
-                                            visibleProject === true ? "Project" : "People"
-                                        }
-                                    </a>
-
-                                </Link>
-                            </div>
                         </div>} />
             </AutoComplete>
         )

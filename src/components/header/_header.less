@@ -5,72 +5,96 @@
     width: 100%;
     height: 64px;
     box-shadow: inset 0 -1px 0 0 #edf0f2;
+
     .header-max {
-        max-width: 730px;
+        max-width: 860px;
         margin: 0 auto;
         padding: 16px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         .header-left {
             display: flex;
             align-items: center;
+
             .logo {
+                display: flex;
+                align-content: center;
+                align-items: center;
+
                 img {
                     width: 32px;
                     height: 32px;
                 }
             }
+
             .search-container {
                 margin-left: 32px;
+
                 input {
                     border: none !important;
                     background-color: #f5f7fa;
                 }
+
                 .ant-input-affix-wrapper .ant-input:not(:last-child) {
                     padding-right: 12px;
                 }
+
                 .siffix-container {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
                     .devider {
                         width: 1px;
                         height: 16px;
                         background-color: #c3ced9;
                         margin: 0 12px;
                     }
+
                     .ant-select-selection {
                         background-color: #f5f7fa;
                     }
                 }
-                .search-view{
-                    
-                }
+
+                .search-view {}
             }
+
             .view-button {
                 border-radius: 4px;
                 background-color: #f5f7fa;
                 padding: 6px 8px;
                 margin-left: 8px;
+
                 img {
                     width: 16px;
                     height: 16px;
                 }
             }
         }
+
         .header-right {
             display: flex;
             align-items: center;
+
             .header-item {
                 margin-left: 40px;
             }
+
             .add-project-button {
-                font-size: 16px;
+                margin-left: 16px;
+                font-size: 12px;
                 font-weight: 500;
-                color: #006cd9;
-                margin-right: 20px
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.33;
+                letter-spacing: normal;
+                margin-right: 20px;
+                border-radius: 16px;
+                height: 32px;
             }
+
             .header-user {
                 padding: 4px;
                 border-radius: 16px;
@@ -78,18 +102,21 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
                 img {
                     margin-right: 4px;
                     width: 24px;
                     height: 24px;
                     border-radius: 50%;
                 }
+
                 .user-name {
                     font-size: 14px;
                     color: #2e3033;
                     margin-right: 8px;
                 }
             }
+
             .sign-up__button {
                 padding: 8px 16px;
                 background: #ffdf49;
