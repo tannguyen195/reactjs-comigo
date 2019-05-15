@@ -12,7 +12,7 @@ import { endPoint } from 'constants/index'
 import * as peopleAction from '../actions/people'
 import axios from 'axios'
 const cookies = new Cookies()
-const auth = {
+export const auth = {
   /**
   * Logs a user in, returning a promise with `true` when done
   * @param  {string} email The username of the user
@@ -22,7 +22,7 @@ const auth = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'signIn',
+        url: endPoint + 'user/signIn',
         method: 'POST',
         data: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' },
@@ -89,7 +89,7 @@ const auth = {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'x-auth-token': cookies.get('token')
+          'x-auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YmQ5NmNkYjEwN2RjZDE5Zjg2Y2I2MWYiLCJ2ZXJpZmllZCI6dHJ1ZSwiYWNjZXNzIjoiYXV0aCIsImlhdCI6MTU1NzYzNDc3MX0.idioOrhOlLPAwtO9kZ3ovAACBjkF2OTtExsxHNq2Nfs"
         },
       }).then((response) => {
         return response.data

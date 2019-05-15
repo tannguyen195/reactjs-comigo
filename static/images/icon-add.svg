@@ -1,18 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
-    <title>icon/add</title>
-    <desc>Created with Sketch.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="44" viewBox="0 0 44 44">
     <defs>
-        <polygon id="path-1" points="10 0 6 0 6 6 0 6 0 10 6 10 6 16 10 16 10 10 16 10 16 6 10 6"></polygon>
+        <rect id="a" width="44" height="44" rx="22"/>
     </defs>
-    <g id="icon/add" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Shape" fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
-        <g id="color/wireframe/1" mask="url(#mask-2)" fill="#262626">
-            <rect x="0" y="0" width="16" height="16"></rect>
-        </g>
+    <g fill="none" fill-rule="evenodd">
+        <use fill="#E8E8E8" xlink:href="#a"/>
+        <path fill="#9C9C9C" d="M21 21v-6h2v6h6v2h-6v6h-2v-6h-6v-2h6z"/>
     </g>
 </svg>

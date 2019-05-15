@@ -1,13 +1,13 @@
 .post-card-container {
-    margin: 8px 0;
-   width: 600px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 16px 0 rgba(54, 54, 54, 0.15);
 
     .ant-card-body {
-        padding: 24px !important;
+        padding: 12px 16px !important;
     }
 
     .post-card__header {
-      
+
         padding-bottom: 16px;
         display: flex;
         justify-content: space-between;
@@ -16,9 +16,10 @@
             display: flex;
 
             img {
-                width: 32px;
-                height: 32px;
+                width: 44px;
+                height: 44px;
                 border-radius: 50%;
+                object-fit: contain;
                 margin-right: 8px;
             }
 
@@ -34,30 +35,24 @@
     }
 
     .post-card-upper {
-        display: flex;
+       
 
         .cover-container {
-            margin-right: 24px;
-
             img {
-                width: 208px;
-                height: 120px;
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
                 border-radius: 4px;
             }
         }
 
         .post-info-container {
-            flex: 1;
+           
 
             .post-title {
-                font-size: 20px;
-                font-weight: bold;
-                color: #2e3033;
-
-                line-height: 1.33;
-                display: flex;
-                justify-content: space-between;
-
+                padding-top: 10px;
+       
+     
                 img {
                     width: 24px;
                     height: 24px;
@@ -78,7 +73,7 @@
                         height: 20px;
                         object-fit: contain;
                         border-radius: 50%;
-                        margin-top: 8px;
+                       
                     }
                 }
 
@@ -87,21 +82,7 @@
                     display: flex;
                     flex-direction: column;
 
-                    .status {
-                        display: flex;
-margin-top: 8px;
-                        .Tag {
-                            border-radius: 4px;
-                            border: solid 1px #aaa084;
-                            padding: 4px 16px;
-                            margin-right: 8px;
-                        }
-
-                        .active {
-                            border: solid 1px #ffaa4b !important;
-                            color: #ffaa4b !important
-                        }
-                    }
+                  
                 }
 
                 .author-detail {
@@ -119,17 +100,6 @@ margin-top: 8px;
                         color: #a1aab3
                     }
                 }
-            }
-
-            .post-desc {
-                line-height: 1.33;
-                font-size: 14px;
-                color: #45494d;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
             }
         }
     }

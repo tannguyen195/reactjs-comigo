@@ -15,9 +15,11 @@ import _home from './_home.less'
 
 import { Form } from 'antd'
 
-import Loading from '../common/loading/Loading'
-import NoResult from '../common/noResult/NoResult'
-import { Card, Checkbox, Radio } from 'antd'
+
+import { Affix, Checkbox, Radio } from 'antd'
+
+import LeftBar from './leftBar/LeftBar'
+import RightBar from './rightBar/RightBar'
 const CheckboxGroup = Checkbox.Group;
 const RadioGroup = Radio.Group;
 const options = [
@@ -61,59 +63,38 @@ class HomeContainer extends Component {
     }
     onFilterChange = (e) => {
         const { toggleHomeView, visibleProject, getList, getPeopleList } = this.props
-        console.log("E,", e)
+
         if (!visibleProject)
             getList('')
         else
             getPeopleList('')
-        toggleHomeView()
+        toggleHomeView(e)
     }
     renderLoggedHome() {
         const {
-            visibleProject } = this.props
+            userData, people } = this.props
         return (
-            <div className="home-logged width860">
+            <div className="home-logged">
 
-                <div className="sidebar">
-                    <Card bordered={false}>
-                        <div className="Title-16-Left-Black">
-                            FILTERS</div>
-                        <div>
+                {
+                    userData && <div className="home-logged__bar"> <LeftBar  {...this.props} /></div>
 
-                            <div className="sidebar__body">
-                                <RadioGroup options={options} value={visibleProject} onChange={this.onFilterChange} />
-                            </div>
-                        </div>
+                }
 
-                    </Card>
-                </div>
                 <div className="feed">
-                    {this.renderNewsFeed()}
+                    <NewsFeed
+                        onFilterChange={this.onFilterChange}
+                        {...this.props} />
                 </div>
+                {
+                    people && <div className="home-logged__bar"> <RightBar   {...this.props} /></div>
+
+                }
+
             </div >
         )
     }
-    renderNewsFeed() {
-        const { visibleProject, list, people, status } = this.props
-        if (list.length === 0 || people.length === 0)
-            return <NoResult />
-        else if (!visibleProject === true && list) {
-            return <NewsFeed
-                {...this.state}
-                {...this.props}
-                onFilterChange={this.onFilterChange}
-                handleCloseModalProject={this.handleCloseModalProject}
-                handleOpenModalProject={this.handleOpenModalProject}
-            />
 
-        }
-        else if (visibleProject === true)
-            return <People
-                {...this.state}
-                {...this.props}
-            />
-        else return <Loading />
-    }
     render() {
         const { isLoggedIn, list } = this.props
 
@@ -149,7 +130,8 @@ export function mapStateToProps(state) {
         status: state.project.status,
         userData: state.user.data,
         peopleStatus: state.people.status,
-        message: state.people.message
+        message: state.people.message,
+        filterValue: state.toggle.filterValue,
     };
 }
 export function mapDispatchToProps(dispatch) {

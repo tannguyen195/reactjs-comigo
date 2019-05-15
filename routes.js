@@ -6,9 +6,6 @@ routes
     .add('contact')
     .add('faq')
     .add('why')
-
-
-
     .add('login')
     .add('signUp')
     .add('new-project')

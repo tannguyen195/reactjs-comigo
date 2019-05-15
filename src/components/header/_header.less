@@ -82,18 +82,7 @@
                 margin-left: 40px;
             }
 
-            .add-project-button {
-                margin-left: 16px;
-                font-size: 12px;
-                font-weight: 500;
-                font-style: normal;
-                font-stretch: normal;
-                line-height: 1.33;
-                letter-spacing: normal;
-                margin-right: 20px;
-                border-radius: 16px;
-                height: 32px;
-            }
+            
 
             .header-user {
                 padding: 4px;
@@ -121,6 +110,79 @@
                 padding: 8px 16px;
                 background: #ffdf49;
                 border-radius: 8px;
+            }
+        }
+    }
+}
+
+
+.header {
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(54, 54, 54, 0.06);
+    margin-bottom: 2px;
+    position: fixed;
+    z-index: 2;
+    &__container {
+        max-width: 1140px;
+        margin: 0 auto;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+       
+
+        &__left {
+            .logo {
+                float: left;
+            }
+
+            .search {
+                float: right;
+                margin-left: 32px;
+
+                .ant-input-affix-wrapper .ant-input:not(:last-child) {
+                    padding-right: 12px;
+                    background: #363636;
+                    opacity: 0.05;
+                    border-radius: 16px;
+                }
+
+                .siffix-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .devider {
+                        width: 1px;
+                        height: 16px;
+                        background-color: #c3ced9;
+                        margin: 0 12px;
+                    }
+
+                    .ant-select-selection {
+                        background-color: #363636;
+                    }
+                }
+
+                .search-view {}
+            }
+        }
+
+        &__right {
+
+            img {
+                margin-right:8px;
+                border-radius: 50%;
+                object-fit: contain;
+                width: 20px;
+                height: 20px;
+            }
+            .user {
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }

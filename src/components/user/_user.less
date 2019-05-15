@@ -1,16 +1,28 @@
-.user-detail-container {
+.user-detail {
     margin: 0 auto;
-    max-width: 940px;
-    padding: 8px 0 ;
+    width: 920px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+
+        width: 540px;
+    }
+
     .title-section {
         font-size: 14px;
         font-weight: 500;
         line-height: 1.33;
         color: #2e3033
     }
-    .user__link-container {
+
+    &__right {
+        width: 372px;
+
         .ant-card-body {
             padding: 24px !important;
+
             .link-button {
                 margin-bottom: 8px;
                 margin-right: 8px;
@@ -21,22 +33,32 @@
                 line-height: 1.2;
                 color: #a1aab3;
                 overflow: hidden !important;
-             
+
             }
         }
-        .badge__container {
-            .badge__item {
+
+        .badge {
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-between;
+
+            &__item {
                 margin-top: 16px;
+
                 text-align: center;
+
                 img {
                     width: 64px;
                     height: 64px;
+                    margin-bottom: 8px;
                 }
+
                 .unhover {
                     -webkit-filter: grayscale(100%);
                     /* Safari 6.0 - 9.0 */
                     filter: grayscale(100%);
                 }
+
                 &:hover {
                     .unhover {
                         -webkit-filter: initial;
@@ -44,30 +66,37 @@
                         filter: initial;
                     }
                 }
-                .badge__count {
-                    height: 20px;
-                    margin-top: 12px;
-                    font-size: 18px;
-                    font-weight: bold;
+
+                &__count {
+                    font-size: 14px;
+                    font-weight: 500;
                     font-style: normal;
                     font-stretch: normal;
-                    line-height: 1;
-                    letter-spacing: normal;
-                    text-align: center;
-                    color: #006cd9
+                    line-height: 1.14;
+                    color: #aaa084;
                 }
+
                 .ant-card-body {
-                    padding: 20px !important;
+                    padding: 8px 14px !important;
                 }
             }
         }
+        .contact-button{
+            width: 100%;
+            height: 48px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
     }
+
     .user-header {
         display: flex;
         justify-content: space-between;
         padding-bottom: 16px;
+
         .header-left {
             display: flex;
+
             img {
                 object-fit: cover;
                 width: 48px;
@@ -75,6 +104,7 @@
                 border-radius: 50%;
                 margin-right: 24px;
             }
+
             .header-info {
                 .user-name {
                     font-size: 24px;
@@ -82,6 +112,7 @@
                     line-height: 1.33;
                     color: #2e3033;
                 }
+
                 .user-email {
                     font-size: 14px;
                     font-weight: normal;
@@ -91,6 +122,7 @@
                     letter-spacing: normal;
                     color: #a1aab3;
                 }
+
                 .sign-out-button {
                     font-size: 14px;
                     font-weight: 500;
@@ -99,6 +131,7 @@
                 }
             }
         }
+
         .header-right {
             img {
                 cursor: pointer;
@@ -107,13 +140,17 @@
             }
         }
     }
+
     .user-majors {
         box-shadow: inset 0 -0.5px 0 0 #edf0f2;
         padding-bottom: 16px;
+
         button {
+            margin-bottom: 8px;
+            height: 28px;
             margin-right: 8px;
             border: none;
-            font-size: 14px;
+            font-size: 10px;
             font-weight: normal;
             font-style: normal;
             font-stretch: normal;
@@ -122,31 +159,47 @@
             text-align: center;
             color: #2e3033;
             border-radius: 4px;
-            background-color: #edf0f2;
+            background-color: #fff8e4;
         }
     }
+
     .user-body {
         padding-top: 24px;
-        .user-project {
-            .project-item {
+
+        .project {
+
+            display: flex;
+            flex-wrap: wrap;
+
+            &__item {
+                margin-right: 17px;
+                width: 142px;
                 cursor: pointer;
-                border-radius: 8px;
-                border: solid 1px #edf0f2;
+
+
                 img {
-                    width: 142px;
+                    width: 100%;
+                    object-fit: contain;
                     height: 92px;
                     border-radius: 4px;
                 }
             }
-            .project-name {
-                font-size: 14px;
+
+            &__name {
+                font-size: 12px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
                 line-height: 1.33;
-                padding-top: 12px;
+
                 color: #45494d;
+                margin-top: 8px;
                 margin-left: 8px;
             }
+
             .project-collaborators {
                 margin: 8px;
+
                 img {
                     width: 16px;
                     height: 16px;
@@ -155,15 +208,22 @@
                 }
             }
         }
+
         .skill-button {
             margin-bottom: 8px;
-            margin-right: 8px;
             height: 28px;
-            background: #006cd9;
-            font-size: 14px;
-            line-height: 1.2;
-            color: #fff;
+            margin-right: 8px;
             border: none;
+            font-size: 10px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.2;
+            letter-spacing: normal;
+            text-align: center;
+            color: #2e3033;
+            border-radius: 4px;
+            background-color: #fff8e4;
         }
     }
 }

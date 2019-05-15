@@ -17,14 +17,14 @@ export default class extends Component {
                         <div className="header__left">
                             <Image image={data.owner.pictureURL} />
                             <div className="title">
-                                <div className="Activity">
-                                    <span className="Title-S">
+                                <div className="Body-Dark-Grey-Left">
+                                    <span className="Button-Black-Left">
                                         {data.owner.firstName + ` ` + data.owner.lastName + ` `}
                                     </span>
 
                                     created a new project.
                             </div>
-                                <div className="Sub-Title-L">{moment.unix(data.updatedAt).fromNow()}</div>
+                                <div className="Caption-Grey-Left">{moment.unix(data.updatedAt).fromNow()}</div>
                                 {/* <div className="Sub-Title-10-Left">2 months ago</div> */}
                             </div>
                         </div>
@@ -35,32 +35,18 @@ export default class extends Component {
                         </div>
 
                         <div className="post-info-container">
-                            <div className="post-title">
+                            <div className="post-title H2-Black-Left">
                                 <div>{data.name}</div>
                             </div>
                             <div className="post-author">
                                 <div className="left">
-                                    <div className="Sub-Title-M">Team members</div>
                                     <div>
                                         <Image width={20} height={20} image={data.owner.pictureURL} alt="thumbnail" />
                                     </div>
                                 </div>
                                 <div className="right">
-                                    <div className="Sub-Title-M"> Project type & status</div>
-                                    <div className="status">
-                                        <div className="Tag">
-                                            idea
-                                    </div>
-                                        <div className="Tag active">
-                                            Active
-                                    </div>
-                                    </div>
-
+                                  
                                 </div>
-                            </div>
-                            <div className="post-desc">
-                                {data.description}
-                                {/* <span> view more</span> */}
                             </div>
                         </div>
                     </div>

@@ -1,172 +1,157 @@
-.profile-container {
-    max-width: 940px;
+.profile {
+    padding-top: 144px;
+    max-width: 1140px;
     margin: 0 auto;
-    .title-section {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.33;
-        color: #2e3033
-    }
-    padding: 8px 0;
-    .profile-right {
-        .ant-card-body {
-            padding: 24px !important;
-        }
-        .link-button {
-            max-width: 100%;
-            margin-bottom: 8px;
-            margin-right: 8px;
-            height: 28px;
-            border: solid 1px #a1aab3;
-            background: #fff;
-            font-size: 14px;
-            line-height: 1.2;
-            color: #a1aab3;
-            overflow: hidden;
-            span {
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-    }
-    .user-majors {
-        box-shadow: inset 0 -0.5px 0 0 #edf0f2;
-        padding-bottom: 16px;
-        button {
-            overflow: hidden;
-            margin-right: 8px;
-            border: none;
-            font-size: 14px;
-            font-weight: normal;
-            font-style: normal;
-            font-stretch: normal;
-            line-height: 1.2;
-            letter-spacing: normal;
-            text-align: center;
-            color: #2e3033;
-            border-radius: 4px;
-            background-color: #edf0f2;
-        }
-    }
-    .profile-header {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 16px;
-        .header-left {
-            display: flex;
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+        width: 255px;
+        text-align: center;
+
+        .info {
             img {
                 object-fit: cover;
-                width: 48px;
-                height: 48px;
+                width: 120px;
+                height: 120px;
                 border-radius: 50%;
-                margin-right: 24px;
+
             }
-            .header-info {
-                .user-name {
-                    font-size: 24px;
-                    font-weight: bold;
-                    line-height: 1.33;
-                    color: #2e3033;
-                }
-                .user-email {
-                    font-size: 14px;
-                    font-weight: 500;
-                    line-height: 1.33;
-                    color: #2e3033;
-                }
-                .sign-out-button {
-                    font-size: 14px;
-                    font-weight: 500;
-                    line-height: 1.33;
-                    color: #a1aab3;
+
+            &__name {
+                padding-bottom: 4px;
+                padding-top: 10px;
+            }
+
+            &__bio {
+                padding: 20px 0;
+            }
+
+            &__buttons {
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    height: 44px;
+                    border-radius: 24px;
+                    width: 124px;
                 }
             }
         }
-        .header-right {
-            img {
-                width: 21px;
-                height: 21px;
-            }
-        }
-    }
-    .profile-body {
-        padding-top: 24px;
-        .user-project {
-            .project-item {
-                cursor: pointer;
-                margin-right: 17px;
-                img {
-                    width: 142px;
-                    height: 92px;
-                    border-radius: 4px;
-                }
-            }
-            .project-name {
-                font-size: 14px;
-                line-height: 1.33;
+
+        .tag {
+            padding-top: 40px;
+
+            &__content {
                 padding-top: 12px;
-                color: #45494d
-            }
-        }
-        .skill-button {
-            margin-bottom: 8px;
-            margin-right: 8px;
-            height: 28px;
-            background: #006cd9;
-            font-size: 14px;
-            line-height: 1.2;
-            color: #fff;
-            border: none;
-        }
-        .interest-button {
-            margin-bottom: 8px;
-            margin-right: 8px;
-            height: 28px;
-            background: #12ca00;
-            font-size: 14px;
-            line-height: 1.2;
-            color: #fff;
-            border: none;
-        }
-    }
-    .badge__container {
-        .badge__item {
-            margin-top: 16px;
-            text-align: center;
-            img {
-                width: 64px;
-                height: 64px;
-            }
-            .unhover {
-                -webkit-filter: grayscale(100%);
-                /* Safari 6.0 - 9.0 */
-                filter: grayscale(100%);
-            }
-            &:hover {
-                .unhover {
-                    -webkit-filter: initial;
-                    /* Safari 6.0 - 9.0 */
-                    filter: initial;
+                text-align: left;
+
+                button {
+                    height: 36px;
+                    border-radius: 24px;
+                    border: solid 1px #f7ca3d;
+                    margin-right: 8px;
+                    margin-top: 8px;
                 }
             }
-            .badge__count {
-                height: 20px;
-                margin-top: 12px;
-                font-size: 16px;
-                font-weight: bold;
-                font-style: normal;
-                font-stretch: normal;
-                line-height: 1;
-                letter-spacing: normal;
+        }
+    }
+
+    &__right {
+        width: 634px;
+
+        .badge__container {
+            display: flex;
+            justify-content: space-between;
+
+            .badge {
+                margin-top: 16px;
                 text-align: center;
-                color: #006cd9
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                }
+
+                .name {
+                    font-family: TTCommons;
+                    font-size: 13px;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1.23;
+                    letter-spacing: normal;
+                    text-align: center;
+                    color: #696969;
+                }
+
+                .unhover {
+                    -webkit-filter: grayscale(100%);
+                    /* Safari 6.0 - 9.0 */
+                    filter: grayscale(100%);
+                }
+
+                &:hover {
+                    .unhover {
+                        -webkit-filter: initial;
+                        /* Safari 6.0 - 9.0 */
+                        filter: initial;
+                    }
+                }
+
+                .badge__count {
+                    height: 20px;
+                    margin-top: 12px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1;
+                    letter-spacing: normal;
+                    text-align: center;
+                    color: #006cd9
+                }
+
+
             }
-            .ant-card-body {
-                padding: 20px !important;
+        }
+
+        .projects {
+            padding-top: 60px;
+
+            &__container {
+                padding-top: 20px;
+
+                .project {
+                    margin-right: 17px;
+                    margin-bottom: 20px;
+
+                    img {
+                        width: 200px;
+                        object-fit: cover;
+                        height: 120px;
+                        border-radius: 4px;
+                        margin-bottom: 4px;
+                    }
+                }
+            }
+        }
+
+        .links {
+            padding-top: 60px;
+
+            &__container {
+                padding-top: 20px;
+
+                button {
+                    margin-right: 17px;
+                    margin-bottom: 8px;
+                    height: 36px;
+                    border-radius: 24px;
+                    border: solid 1px #f7ca3d;
+                }
             }
         }
     }
+
 }

@@ -3,7 +3,7 @@ import SearchBar from './SearchBar'
 import { Button } from 'antd'
 const profileIcon = '/static/images/icon-profile.svg'
 const multipleIcon = '/static/images/icon-multiple.svg'
-const logoIcon = '/static/images/logo.svg'
+const logo = '/static/images/logo-full.svg'
 
 import { Link } from 'routes'
 export default class extends Component {
@@ -16,17 +16,16 @@ export default class extends Component {
             onLogoClick
         } = this.props
         return (
-            <header className="header-container" >
-                <div className="header-max">
-                    <div className="header-left">
+            <header className="header" >
+                <div className="header__container">
+                    <div className="header__container__left">
                         <Link prefetch to="/">
                             <a onClick={onLogoClick} className="logo">
-                                <img src={logoIcon} alt="logo" />
-                                <div className="Title-Card">Comigo</div>
+                                <img src={logo} alt="logo" />
                             </a>
-
                         </Link>
-                        <div className="search-container">
+
+                        <div className="search">
                             <SearchBar {...this.props} />
                         </div>
 
@@ -35,22 +34,15 @@ export default class extends Component {
                         </div> */}
                     </div>
 
-                    <div className="header-right">
-
-
+                    <div className="header__container__right">
                         <Link prefetch to="/profile">
-                            <a className="header-user">
-
+                            <a className="user">
                                 <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />
-                                <div className="user-name">{userData.firstName}</div>
+                                <div className="item Button-Dark-Grey-Left">{userData.firstName}</div>
                             </a>
                         </Link>
                         {
-                            userData.verified ? <Link to="/new-project">
-                                <a ><Button type="primary" className="add-project-button" icon="plus">
-                                    PROJECT
-                                    </Button></a>
-                            </Link> :
+                            !userData.verified && 
                                 <a onClick={logout} className="add-project-button">Log out</a>
                         }
                     </div>

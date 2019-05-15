@@ -6,13 +6,12 @@ export default class extends Component {
     render() {
         const {
             onPressEnter,
-
             onSearchValueChange
         } = this.props
         return (
             <AutoComplete
                 dataSource={[]}
-                style={{ width: 380 }}
+                style={{ width: 247 }}
                 onSearch={onSearchValueChange}
             >
                 <Input

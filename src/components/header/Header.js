@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
-const logoIcon = '/static/images/logo.svg'
+
+const logo = '/static/images/logo-full.svg'
 
 
 const menuItem = [
@@ -32,8 +33,8 @@ class Header extends Component {
                     <div className="header-left">
                         <Link prefetch to="/">
                             <a  className="logo">
-                                <img src={logoIcon} alt="logo" />
-                                <div className="Title-Card">Comigo</div>
+                                <img src={logo} alt="logo" />
+                                
                             </a>
                            
                         </Link>

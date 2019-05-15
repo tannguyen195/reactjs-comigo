@@ -10,14 +10,16 @@ export const initial = {
     visibleEditUpdate: false,
     updateData: null,
     collaboratorData: null,
-    commentData:null
+    commentData: null,
+    filterValue: "all"
 }
 export default {
     toggle: handleActions({
 
         // TOGGLE ACTION
-        [ActionTypes.TOGGLE_HOME_VIEW]: (state) => update(state, {
+        [ActionTypes.TOGGLE_HOME_VIEW]: (state, { payload }) => update(state, {
             visibleProject: { $set: !state.visibleProject },
+            filterValue: { $set: payload }
         }),
         [ActionTypes.TOGGLE_PREVIEW_IMAGE]: (state, { payload }) =>
             !state.visiblePreview ?
@@ -45,7 +47,7 @@ export default {
                 updateData: !state.visibleEditUpdate ? { $set: payload } : { $set: null },
             })
         ,
-        
+
         [ActionTypes.TOGGLE_EDIT_COMMENT]: (state, { payload }) =>
             update(state, {
                 visibleEditComment: { $set: !state.visibleEditComment },
