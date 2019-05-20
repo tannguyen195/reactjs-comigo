@@ -12,9 +12,13 @@ export const {
   getProfile,
   verify,
   updateProfile,
-  resend,
   getBadgeList,
-  giveBadge
+  giveBadge,
+  resend,
+  sendPasswordReset,
+  resetPassword,
+  changePassword,
+
 } = createActions({
   [ActionTypes.LOGIN]: (data) => (data),
   [ActionTypes.LOGOUT]: () => ({}),
@@ -25,7 +29,10 @@ export const {
   [ActionTypes.GET_PROFILE]: () => ({}),
   [ActionTypes.VERIFY]: (data) => (data),
   [ActionTypes.UPDATE_PROFILE]: (data) => (data),
-  [ActionTypes.RESEND]: () => ({}),
   [ActionTypes.GET_BADGE_LIST]: () => ({}),
   [ActionTypes.GIVE_BADGE]: (data) => (data),
+  [ActionTypes.RESEND]: () => ({}),
+  [ActionTypes.SEND_PASSWORD_RESET]: (data) => (data),
+  [ActionTypes.RESET_PASSWORD]: (data) => (data),
+  [ActionTypes.CHANGE_PASSWORD]: (data) => (data),
 });

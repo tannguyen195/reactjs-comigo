@@ -20,6 +20,8 @@ export const ActionTypes = keyMirror({
     TOGGLE_REMOVE_COLLABORATOR: undefined,
     TOGGLE_EDIT_UPDATE: undefined,
     TOGGLE_EDIT_COMMENT: undefined,
+    TOGGLE_POST_JOB: undefined,
+    TOGGLE_FORGOT_MODAL: undefined,
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
     LOGIN_SUCCESS: undefined,
@@ -154,6 +156,38 @@ export const ActionTypes = keyMirror({
     GIVE_BADGE: undefined,
     GIVE_BADGE_SUCCESS: undefined,
     GIVE_BADGE_ERROR: undefined,
+
+    POST_JOB: undefined,
+    POST_JOB_SUCCESS: undefined,
+    POST_JOB_ERROR: undefined,
+
+    GET_JOB_DETAIL: undefined,
+    GET_JOB_DETAIL_SUCCESS: undefined,
+    GET_JOB_DETAIL_ERROR: undefined,
+
+    DELETE_JOB: undefined,
+    DELETE_JOB_SUCCESS: undefined,
+    DELETE_JOB_ERROR: undefined,
+
+    UPDATE_JOB: undefined,
+    UPDATE_JOB_SUCCESS: undefined,
+    UPDATE_JOB_ERROR: undefined,
+
+    LIST_JOB: undefined,
+    LIST_JOB_SUCCESS: undefined,
+    LIST_JOB_ERROR: undefined,
+
+    SEND_PASSWORD_RESET: undefined,
+    SEND_PASSWORD_RESET_SUCCESS: undefined,
+    SEND_PASSWORD_RESET_ERROR: undefined,
+
+    RESET_PASSWORD: undefined,
+    RESET_PASSWORD_SUCCESS: undefined,
+    RESET_PASSWORD_ERROR: undefined,
+
+    CHANGE_PASSWORD: undefined,
+    CHANGE_PASSWORD_SUCCESS: undefined,
+    CHANGE_PASSWORD_ERROR: undefined,
 });
 
 export const STATUS = {

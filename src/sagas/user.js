@@ -11,6 +11,7 @@ import { Cookies } from 'react-cookie'
 import { endPoint } from 'constants/index'
 import * as peopleAction from '../actions/people'
 import axios from 'axios'
+
 const cookies = new Cookies()
 export const auth = {
   /**
@@ -19,6 +20,7 @@ export const auth = {
   * @param  {string} password The password of the user
   */
   login(data) {
+   
     // Post a sign in request
     return axios(
       {
@@ -89,7 +91,7 @@ export const auth = {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'x-auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YmQ5NmNkYjEwN2RjZDE5Zjg2Y2I2MWYiLCJ2ZXJpZmllZCI6dHJ1ZSwiYWNjZXNzIjoiYXV0aCIsImlhdCI6MTU1NzYzNDc3MX0.idioOrhOlLPAwtO9kZ3ovAACBjkF2OTtExsxHNq2Nfs"
+          'x-auth-token': cookies.get('token')
         },
       }).then((response) => {
         return response.data
@@ -156,6 +158,55 @@ export const auth = {
       {
         url: endPoint + 'badge/giveNod?userID=' + data.userID + "&badgeID=" + data.badgeID,
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+
+      }).then((response) => {
+        return response.data
+      })
+  },
+
+  sendPasswordReset(data) {
+
+    return axios(
+      {
+        url: endPoint + 'user/sendPasswordReset',
+        method: 'POST',
+        data: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+      }).then((response) => {
+        return response.data
+      })
+  },
+
+  resetPassword(data) {
+
+    return axios(
+      {
+        url: endPoint + 'user/resetPassword',
+        method: 'POST',
+        data: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+      }).then((response) => {
+        return response.data
+      })
+  },
+
+  changePassword(data) {
+
+    return axios(
+      {
+        url: endPoint + 'user/changePassword',
+        method: 'POST',
+        data: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': cookies.get('token')
@@ -365,6 +416,66 @@ export function* giveBadge(data) {
 }
 
 
+export function* sendPasswordReset(data) {
+
+  try {
+    const response = yield call(auth.sendPasswordReset, data.payload);
+    yield put({
+      type: ActionTypes.SEND_PASSWORD_RESET_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.SEND_PASSWORD_RESET_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+
+export function* resetPassword(data) {
+
+  try {
+    const response = yield call(auth.resetPassword, data.payload);
+    yield put({
+      type: ActionTypes.RESET_PASSWORD_SUCCESS,
+      response
+    });
+    notification['success']({
+      message: 'Comigo',
+      description: response.message,
+    });
+    window.location.replace("/login")
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.RESET_PASSWORD_ERROR,
+      error: error.response,
+    });
+  }
+}
+
+
+export function* changePassword(data) {
+
+  try {
+    const response = yield call(auth.changePassword, data.payload);
+    yield put({
+      type: ActionTypes.CHANGE_PASSWORD_SUCCESS,
+      response
+    });
+  }
+  catch (error) {
+    /* istanbul ignore next */
+    yield put({
+      type: ActionTypes.CHANGE_PASSWORD_ERROR,
+      error: error.response,
+    });
+  }
+}
 /**
  * User Sagas
  */
@@ -378,6 +489,10 @@ export default function* root() {
     takeLatest(ActionTypes.UPDATE_PROFILE, updateProfile),
     takeLatest(ActionTypes.RESEND, resend),
     takeLatest(ActionTypes.GET_BADGE_LIST, getBadgeList),
-    takeLatest(ActionTypes.GIVE_BADGE, giveBadge)
+    takeLatest(ActionTypes.GIVE_BADGE, giveBadge),
+
+    takeLatest(ActionTypes.SEND_PASSWORD_RESET, sendPasswordReset),
+    takeLatest(ActionTypes.RESET_PASSWORD, resetPassword),
+    takeLatest(ActionTypes.CHANGE_PASSWORD, changePassword)
   ]);
 }

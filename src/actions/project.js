@@ -25,7 +25,6 @@ export const {
 
   getMajorList,
 
-  
 } = createActions({
   [ActionTypes.CREATE]: (data) => (data),
   [ActionTypes.UPDATE]: (data) => (data),

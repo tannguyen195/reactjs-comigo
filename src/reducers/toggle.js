@@ -8,10 +8,12 @@ export const initial = {
     visibleRequestCollaborator: false,
     visibleRemoveCollaborator: false,
     visibleEditUpdate: false,
+    visiblePostJob: false,
     updateData: null,
     collaboratorData: null,
     commentData: null,
-    filterValue: "all"
+    filterValue: "all",
+    visibleForgot: false,
 }
 export default {
     toggle: handleActions({
@@ -70,6 +72,16 @@ export default {
         [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
             return update(state, {
                 visibleRequestCollaborator: { $set: false },
+            })
+        },
+        [ActionTypes.TOGGLE_POST_JOB]: (state, { response }) => {
+            return update(state, {
+                visiblePostJob: { $set: !state.visiblePostJob },
+            })
+        },
+        [ActionTypes.TOGGLE_FORGOT_MODAL]: (state, { response }) => {
+            return update(state, {
+                visibleForgot: { $set: !state.visibleForgot },
             })
         },
     }, initial),

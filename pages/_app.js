@@ -16,8 +16,8 @@ import _editCollaborator from '../src/components/common/editCollaborator/_editCo
 import { Cookies } from 'react-cookie'
 import Loading from '../src/components/common/loading/Loading'
 import jwtDecode from 'jwt-decode'
-
 import VerifyAccountContainer from '../src/components/verify/VerifyAccountContainer'
+import ResetPasswordContainer from '../src/components/resetPassword/ResetPasswordContainer'
 import { Router } from 'routes'
 import { acceptShareLink } from '../src/actions/project';
 const cookies = new Cookies()
@@ -32,7 +32,7 @@ class MyApp extends App {
     }
   }
 
-  componentDidMount() { 
+  componentDidMount() {
     let inviteCode = ""
     //Check login 
     let isLoggedIn = cookies.get('token') ? true : false
@@ -62,8 +62,9 @@ class MyApp extends App {
 
     if (isLoggedIn === null)
       return <Loading />
-    else if (Router.query && Router.query.token)
+    else if (Router.query && Router.query.token && !Router.query.username )
       return <VerifyAccountContainer />
+
     else if (isLoggedIn === false && !isVerify)
       return <Component {...pageProps} />
     else if (isLoggedIn === true && !isVerify)

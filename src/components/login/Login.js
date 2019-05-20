@@ -6,9 +6,9 @@ const logoIcon = '/static/images/logo.svg'
 class Login extends Component {
 
     render() {
-    
+
         const { getFieldDecorator } = this.props.form;
-        const { handleSubmit, status, message } = this.props
+        const { handleSubmit, status, message, toggleForgotModal } = this.props
         return (
             <div className="login-container max-width">
 
@@ -34,7 +34,7 @@ class Login extends Component {
                         </FormItem>
                         <FormItem
                             hasFeedback
-                        
+
                             className="marginBottom24"
 
                             help={status === "error" && message}>
@@ -49,7 +49,7 @@ class Login extends Component {
                                     placeholder="Type your password" />
                             )}
                         </FormItem>
-
+                        <a onClick={toggleForgotModal}>Forgot Password</a>
                         <FormItem className="signup-button">
                             <Button loading={status === 'running'} type="primary" htmlType="submit">SIGN IN</Button>
                         </FormItem>

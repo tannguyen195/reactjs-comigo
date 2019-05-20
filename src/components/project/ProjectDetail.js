@@ -1,243 +1,138 @@
 import React, { Component } from 'react'
-import { Card, Button, Row, Col } from 'antd'
+import { Icon, Button, } from 'antd'
 import Image from '../common/Image'
 import ImageProject from '../common/ImageProject'
 import { Link, Router } from 'routes'
-const collaborators = [
-    {
-        name: "Babila Ebwélé",
-        role: "Graphic Designer",
-        image: "https://randomuser.me/api/portraits/men/32.jpg"
-    },
-    {
-        name: "Homura Yunosuke",
-        role: "UI Designer",
-        image: "https://randomuser.me/api/portraits/men/34.jpg"
-    }
-    ,
-    {
-        name: "Daisy Murphy",
-        role: "Sale Manager",
-        image: "https://randomuser.me/api/portraits/men/31.jpg"
-    }
-    ,
-    {
-        name: "Yahiro Ayuko",
-        role: "UX Designer",
-        image: "https://randomuser.me/api/portraits/men/30.jpg"
-    }
-    ,
-    {
-        name: "Isak Johannesson",
-        role: "Front-end Developer",
-        image: "https://randomuser.me/api/portraits/men/29.jpg"
-    }
-    ,
-    {
-        name: "Jube Bowman",
-        role: "Back-end Developer",
-        image: "https://randomuser.me/api/portraits/men/25.jpg"
-    }
-]
+import Update from './Update'
 
-const mailIcon = '/static/images/icon-mail.svg'
-const editIcon = '/static/images/icon-edit.svg'
+import moment from 'moment'
 
-const imageMedia = [
-    'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2018/07/Seascape-07.jpg?resize=1500%2C966&ssl=1'
-    ,
-    'https://www.w3schools.com/w3images/fjords.jpg'
-    ,
-    'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
-
-
-]
 export default class extends Component {
 
     render() {
         const {
+            jobList,
             detail,
             edit,
-            togglePreviewImage
+            togglePreviewImage,
+            togglePostJob
         } = this.props
         return (
-            <div className="project-detail-container">
-                <Row gutter={8}>
-                    <Col lg={14}>
-                        <Card bordered={false}>
-                            <div className="project-detail-header">
-                                <div className="header-title">
-                                    <div className="Text-Style paddingBottom16">{detail.name}</div>
-                                    {
-                                        edit ?
-                                            <Link prefetch to={`/${detail._id}/edit`} params={{ detail: detail }}>
-                                                <a className="header-right">
-                                                    <img alt="edit" src={editIcon} />
-                                                </a>
-                                            </Link> :
+            <div className="project-detail">
+                <section className=" cover">
+                    <ImageProject image={detail.coverURL} />
+                </section>
+                <section className="detail">
+                    <div className="detail__header ">
+                        <div className="H1-Black-Left">  {detail.name}</div>
+                        {
+                            edit ? <div className="button-group">
+                                <Button icon="plus" className="Button-Dark-Grey-Left">
+                                    Invite Collaborator
+                                </Button>
+                                <Link prefetch to={detail._id + "/edit"}>
+                                    <a>
+                                        <Button icon="edit" className="Button-Dark-Grey-Left">
+                                            Edit Project
+                                </Button>
+                                    </a>
+                                </Link>
 
-                                            <a href={`mailto:${detail.owner.email}`} className="header-right">
-                                                <img alt="mail" src={mailIcon} />
-                                            </a>
-                                    }
-
+                            </div> :
+                                <div className="button-group">
+                                    <a href={`mailto:${detail.owner.email}`} >
+                                        <Button icon="mail" type="primary" className="email__button Button-White-Left">{`Contact to ${detail.owner.firstName}`}
+                                        </Button>
+                                    </a>
                                 </div>
-                                <div onClick={() => Router.push('/user/' + detail.owner._id)}
-                                    className="header-left">
+                        }
+
+                    </div>
+
+                    <div className="detail__body">
+                        <div className="detail__body__left">
+                            <div className="desc Body-Dark-Grey-Left">{detail.description}</div>
+
+                            <section className="paddingTop40">
+                                <div className="H2-Black-Left">Updates</div>
+                                <Update {...this.props} />
+                            </section>
+                        </div>
+                        <div className="detail__body__right">
+
+                            <section className="right__section">
+                                <div className="section__header">
+                                    <div className="title H3-Black-Left">Collaborators</div>
+                                    <div className="action Body-Dark-Grey-Center">{`${detail.shares.length + 1}  members`}</div>
+                                </div>
+                                <div className="section__body">
                                     <Image image={detail.owner.pictureURL} />
-                                    <div className="header-info">
-                                        <div className=" Title-12-Left">{detail.owner.firstName + ` ` + detail.owner.lastName}</div>
-                                        <div className="Sub-Title-10-Left">{detail.owner.email}</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="project-body">
-                                <section className="paddingBottom40 project-cover">
-                                    <ImageProject image={detail.coverURL} />
-
-                                </section>
-
-                                <section className="paddingBottom40">
-                                    <div className="paddingBottom16 title-section ">
-                                        DESCRIPTION      </div>
-                                    <div className=" Body-12">
-                                        {detail.description}
-                                    </div>
-                                </section>
-
-                                <section className="paddingBottom40">
-                                    <div className="paddingBottom16 title-section ">
-                                        PROJECT SKILLS  </div>
-                                    {
-                                        !detail.projectSkills ? <Link prefetch to="/edit">
-                                            <a>
-                                                <Button
-                                                    icon="plus"
-                                                    className="skill-button">
-                                                    Add Skill
-                            </Button>
-                                            </a>
-                                        </Link>
-                                            :
-                                            detail.projectSkills.map((item, index) => {
-                                                return <Button key={index} className="skill-button">{item}</Button>
-                                            })
-                                    }
-                                </section>
-
-                                <section >
-                                    <div className="paddingBottom16 title-section ">
-                                        LOOKING FOR SKILLS  </div>
-                                    {
-                                        !detail.lookingSkills ? <Link prefetch to="/project/edit">
-                                            <a>
-                                                <Button
-                                                    icon="plus"
-                                                    className="skill-button">
-                                                    Add Skill
-                            </Button>
-                                            </a>
-                                        </Link>
-                                            :
-                                            detail.lookingSkills.map((item, index) => {
-                                                return <Button key={index} className="looking-skill-button">{item}</Button>
-                                            })
-                                    }
-                                </section>
-                            </div>
-                        </Card>
-                        <div className="sub-card-container marginTop8">
-                            <Card bordered={false}>
-                                <div className="sub-tab-header">
-                                    <div className="Text-Style-3">COLLABORATORS</div>
-                                    {
-                                        edit &&
-                                        <Link prefetch to={`/${detail._id}/edit`} >
-                                            <a className="header-right">
-                                                <img alt="edit" src={editIcon} />
-                                            </a>
-                                        </Link>
-                                    }
-
-                                </div>
-
-                                <div className="sub-tab-collaborator marginTop24">
                                     {
                                         detail.shares.map((item, index) => {
-                                            return <div
-                                                key={index}
-                                                onClick={() => Router.push('/user/' + item._id)}
-                                                className="header-left marginBottom16">
-                                                <Image image={item.pictureURL} />
-                                                <div className="header-info">
-                                                    <div className=" Title-12-Left">   {item.firstName + ` ` + item.lastName}</div>
-                                                    <div className="Sub-Title-10-Left">{item.role}</div>
-                                                </div>
+                                            return <Link prefetch to={'/user/' + item._id} key={index}>
+                                                <a>
+                                                    <Image image={item.pictureURL} />
+                                                </a>
+                                            </Link>
+                                        })
+                                    }
+                                </div>
+                            </section>
+
+                            <section className="right__section">
+                                <div className="section__header">
+                                    <div className="title H3-Black-Left">Media</div>
+
+                                </div>
+                                <div className="section__body" style={{ justifyContent: "space-between" }}>
+                                    {
+                                        detail.media && detail.media.length > 0 ? detail.media.map((item, index) => {
+                                            return <img className="media__img" key={index} src={item} onClick={() => togglePreviewImage(item)} />
+                                        }) : <div className="no-data Body-Dark-Grey-Center">There are no images yet</div>
+                                    }
+                                </div>
+                            </section>
+
+                            <section className="right__section">
+                                <div className="section__header">
+                                    <div className="title H3-Black-Left">Job Postings</div>
+                                    {
+                                        edit && <a onClick={togglePostJob} className="title Button-Yellow-Left"><Icon type="plus" />{`${` `}`}Add Job</a>
+                                    }
+
+                                </div>
+                                <div className="section__body" style={{ flexDirection: "column" }}>
+                                    {
+                                        jobList.length > 0 ? jobList.map((item, index) => {
+                                            return <div className="job__item" key={index}>
+                                                <div className="Button-Black-Left">{item.title}</div>
+                                                <div className="Caption-Grey-Left">{moment(item.updatedAt).format("MMM DD, YYYY")}</div>
                                             </div>
-                                        })
+                                        }) : <div className="no-data Body-Dark-Grey-Center">There are no jobs yet</div>
                                     }
+                                </div>
+                            </section>
+
+                            <section className="right__section">
+                                <div className="section__header">
+                                    <div className="title H3-Black-Left">Links</div>
 
                                 </div>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col lg={10}>
-                        <div className="sub-card-container">
-                            <Card bordered={false}>
-                                <div className="sub-tab-header">
-                                    <div className="Text-Style-3">MEDIA</div>
+                                <div className="section__body" style={{ justifyContent: "space-between" }}>
                                     {
-                                        edit &&
-                                        <Link prefetch to={`/${detail._id}/edit`} params={{ detail: detail }}>
-                                            <a className="header-right">
-                                                <img alt="edit" src={editIcon} />
-                                            </a>
-                                        </Link>
-
-                                    }
-
-                                </div>
-                                <div className="sub-tab-body">
-                                    {
-                                        detail.media && detail.media.map((item, index) => {
-                                            return <img key={index} src={item} onClick={() => togglePreviewImage(item)} />
-                                        })
+                                        detail.links.length > 0 ?
+                                            detail.links.map((item, index) => {
+                                                return <Button onClick={() => {
+                                                    window.open(item.includes("http") ?
+                                                        item : "http://" + item)
+                                                }} key={index} className="link-button">{item}</Button>
+                                            }) : <div className="no-data Body-Dark-Grey-Center">There are no links yet</div>
                                     }
                                 </div>
-                            </Card>
+                            </section>
                         </div>
-
-                    </Col>
-                    <Col className="marginTop8" lg={10}>
-                        <div className="sub-card-container">
-                            <Card bordered={false}>
-                                <div className="sub-tab-header">
-                                    <div className="Text-Style-3">LINKS</div>
-                                    {
-                                        edit &&
-                                        <Link prefetch to={`/${detail._id}/edit`} params={{ detail: detail }}>
-                                            <a className="header-right">
-                                                <img alt="edit" src={editIcon} />
-                                            </a>
-                                        </Link>
-
-                                    }
-                                </div>
-
-                                {
-                                    detail.links.length === 0 &&
-                                    detail.links.map((item, index) => {
-                                        return <Button onClick={() => {
-                                            window.open(item.includes("http") ?
-                                                item : "http://" + item)
-                                        }} key={index} className="link-button">{item}</Button>
-                                    })
-                                }
-                            </Card>
-                        </div>
-                    </Col>
-                </Row>
+                    </div>
+                </section>
             </div>
         )
     }

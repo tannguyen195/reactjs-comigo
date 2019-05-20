@@ -217,7 +217,7 @@ const project = {
    * edit a new update to a project provied
    */
   editComment(data) {
-  
+
     // Post a sign in request
     return axios(
       {
@@ -356,7 +356,7 @@ const project = {
         // window.location.replace("/")
         return response.data
       })
-  }
+  },
 }
 /**
  * create a new project

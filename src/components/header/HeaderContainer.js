@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {Router} from 'routes'
+import { Router } from 'routes'
 import Header from './Header'
 import LoggedHeader from './LoggedHeader'
+import ForgotModalContainer from '../forgot/ForgotModalContainer'
 import _header from './_header.less'
 import { withRouter } from "next/router"
 import * as toggleAction from '../../actions/toggle'
@@ -60,10 +61,13 @@ class HeaderContainer extends Component {
 
                 />
         }
-        else return <Header
+        else return <div> <Header
             {...this.state}
             {...this.props}
+
         />
+            <ForgotModalContainer />
+        </div>
     }
     render() {
         return (

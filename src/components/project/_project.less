@@ -1,29 +1,108 @@
-.project-container {
-    .project-tab-container {
-        .ant-tabs-bar {
-            background: #fff;
-            margin: 0;
-            .ant-tabs-nav-container {
-                margin: 0 auto;
-                max-width: 940px;
-                .ant-tabs-nav .ant-tabs-tab-active {
-                    color: #006cd9;
-                    font-size: 12px;
-                    font-weight: normal;
-                    font-style: normal;
-                    font-stretch: normal;
-                    line-height: 1.6;
-                    letter-spacing: normal;
+.project {
+    &__container {
+        width: 920px;
+        margin: 0 auto;
+        padding-top: 60px;
+
+        .project-detail {
+            .cover {
+                padding-bottom: 44px;
+
+                img {
+                    width: 100%;
+                    height: 300px;
+                    object-fit: cover;
                 }
-                .ant-tabs-nav {
-                    font-size: 10px !important;
+            }
+
+            .detail {
+                &__header {
+                    padding-bottom: 60px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .button-group {
+                        button {
+                   margin-left: 12px;
+                            height: 44px;
+                            border-radius: 24px;
+
+                        }
+                    }
                 }
-                .ant-tabs-ink-bar {
-                    background: #006cd9;
+
+                &__body {
+                    display: flex;
+                    justify-content: space-between;
+
+                    &__left {
+                        width: 565px;
+
+                        .desc {
+                            padding-bottom: 60px;
+                            box-shadow: inset 0 -1px 0 0 #e6e8eb;
+                        }
+                    }
+
+                    &__right {
+                        width: 255px;
+
+                        .right__section {
+                            padding-bottom: 60px;
+
+                            .section__header {
+                                display: flex;
+                                justify-content: space-between;
+                            }
+
+                            .section__body {
+                                padding-top: 20px;
+                                display: flex;
+                                flex-wrap: wrap;
+
+                                img {
+                                    cursor: pointer;
+                                    margin-right: 8px;
+                                    border-radius: 50%;
+                                    width: 44px;
+                                    height: 44px;
+                                    object-fit: cover;
+                                }
+
+                                .media__img {
+                                    cursor: pointer;
+                                    margin-right: 0;
+                                    border-radius: 4px;
+                                    width: 83px;
+                                    height: 83px;
+                                    object-fit: cover;
+                                }
+
+                                button {
+                                    margin-bottom: 8px;
+                                }
+
+                                .job__item {
+                                    padding-bottom: 20px;
+
+                                    &:last-child {
+                                        padding-bottom: 0;
+                                    }
+                                }
+
+                                .no-data {
+                                    width: 100%;
+                                    padding: 30px;
+                                    padding-bottom: 0;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+
 }
 
 .sub-card-container {
@@ -32,17 +111,21 @@
             padding: 24px !important;
         }
     }
+
     .sub-tab-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
     .sub-tab-collaborator {
         display: flex;
         flex-wrap: wrap;
     }
+
     .sub-tab-body {
         display: flex;
+
         img {
             cursor: pointer;
             margin-right: 16px;
@@ -53,6 +136,7 @@
             object-fit: cover;
         }
     }
+
     .link-button {
         margin: 8px 0;
         border: solid 1px #a1aab3 !important;
@@ -66,6 +150,7 @@
     cursor: pointer;
     display: flex;
     min-width: 152px;
+
     img {
         width: 32px;
         height: 32px;
@@ -83,26 +168,33 @@
 .project-detail-container {
     margin: 0 auto;
     max-width: 940px;
+
     .title-section {
         font-size: 14px;
         font-weight: 500;
         line-height: 1.33;
         color: #2e3033
     }
+
     padding: 8px 0;
+
     .project-detail-header {
         padding-bottom: 24px;
+
         .header-title {
             display: flex;
             justify-content: space-between;
+
             img {
                 width: 21px;
                 height: 21px;
             }
         }
     }
+
     .project-body {
         padding-top: 24px;
+
         .project-cover {
             img {
                 width: 460px;
@@ -110,6 +202,7 @@
                 border-radius: 4px;
             }
         }
+
         button {
             height: 28px;
             font-size: 12px;
@@ -117,11 +210,13 @@
             border: none !important;
             margin-right: 8px;
         }
+
         .skill-button {
             margin-bottom: 8px;
             background: #006cd9;
             color: #fff;
         }
+
         .looking-skill-button {
             margin-top: 8px;
             background: #ffdf49;
@@ -134,17 +229,20 @@
 
     box-shadow: inset 0 -0.5px 0 0 #edf0f2;
     display: flex;
+
     img {
         width: 32px;
         height: 32px;
         border-radius: 50%;
         margin-right: 8px;
     }
+
     textarea {
         border: none !important;
         padding-top: 6px !important;
         min-height: 20px !important;
     }
+
     .ant-input:focus {
         border-color: none;
         outline: 0;

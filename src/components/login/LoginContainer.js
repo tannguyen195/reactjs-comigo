@@ -6,6 +6,7 @@ import { Form } from 'antd'
 import Head from '../head'
 import Login from './Login'
 import _login from './_login.less'
+import { toggleForgotModal } from '../../actions/toggle'
 import { Cookies } from 'react-cookie'
 
 class LoginContainer extends Component {
@@ -21,7 +22,7 @@ class LoginContainer extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-              
+
                 login(values)
             }
         });
@@ -52,8 +53,8 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        login
-
+        login,
+        toggleForgotModal
     }, dispatch)
 }
 const WrappedLoginContainer = Form.create()(LoginContainer);

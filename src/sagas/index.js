@@ -3,6 +3,7 @@ import user from './user';
 import project from './project'
 import file from './file'
 import people from './people'
+import job from './job'
 /**
  * rootSaga
  */
@@ -11,6 +12,7 @@ export default function* root() {
         fork(user),
         fork(project),
         fork(file),
-        fork(people)
+        fork(people),
+        fork(job)
     ]);
 }

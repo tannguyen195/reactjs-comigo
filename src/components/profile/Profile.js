@@ -138,12 +138,6 @@ export default class extends Component {
                             </div>
                         }
                     </section>
-
-
-
-
-
-
                 </div>
             </div>
         )

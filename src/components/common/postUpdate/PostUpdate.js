@@ -16,7 +16,7 @@ export default class extends Component {
                     <TextArea onChange={onUpdateChange} value={updateContent} className="Paragraph-12" placeholder="Post something about project update here..." autosize />
                 </div>
                 <div className="post__button">
-                    <Button loading={status === "running"} onClick={handlePostUpdate}>Post</Button>
+                    <Button className="Button-White-Left" loading={status === "running"} onClick={handlePostUpdate}>Post</Button>
                 </div>
             </Card>
 

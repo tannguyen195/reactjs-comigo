@@ -31,14 +31,14 @@ class UserContainer extends Component {
         if (peopleDetail && !peopleDetail.nods && badgeList) {
             let temp = []
             nextProps.badgeList.map(item => {
-                temp.push({ ...item, count: 0 ,isChoose: false})
+                temp.push({ ...item, count: 0, isChoose: false })
             })
             this.setState({
                 userBadge: temp
             })
         }
 
-        else if (peopleDetail && peopleDetail.nods && userData && badgeList ) {
+        else if (peopleDetail && peopleDetail.nods && userData && badgeList) {
 
             let temp = badgeList
             let choseBadge = []
@@ -59,12 +59,12 @@ class UserContainer extends Component {
                         }
                 })
                 item.nodUserIDs.map(id => {
-                    if (id === nextProps.userData._id) {
+                    if (id.userID === nextProps.userData._id) {
                         choseBadge.push({ badgeID: item.badgeID, count: item.count })
                     }
                 })
             })
-
+         
             temp.map((item, index) => {
 
                 choseBadge.map(badge => {
@@ -77,7 +77,7 @@ class UserContainer extends Component {
                     }
                 })
             })
- 
+
             this.setState({
                 userBadge: temp
             })
@@ -86,9 +86,10 @@ class UserContainer extends Component {
     componentDidMount() {
         const { getPeopleDetail, } = this.props
         getPeopleDetail(Router.query.id)
-     
+
     }
     giveUserNod = (badgeID) => {
+    
         const { giveBadge, peopleDetail } = this.props
 
         giveBadge({

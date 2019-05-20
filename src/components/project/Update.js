@@ -15,7 +15,7 @@ export default class extends Component {
         } = this.props
 
         return (
-            <div className="project__update-container">
+            <div className="project-update">
                 
                 {
                     edit && <PostUpdate {...this.props} />

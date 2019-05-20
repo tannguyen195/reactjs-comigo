@@ -9,6 +9,7 @@ routes
     .add('login')
     .add('signUp')
     .add('new-project')
+    .add('reset_password')
     .add('/user/:id', 'user')
     .add('profile')
     .add('/profile/edit', 'edit')

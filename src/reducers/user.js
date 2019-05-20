@@ -6,6 +6,7 @@ export const initial = {
     step: 1,
     statusSignUp: STATUS.IDLE,
     statusSignIn: STATUS.IDLE,
+    errorMessage: "",
     status: STATUS.IDLE,
     message: "",
     data: null,
@@ -133,7 +134,7 @@ export default {
         [ActionTypes.GET_BADGE_LIST_SUCCESS]: (state, { response }) => update(state,
             {
                 status: { $set: STATUS.SUCCESS },
-                badgeList: { $set: response.data},
+                badgeList: { $set: response.data },
             })
 
         ,
@@ -154,6 +155,50 @@ export default {
         ,
         [ActionTypes.GIVE_BADGE_ERROR]: (state, { error }) => update(state, {
             status: { $set: STATUS.ERROR },
+        }),
+
+        [ActionTypes.SEND_PASSWORD_RESET]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.SEND_PASSWORD_RESET_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+
+            })
+        ,
+        [ActionTypes.SEND_PASSWORD_RESET_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+        }),
+
+        [ActionTypes.RESET_PASSWORD]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.RESET_PASSWORD_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+
+            })
+        ,
+        [ActionTypes.RESET_PASSWORD_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+            errorMessage: { $set: error.data.error },
+        }),
+
+        [ActionTypes.CHANGE_PASSWORD]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+
+        [ActionTypes.CHANGE_PASSWORD_SUCCESS]: (state, { response }) => update(state,
+            {
+                status: { $set: STATUS.SUCCESS },
+
+            })
+        ,
+        [ActionTypes.CHANGE_PASSWORD_ERROR]: (state, { error }) => update(state, {
+            status: { $set: STATUS.ERROR },
+
         }),
 
     }, initial),

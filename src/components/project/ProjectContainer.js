@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import PreviewImage from '../common/previewImage/PreviewImage'
+import { Router } from 'routes'
+
 import Head from '../head'
 import Project from './Project'
+
 import * as projectAction from '../../actions/project'
 import * as toggleAction from '../../actions/toggle'
-import { Router } from 'routes'
+import * as jobAction from '../../actions/job'
+
+import PreviewImage from '../common/previewImage/PreviewImage'
+import PostJobModalContainer from '../postJob/PostJobModalContainer'
+import Loading from '../common/loading/Loading'
+
 import _project from './_project.less'
 import _ from 'lodash'
 
-import Loading from '../common/loading/Loading'
 class ProjectContainer extends Component {
     constructor(props) {
         super(props)
@@ -29,10 +35,11 @@ class ProjectContainer extends Component {
     }
 
     componentDidMount() {
-        const { getDetail } = this.props
-
+        const { getDetail, listJob } = this.props
         getDetail(Router.query.id)
+        listJob(Router.query.id)
     }
+
     isUserProject() {
         const { userData, detail } = this.props
         if (detail.owner.email === userData.email) {
@@ -71,6 +78,7 @@ class ProjectContainer extends Component {
                     previewImage={previewImage}
                     togglePreviewImage={togglePreviewImage}
                 />
+                <PostJobModalContainer />
                 {
                     userData && detail ?
                         <Project
@@ -96,14 +104,17 @@ export function mapStateToProps(state) {
         userData: state.user.data,
         detail: state.project.detail,
         visiblePreview: state.toggle.visiblePreview,
+        visiblePostJob: state.toggle.visiblePostJob,
         previewImage: state.toggle.previewImage,
         status: state.project.status,
+        jobList: state.job.jobList,
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         ...projectAction,
-        ...toggleAction
+        ...toggleAction,
+        ...jobAction
     }, dispatch)
 }
 

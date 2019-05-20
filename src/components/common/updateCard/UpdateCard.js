@@ -35,23 +35,17 @@ export default class extends Component {
                     <div className="update__left">
                         <Image image={detail.owner.pictureURL} />
                         <div className="update__title">
-                            <div className="Input-Search-Empty">
-                                <span className="Text-Style-3">
+                            <div className="Body-Dark-Grey-Left">
+                                <span className="Button-Black-Left">
                                     {detail.owner.firstName + ` ` + detail.owner.lastName + ` `}
                                 </span>
-
-                                posted a new update for
-                                <span className="text-blue">
-                                    {` ` + detail.name}
-                                </span>
-                                .
+                                create a new post
                             </div>
-                            <div className="Sub-Title-10-Left">{moment.unix(data.updatedAt).fromNow()}</div>
+                            <div className="Caption-Grey-Left">{moment.unix(data.updatedAt).fromNow()}</div>
                         </div>
                     </div>
                     {
                         edit && <div className="update__right">
-
                             <Dropdown className="option__post" placement="bottomRight" overlay={<Menu>
                                 <Menu.Item key="0">
                                     <div onClick={() => toggleEditUpdate(data)} className="Body-12 item">
@@ -88,7 +82,7 @@ export default class extends Component {
 
                 </div>
 
-                <div className="update__body-container Paragraph-12">
+                <div className="update__body-container Body-Black-Left">
                     {data.content}
                 </div>
 
@@ -96,13 +90,19 @@ export default class extends Component {
                     return <div key={index} className="update__comment-container Paragraph-12">
                         <div className="update__comment-header">
                             <Image image={item.postedUserData.pictureURL} />
-                            <div className="People-Comment name">{item.postedUserData.firstName} {item.postedUserData.lastName}</div>
-                            <div className="Sub-Time-Date">{moment.unix(item.updatedAt).fromNow()}</div>
+                            <div className="header__content">
+                                <div className="Button-Black-Left name">{`${item.postedUserData.firstName} ${item.postedUserData.lastName}  `}
+                                    <div className="Caption-Grey-Left">{` . ${moment.unix(item.updatedAt).fromNow()}`}</div>
+                                </div>
+
+                                <div className="Body-Black-Left">
+                                    {item.content}
+                                </div>
+                            </div>
+
                         </div>
                         <div className="update__comment-body">
-                            <div className="Comment">
-                                {item.content}
-                            </div>
+
                             {
                                 userData._id === item.postedUserData._id && <div className="comment__right">
                                     <Dropdown className="option__post" placement="bottomLeft" overlay={<Menu>
