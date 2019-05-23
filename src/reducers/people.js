@@ -62,7 +62,7 @@ export default {
         },
         [ActionTypes.GIVE_BADGE_SUCCESS]: (state, { response }) => update(state,
             {
-                peopleDetail: { $set: response.data.givenUserInfo }
+                peopleDetail: { $merge: response.data.givenUserInfo }
             })
         ,
     }, initial),
