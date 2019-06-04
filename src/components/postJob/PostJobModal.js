@@ -1,10 +1,10 @@
 import React from 'react'
-import { Form, Input, Button, Modal, Icon } from 'antd';
+import { Form, Input, Button, Modal, Select } from 'antd';
 import { Link } from 'routes'
 import MajorTagContainer from '../common/majorTag/MajorTagContainer';
 const TextArea = Input.TextArea
 const FormItem = Form.Item
-
+const Option = Select.Option;
 class PostJobModal extends React.Component {
 
     render() {
@@ -48,7 +48,26 @@ class PostJobModal extends React.Component {
                                         )}
                                     </FormItem>
                                 </div>
+                                <div >
+                                    <div>Time Commitment</div>
+                                    <FormItem>
+                                        {getFieldDecorator('expectedTime', {
+                                            rules: [{ required: true, message: 'Please enter job title!' }],
+                                        })(
 
+                                            <Select
+                                                className="Body2RegularBlack80Left"
+                                                showSearch
+                                                placeholder="Expected Time"
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                            >
+                                                <Option value="Few hours">Few hours</Option>
+                                                <Option value="Not sure">Not sure</Option>
+                                            </Select>
+                                        )}
+                                    </FormItem>
+                                </div>
                                 <div>
                                     <div className="Body-Dark-Grey-Left">Job Description</div>
                                     <FormItem>
@@ -78,6 +97,17 @@ class PostJobModal extends React.Component {
                                     tags={skills}
                                 /> */}
 
+                                </div>
+
+                                <div >
+                                    <div>Incentive</div>
+                                    <FormItem>
+                                        {getFieldDecorator('incentive', {
+                                            rules: [{ message: 'Please enter incentive!' }],
+                                        })(
+                                            <Input className="Body2RegularBlack80Left" placeholder="incentive" />
+                                        )}
+                                    </FormItem>
                                 </div>
                                 <div className="button-post">
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Form, Input, Select, Row, Col, Button, Alert } from 'antd'
+import { Link } from 'routes'
 const FormItem = Form.Item;
 const appLogo = '/static/images/logo-app.png'
 const logoIcon = '/static/images/logo.svg'
@@ -12,16 +13,16 @@ class Login extends Component {
         return (
             <div className="login-container max-width">
 
-                <Card className="sign-in-body" bordered={false}>
+                <div className="sign-in-body" bordered={false}>
                     <div className="app-logo">
                         <img alt="logo" src={logoIcon} />
                     </div>
-                    <div className="sign-in-title Title-Medium-Center">
-                        Log In   </div>
+                    <div className="sign-in-title H2-Black-Center">
+                        Welcome to Comigo  </div>
 
                     <Form onSubmit={handleSubmit}>
                         <FormItem className="marginBottom32" >
-                            <div className="label-form">Email</div>
+
                             {getFieldDecorator('email', {
                                 rules: [{
                                     required: true, type: 'email', message: 'The input is not valid E-mail!',
@@ -29,16 +30,15 @@ class Login extends Component {
                                     message: 'Please input your E-mail!',
                                 }],
                             })(
-                                <Input placeholder="Type your email" />
+                                <Input placeholder="Email" />
                             )}
                         </FormItem>
                         <FormItem
                             hasFeedback
-
                             className="marginBottom24"
 
                             help={status === "error" && message}>
-                            <div className="label-form">Password</div>
+
                             {getFieldDecorator('password', {
                                 rules: [{
                                     required: true, message: 'Please input your password!',
@@ -46,15 +46,24 @@ class Login extends Component {
                             })(
                                 <Input
                                     type="password"
-                                    placeholder="Type your password" />
+                                    placeholder="Password" />
                             )}
                         </FormItem>
-                        <a onClick={toggleForgotModal}>Forgot Password</a>
+
                         <FormItem className="signup-button">
-                            <Button loading={status === 'running'} type="primary" htmlType="submit">SIGN IN</Button>
+                            <Button className="Button-White-Center" loading={status === 'running'} type="primary" htmlType="submit">Sign In</Button>
                         </FormItem>
+                        <div className="forgot__button marginBottom8">
+                            <a className="Button-Dark-Grey-Center" onClick={toggleForgotModal}>Forgot your password?</a>
+                        </div>
+
+                        <div className="Button-Dark-Grey-Center" >Don't have an account?
+                         <Link to="/signUp" prefetch>
+                                <a>{` Sign Up`}</a>
+                            </Link> </div>
+
                     </Form>
-                </Card>
+                </div>
             </div>
 
         )

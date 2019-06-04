@@ -29,7 +29,6 @@ const project = {
         },
 
       }).then((response) => {
-
         return response.data
       })
   },
@@ -100,9 +99,9 @@ const project = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'projects?keyword=' + keyword,
+        url: endPoint + 'project/list?keyword=' + keyword,
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',  'x-auth-token': cookies.get('token') },
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -375,7 +374,7 @@ export function* create(data) {
       description: response.message,
     });
 
-    window.location.replace('/profile')
+    // window.location.replace('/profile')
   }
   catch (error) {
     yield put({
@@ -645,8 +644,8 @@ export function* createShareLink(data) {
   }
   catch (error) {
     notification['error']({
-      message: 'Something went wrong!',
-      description: "Fail to invite collaborator",
+      message: 'Fail to invite collaborator!',
+      description: error.response.data.message,
     });
     yield put({
       type: ActionTypes.CREATE_SHARE_LINK_ERROR,

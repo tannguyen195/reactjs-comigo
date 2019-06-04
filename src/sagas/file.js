@@ -67,7 +67,7 @@ const file = {
   uploadImage(data) {
 
     const sendData = new FormData()
-    sendData.append('file', data.file.originFileObj)
+    sendData.append('file', data.imageData.file.originFileObj)
 
     // Post a upload request
     return axios(
@@ -117,11 +117,13 @@ export function* upload(data) {
 export function* uploadImage(data) {
   try {
     const response = yield call(file.uploadImage, data.payload);
+    console.log()
     yield put({
       type: ActionTypes.UPLOAD_IMAGE_SUCCESS,
       response: {
         ...response,
-        payload: data.payload
+        payload: data.payload,
+        type: data.type
       }
     });
 

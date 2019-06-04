@@ -45,12 +45,12 @@ class Header extends Component {
                                 {
                                     menuItem.map((item, index) => {
                                         return <Link prefetch key={index} to={item.link}>
-                                            <a className="header-item Menu-Button">{item.title}</a>
+                                            <a className="header-item Button-Dark-Grey-Left">{item.title}</a>
                                         </Link>
                                     })
                                 }
                                 <Link prefetch to='/signUp'>
-                                    <a className="header-item Menu-Button sign-up__button">Get Started</a>
+                                    <a className="header-item sign-up__button">Get Started</a>
                                 </Link>
                             </div> :
                             <div className="header-right">

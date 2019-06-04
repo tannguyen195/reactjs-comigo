@@ -22,7 +22,11 @@ export default class extends Component {
                 <div className="collaborator__picture">
                     <Image image={data.pictureURL} />
                 </div>
-                <Input value={data.firstName + ` ` + data.lastName} disabled className="collaborator__name" />
+                <div className="collaborator__info">
+                    <div className="Body-Black-Left">    {data.firstName + ` ` + data.lastName}</div>
+                    <div className="Caption-Grey-Left">{data.email}</div>
+                </div>
+
                 <Input
                     onChange={(e) => onCollaboratorRoleChange({ e, data })}
                     disabled={!data.isChanged}

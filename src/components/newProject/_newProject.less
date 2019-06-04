@@ -1,171 +1,44 @@
-.new-project-container {
-    padding: 40px 0;
+.new-project {
+    padding: 120px 0;
+    width: 525px;
+    margin: 0 auto;
+
     .project-title {
         padding-bottom: 40px
     }
-    .label-form {
-        font-size: 14px;
-        top: -34px;
-    }
-    .basic-info-container {
+
+    .button__group {
+        text-align: center;
         display: flex;
-        align-items: flex-end;
-        padding-bottom: 40px;
-        .cropped-container {
-            width: 248px;
-            height: 160px;
-            border-radius: 8px;
-            margin-right: 24px;
-            .user-photo {
-                border-radius: 8px;
-                width: 100%;
-            }
-            .wrapper {
-                visibility: hidden;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                align-items: center;
-                height: 160px;
-                position: absolute;
-                z-index: 10;
-                width: 248px;
-                border-radius: 8px;
-                background-image: linear-gradient(to bottom, rgba(38, 38, 38, 0.05), rgba(38, 38, 38, 0.32));
-                .edit-text {
-                    cursor: pointer;
-                    color: #fff;
-                    padding-bottom: 16px;
-                    font-weight: 500;
-                }
-            }
-            &:hover {
-                .wrapper {
-                    visibility: visible
-                }
-            }
+        justify-content: space-between;
+        padding-bottom: 50px;
+
+        button {
+            height: 36px;
+            border-radius: 24px;
         }
-        .photo-container {
-            text-align: center;
-            min-width: 248px;
-            cursor: pointer;
-            border-radius: 8px;
-            border: dashed 1px #c3ced9;
-            padding-top: 24px;
-            padding-bottom: 16px;
-            padding-left: 45px;
-            padding-right: 45px;
-            margin-right: 24px;
-            img {
-                width: 70px;
-                height: 80px;
-            }
-            .add-photo {
-                padding-top: 24px;
-                font-weight: 500;
-                line-height: 1.14;
-                ;
-                color: #c3ced9
-            }
-        }
-        .basic-info {
-            width: 100%;
-            .ant-input {
-                height: 48px;
-            }
-            input[type="text"] {
-                font-size: 14px;
-            }
+
+        .not-click {
+            border: none;
+            color: #363636;
         }
     }
-    .ability {
-        padding-bottom: 40px;
-        .bio-info {
-            position: relative;
-            .label-form {
-                top: -8px;
-                height: inherit;
-            }
-        }
-        .skill-info {
-            position: relative;
-            border: solid 1px #c3ced9;
-            padding: 16px 12px;
-            border-radius: 4px;
-            padding-bottom: 4px;
-            .label-form {
-                font-size: 14px;
-                height: 16px;
-                top: -10px;
-            }
-            .ant-input {
-                height: 28px;
-            }
-            input[type="text"] {
-                font-size: 14px;
-            }
-            .new-tag {
-                color: #45494d !important;
-                i {
-                    color: #45494d !important;
-                }
-            }
-        }
-        .looking {
-            .ant-tag {
-                background-color: #ffdf49;
-                border: solid 1px #ffdf49;
-                color: #2e3033;
-                i {
-                    color: #2e3033 !important;
-                }
-            }
-        }
-    }
-    .links {
-        .link-button {
-            button {
-                overflow: hidden;
-                border: solid 1px #a1aab3;
-                width: 85px;
-                height: 28px;
-                font-size: 12px;
-            }
-        }
-        .links-tag-container {
-            .ant-tag {
-                border: solid 1px #a1aab3;
-                padding: 4px 8px;
-                font-size: 12px;
-                margin-bottom: 8px;
-                background-color: #fff;
-                color: #a1aab3;
-                i {
-                    color: #a1aab3 !important;
-                }
-            }
-            input {
-                height: 30px !important;
-                font-size: 12px;
-            }
-            .new-tag {
-                width: 85px;
-                text-align: center;
-            }
-        }
-    }
+
     .update-button {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
         .skip-button {
-            color: #999999;
+            cursor: pointer;
             padding-right: 32px;
         }
+
         .next-button {
             button {
+                border-radius: 24px;
                 width: 120px;
-                height: 48px;
+                height: 44px;
             }
         }
     }

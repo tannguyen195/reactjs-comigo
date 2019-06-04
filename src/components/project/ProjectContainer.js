@@ -13,7 +13,8 @@ import * as jobAction from '../../actions/job'
 import PreviewImage from '../common/previewImage/PreviewImage'
 import PostJobModalContainer from '../postJob/PostJobModalContainer'
 import Loading from '../common/loading/Loading'
-
+import CollaboratorModal from './CollaboratorModal'
+import JobDetail from '../common/jobDetail/JobDetail'
 import _project from './_project.less'
 import _ from 'lodash'
 
@@ -78,18 +79,23 @@ class ProjectContainer extends Component {
                     previewImage={previewImage}
                     togglePreviewImage={togglePreviewImage}
                 />
+
                 <PostJobModalContainer />
+                <JobDetail {...this.props} />
                 {
                     userData && detail ?
-                        <Project
-                            {...this.state}
-                            {...this.props}
-                            edit={this.isUserProject()}
-                            onUpdateChange={this.onUpdateChange}
-                            handlePostUpdate={this.handlePostUpdate}
+                        <div>
+                            <Project
+                                {...this.state}
+                                {...this.props}
+                                edit={this.isUserProject()}
+                                onUpdateChange={this.onUpdateChange}
+                                handlePostUpdate={this.handlePostUpdate}
 
 
-                        />
+                            />
+                            <CollaboratorModal collaboratorData={_.concat(detail.shares, [userData])} {...this.props} />
+                        </div>
                         : <Loading />
                 }
 
@@ -100,14 +106,17 @@ class ProjectContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
+        visibleCollaborator: state.toggle.visibleCollaborator,
         visibleEditUpdate: state.toggle.visibleEditUpdate,
         userData: state.user.data,
         detail: state.project.detail,
         visiblePreview: state.toggle.visiblePreview,
         visiblePostJob: state.toggle.visiblePostJob,
         previewImage: state.toggle.previewImage,
+        visibleJobDetail: state.toggle.visibleJobDetail,
         status: state.project.status,
         jobList: state.job.jobList,
+        jobDetail: state.toggle.jobDetail,
     };
 }
 export function mapDispatchToProps(dispatch) {

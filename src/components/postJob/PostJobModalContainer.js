@@ -17,7 +17,7 @@ class PostJobModalContainer extends Component {
 	}
 	handlePostJob(e) {
 		const { detail } = this.props
-		
+
 		e.preventDefault()
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
@@ -26,6 +26,8 @@ class PostJobModalContainer extends Component {
 					description: values.description,
 					projectID: detail._id,
 					tags: this.state.skills,
+					incentive: values.incentive,
+					expectedTime: values.expectedTime
 				})
 			}
 		})

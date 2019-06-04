@@ -1,33 +1,40 @@
 .step-bar-container {
     background: #fff;
+
     .signup-step-bar {
         padding-top: 24px;
         padding-bottom: 44px;
         flex: 1;
+
         .step-bar {
             display: flex;
             margin: 0 auto;
             height: 4px;
             background-color: rgba(5, 26, 51, 0.1);
         }
+
         .inactive-step {
             height: 4px;
             width: 182.5px;
             background-color: #edf0f2;
             position: relative;
+
             .inactive-text {
                 color: #999999
             }
         }
+
         .active-step {
             height: 4px;
             width: 182.5px;
             background-color: #13d900;
             position: relative;
+
             .active-text {
                 color: #2e3033
             }
         }
+
         .step-stage {
             font-size: 14px;
             font-weight: 500;
@@ -40,16 +47,17 @@
 }
 
 .sign-up-container {
-    .sign-up-title {}
+    padding-top: 60px;
+
     .sign-up-body {
-        width: 540px;
+        width: 350px;
         margin: 0 auto;
+
         .sign-up-button {
             button {
-                width: 100%;
-                height: 60px;
-                font-weight: bold;
-                font-size: 18px;
+                width: 220px;
+                height: 44px;
+                border-radius: 24px;
             }
         }
     }
@@ -58,6 +66,7 @@
 .complete-container {
     padding: 40px 0;
     text-align: center;
+
     .ant-card-body {
         max-width: 540px;
         margin: 0 auto;
@@ -66,6 +75,7 @@
         padding-left: 0;
         padding-right: 0;
     }
+
     .complete-desc {
         text-align: center;
         padding-top: 16px;
@@ -73,11 +83,13 @@
         font-weight: normal;
         color: #45494d;
     }
+
     .complete-options {
         padding-top: 40px;
         text-align: center;
         max-width: 500px;
         margin: 0 auto !important;
+
         .option-item {
             cursor: pointer;
             width: 220px;
@@ -88,16 +100,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
             .item-image {
                 border-radius: 4px;
                 padding: 28px;
                 border: dashed 1px #2e3033;
                 margin-bottom: 16px;
+
                 img {
                     width: 24px;
                     height: 24px;
                 }
             }
+
             .item-text {
                 font-size: 18px;
                 font-weight: normal;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Form, Input, Row, Col, Button, } from 'antd'
+import { Link } from 'routes'
 const FormItem = Form.Item;
 export default class extends Component {
 
@@ -10,11 +11,11 @@ export default class extends Component {
             <div className="sign-up-container">
 
                 <div className="sign-up-body">
-                    <Card className="marginTop8" bordered={false}>
-                        <div className="sign-up-title Title-Medium-Center">
+                    <div className="marginTop8" bordered={false}>
+                        <div className="marginBottom12 H2-Black-Center">
                             Create an Account
             </div>
-                        <div className="Body-16 marginBottom48">We are only live at the University of Iowa. Only @uiowa.edu emails will be accepted. Click here to be notified when we're available at your school.</div>
+                        <div className="Body-Dark-Grey-Center marginBottom28">We're live at the University of Iowa! Only students with an "@uiowa.edu" email address can create an account. Bummed? Let us know!</div>
                         <Form onSubmit={handleSubmit}>
                             <Row gutter={16}>
                                 <Col md={12} lg={12}>
@@ -23,7 +24,7 @@ export default class extends Component {
                                         {getFieldDecorator('firstname', {
                                             rules: [{ required: true, message: 'Please input your first name!', whitespace: true }],
                                         })(
-                                            <Input />
+                                            <Input placeholder="Peter" />
                                         )}
                                     </FormItem>
                                 </Col>
@@ -33,13 +34,13 @@ export default class extends Component {
                                         {getFieldDecorator('lastname', {
                                             rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
                                         })(
-                                            <Input />
+                                            <Input placeholder="Park" />
                                         )}
                                     </FormItem>
                                 </Col>
                             </Row>
                             <FormItem className="marginBottom32" >
-                                <div className="label-form">Email</div>
+                                <div className="label-form">Student Email</div>
                                 {getFieldDecorator('email', {
                                     rules: [{
                                         type: 'email', message: 'The input is not valid E-mail!',
@@ -48,7 +49,7 @@ export default class extends Component {
                                         message: 'Please input your E-mail!',
                                     }],
                                 })(
-                                    <Input  />
+                                    <Input placeholder="peterpark@uiowa.edu" />
                                 )}
                             </FormItem>
                             <FormItem className="marginBottom32">
@@ -73,11 +74,15 @@ export default class extends Component {
                                     <Input type="password" onBlur={handleConfirmBlur} placeholder="Confirm your password" />
                                 )}
                             </FormItem>
-                            <FormItem className="sign-up-button">
-                                <Button loading={status === "running"} type="primary" htmlType="submit">SIGN UP</Button>
+                            <FormItem className="sign-up-button Button-White-Center">
+                                <Button className="Button-White-Center" loading={status === "running"} type="primary" htmlType="submit">SIGN UP</Button>
                             </FormItem>
+                            <div className="Button-Dark-Grey-Center">Already have an account?
+                             <Link to="/login" prefetch>
+                                    <a>{` Sign In`}</a>
+                                </Link></div>
                         </Form>
-                    </Card>
+                    </div>
                 </div>
             </div>
         )

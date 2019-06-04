@@ -16,7 +16,8 @@ export const ActionTypes = keyMirror({
     // TOGGLE CONSTANT ACTION TYPE
     TOGGLE_HOME_VIEW: undefined,
     TOGGLE_PREVIEW_IMAGE: undefined,
-    TOGGLE_REQUEST_COLLABORATOR: undefined,
+    TOGGLE_COLLABORATOR: undefined,
+    TOGGLE_JOB_DETAIL: undefined,
     TOGGLE_REMOVE_COLLABORATOR: undefined,
     TOGGLE_EDIT_UPDATE: undefined,
     TOGGLE_EDIT_COMMENT: undefined,
@@ -80,6 +81,7 @@ export const ActionTypes = keyMirror({
     UPLOAD_IMAGE: undefined,
     UPLOAD_IMAGE_SUCCESS: undefined,
     UPLOAD_IMAGE_ERROR: undefined,
+
     UPLOAD_SUCCESS: undefined,
     UPLOAD_ERROR: undefined,
 
@@ -188,6 +190,10 @@ export const ActionTypes = keyMirror({
     CHANGE_PASSWORD: undefined,
     CHANGE_PASSWORD_SUCCESS: undefined,
     CHANGE_PASSWORD_ERROR: undefined,
+
+    SET_STEP: undefined,
+
+    UPDATE_CREATE_PROJECT: undefined
 });
 
 export const STATUS = {

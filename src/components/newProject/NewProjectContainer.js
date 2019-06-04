@@ -8,22 +8,40 @@ import _newProject from './_newProject.less'
 import UploadPhotoContainer from '../common/uploadPhoto/UploadPhotoContainer'
 import * as fileAction from '../../actions/file'
 import * as projectAction from '../../actions/project'
+import _ from 'lodash'
+let idLink = 0
 class NewProjectContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
             lookingSkills: [],
             projectSkills: [],
-            links: [],
+
             visibleUploadModal: false,
-            preloadImage: null
+            preloadImage: null,
+            media: []
         }
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.returnImage != this.props.returnImage && nextProps.statusUpload === "success")
+        if (nextProps.returnImage != this.props.returnImage && nextProps.statusImage === "success")
             this.setState({
                 preloadImage: nextProps.returnImage
             })
+        if (nextProps.mediaData != this.props.mediaData && nextProps.statusUpload === "success")
+            this.setState({
+                media: _.concat(this.state.media, [nextProps.mediaData])
+            })
+    }
+    onMediaChange = (data) => {
+        const { uploadImage } = this.props
+        if (data.event)
+            uploadImage({
+                imageData: data,
+                type: 0
+            })
+        // this.setState({
+        //     media: media.splice(e.index, 1, { item: e.e })
+        // })
     }
 
     toggleUploadModal = () => {
@@ -37,40 +55,76 @@ class NewProjectContainer extends Component {
         })
     }
 
-    handleSubmit = (e) => {
+    removeLink = (k) => {
+
+        const { form } = this.props;
+        // can use data-binding to get
+        const links = form.getFieldValue('links');
+        // We need at least one passenger
+        if (links.length === 1) {
+            form.setFieldsValue({
+                links: []
+            })
+        }
+
+        // can use data-binding to set
+        form.setFieldsValue({
+            links: links.filter(key => key !== k),
+        });
+    };
+
+    addLink = () => {
+        const { form } = this.props;
+        // can use data-binding to get
+        const links = form.getFieldValue('links');
+        const nextLinks = links.concat(idLink++);
+        // can use data-binding to set
+        // important! notify form to detect changes
+        form.setFieldsValue({
+            links: nextLinks,
+        });
+    };
+
+    handleBack = (e) => {
+
+        const { setStep, step } = this.props
+
+        setStep(step - 1)
+    }
+    onTabClick = (e) => {
+
+        const { setStep, step, updateCreateProject, returnImage, create, data } = this.props
+
         e.preventDefault();
-        const { form, create } = this.props
-        const { lookingSkills, projectSkills, links, preloadImage } = this.state
+        const { form } = this.props
+
         form.validateFieldsAndScroll((err, values) => {
-            if (!err) {
-                create({
-                    lookingSkills: lookingSkills,
-                    projectSkills: projectSkills,
-                    links: links,
-                    name: values.name,
-                    description: values.description,
-                    coverURL: preloadImage
+            console.log("values", values)
+            let shareList = []
+            if (values.email)
+                values.email.forEach((item, index) => {
+                    if (item)
+                        shareList.push({
+                            email: item,
+                            role: values.role[index]
+                        })
                 })
+
+            if (!err) {
+                if (step !== 2)
+                    setStep(step + 1)
+                else if (step === 2)
+                    create(data)
+                updateCreateProject({
+                    ...values,
+                    shareList: shareList,
+                    coverURL: returnImage,
+                    media: this.state.media,
+                    links: values.link
+                })
+
             }
         });
-    }
-
-    onTagLookingChange = (lookingSkills) => {
-        this.setState({
-            lookingSkills
-        })
-    }
-
-    onTagProjectChange = (projectSkills) => {
-        this.setState({
-            projectSkills
-        })
-    }
-
-    onTagLinkChange = (links) => {
-        this.setState({
-            links
-        })
     }
     render() {
         const { visibleUploadModal, preloadImage } = this.state
@@ -85,16 +139,18 @@ class NewProjectContainer extends Component {
                     userData && <NewProject
                         {...this.state}
                         {...this.props}
-                        handleSubmit={this.handleSubmit}
+                        removeLink={this.removeLink}
+                        addLink={this.addLink}
+
+                        onMediaChange={this.onMediaChange}
                         toggleUploadModal={this.toggleUploadModal}
-                        onTagProjectChange={this.onTagProjectChange}
-                        onTagLookingChange={this.onTagLookingChange}
-                        onTagLinkChange={this.onTagLinkChange}
+                        handleBack={this.handleBack}
+                        onTabClick={this.onTabClick}
                     />
                 }
 
                 <UploadPhotoContainer
-                    ratio={1.55}
+                    ratio={3.26}
                     imageUrl={preloadImage}
                     toggleUploadModal={this.toggleUploadModal}
                     visibleUploadModal={visibleUploadModal} />
@@ -108,8 +164,13 @@ export function mapStateToProps(state) {
         coverProject: state.file.coverProject,
         userData: state.user.data,
         returnImage: state.file.returnImage,
-        statusUpload: state.file.status,
-        status:state.project.status
+        statusUpload: state.file.statusUploadImage,
+        statusImage: state.file.status,
+        status: state.project.status,
+        step: state.project.step,
+        data: state.project.data,
+        type: state.file.type,
+        mediaData: state.file.mediaData,
     };
 }
 export function mapDispatchToProps(dispatch) {

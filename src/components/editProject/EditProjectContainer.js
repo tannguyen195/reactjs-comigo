@@ -14,10 +14,8 @@ import _ from 'lodash'
 
 class EditProjectContainer extends Component {
     constructor(props) {
-        super(props)
+        super(props)    
         this.state = {
-            lookingSkills: [],
-            projectSkills: [],
             links: [],
             visibleUploadModal: false,
             preloadImage: null,
@@ -34,13 +32,13 @@ class EditProjectContainer extends Component {
         if (nextProps.detail && nextProps.detail !== detail) {
 
             this.setState({
-                lookingSkills: nextProps.detail.lookingSkills || [],
-                projectSkills: nextProps.detail.projectSkills || [],
+
                 links: nextProps.detail.links || [],
                 preloadImage: nextProps.detail.coverURL,
                 media: nextProps.detail.media
             })
         }
+        
         if (nextProps.returnImage !== this.props.returnImage)
             this.setState({
                 preloadImage: nextProps.returnImage
@@ -84,17 +82,8 @@ class EditProjectContainer extends Component {
         });
     }
 
-    onTagLookingChange = (lookingSkills) => {
-        this.setState({
-            lookingSkills
-        })
-    }
-
-    onTagProjectChange = (projectSkills) => {
-        this.setState({
-            projectSkills
-        })
-    }
+  
+  
 
     onTagLinkChange = (links) => {
         this.setState({
@@ -118,8 +107,6 @@ class EditProjectContainer extends Component {
                         {...this.props}
                         handleSubmit={this.handleSubmit}
                         toggleUploadModal={this.toggleUploadModal}
-                        onTagProjectChange={this.onTagProjectChange}
-                        onTagLookingChange={this.onTagLookingChange}
                         onTagLinkChange={this.onTagLinkChange}
                         onMediaChange={this.onMediaChange}
                         handleRemoveProject={this.handleRemoveProject}

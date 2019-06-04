@@ -5,15 +5,17 @@ export const initial = {
     visibleProject: false,
     previewImage: null,
     visiblePreview: false,
-    visibleRequestCollaborator: false,
+    visibleCollaborator: false,
     visibleRemoveCollaborator: false,
     visibleEditUpdate: false,
     visiblePostJob: false,
+    visibleJobDetail: false,
     updateData: null,
     collaboratorData: null,
     commentData: null,
     filterValue: "all",
     visibleForgot: false,
+    jobDetail: null,
 }
 export default {
     toggle: handleActions({
@@ -34,8 +36,8 @@ export default {
                     visiblePreview: { $set: !state.visiblePreview },
                 })
         ,
-        [ActionTypes.TOGGLE_REQUEST_COLLABORATOR]: (state) => update(state, {
-            visibleRequestCollaborator: { $set: !state.visibleRequestCollaborator },
+        [ActionTypes.TOGGLE_COLLABORATOR]: (state) => update(state, {
+            visibleCollaborator: { $set: !state.visibleCollaborator },
         }),
         [ActionTypes.TOGGLE_REMOVE_COLLABORATOR]: (state, { payload }) =>
             update(state, {
@@ -84,6 +86,17 @@ export default {
                 visibleForgot: { $set: !state.visibleForgot },
             })
         },
+        [ActionTypes.TOGGLE_JOB_DETAIL]: (state, { payload }) =>
+            !state.visibleJobDetail ?
+                update(state, {
+                    visibleJobDetail: { $set: !state.visibleJobDetail },
+                    jobDetail: !state.visibleJobDetail ? { $set: payload } : { $set: "" },
+                }) :
+
+                update(state, {
+                    visibleJobDetail: { $set: !state.visibleJobDetail },
+                })
+        ,
     }, initial),
 };
 

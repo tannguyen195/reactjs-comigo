@@ -9,7 +9,8 @@ export default class extends Component {
         const { toggleRequestCollaborator, collaborators, detail } = this.props;
         return (
             <div className="collaborator__edit-container">
-                <Card className="collaborator__edit marginTop8" bordered={false} >
+                <div className="H2-Black-Left">Members</div>
+                <div className="collaborator__edit marginTop8" bordered={false} >
 
                     {
                         collaborators.length > 0 &&
@@ -17,28 +18,29 @@ export default class extends Component {
                             return <EditCollaborator {...this.props} key={index} data={item} />
                         })
                     }
+
+                    <div className="Button-Black-Left paddingBottom20">Pending member</div>
                     {
                         detail && detail.pendingShares && detail.pendingShares.map((item, index) => {
                             return <div key={index} className="pending__collaborator-container">
-                                <div className="collaborator__picture"><Image image={item.pictureURL} /></div>
+                                <div className="collaborator__picture">
+                                    <Image image={item.pictureURL} /></div>
                                 <div className="collaborator__pending">
-                                    <Input value={item.email} disabled className="collaborator__name" />
-                                    <div className="text">Response pending</div>
+
+                                    <div className="collaborator__info">
+                                        <div className="Body-Black-Left">    {item.firstName + ` ` + item.lastName}</div>
+                                        <div className="Caption-Grey-Left">{item.email}</div>
+                                    </div>
+
                                 </div>
-                                <Input disabled={true}
-                                    value={item.role}
-                                    className="collaborator__role"
-                                />
+                                <div className="Body-Black-Left">{item.role}</div>
+
                             </div>
                         })
                     }
                     {collaborators.length > 0 && detail.pendingShare > 0 && <NoResult height="initial" />}
-                </Card>
-                <div className="button__send marginTop8">
-                    <Button onClick={toggleRequestCollaborator} type="primary">
-                        Send a collaboration request
-                        </Button>
                 </div>
+                
             </div>
         )
     }

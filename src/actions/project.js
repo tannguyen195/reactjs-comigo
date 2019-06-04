@@ -24,7 +24,8 @@ export const {
   editUserRole,
 
   getMajorList,
-
+  setStep,
+  updateCreateProject
 } = createActions({
   [ActionTypes.CREATE]: (data) => (data),
   [ActionTypes.UPDATE]: (data) => (data),
@@ -46,4 +47,6 @@ export const {
   [ActionTypes.REMOVE_SHARED_USER]: (data) => (data),
   [ActionTypes.EDIT_USER_ROLE]: (data) => (data),
   [ActionTypes.GET_MAJOR_LIST]: (data) => (data),
+  [ActionTypes.SET_STEP]: (data) => (data),
+  [ActionTypes.UPDATE_CREATE_PROJECT]: (data) => (data),
 });

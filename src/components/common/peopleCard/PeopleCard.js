@@ -10,7 +10,7 @@ export default class extends Component {
         const { data } = this.props
         return (
             <Link to={"/user/" + data.id}>
-                <Card hoverable bordered={false} className="people-card-container">
+                <Card hoverable bordered={false} className="people-card">
                     <div className="people-container">
                         <div className="people-image-container">
                             <Image image={data.pictureURL} />
@@ -18,24 +18,21 @@ export default class extends Component {
                         <div className="people-right" >
                             <div className="people-info-container">
 
-                                <div className="people-name Text-Style">
+                                <div className="people-name H3-Black-Left">
                                     {data.firstName + ` ` + data.lastName}
                                 </div>
 
-                                <div className="people-mail Title-12-Left">
+                                <div className="people-mail Caption-Grey-Left">
                                     {data.email}
                                 </div>
 
-                                <div className="people-desc Body-12">
-                                    {data.bio}
-                                    {/* <span> view more</span> */}
-                                </div>
+                              
                                 <div className="tag-container">
                                     <div>
                                         {
                                             data.skills.map((item, index) => {
                                                 if (index < 3)
-                                                    return <Tag key={index}>{item}</Tag>
+                                                    return <Tag className="Body-Dark-Grey-Center" key={index}>{item}</Tag>
                                             })
                                         }
                                         {
@@ -45,10 +42,12 @@ export default class extends Component {
                                         <Tag className="tag-plus">+5</Tag> */}
                                     </div>
                                 </div>
+                                <div className="people-desc Body-Black-Left">
+                                    {data.bio}
+                                    {/* <span> view more</span> */}
+                                </div>
                             </div>
-                            <a href={`mailto:${data.email}`} className="people-invite">
-                                <img src={mailIcon} alt="mail" />
-                            </a>
+                           
                         </div>
 
                     </div>

@@ -7,6 +7,7 @@ export const initial = {
     message: "",
     loadImage: null,
     returnImage: null,
+    type: null
 }
 export default {
     file: handleActions({
@@ -35,9 +36,11 @@ export default {
         }),
 
         [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
+            console.log("response", response)
             return update(state, {
                 statusUploadImage: { $set: STATUS.SUCCESS },
-                
+                mediaData: { $set: response.data },
+                type: { $set: response.type },
             })
         },
         [ActionTypes.UPLOAD_IMAGE_ERROR]: (state, { error }) => {

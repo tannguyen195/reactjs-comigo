@@ -4,6 +4,7 @@ import { Input, Tag, Icon, Tooltip } from 'antd'
 export default class extends Component {
 
     render() {
+
         const {
 
             handleInputChange,
@@ -30,6 +31,7 @@ export default class extends Component {
                 })}
                 {!inputVisible && (
                     <Input
+                   
                         placeholder={text}
                         ref={saveInputRef}
                         type="text"

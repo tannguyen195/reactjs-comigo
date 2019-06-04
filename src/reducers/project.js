@@ -3,12 +3,15 @@ import { ActionTypes, STATUS, renderMessage } from 'constants/index';
 import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
+    statusRequest: STATUS.IDLE,
     message: "",
     list: [],
     detail: null,
     detailList: [],
     listData: null,
-    requestData: null
+    requestData: null,
+    step: 0,
+    data: {}
 }
 
 export default {
@@ -187,33 +190,33 @@ export default {
 
         // CREATE_SHARE_LINK ACTION
         [ActionTypes.CREATE_SHARE_LINK]: (state, { response }) => update(state, {
-            status: { $set: STATUS.RUNNING },
+            statusRequest: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
             return update(state, {
-                status: { $set: STATUS.SUCCESS },
+                statusRequest: { $set: STATUS.SUCCESS },
                 requestData: { $set: response.data },
                 detail: { pendingShares: { $set: response.data.pendingShares } }
             })
         },
         [ActionTypes.CREATE_SHARE_LINK_ERROR]: (state, { error }) => {
             return update(state, {
-                status: { $set: STATUS.ERROR },
+                statusRequest: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
             })
         },
 
-        [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
+        // [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
 
-            if (response.payload.index !== 3) return update(state, {
-                detail: { media: { [response.payload.index]: { $set: response.data } } }
-            })
-            else {
-                return update(state, {
-                    detail: { media: { $push: [response.data] } }
-                })
-            }
-        },
+        //     if (response.payload.index !== 3) return update(state, {
+        //         detail: { media: { [response.payload.index]: { $set: response.data } } }
+        //     })
+        //     else {
+        //         return update(state, {
+        //             detail: { media: { $push: [response.data] } }
+        //         })
+        //     }
+        // },
 
 
         // REMOVE SHARED COLLABORATOR ACTION
@@ -344,7 +347,18 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
-
+        [ActionTypes.SET_STEP]: (state, payload) => {
+            
+            return update(state, {
+                step: { $set: payload.payload },
+            })
+        },
+        [ActionTypes.UPDATE_CREATE_PROJECT]: (state, data) => {
+            
+            return update(state, {
+                data: { $merge: data.payload },
+            })
+        }
     }, initial),
 };
 

@@ -21,7 +21,7 @@ class CollaboratorContainer extends Component {
     componentWillReceiveProps(nextProps) {
         let tempCollaborators = []
         const { detail } = nextProps
-        if (detail.shares !== this.props.detail.shares) {
+        if (detail && detail.shares && detail.shares !== this.props.detail.shares) {
 
             detail.shares.forEach((item) => {
                 tempCollaborators.push({
@@ -34,7 +34,12 @@ class CollaboratorContainer extends Component {
                 collaborators: tempCollaborators
             })
         }
-
+        if (nextProps.statusRequest === "success" || nextProps.statusRequest === "error" && this.props.statusRequest !== nextProps.statusRequest) {
+            this.props.form.setFieldsValue({
+                email: "",
+                role: "",
+            })
+        }
     }
     componentDidMount() {
 
@@ -145,6 +150,7 @@ export function mapStateToProps(state) {
         collaboratorData: state.toggle.collaboratorData,
         detail: state.project.detail,
         status: state.project.status,
+        statusRequest: state.project.statusRequest,
     };
 }
 export function mapDispatchToProps(dispatch) {
