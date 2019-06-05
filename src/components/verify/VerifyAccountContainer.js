@@ -25,7 +25,7 @@ class VerifyAccountContainer extends Component {
         resend()
     }
     handleContinue = () => {
-        Router.push('/profile/edit')
+        Router.push('/')
     }
 
     render() {

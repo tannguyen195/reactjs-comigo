@@ -7,6 +7,8 @@ import EditProject from './EditProject'
 import _editProject from './_editProject.less'
 import UploadPhotoContainer from '../common/uploadPhoto/UploadPhotoContainer'
 import { Router } from 'routes'
+
+
 import * as fileAction from '../../actions/file'
 import * as projectAction from '../../actions/project'
 import Loading from '../common/loading/Loading'

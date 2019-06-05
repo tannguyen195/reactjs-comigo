@@ -53,13 +53,13 @@ const job = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'job',
-        method: 'POST',
+        url: endPoint + 'job/' + data.jobID,
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': cookies.get('token')
         },
-        data: JSON.stringify(data),
+
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -71,8 +71,8 @@ const job = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'job',
-        method: 'POST',
+        url: endPoint + 'job/' + data.jobID,
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': cookies.get('token')
@@ -90,13 +90,13 @@ const job = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'job/list/' + id,
+        url: endPoint + 'job/list' + `${id ? `${'?projectID=' + id}` : ""}`,
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': cookies.get('token')
         },
-        
+
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -217,7 +217,7 @@ export function* listJob(data) {
     });
   }
   catch (error) {
- 
+
     yield put({
       type: ActionTypes.LIST_JOB_ERROR,
       error: error.response,

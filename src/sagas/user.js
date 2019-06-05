@@ -51,7 +51,7 @@ export const auth = {
     // Post a fake request
     return axios(
       {
-        url: endPoint + 'signUp',
+        url: endPoint + 'user/signUp',
         method: 'POST',
         data: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' },
@@ -241,6 +241,10 @@ export function* signup(data) {
     yield put({
       type: ActionTypes.SIGNUP_ERROR,
       error: error.response,
+    });
+    notification['error']({
+      message: 'Fail to sign up!',
+      description: error.response.data.error,
     });
   }
 }

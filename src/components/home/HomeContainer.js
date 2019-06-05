@@ -5,6 +5,7 @@ import Head from '../head'
 import * as projectAction from '../../actions/project'
 import * as peopleAction from '../../actions/people'
 import * as toggleAction from '../../actions/toggle'
+import * as jobAction from '../../actions/job'
 import NewsFeed from './NewsFeed'
 import _newsFeed from './_newsFeed.less'
 
@@ -35,10 +36,18 @@ class HomeContainer extends Component {
         }
     }
     componentDidMount() {
-        const { getList, getPeopleList } = this.props
+        const { getList, getPeopleList, listJob, list, people, jobList } = this.props
 
-        getList("")
-        getPeopleList("")
+        if (!list) {
+            getList("")
+        }
+
+        if (!people) {
+            getPeopleList("")
+        }
+        if (!jobList) {
+            listJob()
+        }
     }
     handleSubcribe = (e) => {
         const { subcribe } = this.props
@@ -62,13 +71,21 @@ class HomeContainer extends Component {
         })
     }
     onFilterChange = (e) => {
-        const { toggleHomeView, visibleProject, getList, getPeopleList } = this.props
+        const { toggleHomeView, listJob, getList, getPeopleList, list, people, jobList, status } = this.props
+        if (status !== "running") {
+            if (!list) {
+                getList("")
+            }
 
-        if (!visibleProject)
-            getList('')
-        else
-            getPeopleList('')
-        toggleHomeView(e)
+            if (!people) {
+                getPeopleList("")
+            }
+            if (e === "job")
+                listJob()
+
+
+            toggleHomeView(e)
+        }
     }
     renderLoggedHome() {
         const {
@@ -125,6 +142,7 @@ export function mapStateToProps(state) {
     return {
         isLoggedIn: state.user.isLoggedIn,
         list: state.project.list,
+        jobList: state.job.jobList,
         visibleProject: state.toggle.visibleProject,
         people: state.people.people,
         status: state.project.status,
@@ -136,6 +154,7 @@ export function mapStateToProps(state) {
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        ...jobAction,
         ...projectAction,
         ...peopleAction,
         ...toggleAction

@@ -4,7 +4,7 @@ import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
     message: "",
-    people: [],
+    people: null,
     peopleDetail: null
 }
 

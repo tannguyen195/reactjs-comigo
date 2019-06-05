@@ -12,7 +12,7 @@ export default class extends Component {
         const {
             handleBack, onTabClick, addLink, removeLink, media, statusUpload, onMediaChange
         } = this.props
-        console.log("asdasdasd", this.props)
+
 
         const links = getFieldValue('links') || [];
         const formItems = links.map((k, index) => (

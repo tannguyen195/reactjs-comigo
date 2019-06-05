@@ -22,7 +22,11 @@ export const ActionTypes = keyMirror({
     TOGGLE_EDIT_UPDATE: undefined,
     TOGGLE_EDIT_COMMENT: undefined,
     TOGGLE_POST_JOB: undefined,
+    TOGGLE_EDIT_JOB: undefined,
+    TOGGLE_REMOVE_JOB: undefined,
     TOGGLE_FORGOT_MODAL: undefined,
+
+
     // USER CONSTANT ACTION TYPE
     LOGIN: undefined,
     LOGIN_SUCCESS: undefined,
@@ -205,7 +209,7 @@ export const STATUS = {
 };
 
 export const endPoint = "https://comigo-backend.herokuapp.com/api/"
-//export const endPoint = "http://192.168.86.20:5000/api/"
+//export const endPoint = "http://192.168.86.51:5000/api/"
 //export const endPoint = "http://comigobackend-dev.us-west-1.elasticbeanstalk.com/api/"
 //export const endPoint = "http://comigobackend-production.us-west-1.elasticbeanstalk.com/api/"
 

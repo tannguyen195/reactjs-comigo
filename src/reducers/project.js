@@ -5,7 +5,7 @@ export const initial = {
     status: STATUS.IDLE,
     statusRequest: STATUS.IDLE,
     message: "",
-    list: [],
+    list: null,
     detail: null,
     detailList: [],
     listData: null,

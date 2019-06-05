@@ -12,11 +12,15 @@ import * as jobAction from '../../actions/job'
 
 import PreviewImage from '../common/previewImage/PreviewImage'
 import PostJobModalContainer from '../postJob/PostJobModalContainer'
+import EditJobModalContainer from '../editJob/EditJobModalContainer'
+
 import Loading from '../common/loading/Loading'
 import CollaboratorModal from './CollaboratorModal'
+import JobRemove from './JobRemove'
 import JobDetail from '../common/jobDetail/JobDetail'
 import _project from './_project.less'
 import _ from 'lodash'
+import { deleteJob } from '../../sagas/job';
 
 class ProjectContainer extends Component {
     constructor(props) {
@@ -64,8 +68,22 @@ class ProjectContainer extends Component {
             "content": this.state.updateContent
         })
     }
+    handleRemoveJob = (e) => {
+        const { deleteJob } = this.props
+        deleteJob({
 
+        })
+    }
+    handleRemoveJob = (e) => {
+        const { deleteJob,jobDetail } = this.props
 
+        deleteJob({
+
+            jobID: jobDetail._id,
+
+        })
+
+    }
     render() {
         const { userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
         return (
@@ -79,9 +97,10 @@ class ProjectContainer extends Component {
                     previewImage={previewImage}
                     togglePreviewImage={togglePreviewImage}
                 />
-
+                <EditJobModalContainer />
                 <PostJobModalContainer />
                 <JobDetail {...this.props} />
+                <JobRemove handleRemoveJob={this.handleRemoveJob} {...this.props} />
                 {
                     userData && detail ?
                         <div>
@@ -91,10 +110,9 @@ class ProjectContainer extends Component {
                                 edit={this.isUserProject()}
                                 onUpdateChange={this.onUpdateChange}
                                 handlePostUpdate={this.handlePostUpdate}
-
-
+                                handleRemoveJob={this.handleRemoveJob}
                             />
-                            <CollaboratorModal collaboratorData={_.concat(detail.shares, [userData])} {...this.props} />
+                            <CollaboratorModal collaboratorData={_.concat([detail.owner], detail.shares)} {...this.props} />
                         </div>
                         : <Loading />
                 }
@@ -115,8 +133,11 @@ export function mapStateToProps(state) {
         previewImage: state.toggle.previewImage,
         visibleJobDetail: state.toggle.visibleJobDetail,
         status: state.project.status,
+        statusJob:state.job.status,
         jobList: state.job.jobList,
         jobDetail: state.toggle.jobDetail,
+        visibleRemoveJob: state.toggle.visibleRemoveJob,
+        visibleEditJob: state.toggle.visibleEditJob
     };
 }
 export function mapDispatchToProps(dispatch) {

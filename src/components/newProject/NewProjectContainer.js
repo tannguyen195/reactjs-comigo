@@ -99,7 +99,7 @@ class NewProjectContainer extends Component {
         const { form } = this.props
 
         form.validateFieldsAndScroll((err, values) => {
-            console.log("values", values)
+          
             let shareList = []
             if (values.email)
                 values.email.forEach((item, index) => {

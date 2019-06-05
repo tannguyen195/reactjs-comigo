@@ -3,7 +3,6 @@ import { Card, Row, Form, Modal, Dropdown, Menu, Input } from 'antd'
 import Image from '../../common/Image'
 import moment from 'moment'
 
-
 const optionIcon = '/static/images/icon-option-2.svg'
 const editIcon = '/static/images/icon-edit-black.svg'
 const trashIcon = '/static/images/icon-trash-black.svg'
@@ -39,7 +38,7 @@ export default class extends Component {
                                 <span className="Button-Black-Left">
                                     {detail.owner.firstName + ` ` + detail.owner.lastName + ` `}
                                 </span>
-                                create a new post
+                                {`created a ${moment.unix(data.updatedAt).isSame(moment(), 'hour') ? "new" : ""} post.`}
                             </div>
                             <div className="Caption-Grey-Left">{moment.unix(data.updatedAt).fromNow()}</div>
                         </div>

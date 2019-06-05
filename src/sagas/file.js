@@ -117,7 +117,7 @@ export function* upload(data) {
 export function* uploadImage(data) {
   try {
     const response = yield call(file.uploadImage, data.payload);
-    console.log()
+
     yield put({
       type: ActionTypes.UPLOAD_IMAGE_SUCCESS,
       response: {

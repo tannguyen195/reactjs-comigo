@@ -19,6 +19,7 @@ export default class extends Component {
             handleChange,
             listData
         } = this.props
+      
         return (
             <div className="major__container">
                 {

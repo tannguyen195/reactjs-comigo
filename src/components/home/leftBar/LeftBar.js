@@ -31,7 +31,10 @@ export default class extends Component {
                                                 <div className="Button-Black-Left">
                                                     {item.name}
                                                 </div>
-                                                <div className="Caption-Grey-Left"> {item.shares.length + 1} members</div>
+                                                {
+                                                    item.shares && <div className="Caption-Grey-Left"> {item.shares.length + 1} members</div>
+                                                }
+
                                             </div>
                                         </a>
 

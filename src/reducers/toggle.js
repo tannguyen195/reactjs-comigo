@@ -16,6 +16,8 @@ export const initial = {
     filterValue: "all",
     visibleForgot: false,
     jobDetail: null,
+    visibleEditJob: false,
+    visibleRemoveJob: false,
 }
 export default {
     toggle: handleActions({
@@ -81,6 +83,20 @@ export default {
                 visiblePostJob: { $set: !state.visiblePostJob },
             })
         },
+        [ActionTypes.TOGGLE_EDIT_JOB]: (state, { payload }) => {
+         
+            return update(state, {
+                jobDetail: !state.visibleEditJob ? { $set: payload } : { $set: null },
+                visibleEditJob: { $set: !state.visibleEditJob },
+            })
+        },
+        [ActionTypes.TOGGLE_REMOVE_JOB]: (state, { payload }) => {
+
+            return update(state, {
+                visibleRemoveJob: { $set: !state.visibleRemoveJob },
+
+            })
+        },
         [ActionTypes.TOGGLE_FORGOT_MODAL]: (state, { response }) => {
             return update(state, {
                 visibleForgot: { $set: !state.visibleForgot },
@@ -97,6 +113,13 @@ export default {
                     visibleJobDetail: { $set: !state.visibleJobDetail },
                 })
         ,
+        [ActionTypes.DELETE_JOB_SUCCESS]: (state, { response }) => {
+
+            return update(state, {
+                visibleRemoveJob: { $set: false },
+                visibleEditJob: { $set: false },
+            })
+        },
     }, initial),
 };
 

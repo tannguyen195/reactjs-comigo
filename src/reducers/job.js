@@ -4,7 +4,7 @@ import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
     message: "",
-    jobList: []
+    jobList: null
 }
 
 export default {
@@ -18,7 +18,7 @@ export default {
 
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                jobList: { $push: [response] } 
+                jobList: { $push: [response] }
             })
         },
         [ActionTypes.POST_JOB_ERROR]: (state, { error }) => {
@@ -52,9 +52,14 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.DELETE_JOB_SUCCESS]: (state, { response }) => {
-
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
+                jobList: {
+                    $splice: [
+                        [state.jobList[state.jobList.findIndex((e) => e._id === response._id)], 1]
+                    ]
+
+                }
             })
         },
         [ActionTypes.DELETE_JOB_ERROR]: (state, { error }) => {
@@ -64,7 +69,6 @@ export default {
             })
         },
 
-
         // POST JOB ACTION
         [ActionTypes.UPDATE_JOB]: (state, { response }) => update(state, {
             status: { $set: STATUS.RUNNING },
@@ -73,6 +77,7 @@ export default {
 
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
+                jobList: { [state.jobList.findIndex((e) => e._id === response._id)]: { $set: response } }
             })
         },
         [ActionTypes.UPDATE_JOB_ERROR]: (state, { error }) => {
@@ -100,6 +105,7 @@ export default {
                 message: { $set: error && error.status && renderMessage(error.status) }
             })
         },
+
     }, initial),
 };
 

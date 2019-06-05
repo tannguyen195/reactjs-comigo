@@ -10,6 +10,8 @@ export const {
   toggleEditUpdate,
   toggleEditComment,
   togglePostJob,
+  toggleEditJob,
+  toggleRemoveJob,
   toggleForgotModal,
   toggleJobDetail
 } = createActions({
@@ -20,6 +22,8 @@ export const {
   [ActionTypes.TOGGLE_EDIT_UPDATE]: (data) => (data),
   [ActionTypes.TOGGLE_EDIT_COMMENT]: (data) => (data),
   [ActionTypes.TOGGLE_POST_JOB]: (data) => (data),
+  [ActionTypes.TOGGLE_EDIT_JOB]: (data) => (data),
+  [ActionTypes.TOGGLE_REMOVE_JOB]: (data) => (data),
   [ActionTypes.TOGGLE_FORGOT_MODAL]: (data) => (data),
   [ActionTypes.TOGGLE_JOB_DETAIL]: (data) => (data),
 });

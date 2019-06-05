@@ -6,6 +6,7 @@ export default class extends Component {
 
     render() {
         const { jobDetail, visibleJobDetail, toggleJobDetail } = this.props
+    
         return (
             <div >
                 <style dangerouslySetInnerHTML={{ __html: _jobDetail }} />

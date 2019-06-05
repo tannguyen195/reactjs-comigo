@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Card, Row, Col, Tag } from 'antd'
 import Image from '../../common/Image'
-import { Link } from 'routes'
 import moment from 'moment'
 import UpdateCardContainer from '../../common/updateCard/UpdateCardContainer'
-const mailIcon = '/static/images/icon-mail.svg'
+import JobPost from '../../common/jobPost/JobPost'
 
 export default class extends Component {
 
     render() {
-        const { data, edit } = this.props
+        const { data, edit, filterValue } = this.props
+       
         return (
             <div>
                 <Card hoverable bordered={false} className="post-card-container">
@@ -22,9 +22,9 @@ export default class extends Component {
                                         {data.owner.firstName + ` ` + data.owner.lastName + ` `}
                                     </span>
 
-                                    created a new project.
-                            </div>
-                                <div className="Caption-Grey-Left">{moment.unix(data.updatedAt).fromNow()}</div>
+                                    {`created a ${moment.unix(data.createdAt).isSame(moment(), 'day') ? "new" : ""} project.`}
+                                </div>
+                                <div className="Caption-Grey-Left">{moment.unix(data.createdAt).fromNow()}</div>
                                 {/* <div className="Sub-Title-10-Left">2 months ago</div> */}
                             </div>
                         </div>
@@ -45,7 +45,7 @@ export default class extends Component {
                                     </div>
                                 </div>
                                 <div className="right">
-                                  
+
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@ export default class extends Component {
                 </Card>
 
                 {
-                    data.latestUpdate &&
+                    data.latestUpdate && filterValue !== "project" &&
                     <UpdateCardContainer
                         isNewFeed={true}
                         detail={data}
@@ -64,6 +64,15 @@ export default class extends Component {
                         }} />
                 }
 
+                {
+                    data.latestJobPost && filterValue !== "project" &&
+                    <JobPost
+                        isNewFeed={true}
+                        edit={edit}
+                        detail={data}
+                        user={data.owner} jobDetail={data.latestJobPost}
+                    />
+                }
             </div>
         )
     }
