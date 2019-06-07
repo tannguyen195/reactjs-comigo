@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Tooltip, } from 'antd'
+import { Card, Button, Badge, } from 'antd'
 import { Link } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
 
@@ -11,10 +11,11 @@ export default class extends Component {
         return userBadge.map((item, index) => {
 
             return <div className="badge" key={index} >
-                <img src={item.imageURL} alt="url" />
-                <div className="badge__count">{item.count || "0"}</div>
-                <div className="name paddingTop2"> {item.name}</div>
+                <Badge count={item.count}>
+                    <img src={item.imageURL} alt="url" />
 
+                    <div className="name paddingTop2"> {item.name}</div>
+                </Badge>
             </div>
 
         })

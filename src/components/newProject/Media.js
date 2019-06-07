@@ -10,7 +10,13 @@ export default class extends Component {
     render() {
         const { getFieldDecorator, getFieldValue } = this.props.form;
         const {
-            handleBack, onTabClick, addLink, removeLink, media, statusUpload, onMediaChange
+            handleBack, 
+            onTabClick, 
+            addLink, 
+            removeLink, 
+            media, 
+            statusUpload, 
+            onMediaChange
         } = this.props
 
 

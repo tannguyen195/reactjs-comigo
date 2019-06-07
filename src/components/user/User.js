@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button, Tooltip } from 'antd'
+import { Card, Button, Badge } from 'antd'
 import Image from '../common/Image'
 import { Link } from 'routes'
 const profileIcon = '/static/images/icon-profile.svg'
@@ -8,14 +8,15 @@ export default class extends Component {
 
     renderBadge() {
         const { userBadge, giveUserNod } = this.props
-    
+
         return userBadge.map((item, index) => {
 
             return <div className="badge" key={index} onClick={() => giveUserNod(item._id)}>
-                <img src={item.imageURL} alt="url" className={item.isChoose ? "hover" : "unhover"} />
-                <div className="badge__count">{item.count || "0"}</div>
-                <div className="name paddingTop2"> {item.name}</div>
-
+                <Badge count={item.count}>
+                    <img src={item.imageURL} alt="url" className={item.isChoose ? "hover" : "unhover"} />
+             
+                    <div className="name paddingTop2"> {item.name}</div>
+                </Badge>
             </div>
 
         })
@@ -117,7 +118,7 @@ export default class extends Component {
 
                     <section className="links">
                         <div className="H3-Black-Left">
-                                Links</div>
+                            Links</div>
 
                         {
                             peopleDetail.links &&
