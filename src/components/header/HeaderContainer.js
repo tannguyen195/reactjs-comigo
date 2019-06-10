@@ -66,7 +66,7 @@ class HeaderContainer extends Component {
             {...this.props}
 
         />
-            <ForgotModalContainer />
+          
         </div>
     }
     render() {

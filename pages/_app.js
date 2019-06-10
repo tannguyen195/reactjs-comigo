@@ -62,7 +62,7 @@ class MyApp extends App {
 
     if (isLoggedIn === null)
       return <Loading />
-    else if (Router.query && Router.query.token && !Router.query.username )
+    else if (Router.query && Router.query.token && !Router.query.username)
       return <VerifyAccountContainer />
 
     else if (isLoggedIn === false && !isVerify)
@@ -92,7 +92,10 @@ class MyApp extends App {
               }} />
             <Head />
             <div className="page-container">
-              <HeaderContainer {...pageProps} />
+              {
+                isLoggedIn && <HeaderContainer {...pageProps} />
+              }
+
               <div className="body-content">
                 {
                   this.renderComponent(isLoggedIn, isVerify)

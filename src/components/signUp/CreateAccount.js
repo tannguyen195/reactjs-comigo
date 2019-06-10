@@ -6,7 +6,7 @@ export default class extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { handleSubmit, compareToFirstPassword, handleConfirmBlur, status, message } = this.props
+        const { handleSubmit, compareToFirstPassword, handleConfirmBlur, status, handleClick } = this.props
         return (
             <div className="sign-up-container">
 
@@ -78,9 +78,9 @@ export default class extends Component {
                                 <Button className="Button-White-Center" loading={status === "running"} type="primary" htmlType="submit">SIGN UP</Button>
                             </FormItem>
                             <div className="Button-Dark-Grey-Center">Already have an account?
-                             <Link to="/login" prefetch>
-                                    <a>{` Sign In`}</a>
-                                </Link></div>
+
+                                    <a onClick={handleClick}>{` Sign In`}</a>
+                            </div>
                         </Form>
                     </div>
                 </div>

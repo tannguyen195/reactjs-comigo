@@ -229,3 +229,6 @@ export const renderMessage = (err) => {
             return "Something went wrong!"
     }
 }
+
+export const commitment = ["a few hours", "a few days", "few weeks", "a semester "]
+export const incentive = ["gratitude", "food", "pay", "resume", "other", "nothing for now"]

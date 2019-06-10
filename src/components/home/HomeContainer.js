@@ -9,7 +9,7 @@ import * as jobAction from '../../actions/job'
 import NewsFeed from './NewsFeed'
 import _newsFeed from './_newsFeed.less'
 
-import People from './People'
+import LoginContainer from '../login/LoginContainer'
 
 import Home from './Home'
 import _home from './_home.less'
@@ -82,8 +82,6 @@ class HomeContainer extends Component {
             }
             if (e === "job")
                 listJob()
-
-
             toggleHomeView(e)
         }
     }
@@ -116,7 +114,7 @@ class HomeContainer extends Component {
         const { isLoggedIn, list } = this.props
 
         return (
-            <div >
+            <div className={!isLoggedIn && "primary__layout"}>
                 <style dangerouslySetInnerHTML={{
                     __html: _home + _newsFeed
                 }} />
@@ -128,8 +126,8 @@ class HomeContainer extends Component {
                 {
                     isLoggedIn ?
                         this.renderLoggedHome() :
-                        <Home
-                            handleSubcribe={this.handleSubcribe}
+                        <LoginContainer
+
                             {...this.state}
                             {...this.props} />
                 }

@@ -7,14 +7,18 @@ import Head from '../head'
 import Login from './Login'
 import _login from './_login.less'
 import { toggleForgotModal } from '../../actions/toggle'
-import { Cookies } from 'react-cookie'
+import ForgotModalContainer from '../forgot/ForgotModalContainer'
 
 class LoginContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            isFlipped: false
         }
+    }
+    handleClick = (e) => {
+        e.preventDefault();
+        this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
     }
     handleSubmit(e) {
         const { login } = this.props
@@ -30,7 +34,7 @@ class LoginContainer extends Component {
     render() {
 
         return (
-            <div >
+            <div>
                 <style dangerouslySetInnerHTML={{
                     __html: _login
                 }} />
@@ -38,8 +42,10 @@ class LoginContainer extends Component {
                 <Login
                     {...this.state}
                     {...this.props}
+                    handleClick={this.handleClick}
                     handleSubmit={(e) => this.handleSubmit(e)}
                 />
+                <ForgotModalContainer />
             </div>
 
         )

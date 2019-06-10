@@ -30,8 +30,8 @@ class ForgotModal extends React.Component {
                     className="modal-body"
                 >
                     <Form onSubmit={handleForgot}>
-                        <div className="forgot-title Display-2BlackCenter">Forgot your password?</div>
-                        <div className="bref Body1RegularGrayLeft">Enter the email address associated with your account, and we’ll email you a link to reset your password.</div>
+                        <div className="forgot-title H2-Black-Center">Forgot your password?</div>
+                        <div className="bref Body-Dark-Grey-Center">Enter the email address associated with your account, and we’ll email you a link to reset your password.</div>
                         <div style={{ marginTop: 0 }} className="form-login">
                             <FormItem style={{ marginBottom: '24px' }}>
                                 {getFieldDecorator('emailForgot', {
@@ -48,9 +48,9 @@ class ForgotModal extends React.Component {
                         <Row type="flex" justify="space-between">
 
                             <Col span={10}>
-                                <FormItem className="button-container email">
-                                    <Button htmlType="submit" type="primary">
-                                        <div className="ButtonWhiteCenter"> RESET PASSWORD</div>
+                                <FormItem className="button-forgot email">
+                                    <Button className="Button-White-Center" htmlType="submit" type="primary">
+                                        <div > RESET PASSWORD</div>
                                     </Button>
                                 </FormItem>
                             </Col>
