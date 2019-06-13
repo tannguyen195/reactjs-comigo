@@ -8,10 +8,10 @@ import _jobPost from './_jobPost.less'
 export default class extends Component {
 
     render() {
-        const { detail, jobDetail, user } = this.props
+        const { detail, jobDetail, user, toggleJobDetail } = this.props
 
         return (
-            <Card hoverable bordered={false} className="job-post">
+            <Card onClick={() => toggleJobDetail(jobDetail)} hoverable bordered={false} className="job-post">
                 <style dangerouslySetInnerHTML={{
                     __html: _jobPost
                 }} />

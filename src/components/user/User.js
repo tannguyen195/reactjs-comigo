@@ -103,7 +103,7 @@ export default class extends Component {
                                             <Link prefetch to={"/" + item._id} >
                                                 <a>
                                                     <img alt="cover" src={item.coverURL} />
-                                                    <div className="Button-Black-Left">{item.name}</div>
+                                                    <div className="Button-Black-Left title">{item.name}</div>
                                                     <div className="Caption-Grey-Left">{item.shares && item.shares.length + 1} members</div>
                                                 </a>
                                             </Link>

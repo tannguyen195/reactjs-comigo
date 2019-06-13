@@ -9,7 +9,7 @@ export default class extends Component {
     render() {
         const { data } = this.props
         return (
-            <Link to={"/user/" + data.id}>
+            <Link prefetch to={"/user/" + data.id}>
                 <Card hoverable bordered={false} className="people-card">
                     <div className="people-container">
                         <div className="people-image-container">

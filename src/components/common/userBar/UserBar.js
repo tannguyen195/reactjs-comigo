@@ -11,14 +11,16 @@ export default class extends Component {
         const { userData } = this.props
 
         return (
-            <div className="user-bar">
-                <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />
-                <div className="info">
-                    <div className="Button-Black-Left">{`${userData.firstName} ${userData.lastName}`}</div>
-                    <div className="Caption-Grey-Left">{`${userData.email}`}</div>
-                </div>
-            </div>
-
+            <Link prefetch to={"/user/" + userData.id}>
+               
+                <a className="user-bar">
+                    <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />
+                    <div className="info">
+                        <div className="Button-Black-Left">{`${userData.firstName} ${userData.lastName}`}</div>
+                        <div className="Caption-Grey-Left">{`${userData.email}`}</div>
+                    </div>
+                </a>
+            </Link>
         )
     }
 }

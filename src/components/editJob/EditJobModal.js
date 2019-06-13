@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Input, Button, Modal, Select } from 'antd';
-import { Link } from 'routes'
+import { commitment, incentive } from '/constants'
 import MajorTagContainer from '../common/majorTag/MajorTagContainer';
 const TextArea = Input.TextArea
 const FormItem = Form.Item
@@ -64,8 +64,12 @@ class EditJobModal extends React.Component {
                                                 optionFilterProp="children"
                                                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                                             >
-                                                <Option value="Few hours">Few hours</Option>
-                                                <Option value="Not sure">Not sure</Option>
+                                                {
+                                                    commitment.map((item, index) => {
+                                                        return <Option key={index} value={item}>{item}</Option>
+                                                    })
+                                                }
+
                                             </Select>
                                         )}
                                     </FormItem>
@@ -107,7 +111,22 @@ class EditJobModal extends React.Component {
                                         {getFieldDecorator('incentive', {
                                             rules: [{ message: 'Please enter incentive!' }],
                                         })(
-                                            <Input className="Body2RegularBlack80Left" placeholder="incentive" />
+                                            <Select
+                                            mode="multiple"
+                                            className="Body2RegularBlack80Left"
+                                            showSearch
+                                            placeholder="incentive"
+                                            optionFilterProp="children"
+                                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                        >
+                                            {
+                                                incentive.map((item, index) => {
+                                                    return <Option key={index} value={item}>{item}</Option>
+                                                })
+                                            }
+
+
+                                        </Select>
                                         )}
                                     </FormItem>
                                 </div>

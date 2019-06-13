@@ -8,7 +8,7 @@ import * as toggleAction from '../../actions/toggle'
 import * as jobAction from '../../actions/job'
 import NewsFeed from './NewsFeed'
 import _newsFeed from './_newsFeed.less'
-
+import JobDetail from '../common/jobDetail/JobDetail'
 import LoginContainer from '../login/LoginContainer'
 
 import Home from './Home'
@@ -114,7 +114,7 @@ class HomeContainer extends Component {
         const { isLoggedIn, list } = this.props
 
         return (
-            <div className={!isLoggedIn && "primary__layout"}>
+            <div className={!isLoggedIn ? "primary__layout" : ""}>
                 <style dangerouslySetInnerHTML={{
                     __html: _home + _newsFeed
                 }} />
@@ -122,7 +122,7 @@ class HomeContainer extends Component {
                     ogImage="https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.15752-9/45045111_1765319220262750_5618645889863122944_n.jpg?_nc_cat=111&_nc_ht=scontent.fsgn3-1.fna&oh=a58ca021533b7e75b90cd31500c21ab6&oe=5C47595E"
                     title="Comigo - Find your future. Build your idea."
                     description="Find your future. Build your idea." />
-
+                <JobDetail {...this.props}/>
                 {
                     isLoggedIn ?
                         this.renderLoggedHome() :
@@ -148,6 +148,8 @@ export function mapStateToProps(state) {
         peopleStatus: state.people.status,
         message: state.people.message,
         filterValue: state.toggle.filterValue,
+        visibleJobDetail: state.toggle.visibleJobDetail,
+       jobDetail: state.toggle.jobDetail,
     };
 }
 export function mapDispatchToProps(dispatch) {

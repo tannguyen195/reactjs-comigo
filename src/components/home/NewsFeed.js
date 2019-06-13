@@ -25,7 +25,7 @@ export default class extends Component {
         })
     }
     renderNewsFeed() {
-        const { list, people, jobList, filterValue, status } = this.props
+        const { list, people, jobList, filterValue, status, toggleJobDetail } = this.props
 
         if (list && list.length === 0)
             return <NoResult />
@@ -55,7 +55,11 @@ export default class extends Component {
                 {
                     jobList.map((item, index) => {
                         if (item.postedUserData)
-                            return <JobPost key={index} detail={item.projectData} user={item.postedUserData} jobDetail={item} />
+                            return <JobPost
+                                toggleJobDetail={toggleJobDetail}
+                                key={index} detail={item.projectData}
+                                user={item.postedUserData}
+                                jobDetail={item} />
                     })
                 }
             </div>

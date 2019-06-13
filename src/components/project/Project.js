@@ -18,7 +18,7 @@ export default class extends Component {
             edit,
             toggleJobDetail
         } = this.props
-        return jobList.length > 0 ? jobList.map((item, index) => {
+        return jobList && jobList.length > 0 ? jobList.map((item, index) => {
             return <div className="job__item" key={index}>
                 <div onClick={() => toggleJobDetail(item)} className="job__item__left">
                     <div className="job__item__image">
