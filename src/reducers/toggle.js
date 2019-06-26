@@ -18,6 +18,7 @@ export const initial = {
     jobDetail: null,
     visibleEditJob: false,
     visibleRemoveJob: false,
+    jobProjectDetail: null
 }
 export default {
     toggle: handleActions({
@@ -84,7 +85,7 @@ export default {
             })
         },
         [ActionTypes.TOGGLE_EDIT_JOB]: (state, { payload }) => {
-         
+
             return update(state, {
                 jobDetail: !state.visibleEditJob ? { $set: payload } : { $set: null },
                 visibleEditJob: { $set: !state.visibleEditJob },
@@ -106,7 +107,8 @@ export default {
             !state.visibleJobDetail ?
                 update(state, {
                     visibleJobDetail: { $set: !state.visibleJobDetail },
-                    jobDetail: !state.visibleJobDetail ? { $set: payload } : { $set: "" },
+                    jobDetail: !state.visibleJobDetail ? { $set: payload.jobDetail } : { $set: "" },
+                    jobProjectDetail: !state.visibleJobDetail ? { $set: payload.detail } : { $set: "" },
                 }) :
 
                 update(state, {

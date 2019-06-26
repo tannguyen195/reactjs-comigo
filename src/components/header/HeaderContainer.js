@@ -21,7 +21,10 @@ class HeaderContainer extends Component {
     }
     onLogoClick = (e) => {
         const { getList } = this.props
-        getList("")
+        getList({
+            data: "",
+            type: "all"
+        })
     }
     onSearchValueChange = (e) => {
         this.setState({
@@ -30,19 +33,22 @@ class HeaderContainer extends Component {
     }
     onPressEnter = () => {
         const { getList, visibleProject, getPeopleList } = this.props
-        Router.pushRoute("/")
-        if (!visibleProject)
-            getList(this.state.searchValue)
-        else
-            getPeopleList(this.state.searchValue)
+        window.location.replace("/search?key=" + this.state.searchValue.replace(/ /g, '-'))
+
     }
     onTabChange = () => {
         const { toggleHomeView, visibleProject, getList, getPeopleList } = this.props
 
         if (!visibleProject)
-            getList('')
+            getList({
+                data: "",
+                type: "all"
+            })
         else
-            getPeopleList('')
+            getPeopleList({
+                data: "",
+                type: "all"
+            })
         toggleHomeView()
     }
     renderHeader() {
@@ -66,7 +72,7 @@ class HeaderContainer extends Component {
             {...this.props}
 
         />
-          
+
         </div>
     }
     render() {

@@ -11,7 +11,7 @@ export default class extends Component {
         const { userData } = this.props
 
         return (
-            <Link prefetch to={"/user/" + userData.id}>
+            <Link prefetch to={"/profile" }>
                
                 <a className="user-bar">
                     <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />

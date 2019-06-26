@@ -5,7 +5,8 @@ export const initial = {
     status: STATUS.IDLE,
     message: "",
     people: null,
-    peopleDetail: null
+    peopleDetail: null,
+    peopleSearch: null
 }
 
 export default {
@@ -17,10 +18,18 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.GET_PEOPLE_LIST_SUCCESS]: (state, { response }) => {
-            return update(state, {
-                status: { $set: STATUS.SUCCESS },
-                people: { $set: response.data }
-            })
+           
+            if (response.type === "all")
+                return update(state, {
+                    status: { $set: STATUS.SUCCESS },
+                    people: { $set: response.data }
+                })
+            else if (response.type === "search")
+                return update(state, {
+                    status: { $set: STATUS.SUCCESS },
+                    peopleSearch: { $set: response.data }
+                })
+
         },
         [ActionTypes.GET_PEOPLE_LIST_ERROR]: (state, { error }) => {
             return update(state, {

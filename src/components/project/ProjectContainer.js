@@ -75,7 +75,7 @@ class ProjectContainer extends Component {
         })
     }
     handleRemoveJob = (e) => {
-        const { deleteJob,jobDetail } = this.props
+        const { deleteJob, jobDetail } = this.props
 
         deleteJob({
 
@@ -99,7 +99,7 @@ class ProjectContainer extends Component {
                 />
                 <EditJobModalContainer />
                 <PostJobModalContainer />
-                <JobDetail {...this.props} />
+                <JobDetail user={userData} {...this.props} />
                 <JobRemove handleRemoveJob={this.handleRemoveJob} {...this.props} />
                 {
                     userData && detail ?
@@ -133,11 +133,12 @@ export function mapStateToProps(state) {
         previewImage: state.toggle.previewImage,
         visibleJobDetail: state.toggle.visibleJobDetail,
         status: state.project.status,
-        statusJob:state.job.status,
+        statusJob: state.job.status,
         jobList: state.job.jobList,
         jobDetail: state.toggle.jobDetail,
         visibleRemoveJob: state.toggle.visibleRemoveJob,
-        visibleEditJob: state.toggle.visibleEditJob
+        visibleEditJob: state.toggle.visibleEditJob,
+        jobProjectDetail: state.toggle.jobProjectDetail,
     };
 }
 export function mapDispatchToProps(dispatch) {

@@ -15,6 +15,7 @@ export const {
   removeProjectUpdate,
 
   postComment,
+  postCommentDetail,
   editComment,
   removeComment,
 
@@ -39,6 +40,8 @@ export const {
   [ActionTypes.REMOVE_PROJECT_UPDATE]: (data) => (data),
 
   [ActionTypes.POST_COMMENT]: (data) => (data),
+  [ActionTypes.POST_COMMENT_DETAIL]: (data) => (data),
+
   [ActionTypes.EDIT_COMMENT]: (data) => (data),
   [ActionTypes.REMOVE_COMMENT]: (data) => (data),
 

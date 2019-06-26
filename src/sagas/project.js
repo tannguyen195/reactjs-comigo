@@ -95,13 +95,13 @@ const project = {
     * Get list of project, returning a project list when done
     * @param  {string} keyword The keyword which included project name, people,.. to search
     */
-  getList(keyword) {
+  getList(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/list?keyword=' + keyword,
+        url: endPoint + 'project/list' ,
         method: 'GET',
-        headers: { 'Content-Type': 'application/json',  'x-auth-token': cookies.get('token') },
+        headers: { 'Content-Type': 'application/json', 'x-auth-token': cookies.get('token') },
       }).then((response) => {
         // window.location.replace("/")
         return response.data
@@ -196,6 +196,7 @@ const project = {
      * Post a new update to a project provied
      */
   postComment(data) {
+
     // Post a sign in request
     return axios(
       {
@@ -374,7 +375,7 @@ export function* create(data) {
       description: response.message,
     });
 
-    // window.location.replace('/profile')
+    window.location.replace('/profile')
   }
   catch (error) {
     yield put({
@@ -469,9 +470,10 @@ export function* createLink(data) {
  * get project list
  */
 export function* getList(data) {
+
   try {
     const response = yield call(project.getList, data.payload);
-
+  
     yield put({
       type: ActionTypes.GET_LIST_SUCCESS,
       response
@@ -578,12 +580,28 @@ export function* postComment(data) {
 
     yield put({
       type: ActionTypes.POST_COMMENT_SUCCESS,
-      response: { ...response.data, updateID: data.payload.updateID }
+      response: { ...response.data, updateID: data.payload.updateID, projectID: data.payload.projectID }
     });
   }
   catch (error) {
     yield put({
       type: ActionTypes.POST_COMMENT_ERROR,
+      error: error.response,
+    });
+  }
+}
+export function* postCommentDetail(data) {
+  try {
+    const response = yield call(project.postComment, data.payload);
+
+    yield put({
+      type: ActionTypes.POST_COMMENT_DETAIL_SUCCESS,
+      response: { ...response.data, updateID: data.payload.updateID }
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.POST_COMMENT_DETAIL_ERROR,
       error: error.response,
     });
   }
@@ -761,6 +779,7 @@ export default function* root() {
     takeLatest(ActionTypes.EDIT_PROJECT_UPDATE, editProjectUpdate),
     takeLatest(ActionTypes.REMOVE_PROJECT_UPDATE, removeProjectUpdate),
     takeLatest(ActionTypes.POST_COMMENT, postComment),
+    takeLatest(ActionTypes.POST_COMMENT_DETAIL, postCommentDetail),
     takeLatest(ActionTypes.EDIT_COMMENT, editComment),
     takeLatest(ActionTypes.REMOVE_COMMENT, removeComment),
     takeLatest(ActionTypes.CREATE_SHARE_LINK, createShareLink),

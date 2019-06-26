@@ -6,6 +6,9 @@ import People from './People'
 
 import NoResult from '../common/noResult/NoResult'
 import JobPost from '../common/jobPost/JobPost'
+import PeopleCard from '../common/peopleCard/PeopleCard'
+import PeopleJoin from '../common/peopleJoin/PeopleJoin'
+import UpdateCardContainer from '../common/updateCard/UpdateCardContainer'
 
 const loading = '/static/images/loading.gif'
 const options = [
@@ -15,37 +18,78 @@ const options = [
     { label: 'People', value: "people" },
 ];
 export default class extends Component {
-    renderProject = (list) => {
-        const { filterValue } = this.props
-        return list.map((item, index) => {
-            return <Link prefetch key={index} to={"/" + item._id} >
-                <a>
-                    <PostCard filterValue={filterValue} data={item} /></a>
-            </Link >
+    renderFeed = (feed) => {
+        const { filterValue, toggleJobDetail,
+            handleSearchSkill, edit } = this.props
+
+        return feed.map((item, index) => {
+
+            switch (item.itemType) {
+                case "people":
+                    return <PeopleCard key={index} data={item} />
+                case "project":
+                    return <PostCard
+                        key={index}
+                        handleSearchSkill={handleSearchSkill}
+                        toggleJobDetail={toggleJobDetail}
+                        filterValue={filterValue}
+                        data={item} />
+                case "job":
+                    return <JobPost
+                        toggleJobDetail={toggleJobDetail}
+                        key={index}
+                        detail={item.projectData}
+                        user={item.postedUserData}
+                        jobDetail={item} />
+                case "collaborator":
+                    return <PeopleJoin key={index} data={item} />
+                case "update":
+                    return <UpdateCardContainer
+                        key={index}
+                        isNewFeed={true}
+                        detail={item.projectData}
+                        edit={edit}
+                        data={{
+                            ...item,
+                            comments: [item.comment]
+                        }} />
+                default: return <div />
+            }
         })
     }
+    renderProjects = (projects) => {
+        const { filterValue, toggleJobDetail,
+            handleSearchSkill } = this.props
+        return projects.map((item, index) => {
+            return <PostCard
+                handleSearchSkill={handleSearchSkill}
+                toggleJobDetail={toggleJobDetail}
+                filterValue={filterValue}
+                data={item} />
+        }
+        )
+    }
     renderNewsFeed() {
-        const { list, people, jobList, filterValue, status, toggleJobDetail } = this.props
+        const { projects, people, jobList, filterValue, status, toggleJobDetail, feed } = this.props
 
-        if (list && list.length === 0)
+        if (feed && feed.length === 0)
             return <NoResult />
         else if (status === 'running')
             return <div className="loading-feed">
                 <img src={loading} alt="loading" />
             </div>
-        else if (filterValue === "all" && list) {
+        else if (filterValue === "all" && feed) {
 
             return <div>
                 <div className="H2-Black-Left filter__title">All Posts</div>
-                {this.renderProject(list)}
+                {this.renderFeed(feed)}
             </div>
 
         }
-        else if (filterValue === "project" && list) {
-
+        else if (filterValue === "project" && projects) {
             return <div>
                 <div className="H2-Black-Left filter__title">Projects</div>
-                {this.renderProject(list)}
+                {this.renderProjects(projects)}
             </div>
         }
         else if (filterValue === "job" && jobList) {
@@ -57,7 +101,8 @@ export default class extends Component {
                         if (item.postedUserData)
                             return <JobPost
                                 toggleJobDetail={toggleJobDetail}
-                                key={index} detail={item.projectData}
+                                key={index}
+                                detail={item.projectData}
                                 user={item.postedUserData}
                                 jobDetail={item} />
                     })
@@ -75,7 +120,7 @@ export default class extends Component {
 
     }
     render() {
-        const { list, userData, onFilterChange,
+        const { feed, userData, onFilterChange,
             visibleProject, filterValue } = this.props
 
         return (
@@ -91,7 +136,7 @@ export default class extends Component {
                     }
                 </div>
 
-                {userData &&
+                {userData && feed &&
                     this.renderNewsFeed()
                 }
 

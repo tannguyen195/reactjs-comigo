@@ -123,6 +123,10 @@ export const ActionTypes = keyMirror({
     POST_COMMENT_SUCCESS: undefined,
     POST_COMMENT_ERROR: undefined,
 
+    POST_COMMENT_DETAIL: undefined,
+    POST_COMMENT_DETAIL_SUCCESS: undefined,
+    POST_COMMENT_DETAIL_ERROR: undefined,
+
     EDIT_COMMENT: undefined,
     EDIT_COMMENT_SUCCESS: undefined,
     EDIT_COMMENT_ERROR: undefined,
@@ -197,7 +201,15 @@ export const ActionTypes = keyMirror({
 
     SET_STEP: undefined,
 
-    UPDATE_CREATE_PROJECT: undefined
+    UPDATE_CREATE_PROJECT: undefined,
+
+    SEARCH: undefined,
+    SEARCH_SUCCESS: undefined,
+    SEARCH_ERROR: undefined,
+
+    SEARCH_SKILL: undefined,
+    SEARCH_SKILL_SUCCESS: undefined,
+    SEARCH_SKILL_ERROR: undefined,
 });
 
 export const STATUS = {

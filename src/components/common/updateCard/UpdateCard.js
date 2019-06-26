@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, Row, Form, Modal, Dropdown, Menu, Input } from 'antd'
 import Image from '../../common/Image'
 import moment from 'moment'
-
+import { Router } from 'routes'
 const optionIcon = '/static/images/icon-option-2.svg'
 const editIcon = '/static/images/icon-edit-black.svg'
 const trashIcon = '/static/images/icon-trash-black.svg'
@@ -35,10 +35,11 @@ export default class extends Component {
                         <Image image={detail.owner.pictureURL} />
                         <div className="update__title">
                             <div className="Body-Dark-Grey-Left">
-                                <span className="Button-Black-Left">
+                                <a onClick={() => Router.pushRoute("/user/" + detail.owner._id)} className="Button-Black-Left">
                                     {detail.owner.firstName + ` ` + detail.owner.lastName + ` `}
-                                </span>
-                                {`created a ${moment.unix(data.updatedAt).isSame(moment(), 'hour') ? "new" : ""} post.`}
+                                </a>
+                                {`created a ${moment.unix(data.updatedAt).isSame(moment(), 'hour') ? "new" : ""} post in `}
+                                <a onClick={() => Router.pushRoute("/" + detail._id)} className="Button-Black-Left">{detail.name}</a>
                             </div>
                             <div className="Caption-Grey-Left">{moment.unix(data.updatedAt).fromNow()}</div>
                         </div>
@@ -103,7 +104,7 @@ export default class extends Component {
                         <div className="update__comment-body">
 
                             {
-                                userData._id === item.postedUserData._id && <div className="comment__right">
+                                userData && userData._id === item.postedUserData._id && <div className="comment__right">
                                     <Dropdown className="option__post" placement="bottomLeft" overlay={<Menu>
                                         <Menu.Item key="0">
                                             <div onClick={() => toggleEditComment(item)} className="Body-12 item">
@@ -135,21 +136,21 @@ export default class extends Component {
                     </div>
                 })
                 }
-                {
-                    !isNewFeed && <div className="update__user-comment">
-                        <Image image={userData.pictureURL} />
-                        <div className="input-comment">
-                            <Form onSubmit={handlePostComment} layout="inline" >
-                                <Form.Item >
-                                    {getFieldDecorator('comment', {
-                                        rules: [{ required: true, message: 'Please input your comment!' }],
-                                    })(
-                                        <Input placeholder="Type your comment here..." />
-                                    )}
-                                </Form.Item>
-                            </Form></div>
-                    </div>
-                }
+
+                <div className="update__user-comment">
+                    <Image image={userData && userData.pictureURL} />
+                    <div className="input-comment">
+                        <Form onSubmit={handlePostComment} layout="inline" >
+                            <Form.Item >
+                                {getFieldDecorator('comment', {
+                                    rules: [{ required: true, message: 'Please input your comment!' }],
+                                })(
+                                    <Input placeholder="Type your comment here..." />
+                                )}
+                            </Form.Item>
+                        </Form></div>
+                </div>
+
 
 
             </Card >

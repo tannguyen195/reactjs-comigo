@@ -15,11 +15,11 @@ const people = {
   /**
     * Get list of people registerd, returning a people list when done
     */
-  getPeopleList(keyword) {
+  getPeopleList(data) {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'people?keyword=' + keyword,
+        url: endPoint + 'people?keyword=' + data.data,
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       }).then((response) => {
@@ -73,7 +73,10 @@ export function* getPeopleList(data) {
 
     yield put({
       type: ActionTypes.GET_PEOPLE_LIST_SUCCESS,
-      response
+      response: {
+        ...response,
+        type: data.payload.type
+      }
     });
   }
   catch (error) {

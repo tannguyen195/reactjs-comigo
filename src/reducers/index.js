@@ -6,6 +6,7 @@ import project from './project'
 import file from './file'
 import people from './people'
 import job from './job'
+import search from './search'
 
 const rootReducer = combineReducers({
     ...user,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     ...file,
     ...people,
     ...toggle,
-    ...job
+    ...job,
+    ...search
 });
 
 export default rootReducer;

@@ -78,7 +78,9 @@ class UpdateCardContainer extends Component {
     }
 
     handlePostComment = (e) => {
-        const { postComment, data, form } = this.props
+
+        const { postComment, data, form, isNewFeed, detail, postCommentDetail } = this.props
+     
         e.preventDefault();
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
@@ -86,11 +88,18 @@ class UpdateCardContainer extends Component {
 
                     "comment": "",
                 })
-                postComment({
-                    "updateID": data._id,
-                    "content": values.comment
-                })
-
+                if (isNewFeed)
+                    postComment({
+                        "updateID": data._id,
+                        "content": values.comment,
+                        "projectID": detail._id
+                    })
+                else
+                    postCommentDetail({
+                        "updateID": data._id,
+                        "content": values.comment,
+                        "projectID": detail._id
+                    })
             }
         });
 

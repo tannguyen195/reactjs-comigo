@@ -3,9 +3,11 @@ import { ActionTypes, STATUS, renderMessage } from 'constants/index';
 import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
+    statusComment: STATUS.IDLE,
     statusRequest: STATUS.IDLE,
+    projectSearch: null,
     message: "",
-    list: null,
+    projects: null,
     detail: null,
     detailList: [],
     listData: null,
@@ -88,8 +90,9 @@ export default {
         [ActionTypes.GET_LIST_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                list: { $set: response.data }
+                projects: { $set: response.data }
             })
+
         },
         [ActionTypes.GET_LIST_ERROR]: (state, { error }) => {
             return update(state, {
@@ -120,22 +123,7 @@ export default {
             })
         },
 
-        // POST UPDATE PROJECT ACTION
-        [ActionTypes.POST_COMMENT]: (state, { response }) => update(state, {
-            status: { $set: STATUS.RUNNING },
-        }),
-        [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
-            return update(state, {
-                status: { $set: STATUS.SUCCESS },
-                // detail: { updates: { $unshift: [response.data] } }
-            })
-        },
-        [ActionTypes.POST_COMMENT_ERROR]: (state, { error }) => {
-            return update(state, {
-                status: { $set: STATUS.ERROR },
-                message: { $set: renderMessage(error.status) }
-            })
-        },
+
 
         // POST UPDATE PROJECT ACTION
         [ActionTypes.POST_PROJECT_UPDATE]: (state, { response }) => update(state, {
@@ -275,28 +263,36 @@ export default {
 
         // POST UPDATE PROJECT ACTION
         [ActionTypes.POST_COMMENT]: (state, { response }) => update(state, {
-            status: { $set: STATUS.RUNNING },
+            statusComment: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
+       
+            return update(state, {
+                statusComment: { $set: STATUS.SUCCESS },
+
+            })
+
+        },
+        [ActionTypes.POST_COMMENT_DETAIL_SUCCESS]: (state, { response, }) => {
 
             return update(state, {
-                status: { $set: STATUS.SUCCESS },
+                statusComment: { $set: STATUS.SUCCESS },
                 detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.updateID)]: { comments: { $push: [response] } } } }
             })
         },
         [ActionTypes.POST_COMMENT_ERROR]: (state, { error }) => {
             return update(state, {
-                status: { $set: STATUS.ERROR },
+                statusComment: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
             })
         },
         // EDIT UPDATE PROJECT ACTION
         [ActionTypes.EDIT_COMMENT]: (state, { response }) => update(state, {
-            status: { $set: STATUS.RUNNING },
+            statusComment: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.EDIT_COMMENT_SUCCESS]: (state, { response }) => {
             return update(state, {
-                status: { $set: STATUS.SUCCESS },
+                statusComment: { $set: STATUS.SUCCESS },
                 detail: {
                     updates: {
                         [state.detail.updates.findIndex((e) => e._id === response.data.updateID)]: {
@@ -320,12 +316,12 @@ export default {
 
         // REMOVE UPDATE PROJECT ACTION
         [ActionTypes.REMOVE_COMMENT]: (state, { response }) => update(state, {
-            status: { $set: STATUS.RUNNING },
+            statusComment: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.REMOVE_COMMENT_SUCCESS]: (state, { response }) => {
 
             return update(state, {
-                status: { $set: STATUS.SUCCESS },
+                statusComment: { $set: STATUS.SUCCESS },
                 detail: {
                     updates: {
                         [state.detail.updates.findIndex((e) => e._id === response.updateID)]: {
@@ -343,18 +339,18 @@ export default {
         },
         [ActionTypes.REMOVE_COMMENT_ERROR]: (state, { error }) => {
             return update(state, {
-                status: { $set: STATUS.ERROR },
+                statusComment: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }
             })
         },
         [ActionTypes.SET_STEP]: (state, payload) => {
-            
+
             return update(state, {
                 step: { $set: payload.payload },
             })
         },
         [ActionTypes.UPDATE_CREATE_PROJECT]: (state, data) => {
-            
+
             return update(state, {
                 data: { $merge: data.payload },
             })

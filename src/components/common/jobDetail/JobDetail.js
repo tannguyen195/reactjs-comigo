@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
-import { Modal } from 'antd'
+import { Modal , Button} from 'antd'
 import _jobDetail from './_jobDetail.less'
 const jobIcon = '/static/images/icon-job.svg'
 export default class extends Component {
 
     render() {
-        const { jobDetail, visibleJobDetail, toggleJobDetail } = this.props
-    
+        console.log("Asdasd", this.props)
+        const { jobDetail, visibleJobDetail, toggleJobDetail, user, jobProjectDetail } = this.props
+
+        const subject = `Interested in your job, ` + jobDetail.title
+        const body = `Hi ${user.firstName}
+
+I found your project, ${jobProjectDetail.name}, on Comigo! I'm really interested in the job you shared, ${jobDetail.title}. If you're still looking for support, it would be great to chat more and see how I can help. Are you available to talk more about this opportunity, maybe this week or next?
+
+I look forward to hearing from you!
+
+All the best,
+${user.firstName}`
+
         return (
             <div >
                 <style dangerouslySetInnerHTML={{ __html: _jobDetail }} />
@@ -32,6 +43,7 @@ export default class extends Component {
                                     })
                                 }
                             </div>
+                            <a href={`mailto:info@comigo.co?subject=Interested in your job ${subject}&body=${body}`}> <Button type="primary" className="Button-White-Center">Apply</Button></a>
                         </div>
                     }
 

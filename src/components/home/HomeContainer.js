@@ -6,27 +6,20 @@ import * as projectAction from '../../actions/project'
 import * as peopleAction from '../../actions/people'
 import * as toggleAction from '../../actions/toggle'
 import * as jobAction from '../../actions/job'
+import * as searchAction from '../../actions/search'
+
 import NewsFeed from './NewsFeed'
 import _newsFeed from './_newsFeed.less'
 import JobDetail from '../common/jobDetail/JobDetail'
 import LoginContainer from '../login/LoginContainer'
 
-import Home from './Home'
 import _home from './_home.less'
 
 import { Form } from 'antd'
-
-
-import { Affix, Checkbox, Radio } from 'antd'
-
+import { Router } from 'routes'
 import LeftBar from './leftBar/LeftBar'
 import RightBar from './rightBar/RightBar'
-const CheckboxGroup = Checkbox.Group;
-const RadioGroup = Radio.Group;
-const options = [
-    { label: 'Project', value: false },
-    { label: 'People', value: true },
-];
+
 class HomeContainer extends Component {
     constructor(props) {
         super(props)
@@ -36,14 +29,20 @@ class HomeContainer extends Component {
         }
     }
     componentDidMount() {
-        const { getList, getPeopleList, listJob, list, people, jobList } = this.props
+        const { getList, getPeopleList, listJob, feed, people, jobList, search } = this.props
 
-        if (!list) {
-            getList("")
+        if (!feed) {
+            search({
+                data: "",
+                type: "all"
+            })
         }
 
         if (!people) {
-            getPeopleList("")
+            getPeopleList({
+                data: "",
+                type: "all"
+            })
         }
         if (!jobList) {
             listJob()
@@ -71,19 +70,33 @@ class HomeContainer extends Component {
         })
     }
     onFilterChange = (e) => {
-        const { toggleHomeView, listJob, getList, getPeopleList, list, people, jobList, status } = this.props
+        const { toggleHomeView, listJob, search, getPeopleList, feed, people, jobList, status, projects, getList } = this.props
         if (status !== "running") {
-            if (!list) {
-                getList("")
+            if (!projects) {
+                getList({})
+            }
+            if (!feed) {
+                search({
+                    data: "",
+                    type: "all"
+                })
             }
 
             if (!people) {
-                getPeopleList("")
+                getPeopleList({
+                    data: "",
+                    type: "all"
+                })
             }
             if (e === "job")
                 listJob()
             toggleHomeView(e)
         }
+    }
+    handleSearchSkill = (e) => {
+
+        Router.pushRoute("/search?key=" + e.replace(/ /g, '-'))
+
     }
     renderLoggedHome() {
         const {
@@ -98,6 +111,7 @@ class HomeContainer extends Component {
 
                 <div className="feed">
                     <NewsFeed
+                        handleSearchSkill={this.handleSearchSkill}
                         onFilterChange={this.onFilterChange}
                         {...this.props} />
                 </div>
@@ -111,7 +125,7 @@ class HomeContainer extends Component {
     }
 
     render() {
-        const { isLoggedIn, list } = this.props
+        const { isLoggedIn, userData,jobDetail } = this.props
 
         return (
             <div className={!isLoggedIn ? "primary__layout" : ""}>
@@ -122,7 +136,9 @@ class HomeContainer extends Component {
                     ogImage="https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.15752-9/45045111_1765319220262750_5618645889863122944_n.jpg?_nc_cat=111&_nc_ht=scontent.fsgn3-1.fna&oh=a58ca021533b7e75b90cd31500c21ab6&oe=5C47595E"
                     title="Comigo - Find your future. Build your idea."
                     description="Find your future. Build your idea." />
-                <JobDetail {...this.props}/>
+                {
+                    jobDetail && <JobDetail user={userData} {...this.props} />
+                }
                 {
                     isLoggedIn ?
                         this.renderLoggedHome() :
@@ -139,7 +155,7 @@ class HomeContainer extends Component {
 export function mapStateToProps(state) {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        list: state.project.list,
+        projects: state.project.projects,
         jobList: state.job.jobList,
         visibleProject: state.toggle.visibleProject,
         people: state.people.people,
@@ -149,7 +165,9 @@ export function mapStateToProps(state) {
         message: state.people.message,
         filterValue: state.toggle.filterValue,
         visibleJobDetail: state.toggle.visibleJobDetail,
-       jobDetail: state.toggle.jobDetail,
+        jobDetail: state.toggle.jobDetail,
+        feed: state.search.feed,
+        jobProjectDetail: state.toggle.jobProjectDetail,
     };
 }
 export function mapDispatchToProps(dispatch) {
@@ -157,7 +175,8 @@ export function mapDispatchToProps(dispatch) {
         ...jobAction,
         ...projectAction,
         ...peopleAction,
-        ...toggleAction
+        ...toggleAction,
+        ...searchAction
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(HomeContainer));

@@ -4,6 +4,8 @@
     padding: 14px 16px;
     margin-bottom: 20px;
 
+    cursor: initial;
+
     .ant-card-body {
         padding: 0;
     }
@@ -32,25 +34,23 @@
     .job-body {
         padding-top: 22px;
 
+        .apply {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+                width: 94px;
+                height: 36px;
+                border-radius: 24px;
+            }
+        }
+
         .job-info {
-            padding-top: 10px;
+
             display: flex;
             align-items: center;
 
-            .job-tag {
-                margin-left: 4px;
-                display: flex;
-
-                .tag-item {
-                    height: 22px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    margin-right: 4px;
-                    padding: 0 4px;
-                    border-radius: 24px;
-                    border: solid 1px var(--macaroni-and-cheese);
-                }
-            }
 
         }
 
