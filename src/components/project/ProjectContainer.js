@@ -85,7 +85,7 @@ class ProjectContainer extends Component {
 
     }
     render() {
-        const { userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
+        const {jobDetail, userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -99,7 +99,7 @@ class ProjectContainer extends Component {
                 />
                 <EditJobModalContainer />
                 <PostJobModalContainer />
-                <JobDetail user={userData} {...this.props} />
+                {jobDetail && <JobDetail user={userData} {...this.props} />}
                 <JobRemove handleRemoveJob={this.handleRemoveJob} {...this.props} />
                 {
                     userData && detail ?
