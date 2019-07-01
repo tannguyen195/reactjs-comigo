@@ -20,11 +20,7 @@ class HeaderContainer extends Component {
         }
     }
     onLogoClick = (e) => {
-        const { getList } = this.props
-        getList({
-            data: "",
-            type: "all"
-        })
+        
     }
     onSearchValueChange = (e) => {
         this.setState({

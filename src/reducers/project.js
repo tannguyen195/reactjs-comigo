@@ -132,7 +132,7 @@ export default {
         [ActionTypes.POST_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                detail: { updates: { $push: [response.data] } }
+                detail: { updates: { $unshift: [response.data] } }
             })
         },
         [ActionTypes.POST_PROJECT_UPDATE_ERROR]: (state, { error }) => {
@@ -181,6 +181,7 @@ export default {
             statusRequest: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.CREATE_SHARE_LINK_SUCCESS]: (state, { response }) => {
+
             return update(state, {
                 statusRequest: { $set: STATUS.SUCCESS },
                 requestData: { $set: response.data },
@@ -194,17 +195,21 @@ export default {
             })
         },
 
-        // [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
-
-        //     if (response.payload.index !== 3) return update(state, {
-        //         detail: { media: { [response.payload.index]: { $set: response.data } } }
-        //     })
-        //     else {
-        //         return update(state, {
-        //             detail: { media: { $push: [response.data] } }
-        //         })
-        //     }
-        // },
+        [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
+       
+            if (response.payload.uploadType === "media")
+                if (response.payload.index !== 3) return update(state, {
+                    detail: { media: { [response.payload.index]: { $set: response.data } } }
+                })
+                else {
+                    return update(state, {
+                        detail: { media: { $push: [response.data] } }
+                    })
+                }
+            return update(state, {
+                data: { $set: state.data }
+            })
+        },
 
 
         // REMOVE SHARED COLLABORATOR ACTION
@@ -266,7 +271,7 @@ export default {
             statusComment: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
-       
+
             return update(state, {
                 statusComment: { $set: STATUS.SUCCESS },
 

@@ -19,7 +19,7 @@ class EditJobModal extends React.Component {
             toggleRemoveJob,
             jobDetail
         } = this.props
-
+     
         const { getFieldDecorator, } = this.props.form
 
         return (
@@ -109,30 +109,30 @@ class EditJobModal extends React.Component {
                                     <div>Incentive</div>
                                     <FormItem>
                                         {getFieldDecorator('incentive', {
-                                            rules: [{ message: 'Please enter incentive!' }],
+                                            rules: [{ message: 'Please enter incentive!', type: 'array'  ,required: true,}],
                                         })(
                                             <Select
-                                            mode="multiple"
-                                            className="Body2RegularBlack80Left"
-                                            showSearch
-                                            placeholder="incentive"
-                                            optionFilterProp="children"
-                                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                        >
-                                            {
-                                                incentive.map((item, index) => {
-                                                    return <Option key={index} value={item}>{item}</Option>
-                                                })
-                                            }
+                                                mode="multiple"
+                                                className="Body2RegularBlack80Left"
+                                                showSearch
+                                                placeholder="incentive"
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                            >
+                                                {
+                                                    incentive.map((item, index) => {
+                                                        return <Option key={index} value={item}>{item}</Option>
+                                                    })
+                                                }
 
 
-                                        </Select>
+                                            </Select>
                                         )}
                                     </FormItem>
                                 </div>
                                 <div className="button-edit">
                                     <Button onClick={toggleRemoveJob} loading={status === "running"}
-                                        type="danger" 
+                                        type="danger"
                                         className="Button-White-Center">
                                         DELETE</Button>
 

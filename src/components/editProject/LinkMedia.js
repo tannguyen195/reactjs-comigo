@@ -45,7 +45,7 @@ export default class extends Component {
                             media && media.map((item, index) => {
                                 return <Upload
                                     key={index}
-                                    onChange={(e) => onMediaChange({ ...e, index })}
+                                    onChange={(e) => onMediaChange({ ...e, index, uploadType: "media" })}
                                     showUploadList={false}
                                 >
                                     <div className="image__holder">
@@ -56,7 +56,7 @@ export default class extends Component {
                         }
                         {
                             media ? media.length < 3 && <Upload
-                                onChange={(e) => onMediaChange({ ...e, index: 3 })}
+                                onChange={(e) => onMediaChange({ ...e, index: 3, uploadType: "media" })}
                                 showUploadList={false}
                             >
                                 <div className="upload__holder">

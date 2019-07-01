@@ -9,11 +9,24 @@
         display: flex;
 
         .image__holder {
+            position: relative;
+            margin-right: 8px;
+
             img {
                 margin-right: 8px;
                 border-radius: 8px;
                 width: 120px;
                 height: 120px;
+                object-fit: contain;
+            }
+
+            i {
+                position: absolute;
+                right: 0;
+                top: -4px;
+                cursor: pointer;
+                font-size: 20px;
+                color: red;
             }
         }
 

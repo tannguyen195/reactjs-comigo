@@ -4,7 +4,8 @@ import update from 'immutability-helper'
 export const initial = {
     status: STATUS.IDLE,
     message: "",
-    jobList: null
+    jobList: null,
+    jobListProject: null
 }
 
 export default {
@@ -18,7 +19,7 @@ export default {
 
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                jobList: { $push: [response] }
+                jobListProject: { $push: [response] }
             })
         },
         [ActionTypes.POST_JOB_ERROR]: (state, { error }) => {
@@ -54,11 +55,10 @@ export default {
         [ActionTypes.DELETE_JOB_SUCCESS]: (state, { response }) => {
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                jobList: {
+                jobListProject: {
                     $splice: [
                         [state.jobList[state.jobList.findIndex((e) => e._id === response._id)], 1]
                     ]
-
                 }
             })
         },
@@ -77,7 +77,7 @@ export default {
 
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                jobList: { [state.jobList.findIndex((e) => e._id === response._id)]: { $set: response } }
+                jobListProject: { [state.jobListProject.findIndex((e) => e._id === response._id)]: { $set: response } }
             })
         },
         [ActionTypes.UPDATE_JOB_ERROR]: (state, { error }) => {
@@ -93,11 +93,17 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.LIST_JOB_SUCCESS]: (state, { response }) => {
-
-            return update(state, {
-                status: { $set: STATUS.SUCCESS },
-                jobList: { $set: response }
-            })
+          
+            if (response.type === "all")
+                return update(state, {
+                    status: { $set: STATUS.SUCCESS },
+                    jobList: { $set: response.data }
+                })
+            else if (response.type === "project")
+                return update(state, {
+                    status: { $set: STATUS.SUCCESS },
+                    jobListProject: { $set: response.data }
+                })
         },
         [ActionTypes.LIST_JOB_ERROR]: (state, { error }) => {
             return update(state, {

@@ -40,16 +40,7 @@ export default class extends Component {
                                 <div className="post-title H2-Black-Left">
                                     <div>{data.name}</div>
                                 </div>
-                                <div className="post-author">
-                                    <div className="left">
-                                        <div>
-                                            <Image width={20} height={20} image={data.owner.pictureURL} alt="thumbnail" />
-                                        </div>
-                                    </div>
-                                    <div className="right">
-
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </Card>
@@ -68,7 +59,7 @@ export default class extends Component {
                         }} />
                 }
 
-                {
+                {/* {
                     data.latestJobPost && filterValue !== "project" &&
                     <JobPost
                         handleSearchSkill={handleSearchSkill}
@@ -76,9 +67,10 @@ export default class extends Component {
                         isNewFeed={true}
                         edit={edit}
                         detail={data}
-                        user={data.owner} jobDetail={data.latestJobPost}
+                        user={data.owner} 
+                        jobDetail={data.latestJobPost}
                     />
-                }
+                } */}
             </div>
         )
     }

@@ -31,7 +31,7 @@ export default class extends Component {
                 <div className="button__group">
                     {
                         buttons.map((item, index) => {
-                            return <Button className={`"Button-White-Center ${step!==index && "not-click"}`} type={step === index ? "primary" : "default"} key={index}>{item}</Button>
+                            return <Button className={` ${step!==index ? "not-click" :"Button-White-Center"}`} type={step === index ? "primary" : "default"} key={index}>{item}</Button>
                         })
                     }
                 </div>

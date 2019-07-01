@@ -61,13 +61,14 @@
                                 flex-wrap: wrap;
 
                                 .link-button {
-                           
+
                                     border: solid 1px var(--macaroni-and-cheese);
                                     background: #fff;
                                     color: #a1aab3;
                                     padding: 6px 8px;
                                     border-radius: 24px;
                                 }
+
                                 img {
                                     cursor: pointer;
                                     margin-right: 8px;
@@ -95,7 +96,15 @@
                                     padding-bottom: 20px;
                                     display: flex;
                                     justify-content: space-between;
-align-items: center;
+                                    align-items: center;
+
+                                    .title {
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                        max-width: 170px;
+                                    }
+
                                     &:last-child {
                                         padding-bottom: 0;
                                     }

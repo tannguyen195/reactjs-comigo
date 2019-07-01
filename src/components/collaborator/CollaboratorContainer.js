@@ -19,27 +19,8 @@ class CollaboratorContainer extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        let tempCollaborators = []
-        const { detail } = nextProps
-        if (detail && detail.shares && detail.shares !== this.props.detail.shares) {
-
-            detail.shares.forEach((item) => {
-                tempCollaborators.push({
-                    ...item,
-                    isChanged: false
-                })
-
-            })
-            this.setState({
-                collaborators: tempCollaborators
-            })
-        }
-        if (nextProps.statusRequest === "success" || nextProps.statusRequest === "error" && this.props.statusRequest !== nextProps.statusRequest) {
-            this.props.form.setFieldsValue({
-                email: "",
-                role: "",
-            })
-        }
+     
+       
     }
     componentDidMount() {
 

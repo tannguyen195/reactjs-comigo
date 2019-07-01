@@ -10,13 +10,14 @@ export default class extends Component {
     render() {
         const { getFieldDecorator, getFieldValue } = this.props.form;
         const {
-            handleBack, 
-            onTabClick, 
-            addLink, 
-            removeLink, 
-            media, 
-            statusUpload, 
-            onMediaChange
+            handleBack,
+            onTabClick,
+            addLink,
+            removeLink,
+            media,
+            statusUpload,
+            onMediaChange,
+            handleRemoveImage
         } = this.props
 
 
@@ -72,21 +73,17 @@ export default class extends Component {
 .JPG .JPEG .PNG with maximum 2MB/file.</div>
                 <div className="upload__holder-container">
                     {
-                        media &&media.length > 0 && media.map((item, index) => {
-                            return <Upload
-                                key={index}
-                                onChange={(e) => onMediaChange({ ...e, index })}
-                                showUploadList={false}
-                            >
-                                <div className="image__holder">
-                                    <img src={item} alt="project" />
-                                </div>
-                            </Upload>
+                        media && media.length > 0 && media.map((item, index) => {
+                            return <div key={index} className="image__holder">
+                                <Icon onClick={()=>handleRemoveImage(index)} type="close-circle" />
+                                <img src={item} alt="project" />
+
+                            </div>
                         })
                     }
                     {
-                        media ? media.length < 3 && <Upload
-                            onChange={(e) => onMediaChange({ ...e, index: 3 })}
+                        media.length < 3 && <Upload
+                            onChange={(e) => onMediaChange({ ...e, index: 3, uploadType: "mediaNew" })}
                             showUploadList={false}
                         >
                             <div className="upload__holder">
@@ -96,18 +93,7 @@ export default class extends Component {
 
                                 <div className="Link-Button-4">+ Add Photos</div>
                             </div>
-                        </Upload> : <Upload
-                            onChange={(e) => onMediaChange({ ...e, index: 3 })}
-                            showUploadList={false}
-                        >
-                                <div className="upload__holder">
-                                    {
-                                        statusUpload === "running" ? <Icon type="loading" ></Icon> : <img src={projectIcon} alt="project" />
-                                    }
-
-                                    <div className="Link-Button-4">+ Add Photos</div>
-                                </div>
-                            </Upload>
+                        </Upload>
                     }
                 </div>
                 <div className="update-button">

@@ -29,14 +29,11 @@ class HomeContainer extends Component {
         }
     }
     componentDidMount() {
-        const { getList, getPeopleList, listJob, feed, people, jobList, search } = this.props
-
-        if (!feed) {
-            search({
-                data: "",
-                type: "all"
-            })
-        }
+        const { getList, getPeopleList, listJob, feed, people, jobList, search, projects } = this.props
+        search({
+            data: "",
+            type: "all"
+        })
 
         if (!people) {
             getPeopleList({
@@ -45,7 +42,13 @@ class HomeContainer extends Component {
             })
         }
         if (!jobList) {
-            listJob()
+            listJob({
+                id: null,
+                type: "all"
+            })
+        }
+        if (!projects) {
+            getList({})
         }
     }
     handleSubcribe = (e) => {
@@ -71,27 +74,30 @@ class HomeContainer extends Component {
     }
     onFilterChange = (e) => {
         const { toggleHomeView, listJob, search, getPeopleList, feed, people, jobList, status, projects, getList } = this.props
-        if (status !== "running") {
-            if (!projects) {
-                getList({})
-            }
-            if (!feed) {
-                search({
-                    data: "",
-                    type: "all"
-                })
-            }
 
-            if (!people) {
-                getPeopleList({
-                    data: "",
-                    type: "all"
-                })
-            }
-            if (e === "job")
-                listJob()
-            toggleHomeView(e)
+        if (!projects) {
+            getList({})
         }
+        if (!feed) {
+            search({
+                data: "",
+                type: "all"
+            })
+        }
+
+        if (!people) {
+            getPeopleList({
+                data: "",
+                type: "all"
+            })
+        }
+        if (!jobList)
+            listJob({
+                id: null,
+                type: "all"
+            })
+        toggleHomeView(e)
+
     }
     handleSearchSkill = (e) => {
 
@@ -125,7 +131,7 @@ class HomeContainer extends Component {
     }
 
     render() {
-        const { isLoggedIn, userData,jobDetail } = this.props
+        const { isLoggedIn, userData, jobDetail } = this.props
 
         return (
             <div className={!isLoggedIn ? "primary__layout" : ""}>
@@ -159,7 +165,7 @@ export function mapStateToProps(state) {
         jobList: state.job.jobList,
         visibleProject: state.toggle.visibleProject,
         people: state.people.people,
-        status: state.project.status,
+        statusProject: state.project.status,
         userData: state.user.data,
         peopleStatus: state.people.status,
         message: state.people.message,
@@ -168,6 +174,9 @@ export function mapStateToProps(state) {
         jobDetail: state.toggle.jobDetail,
         feed: state.search.feed,
         jobProjectDetail: state.toggle.jobProjectDetail,
+        statusPeople: state.people.status,
+        statusJob: state.job.status,
+        statusFeed: state.search.status,
     };
 }
 export function mapDispatchToProps(dispatch) {

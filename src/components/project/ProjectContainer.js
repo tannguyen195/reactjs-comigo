@@ -42,7 +42,7 @@ class ProjectContainer extends Component {
     componentDidMount() {
         const { getDetail, listJob } = this.props
         getDetail(Router.query.id)
-        listJob(Router.query.id)
+        listJob({ id: Router.query.id, type: "project" })
     }
 
     isUserProject() {
@@ -85,7 +85,7 @@ class ProjectContainer extends Component {
 
     }
     render() {
-        const {jobDetail, userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
+        const { jobDetail, userData, detail, previewImage, togglePreviewImage, visiblePreview } = this.props
         return (
             <div >
                 <style dangerouslySetInnerHTML={{
@@ -99,7 +99,7 @@ class ProjectContainer extends Component {
                 />
                 <EditJobModalContainer />
                 <PostJobModalContainer />
-                {jobDetail && <JobDetail user={userData} {...this.props} />}
+                {jobDetail && <JobDetail user={userData}  {...this.props} />}
                 <JobRemove handleRemoveJob={this.handleRemoveJob} {...this.props} />
                 {
                     userData && detail ?
@@ -134,7 +134,7 @@ export function mapStateToProps(state) {
         visibleJobDetail: state.toggle.visibleJobDetail,
         status: state.project.status,
         statusJob: state.job.status,
-        jobList: state.job.jobList,
+        jobList: state.job.jobListProject,
         jobDetail: state.toggle.jobDetail,
         visibleRemoveJob: state.toggle.visibleRemoveJob,
         visibleEditJob: state.toggle.visibleEditJob,

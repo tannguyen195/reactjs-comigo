@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Button, Badge } from 'antd'
 import Image from '../common/Image'
-import { Link } from 'routes'
+import ProjectCard from '../common/projectCard/ProjectCard'
 const profileIcon = '/static/images/icon-profile.svg'
 const mailIcon = '/static/images/icon-mail.svg'
 export default class extends Component {
@@ -14,7 +14,7 @@ export default class extends Component {
             return <div className="badge" key={index} onClick={() => giveUserNod(item._id)}>
                 <Badge count={item.count}>
                     <img src={item.imageURL} alt="url" className={item.isChoose ? "hover" : "unhover"} />
-             
+
                     <div className="name paddingTop2"> {item.name}</div>
                 </Badge>
             </div>
@@ -99,15 +99,7 @@ export default class extends Component {
                             <div className="projects__container">
                                 {
                                     peopleDetail.projects.map((item, index) => {
-                                        return <div className="project" key={item._id}>
-                                            <Link prefetch to={"/" + item._id} >
-                                                <a>
-                                                    <img alt="cover" src={item.coverURL} />
-                                                    <div className="Button-Black-Left title">{item.name}</div>
-                                                    <div className="Caption-Grey-Left">{item.shares && item.shares.length + 1} members</div>
-                                                </a>
-                                            </Link>
-                                        </div>
+                                        return <ProjectCard data={item} key={item._id} />
                                     })
                                 }
                             </div>

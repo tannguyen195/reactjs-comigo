@@ -20,6 +20,7 @@ class EditJobModalContainer extends Component {
 
 		e.preventDefault()
 		this.props.form.validateFields((err, values) => {
+		
 			if (!err) {
 				this.props.updateJob({
 					title: values.title,

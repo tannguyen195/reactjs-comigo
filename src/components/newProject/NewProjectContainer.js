@@ -35,15 +35,20 @@ class NewProjectContainer extends Component {
     onMediaChange = (data) => {
         const { uploadImage } = this.props
         if (data.event)
-            uploadImage({
-                imageData: data,
-                type: 0
-            })
+            uploadImage(data)
         // this.setState({
         //     media: media.splice(e.index, 1, { item: e.e })
         // })
     }
+    handleRemoveImage = (e) => {
 
+        const temp = this.state.media
+        _.pullAt(temp, [e])
+
+        this.setState({
+            media: temp
+        })
+    }
     toggleUploadModal = () => {
         this.setState({
             visibleUploadModal: !this.state.visibleUploadModal
@@ -51,7 +56,7 @@ class NewProjectContainer extends Component {
     }
     componentDidMount() {
         this.setState({
-            preloadImage: null
+            preloadImage: "https://comigo-media.s3.amazonaws.com/images/1541009490517_cover"
         })
     }
 
@@ -99,7 +104,7 @@ class NewProjectContainer extends Component {
         const { form } = this.props
 
         form.validateFieldsAndScroll((err, values) => {
-          
+
             let shareList = []
             if (values.email)
                 values.email.forEach((item, index) => {
@@ -118,7 +123,7 @@ class NewProjectContainer extends Component {
                 updateCreateProject({
                     ...values,
                     shareList: shareList,
-                    coverURL: returnImage,
+                    coverURL: returnImage || "https://comigo-media.s3.amazonaws.com/images/1541009490517_cover",
                     media: this.state.media,
                     links: values.link
                 })
@@ -127,6 +132,7 @@ class NewProjectContainer extends Component {
         });
     }
     render() {
+       
         const { visibleUploadModal, preloadImage } = this.state
         const { userData } = this.props
         return (
@@ -146,6 +152,8 @@ class NewProjectContainer extends Component {
                         toggleUploadModal={this.toggleUploadModal}
                         handleBack={this.handleBack}
                         onTabClick={this.onTabClick}
+
+                        handleRemoveImage={this.handleRemoveImage}
                     />
                 }
 

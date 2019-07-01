@@ -65,10 +65,11 @@ const file = {
 * @param  {object} data The file data
 */
   uploadImage(data) {
-
+   
     const sendData = new FormData()
-    sendData.append('file', data.imageData.file.originFileObj)
-
+    if (data.file)
+      sendData.append('file', data.file.originFileObj)
+    else sendData.append('file', data)
     // Post a upload request
     return axios(
       {
@@ -115,6 +116,7 @@ export function* upload(data) {
  * Upload
  */
 export function* uploadImage(data) {
+
   try {
     const response = yield call(file.uploadImage, data.payload);
 

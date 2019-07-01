@@ -16,23 +16,36 @@ export default class extends Component {
         const {
             toggleEditJob,
             edit,
-            toggleJobDetail
+            toggleJobDetail,
+            detail
         } = this.props
         return jobList && jobList.length > 0 ? jobList.map((item, index) => {
             return <div className="job__item" key={index}>
-                <div onClick={() => toggleJobDetail(item)} className="job__item__left">
+                <div onClick={() => toggleJobDetail({
+                    jobDetail: {
+                        ...item,
+                        postedUserData: detail.owner,
+                        projectData: detail
+                    }
+                })} className="job__item__left">
                     <div className="job__item__image">
                         <img src={jobIcon} alt="job" />
                     </div>
                     <div>
-                        <div className="Button-Black-Left">{item.title}</div>
+                        <div className="Button-Black-Left title">{item.title}</div>
                         <div className="Caption-Grey-Left">{moment.unix(item.updatedAt).format("MMM DD, YYYY")}</div>
                     </div>
                 </div>
                 {
                     edit && <div className="job__item__right">
-                        <img onClick={() => toggleEditJob(item)} src={editIcon} alt="edit" />
-                     
+                        <img onClick={() => toggleEditJob({
+
+                            ...item,
+                            postedUserData: detail.owner,
+                            projectData: detail
+
+                        })} src={editIcon} alt="edit" />
+
                     </div>
 
                 }

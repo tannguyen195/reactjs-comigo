@@ -10,7 +10,7 @@ export default class extends Component {
         return (
             <div className="collaborator__edit-container">
                 <div className="H2-Black-Left">Members</div>
-                <div className="collaborator__edit marginTop8" bordered={false} >
+                <div className="collaborator__edit marginTop8"  >
 
                     {
                         collaborators.length > 0 &&

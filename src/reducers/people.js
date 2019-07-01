@@ -14,7 +14,7 @@ export default {
 
 
         // GET_LIST PEOPLE ACTION
-        [ActionTypes.GET_LIST]: (state) => update(state, {
+        [ActionTypes.GET_PEOPLE_LIST]: (state) => update(state, {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.GET_PEOPLE_LIST_SUCCESS]: (state, { response }) => {

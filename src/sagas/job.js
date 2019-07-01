@@ -209,11 +209,11 @@ export function* updateJob(data) {
 
 export function* listJob(data) {
   try {
-    const response = yield call(job.listJob, data.payload);
+    const response = yield call(job.listJob, data.payload.id);
 
     yield put({
       type: ActionTypes.LIST_JOB_SUCCESS,
-      response: response.data
+      response: { data: response.data, type: data.payload.type }
     });
   }
   catch (error) {
