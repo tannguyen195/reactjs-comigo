@@ -144,7 +144,7 @@ export default class extends Component {
                                         <div className="section__header">
                                             <div className="title H3-Black-Left">Job Postings</div>
                                             {
-                                                edit && <a onClick={togglePostJob} className="title Button-Yellow-Left"><Icon type="plus" />{`${` `}`}Add Job</a>
+                                                edit && <a onClick={()=>togglePostJob()} className="title Button-Yellow-Left"><Icon type="plus" />{`${` `}`}Add Job</a>
                                             }
 
                                         </div>

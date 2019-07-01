@@ -57,7 +57,7 @@ export default {
                 status: { $set: STATUS.SUCCESS },
                 jobListProject: {
                     $splice: [
-                        [state.jobList[state.jobList.findIndex((e) => e._id === response._id)], 1]
+                        [state.jobListProject[state.jobListProject.findIndex((e) => e._id === response._id)], 1]
                     ]
                 }
             })
