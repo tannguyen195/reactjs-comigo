@@ -18,17 +18,24 @@ class Login extends Component {
             <div className="login ">
                 <div className="login__container">
                     <div className="login__left">
+                        <div>
+                            <img alt="logo" src={logoFull} />
 
-                        <img alt="logo" src={logoFull} />
+                            <div className="Display-Black-Left marginTop32 paddingBottom40">Big ideas, <span style={{ color: "#fff" }}>together.</span></div>
+                            <div className="login__left__desc" style={{ fontSize: "20px" }}>Comigo is a platform to find new collaborators on your very own campus. Connect with them to work on one-of-a-kind ideas.</div>
+                        </div>
+                        <div>
+                            <a href="https://joincomigo.co/">
+                                <Button>About Comigo</Button>
+                            </a>
+                        </div>
 
-                        <div className="Display-Black-Left marginTop32 paddingBottom40">Big ideas, <span style={{ color: "#fff" }}>together.</span></div>
-                        <div className="login__left__desc" style={{ fontSize: "20px" }}>Comigo is a platform to find new collaborators on your very own campus. Connect with them to work on one-of-a-kind ideas.</div>
                     </div>
                     <div className="login__right"  >
                         <ReactCardFlip isFlipped={isFlipped}>
                             <div key="front" className="front">
 
-                                <div className="sign-in-body " bordered={false}>
+                                <div className="sign-in-body ">
                                     <div className="app-logo">
                                         <img alt="logo" src={logoIcon} />
                                     </div>
