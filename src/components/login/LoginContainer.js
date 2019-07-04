@@ -34,7 +34,7 @@ class LoginContainer extends Component {
     render() {
 
         return (
-            <div>
+            <div style={{ height: "100%", background: "#ffd250" }}>
                 <style dangerouslySetInnerHTML={{
                     __html: _login
                 }} />

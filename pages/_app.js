@@ -79,7 +79,7 @@ class MyApp extends App {
     return (
       <Container>
         <Provider store={reduxStore}>
-          <div>
+          <div style={{ height: "100%" }}>
             <style
               dangerouslySetInnerHTML={{
                 __html:
@@ -91,17 +91,17 @@ class MyApp extends App {
                   _editCollaborator
               }} />
             <Head />
-            <div className="page-container">
-              {
-                isLoggedIn && <HeaderContainer {...pageProps} />
-              }
 
-              <div className="body-content">
-                {
-                  this.renderComponent(isLoggedIn, isVerify)
-                }
-              </div>
-            </div>
+            {
+              isLoggedIn && <HeaderContainer {...pageProps} />
+            }
+
+
+            {
+              this.renderComponent(isLoggedIn, isVerify)
+            }
+
+
           </div>
         </Provider>
       </Container>

@@ -119,7 +119,10 @@ class NewProjectContainer extends Component {
                 if (step !== 2)
                     setStep(step + 1)
                 else if (step === 2)
-                    create(data)
+                    create({
+                        ...data, media: this.state.media,
+                        links: values.link
+                    })
                 updateCreateProject({
                     ...values,
                     shareList: shareList,
@@ -132,7 +135,7 @@ class NewProjectContainer extends Component {
         });
     }
     render() {
-       
+
         const { visibleUploadModal, preloadImage } = this.state
         const { userData } = this.props
         return (

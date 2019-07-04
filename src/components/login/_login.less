@@ -1,16 +1,23 @@
 .login {
-    padding: 120px 0;
+    height: 100%;
     width: 1140px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    height: 100vh;
-    overflow: hidden;
+    align-items: center;
+
+    &__container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
 
     &__left {
         max-width: 380px;
         margin: 0 auto;
-        margin-top: 120px;
+
+
         &__desc {
             font-family: TTCommons;
             font-size: 20px;
@@ -20,14 +27,41 @@
             line-height: 1.2;
             letter-spacing: normal;
         }
+
+
     }
 
     &__right {
-        padding: 60px 0;
-        background: #fff;
+        min-height: 763px;
         width: 540px;
 
-        box-shadow: 0 20px 40px 0 rgba(54, 54, 54, 0.2);
+        .back {
+            background: #fff;
+            box-shadow: 0 20px 40px 0 rgba(54, 54, 54, 0.2);
+            padding: 40px;
+        }
+
+        .front {
+            background: #fff;
+            box-shadow: 0 20px 40px 0 rgba(54, 54, 54, 0.2);
+
+            padding: 40px;
+
+            .app-logo {
+                img {
+                    width: 80px;
+                    padding-bottom: 24px;
+                    object-fit: contain;
+                }
+            }
+        }
+
+        .sign-in-body {
+            width: 350px;
+            margin: 0 auto;
+
+
+        }
     }
 
     .app-logo {
@@ -44,21 +78,7 @@
         padding-bottom: 32px;
     }
 
-    .sign-in-body {
-        width: 350px;
-        margin: 0 auto;
 
-
-
-
-        .app-logo {
-            img {
-                width: 80px;
-                padding-bottom: 24px;
-                object-fit: contain;
-            }
-        }
-    }
 
     .forgot__button {
         text-align: center;

@@ -19,7 +19,7 @@ class EditJobModal extends React.Component {
             toggleRemoveJob,
             jobDetail
         } = this.props
-     
+
         const { getFieldDecorator, } = this.props.form
 
         return (
@@ -109,7 +109,7 @@ class EditJobModal extends React.Component {
                                     <div>Incentive</div>
                                     <FormItem>
                                         {getFieldDecorator('incentive', {
-                                            rules: [{ message: 'Please enter incentive!', type: 'array'  ,required: true,}],
+                                            rules: [{ message: 'Please enter incentive!', type: 'array', required: true, }],
                                         })(
                                             <Select
                                                 mode="multiple"
@@ -131,7 +131,7 @@ class EditJobModal extends React.Component {
                                     </FormItem>
                                 </div>
                                 <div className="button-edit">
-                                    <Button onClick={toggleRemoveJob} loading={status === "running"}
+                                    <Button onClick={() => toggleRemoveJob()} loading={status === "running"}
                                         type="danger"
                                         className="Button-White-Center">
                                         DELETE</Button>

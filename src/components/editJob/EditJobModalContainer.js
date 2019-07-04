@@ -20,7 +20,7 @@ class EditJobModalContainer extends Component {
 
 		e.preventDefault()
 		this.props.form.validateFields((err, values) => {
-		
+
 			if (!err) {
 				this.props.updateJob({
 					title: values.title,
@@ -66,7 +66,7 @@ class EditJobModalContainer extends Component {
 				<EditJobModal
 					{...this.state}
 					{...this.props}
-					
+
 					onTagSkillChange={this.onTagSkillChange}
 					handleEditJob={(e) => this.handleEditJob(e)}
 				/>

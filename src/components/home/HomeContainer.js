@@ -134,7 +134,7 @@ class HomeContainer extends Component {
         const { isLoggedIn, userData, jobDetail } = this.props
 
         return (
-            <div className={!isLoggedIn ? "primary__layout" : ""}>
+            <div style={{height:"100%"}} >
                 <style dangerouslySetInnerHTML={{
                     __html: _home + _newsFeed
                 }} />
