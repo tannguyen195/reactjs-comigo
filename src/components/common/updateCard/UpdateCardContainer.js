@@ -15,7 +15,8 @@ class UpdateCardContainer extends Component {
             editUpdateContent: "",
             editCommentContent: "",
             comment: "",
-
+            isShowMore: false,
+            isShowMoreTitle: false,
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -33,7 +34,16 @@ class UpdateCardContainer extends Component {
             })
         }
     }
-
+    handleShowMore = () => {
+        this.setState({
+            isShowMore: !this.state.isShowMore
+        })
+    }
+    handleShowMoreTitle = () => {
+        this.setState({
+            isShowMoreTitle: !this.state.isShowMoreTitle
+        })
+    }
     handleDeletePost = (e) => {
         const { removeProjectUpdate, detail } = this.props
         removeProjectUpdate({
@@ -80,7 +90,7 @@ class UpdateCardContainer extends Component {
     handlePostComment = (e) => {
 
         const { postComment, data, form, isNewFeed, detail, postCommentDetail } = this.props
-     
+
         e.preventDefault();
         form.validateFieldsAndScroll((err, values) => {
             if (!err) {
@@ -135,7 +145,8 @@ class UpdateCardContainer extends Component {
                 <UpdateCard
                     {...this.state}
                     {...this.props}
-
+                    handleShowMoreTitle={this.handleShowMoreTitle}
+                    handleShowMore={this.handleShowMore}
                     handleDeletePost={this.handleDeletePost}
 
                     handlePostComment={this.handlePostComment}

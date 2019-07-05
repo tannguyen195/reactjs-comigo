@@ -200,7 +200,13 @@ export default {
             status: { $set: STATUS.ERROR },
 
         }),
+        [ActionTypes.UPDATE_SUCCESS]: (state, { response }) => {
+     
+            return update(state, {
+                data: { projects : { [state.data.projects.findIndex((e) => e._id === response.data._id)]: { $set: response.data } } }
 
+            })
+        },
     }, initial),
 };
 

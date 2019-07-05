@@ -22,7 +22,11 @@ export default class extends Component {
             handlePostComment,
             handleDeleteComment,
             toggleEditComment,
-            isNewFeed
+            isShowMore,
+            handleShowMore,
+
+            isShowMoreTitle,
+            handleShowMoreTitle
         } = this.props
 
         const {
@@ -82,8 +86,22 @@ export default class extends Component {
 
                 </div>
 
-                <div className="update__body-container Body-Black-Left">
-                    {data.content}
+                <div className="update__body-container ">
+                    <span className="Body-Black-Left">
+                        {
+                            !isShowMoreTitle ?
+                            
+                                data.content.replace(/^(.{300}[^\s]*).*/, "$1") :
+                                data.content
+                        }
+                        {
+                            data.content.length > 300 && <a onClick={handleShowMoreTitle}>
+                                {
+                                    !isShowMoreTitle ?
+                                        `  Show more` : `  Show less`
+                                }</a>
+                        }
+                    </span>
                 </div>
 
                 {data.comments && data.comments[0] && data.comments.length > 0 && data.comments.map((item, index) => {
@@ -95,9 +113,20 @@ export default class extends Component {
                                     <div className="Caption-Grey-Left">{` . ${moment.unix(item.updatedAt).fromNow()}`}</div>
                                 </div>
 
-                                <div className="Body-Black-Left">
-                                    {item.content}
-                                </div>
+                                <span className="Body-Black-Left">
+                                    {
+                                        !isShowMore ? item.content.replace(/^(.{300}[^\s]*).*/, "$1") : item.content
+                                    }
+                                    {
+                                        item.content.length > 300 && <a onClick={handleShowMore}>
+
+
+                                            {
+                                                !isShowMore ?
+                                                    `  Show more` : `  Show less`
+                                            }</a>
+                                    }
+                                </span>
                             </div>
 
                         </div>

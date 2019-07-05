@@ -40,8 +40,10 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.UPDATE_SUCCESS]: (state, { response }) => {
+
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
+
             })
         },
         [ActionTypes.UPDATE_ERROR]: (state, { error }) => {
@@ -146,9 +148,10 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.EDIT_PROJECT_UPDATE_SUCCESS]: (state, { response }) => {
+          
             return update(state, {
                 status: { $set: STATUS.SUCCESS },
-                detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.data._id)]: { $set: response.data } } }
+                detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.data._id)]: { content: { $set: response.data.content } } } }
             })
         },
         [ActionTypes.EDIT_PROJECT_UPDATE_ERROR]: (state, { error }) => {
@@ -196,7 +199,7 @@ export default {
         },
 
         [ActionTypes.UPLOAD_IMAGE_SUCCESS]: (state, { response }) => {
-       
+
             if (response.payload.uploadType === "media")
                 if (response.payload.index !== 3) return update(state, {
                     detail: { media: { [response.payload.index]: { $set: response.data } } }
@@ -279,7 +282,7 @@ export default {
 
         },
         [ActionTypes.POST_COMMENT_DETAIL_SUCCESS]: (state, { response, }) => {
-
+       
             return update(state, {
                 statusComment: { $set: STATUS.SUCCESS },
                 detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.updateID)]: { comments: { $push: [response] } } } }

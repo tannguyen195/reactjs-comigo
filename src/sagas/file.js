@@ -65,7 +65,7 @@ const file = {
 * @param  {object} data The file data
 */
   uploadImage(data) {
-   
+
     const sendData = new FormData()
     if (data.file)
       sendData.append('file', data.file.originFileObj)
@@ -101,8 +101,8 @@ export function* upload(data) {
   }
   catch (error) {
     notification['error']({
-      message: 'This photo is too large!',
-      description: "Please choose another one.",
+      message: 'Please choose another one',
+      description: "Make sure you have summited an image!",
     });
     yield put({
       type: ActionTypes.UPLOAD_ERROR,
@@ -132,8 +132,8 @@ export function* uploadImage(data) {
   }
   catch (error) {
     notification['error']({
-      message: 'This photo is too large!',
-      description: "Please choose another one.",
+      message: 'Please choose another one',
+      description: "Make sure you have summited an image!",
     });
     yield put({
       type: ActionTypes.UPLOAD_IMAGE_ERROR,

@@ -99,7 +99,7 @@ const project = {
     // Post a sign in request
     return axios(
       {
-        url: endPoint + 'project/list' ,
+        url: endPoint + 'project/list',
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'x-auth-token': cookies.get('token') },
       }).then((response) => {
@@ -473,7 +473,7 @@ export function* getList(data) {
 
   try {
     const response = yield call(project.getList, data.payload);
-  
+
     yield put({
       type: ActionTypes.GET_LIST_SUCCESS,
       response
@@ -616,6 +616,10 @@ export function* editComment(data) {
     yield put({
       type: ActionTypes.EDIT_COMMENT_SUCCESS,
       response
+    });
+    yield put({
+      type: ActionTypes.TOGGLE_EDIT_COMMENT,
+
     });
   }
   catch (error) {
