@@ -125,7 +125,10 @@ class UpdateCardContainer extends Component {
         }
 
     }
-
+    handleGetComment = (e) => {
+        const { getComment } = this.props
+        getComment({ updateID: e })
+    }
     render() {
         return (
             <div>
@@ -148,7 +151,7 @@ class UpdateCardContainer extends Component {
                     handleShowMoreTitle={this.handleShowMoreTitle}
                     handleShowMore={this.handleShowMore}
                     handleDeletePost={this.handleDeletePost}
-
+                    handleGetComment={this.handleGetComment}
                     handlePostComment={this.handlePostComment}
                     handleDeleteComment={this.handleDeleteComment}
 

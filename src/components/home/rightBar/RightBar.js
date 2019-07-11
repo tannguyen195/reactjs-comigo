@@ -6,7 +6,7 @@ import UserBar from '../../common/userBar/UserBar'
 export default class extends Component {
 
     render() {
-        const { people } = this.props
+        const { people,peopleMayKnow } = this.props
 
         return (
             <Affix offsetTop={30}>
@@ -19,7 +19,7 @@ export default class extends Component {
 
                     <div className="people">
                         {
-                            people.map((item, index) => {
+                            peopleMayKnow.map((item, index) => {
                                 if (index < 4)
                                     return <UserBar key={index} userData={item} />
                             })

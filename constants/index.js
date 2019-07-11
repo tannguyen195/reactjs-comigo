@@ -93,6 +93,10 @@ export const ActionTypes = keyMirror({
     GET_CROPPED_PHOTO: undefined,
     GET_IMAGE_PAYLOAD: undefined,
 
+     // PEOPLE CONSTANT ACTION TYPE
+     GET_PEOPLE_MAY_KNOW: undefined,
+     GET_PEOPLE_MAY_KNOW_SUCCESS: undefined,
+     GET_PEOPLE_MAY_KNOW_ERROR: undefined,
     // PEOPLE CONSTANT ACTION TYPE
     GET_PEOPLE_LIST: undefined,
     GET_PEOPLE_LIST_SUCCESS: undefined,
@@ -118,6 +122,10 @@ export const ActionTypes = keyMirror({
     REMOVE_PROJECT_UPDATE: undefined,
     REMOVE_PROJECT_UPDATE_SUCCESS: undefined,
     REMOVE_PROJECT_UPDATE_ERROR: undefined,
+
+    GET_COMMENT: undefined,
+    GET_COMMENT_SUCCESS: undefined,
+    GET_COMMENT_ERROR: undefined,
 
     POST_COMMENT: undefined,
     POST_COMMENT_SUCCESS: undefined,

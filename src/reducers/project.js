@@ -267,7 +267,23 @@ export default {
                 message: { $set: renderMessage(error.status) }
             })
         },
+        [ActionTypes.GET_COMMENT]: (state, { response }) => update(state, {
+            statusComment: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.GET_COMMENT_SUCCESS]: (state, { response }) => {
 
+            return update(state, {
+                statusComment: { $set: STATUS.SUCCESS },
+             
+            })
+
+        },
+        [ActionTypes.GET_COMMENT_ERROR]: (state, { error }) => {
+            return update(state, {
+                statusComment: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
 
         // POST UPDATE PROJECT ACTION
         [ActionTypes.POST_COMMENT]: (state, { response }) => update(state, {
@@ -281,6 +297,12 @@ export default {
             })
 
         },
+        [ActionTypes.POST_COMMENT_ERROR]: (state, { error }) => {
+            return update(state, {
+                statusComment: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
         [ActionTypes.POST_COMMENT_DETAIL_SUCCESS]: (state, { response, }) => {
        
             return update(state, {
@@ -288,12 +310,7 @@ export default {
                 detail: { updates: { [state.detail.updates.findIndex((e) => e._id === response.updateID)]: { comments: { $push: [response] } } } }
             })
         },
-        [ActionTypes.POST_COMMENT_ERROR]: (state, { error }) => {
-            return update(state, {
-                statusComment: { $set: STATUS.ERROR },
-                message: { $set: renderMessage(error.status) }
-            })
-        },
+      
         // EDIT UPDATE PROJECT ACTION
         [ActionTypes.EDIT_COMMENT]: (state, { response }) => update(state, {
             statusComment: { $set: STATUS.RUNNING },

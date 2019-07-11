@@ -15,6 +15,21 @@ const people = {
   /**
     * Get list of people registerd, returning a people list when done
     */
+   getPeopleMayKnow(data) {
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'people/youMayKnow',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
   getPeopleList(data) {
     // Post a sign in request
     return axios(
@@ -87,6 +102,28 @@ export function* getPeopleList(data) {
   }
 }
 
+/**
+ * get people list
+ */
+export function* getPeopleMayKnow(data) {
+  try {
+    const response = yield call(people.getPeopleMayKnow, data.payload);
+
+    yield put({
+      type: ActionTypes.GET_PEOPLE_MAY_KNOW_SUCCESS,
+      response: {
+        ...response,
+      }
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.GET_PEOPLE_MAY_KNOW_ERROR,
+      error: error.response,
+    });
+  }
+}
+
 
 /**
  * get people detail
@@ -144,6 +181,7 @@ export function* subcribe(data) {
 export default function* root() {
   yield all([
     takeLatest(ActionTypes.GET_PEOPLE_LIST, getPeopleList),
+    takeLatest(ActionTypes.GET_PEOPLE_MAY_KNOW, getPeopleMayKnow),
     takeLatest(ActionTypes.GET_PEOPLE_DETAIL, getPeopleDetail),
     takeLatest(ActionTypes.SUBCRIBE, subcribe),
   ]);

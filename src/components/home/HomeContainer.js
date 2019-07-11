@@ -29,12 +29,12 @@ class HomeContainer extends Component {
         }
     }
     componentDidMount() {
-        const { getList, getPeopleList, listJob, feed, people, jobList, search, projects } = this.props
+        const { getList, getPeopleList, listJob, feed, people, jobList, search, projects, getPeopleMayKnow } = this.props
         search({
             data: "",
             type: "all"
         })
-
+        getPeopleMayKnow()
         if (!people) {
             getPeopleList({
                 data: "",
@@ -134,7 +134,7 @@ class HomeContainer extends Component {
         const { isLoggedIn, userData, jobDetail } = this.props
 
         return (
-            <div style={{height:"100%"}} >
+            <div style={{ height: "100%" }} >
                 <style dangerouslySetInnerHTML={{
                     __html: _home + _newsFeed
                 }} />
@@ -177,6 +177,7 @@ export function mapStateToProps(state) {
         statusPeople: state.people.status,
         statusJob: state.job.status,
         statusFeed: state.search.status,
+        peopleMayKnow: state.people.peopleMayKnow,
     };
 }
 export function mapDispatchToProps(dispatch) {

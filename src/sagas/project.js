@@ -195,6 +195,23 @@ const project = {
   /**
      * Post a new update to a project provied
      */
+  getComment(data) {
+
+    // Post a sign in request
+    return axios(
+      {
+        url: endPoint + 'project/comment/list?updateID=' + data.updateID,
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': cookies.get('token')
+        },
+        data: JSON.stringify(data),
+      }).then((response) => {
+        // window.location.replace("/")
+        return response.data
+      })
+  },
   postComment(data) {
 
     // Post a sign in request
@@ -569,7 +586,22 @@ export function* removeProjectUpdate(data) {
   }
 }
 
+export function* getComment(data) {
+  try {
+    const response = yield call(project.getComment, data.payload);
 
+    yield put({
+      type: ActionTypes.GET_COMMENT_SUCCESS,
+      response: { data: response.data, updateID: data.payload.updateID }
+    });
+  }
+  catch (error) {
+    yield put({
+      type: ActionTypes.GET_COMMENT_ERROR,
+      error: error.response,
+    });
+  }
+}
 
 /**
  * post project update
@@ -581,6 +613,10 @@ export function* postComment(data) {
     yield put({
       type: ActionTypes.POST_COMMENT_SUCCESS,
       response: { ...response.data, updateID: data.payload.updateID, projectID: data.payload.projectID }
+    });
+    yield put({
+      type: ActionTypes.GET_COMMENT,
+      payload: {  updateID: data.payload.updateID}
     });
   }
   catch (error) {
@@ -782,6 +818,7 @@ export default function* root() {
     takeLatest(ActionTypes.POST_PROJECT_UPDATE, postProjectUpdate),
     takeLatest(ActionTypes.EDIT_PROJECT_UPDATE, editProjectUpdate),
     takeLatest(ActionTypes.REMOVE_PROJECT_UPDATE, removeProjectUpdate),
+    takeLatest(ActionTypes.GET_COMMENT, getComment),
     takeLatest(ActionTypes.POST_COMMENT, postComment),
     takeLatest(ActionTypes.POST_COMMENT_DETAIL, postCommentDetail),
     takeLatest(ActionTypes.EDIT_COMMENT, editComment),

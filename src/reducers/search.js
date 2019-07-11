@@ -19,7 +19,7 @@ export default {
         }),
 
         [ActionTypes.SEARCH_SUCCESS]: (state, { response }) => {
-            
+
             if (response.type === "search")
                 return update(state, {
                     status: { $set: STATUS.SUCCESS },
@@ -57,11 +57,32 @@ export default {
 
             })
         },
-        [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {         
+        [ActionTypes.POST_COMMENT_SUCCESS]: (state, { response }) => {
             return update(state, {
-                feed: { [state.feed.findIndex((e) => e._id === response.updateID)]: { comment: { $set: response } } }
+                feed: {
+                    [state.feed.findIndex((e) => e._id === response.updateID)]:
+                    {
+                        totalComments: {
+                            $set: state.feed[state.feed.findIndex((e) => e._id === response.updateID)].totalComments + 1
+                        }
+                    }
+                }
             })
 
+        },
+        [ActionTypes.GET_COMMENT_SUCCESS]: (state, { response }) => {
+            
+            return {
+                ...state,
+                feed: state.feed.map((item, index) => {
+                    // Replace the item at index 2
+                    if (index === state.feed.findIndex((e) => e._id === response.updateID)) {
+                        return { ...item, allComments: response.data };
+                    }
+                    // Leave every other item unchanged
+                    return item;
+                })
+            }
         }
     }, initial),
 };

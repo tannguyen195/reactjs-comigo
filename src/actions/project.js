@@ -13,7 +13,7 @@ export const {
   postProjectUpdate,
   editProjectUpdate,
   removeProjectUpdate,
-
+  getComment,
   postComment,
   postCommentDetail,
   editComment,
@@ -38,7 +38,7 @@ export const {
   [ActionTypes.POST_PROJECT_UPDATE]: (data) => (data),
   [ActionTypes.EDIT_PROJECT_UPDATE]: (data) => (data),
   [ActionTypes.REMOVE_PROJECT_UPDATE]: (data) => (data),
-
+  [ActionTypes.GET_COMMENT]: (data) => (data),
   [ActionTypes.POST_COMMENT]: (data) => (data),
   [ActionTypes.POST_COMMENT_DETAIL]: (data) => (data),
 

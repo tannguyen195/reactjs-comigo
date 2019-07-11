@@ -6,7 +6,8 @@ export const initial = {
     message: "",
     people: null,
     peopleDetail: null,
-    peopleSearch: null
+    peopleSearch: null,
+    peopleMayKnow: null,
 }
 
 export default {
@@ -18,7 +19,7 @@ export default {
             status: { $set: STATUS.RUNNING },
         }),
         [ActionTypes.GET_PEOPLE_LIST_SUCCESS]: (state, { response }) => {
-           
+
             if (response.type === "all")
                 return update(state, {
                     status: { $set: STATUS.SUCCESS },
@@ -32,6 +33,23 @@ export default {
 
         },
         [ActionTypes.GET_PEOPLE_LIST_ERROR]: (state, { error }) => {
+            return update(state, {
+                status: { $set: STATUS.ERROR },
+                message: { $set: renderMessage(error.status) }
+            })
+        },
+
+        [ActionTypes.GET_PEOPLE_MAY_KNOW]: (state) => update(state, {
+            status: { $set: STATUS.RUNNING },
+        }),
+        [ActionTypes.GET_PEOPLE_MAY_KNOW_SUCCESS]: (state, { response }) => {
+            return update(state, {
+                status: { $set: STATUS.SUCCESS },
+                peopleMayKnow: { $set: response.data }
+            })
+
+        },
+        [ActionTypes.GET_PEOPLE_MAY_KNOW_ERROR]: (state, { error }) => {
             return update(state, {
                 status: { $set: STATUS.ERROR },
                 message: { $set: renderMessage(error.status) }

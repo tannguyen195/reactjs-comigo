@@ -24,8 +24,8 @@ export default class extends Component {
             >
 
                 <div className="post__content-container">
-                    <Image image={detail.owner.pictureURL} />
-                    <TextArea
+
+                    <TextArea   
                         onChange={onEditCommentChange}
                         value={editCommentContent}
                         className="Paragraph-12"
