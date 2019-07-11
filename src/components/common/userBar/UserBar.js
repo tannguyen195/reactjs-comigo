@@ -8,10 +8,10 @@ const { TextArea } = Input;
 export default class extends Component {
 
     render() {
-        const { userData } = this.props
+        const { userData, isUser } = this.props
 
         return (
-            <Link prefetch to={"/profile" }>
+            <Link prefetch to={isUser ? "/profile" : "/user/" + userData._id }>
                
                 <a className="user-bar">
                     <img alt="avatar" src={userData.pictureURL ? userData.pictureURL : profileIcon} />

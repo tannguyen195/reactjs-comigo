@@ -16,7 +16,7 @@ export default class extends Component {
                         __html: _leftBar
                     }} />
 
-                    <UserBar userData={userData} />
+                    <UserBar isUser={true} userData={userData} />
 
                     <div className="workspace">
                         <div className="title H3-Black-Left">Workspace</div>
