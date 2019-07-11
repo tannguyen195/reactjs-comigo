@@ -106,7 +106,7 @@ class HomeContainer extends Component {
     }
     renderLoggedHome() {
         const {
-            userData, people } = this.props
+            userData, peopleMayKnow } = this.props
         return (
             <div className="home-logged">
 
@@ -122,7 +122,7 @@ class HomeContainer extends Component {
                         {...this.props} />
                 </div>
                 {
-                    people && <div className="home-logged__bar"> <RightBar   {...this.props} /></div>
+                    peopleMayKnow && <div className="home-logged__bar"> <RightBar   {...this.props} /></div>
 
                 }
 
