@@ -7,7 +7,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { notification } from 'antd';
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
-import { endPoint } from 'constants/index'
+import { endPoint } from 'constants/endPoint'
 import axios from 'axios'
 const cookies = new Cookies()
 var https = require("https");

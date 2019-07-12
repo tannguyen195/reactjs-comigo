@@ -8,7 +8,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { ActionTypes } from 'constants/index';
 import { Cookies } from 'react-cookie'
-import { endPoint } from 'constants/index'
+import { endPoint } from 'constants/endPoint'
 import * as peopleAction from '../actions/people'
 import axios from 'axios'
 
