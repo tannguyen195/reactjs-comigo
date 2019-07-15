@@ -130,6 +130,7 @@ class UpdateCardContainer extends Component {
         getComment({ updateID: e })
     }
     render() {
+       
         return (
             <div>
                 <style dangerouslySetInnerHTML={{
