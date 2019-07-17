@@ -18,7 +18,7 @@ class NewProjectContainer extends Component {
             projectSkills: [],
 
             visibleUploadModal: false,
-            preloadImage: null,
+            preloadImage: "https://server.freedominvest.com/media/Defaultimage_2.png",
             media: []
         }
     }
@@ -54,11 +54,7 @@ class NewProjectContainer extends Component {
             visibleUploadModal: !this.state.visibleUploadModal
         })
     }
-    componentDidMount() {
-        this.setState({
-            preloadImage: "https://comigo-media.s3.amazonaws.com/images/1541009490517_cover"
-        })
-    }
+   
 
     removeLink = (k) => {
 
@@ -126,7 +122,7 @@ class NewProjectContainer extends Component {
                 updateCreateProject({
                     ...values,
                     shareList: shareList,
-                    coverURL: returnImage || "https://comigo-media.s3.amazonaws.com/images/1541009490517_cover",
+                    coverURL: returnImage || "https://server.freedominvest.com/media/Defaultimage_2.png",
                     media: this.state.media,
                     links: values.link
                 })
