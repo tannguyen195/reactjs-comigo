@@ -42,7 +42,7 @@ export default class extends Component {
                         <div className="Body-Black-Center info__bio">{peopleDetail.bio}</div>
 
                         <a href={`mailto:${peopleDetail.email}`} >
-                            <Button icon="mail" type="primary" className="email__button Button-White-Left">{`Contact to ${peopleDetail.firstName}`}
+                            <Button icon="mail" type="primary" className="email__button Button-White-Left">{`Contact ${peopleDetail.firstName}`}
                             </Button>
                         </a>
                     </div>

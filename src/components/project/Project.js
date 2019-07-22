@@ -88,7 +88,7 @@ export default class extends Component {
                                     </div> :
                                         <div className="button-group">
                                             <a href={`mailto:${detail.owner.email}`} >
-                                                <Button icon="mail" type="primary" className="email__button Button-White-Left">{`Contact to ${detail.owner.firstName}`}
+                                                <Button icon="mail" type="primary" className="email__button Button-White-Left">{`Contact ${detail.owner.firstName}`}
                                                 </Button>
                                             </a>
                                         </div>
