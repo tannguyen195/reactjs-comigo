@@ -18,7 +18,7 @@ class SignUpContainer extends Component {
     handleSubmit = (e) => {
         const { signup } = this.props
         const  routerQuery  = Router.router.query
-        console.log("Router", routerQuery)
+        
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
