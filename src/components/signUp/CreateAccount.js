@@ -11,7 +11,7 @@ export default class extends Component {
             <div className="sign-up-container">
 
                 <div className="sign-up-body">
-                    <div className="marginTop8" bordered={false}>
+                    <div className="marginTop8" >
                         <div className="marginBottom12 H2-Black-Center">
                             Create an Account
             </div>

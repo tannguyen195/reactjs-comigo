@@ -6,6 +6,7 @@ import { Form } from 'antd'
 import Head from '../head'
 import SignUp from './SignUp'
 import _signUp from './_signUp.less'
+import { Router } from 'routes'
 
 class SignUpContainer extends Component {
     constructor(props) {
@@ -16,17 +17,21 @@ class SignUpContainer extends Component {
     }
     handleSubmit = (e) => {
         const { signup } = this.props
+        const  routerQuery  = Router.router.query
+        console.log("Router", routerQuery)
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-              
                 signup({
+                    isNewUser: routerQuery.isNewUser || null,
+                    inviteCode: routerQuery.inviteCode || null,
                     lastName: values.lastname,
                     firstName: values.firstname,
                     email: values.email,
-                    password: values.password
+                    password: values.password,
+
                 })
-                
+
             }
         });
     }

@@ -8,7 +8,7 @@ import Login from './Login'
 import _login from './_login.less'
 import { toggleForgotModal } from '../../actions/toggle'
 import ForgotModalContainer from '../forgot/ForgotModalContainer'
-
+import { Router } from 'routes'
 class LoginContainer extends Component {
     constructor(props) {
         super(props)
@@ -20,13 +20,20 @@ class LoginContainer extends Component {
         e.preventDefault();
         this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
     }
+    componentDidMount() {
+
+        if (Router.router.query && Router.router.query.isNewUser) {
+            this.setState({
+                isFlipped: true
+            })
+        }
+    }
     handleSubmit(e) {
         const { login } = this.props
 
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-
                 login(values)
             }
         });
