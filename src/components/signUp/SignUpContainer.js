@@ -15,10 +15,20 @@ class SignUpContainer extends Component {
             confirmDirty: false
         }
     }
+    componentDidMount() {
+        const {
+            form,
+        } = this.props
+        const routerQuery = Router.router.query
+
+        form.setFieldsValue({
+            email: routerQuery.userEmail || "",
+        })
+    }
     handleSubmit = (e) => {
         const { signup } = this.props
-        const  routerQuery  = Router.router.query
-        
+        const routerQuery = Router.router.query
+
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
