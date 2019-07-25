@@ -1,0 +1,1 @@
+module.exports=__NEXT_REGISTER_PAGE("/reset_password",function(){return{page:webpackJsonp([16],{857:function(e,t,o){e.exports=o(858)},858:function(e,t,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=o(519);t.default=r.a}},[857]).default}});
